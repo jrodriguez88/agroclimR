@@ -1,3 +1,28 @@
+#' Write AquaCrop Weather File
+#'
+#' Function compute weather information AquaCrop v6.0  weather file.
+#'
+#' @param wth_data A Data frame Weather data. minimum = date, tmax, tmin, rain
+#' @param lon Numeric. Longitude (decimal degrees)
+#' @param elev Numeric. Elevation (meters above sea level)
+#' @param kRs Numeric. Hargreaves empirical coefficient, Coastal coefficient
+#' @param ws_mean Numeric. Wind Speed Mean, default = 2 m/s
+#' @import dplyr
+#' @import purrr
+#' @import lubridate
+#' @import stringr
+#' @importFrom sirad es
+#' @importFrom sirad et0
+#' @importFrom sirad extrat
+#' @importFrom sirad radians
+#' @export
+#' @examples
+#' # Write file
+#' ETo_cal(wth_data = weather, lat = 3.8, elev = 650)
+#'
+## Update the details for the return value
+#' @return This function returns a \code{Numeric} ET0 values (mm).
+#'
 ETo_cal <- function(wth_data, lat, elev, ref_ht = 2, kRs = 0.175, ws_mean = 2){
 
     stopifnot(require(sirad))

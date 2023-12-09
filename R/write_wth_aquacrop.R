@@ -13,10 +13,6 @@
 #' @import purrr
 #' @import lubridate
 #' @import stringr
-#' @importFrom sirad es
-#' @importFrom sirad etO
-#' @importFrom sirad extraT
-#' @importFrom sirad extrat
 #' @export
 #' @examples
 #' # Write file

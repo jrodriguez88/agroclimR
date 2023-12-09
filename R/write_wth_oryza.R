@@ -7,64 +7,36 @@
 #' @param wth_data A Data frame Weather data. minimum = date, tmax, tmin, rain
 #' @param lat Numeric. Latitude (decimal degrees)
 #' @param lon Numeric. Longitude (decimal degrees)
-#' @param elev Numeric indicating whether missing values should be removed
-#' @param stn Integer indicating whether missing values should be removed
-#' @param multiyear A Logical data frame. Non-numeric columns will be removed
-#' @param tag A Logical indicating whether missing values should be removed
+#' @param elev Numeric. Elevation (meters above sea level)
+#' @param stn Integer. Station number
+#' @param multiyear A Logical. TRUE = ".cli" multiyear format or FALSE = yearly format (ie. 1998 = *.998)
+#' @param tag A Logical. TRUE = write information for each file
 #' @import dplyr
 #' @import purrr
+#' @import stringr
 #' @import lubridate
 #' @importFrom sirad es
 #' @export
 #' @examples
-#' write_wth_oryza(path = ".", id_name = "TEST", wth_data = weather, lat = 3.8, lon = -76.5, elev = 650)
-#' write_wth_oryza(path = ".", id_name = "TEST2", wth_data = weather, lat = 3.8, lon = -76.5, elev = 650, multiyear = T, tag = T)
+#' # Write file
+#' write_wth_oryza(
+#'   path = ".", id_name = "TEST", wth_data = weather,
+#'   lat = 3.8, lon = -76.5, elev = 650)
+#'
+#' write_wth_oryza(
+#'   path = ".", id_name = "TEST2", wth_data = weather,
+#'   lat = 3.8, lon = -76.5, elev = 650, multiyear = T, tag = T)
 #'
 ## Update the details for the return value
 #' @return This function returns a \code{logical} if files created in path folder.
 #'
-#' @author Rodriguez-Espinoza J. <jrodriguezespinoza@outlook.com>
-#' @seealso \link[sirad]{se}
+# @seealso \link[sirad]{se}
 write_wth_oryza <- function(path = ".", id_name, wth_data, lat, lon, elev, stn=1, multiyear = F, tag = F) {
 
   # Tidy weather data
 
-  var_names <- tolower(colnames(wth_data))
-
-  wth_data <- setNames(wth_data, var_names)
-
-
-tidy_wth_oryza <- function(wth_data){
-
-    stopifnot(require(sirad))
-    stopifnot(class(wth_data$date)=="Date" & all(c("tmax", "tmin", "rain", "srad") %in%  var_names))
-
-    if("vp" %in% var_names){
-      message("Early morning vapor pressure (VP; kPa) in data")
-
-    } else if("rhum" %in% var_names)
-    {
-      wth_data <- mutate(wth_data,
-                         es = sirad::es(tmax, tmin),         #Determination of mean saturation vapour pressure http://www.fao.org/3/x0490e/x0490e07.htm  - eq.12
-                         vp = es*rhum/100) %>% select(-es)   #Determination of actual vapour pressure vpd http://www.fao.org/3/x0490e/x0490e07.htm  - eq.19
-      message("Early morning vapor pressure (VP; kPa) derived from relative humidity data")
-
-    } else {
-      wth_data <- mutate(wth_data, vp = NA_real_)
-      message("Vapor Pressure is not Available - VP Set as NA: -99")
-
-    }
-
-
-    if (!"wspd" %in% var_names) {
-      wth_data <- mutate(wth_data, wspd = NA_real_)
-      message("Wind Speed is not Available - Set as NA: -99")
-    }
-
-    return(wth_data)
-
-  }
-
+  wth_data <- tidy_wth_oryza(wth_data)
+  var_names <- colnames(wth_data)
 
 print_tag <- function(){
 
@@ -91,7 +63,7 @@ cat("*  Column    Daily Value
 
 
 # Data base
-    data_to <- tidy_wth_oryza(wth_data) %>%
+    data_to <- wth_data %>%
             mutate(stn = stn,
                    year = year(date),
                    day = yday(date),
@@ -133,5 +105,43 @@ cat("*  Column    Daily Value
 
     return(any(str_detect(list.files(path, id_name), id_name) == T))
 
+
+}
+
+# helpers -----------------------------------------------------------------
+
+tidy_wth_oryza <- function(wth_data, cal_VP = T){
+
+  #stopifnot(require(sirad))
+  # Tidy weather data
+
+  var_names <- tolower(colnames(wth_data))
+  wth_data <- setNames(wth_data, var_names)
+
+  stopifnot(class(wth_data$date)=="Date" & all(c("tmax", "tmin", "rain", "srad") %in%  var_names))
+
+  if("vp" %in% var_names){
+    message("Early morning vapor pressure (VP; kPa) in data")
+
+  } else if(isTRUE(cal_VP) & "rhum" %in% var_names)
+  {
+    wth_data <- mutate(wth_data,
+                       es = sirad::es(tmax, tmin),         #Determination of mean saturation vapour pressure http://www.fao.org/3/x0490e/x0490e07.htm  - eq.12
+                       vp = es*rhum/100) %>% select(-es)   #Determination of actual vapour pressure vpd http://www.fao.org/3/x0490e/x0490e07.htm  - eq.19
+    message("Early morning vapor pressure (VP; kPa) derived from relative humidity data")
+
+  } else {
+    wth_data <- mutate(wth_data, vp = NA_real_)
+    message("Vapor Pressure is not Available - VP Set as NA: -99")
+
+  }
+
+
+  if (!"wspd" %in% var_names) {
+    wth_data <- mutate(wth_data, wspd = NA_real_)
+    message("Wind Speed is not Available - Set as NA: -99")
+  }
+
+  return(wth_data)
 
 }

@@ -17,7 +17,21 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 Imports: 
+    data.table,
+    doFuture,
     dplyr,
+    GA,
+    ggplot2,
+    Hmisc,
     lubridate,
+    naniar,
+    parallel,
+    plotly,
     purrr,
-    sirad
+    readxl,
+    scales,
+    sirad,
+    soiltexture,
+    stringr,
+    tidyr
+URL: https://jrodriguez88.github.io/agroclimR/

@@ -11,5 +11,5 @@ and generation of process-based model files for systems like DSSAT v 4.8,
 ORYZA v3.0, and Aquacrop v6.0.
 }
 \author{
-Jeferson Rodriguez \email{jrodriguezespinoza@outlook.com}
+Jeferson Rodriguez-Espinoza \email{jrodriguezespinoza@outlook.com}
 }

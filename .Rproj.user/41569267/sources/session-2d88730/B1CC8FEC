@@ -1,0 +1,26 @@
+{
+    "id": "B1CC8FEC",
+    "path": "D:/00_DEVELOPER/agroclimR/R/write_wth_aquacrop.R",
+    "project_path": "R/write_wth_aquacrop.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1702142203337.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "23,39",
+        "scrollLine": "8"
+    },
+    "folds": "30|105|109|0|\n",
+    "lastKnownWriteTime": 1702145308,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1702145308792,
+    "read_only": false,
+    "read_only_alternatives": []
+}

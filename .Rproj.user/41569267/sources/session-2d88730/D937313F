@@ -1,0 +1,26 @@
+{
+    "id": "D937313F",
+    "path": "D:/00_DEVELOPER/agroclimR/R/write_wth_dssat.R",
+    "project_path": "R/write_wth_dssat.R",
+    "type": "r_source",
+    "hash": "4158348216",
+    "contents": "",
+    "dirty": false,
+    "created": 1702139031683.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "86,23",
+        "scrollLine": "67"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1702143813,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1702143813750,
+    "read_only": false,
+    "read_only_alternatives": []
+}

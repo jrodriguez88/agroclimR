@@ -1,0 +1,59 @@
+### agroclmR Package development
+## Author .. me
+## 2023
+
+
+setwd("D:/00_DEVELOPER/agroclimR/")
+
+library(devtools)
+library(usethis)
+
+# Use the create function to set up your first package
+create("agroclimR")
+
+# Take a look at the files and folders in your package
+dir("agroclimR")
+
+# Use the dump() function to write the numeric_summary function
+#dump("tidy_wth_oryza", file = "agroclimR/R/tidy_wth_oryza.R")
+
+# Verify that the file is in the correct directory
+dir("agroclimR/R")
+
+# Pass all functons to folder
+
+as.vector(lsf.str()) %>% 
+  map(~dump(.x, file = paste0("agroclimR/R/", .x, ".R")))
+
+
+
+
+###
+# What is in the package at the moment?
+dir()
+
+data <- input_data[[3]]
+
+weather <- data$WTH_obs %>% mutate(DATE = as.Date(DATE))
+
+
+soil <- data$SOIL_obs %>% mutate(SAMPLING_DATE = as.Date(SAMPLING_DATE))
+agro <- data$AGRO_man%>% mutate(PDAT = as.Date(PDAT))
+yield <- data$YIELD_obs
+plant <- data$PLANT_gro %>% mutate(SAMPLING_DATE = as.Date(SAMPLING_DATE))
+fertil <- data$FERT_obs
+phenol <- data$PHEN_obs %>% mutate(across(contains("DAT"), as.Date))
+
+
+usethis::use_data(phenol, overwrite = TRUE)
+usethis::use_data(soil, overwrite = TRUE)
+
+
+
+# Add a vignette called "Generating Summaries with Data Summary"
+use_vignette("Generating_Summaries_with_Data_Summary")
+
+# What directories do you now have in your package now?
+dir()
+
+

@@ -1,0 +1,56 @@
+path_data <- "D:/00_DEVELOPER/jre_thesis_un/_data/DATA_FINAL/"
+cultivar = "F2000"
+files <- list.files(path_data, pattern = fixed(cultivar)) %>% str_subset("~", negate = T)
+
+# Test data
+test_data <- import_exp_data(path_data, files, cultivar)
+input_data <- test_data$data$input_data
+
+
+
+# Generate package documentation
+document()
+
+# Examine the contents of the man directory
+dir("man")
+
+# View the documentation for the data_summary function
+help()
+
+# View the documentation for the weather dataset
+help("weather")
+
+
+use_package("dplyr")
+
+c("purrr", "dplyr", "data.table", "lubridate", "readxl", "naniar", "plotly", 
+"Hmisc", "soiltexture", "scales", "sirad", "parallel", "doFuture", "GA") %>%
+  map(use_package)
+
+use_package("ggplot2")
+use_package("tidyr")
+use_package("stringr")
+
+
+check()
+
+build()
+
+usethis::use_pkgdown()
+
+#use_mit_license()
+
+
+devtools::install()
+
+
+write_wth_oryza(id_name = "test", wth_data = weather, lat = 3, lon = 75, elev = 500)
+
+usethis::use_github_action("check-standard")
+use_pkgdown_github_pages()
+1
+
+
+
+
+

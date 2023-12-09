@@ -1,17 +1,42 @@
-write_soil_oryza <-
-function(path, id_name, soil_data, ZRTMS = 0.50, WL0I = 0, WCLI='FC' , RIWCLI = 'NO', SATAV=20){
-  
+#' Write ORYZA v3 Soil File
+#'
+#' Function compute Soil information to ORYZA soil file.
+#'
+#' @param path A string indicating path folder or working directory
+#' @param id_name A String 4 letters string of locality name. "AIHU" = Aipe, Huila
+#' @param soil_data A Data frame. Soil data. see `soil`
+#' @param ZRTMS Numeric. Maximum rooting depth in the soil (m)
+#' @param WL0I Numeric. Initial pounded water depth at start of simulation (mm)
+#' @param WCLI Numeric/String. WCLI can take 3 values: Field Capacity ('FC'), 50% of Soil Saturation ('ST50'), Fraction of water content ('0.0'- '1.0')
+#' @param RIWCLI A String. Re-initialize switch RIWCLI is ('YES') or ('NO')
+#' @param SATAV Numeric. Soil annual average temperature of the first layers
+#' @import dplyr
+#' @import stringr
+#' @export
+#' @examples
+#' # Write ORYZA Soil file
+#' soil = group_by(soil, NL) %>% sample_n(1)
+#' write_soil_oryza(id_name = "test_soil", soil_data = soil)
+#'
+## Update the details for the return value
+#' @return This function returns a \code{logical} if files created in path folder.
+#'
+# @seealso \link[sirad]{se}
+write_soil_oryza <- function(path = ".", id_name, soil_data, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20){
+
   inpp <- function(x, div=1){paste0(sprintf("%.2f", (data[[x]]/div)), collapse = ", ")}
-  
+
 #    dirfol <- paste0(path,'/', 'SOIL')
 #    dir.create((paste0(path,"/SOIL")), showWarnings = FALSE)
     data <- soil_data %>%
-        mutate(SOC = DEPTH*SBDM*100*SOC/0.58,
+        mutate(SOC = DEPTH*SBDM*100*SC/0.58,
                SON = DEPTH*SBDM*SLON/10,
                SNH4X = DEPTH*SBDM*SNH4/10,
                SNO3X = DEPTH*SBDM*SNO3/10)
 
-sink(file=paste0(path,'/', id_name, ".sol"), append = F)
+    file_name = paste0(id_name, ".sol")
+
+    sink(file = paste0(path,'/', file_name), append = F)
 
 ########################################
 ### 0. Head_sol
@@ -20,10 +45,10 @@ cat("**********************************************************************",sep
 cat("* Template soil data file for PADDY soil water balance model.        *",sep = '\n')
 cat("**********************************************************************",sep = '\n')
 cat(paste0("* Soil        : ", id_name, " - texture classes:", paste(data[1:nrow(data),"STC"], collapse = "-"), sep = '\n'))
-cat(paste0('* File name        : ', id_name, ".sol"), sep = '\n') 
-cat(paste0('* Sampling date      : ', data$SAMPLING_DATE[1] ) ,sep = '\n') 
-cat(paste0('* Additional info  : ', 'Create with https://github.com/jrodriguez88') ,sep = '\n') 
-cat('*--------------------------------------------------------------------*',sep = '\n') 
+cat(paste0('* File name        : ', id_name, ".sol"), sep = '\n')
+cat(paste0('* Sampling date      : ', data$SAMPLING_DATE[1] ) ,sep = '\n')
+cat(paste0('* Additional info  : ', 'Create with https://github.com/jrodriguez88') ,sep = '\n')
+cat('*--------------------------------------------------------------------*',sep = '\n')
 
 cat('\n')
 #"* Give code name of soil data file to match the water balance PADDY:"
@@ -97,7 +122,7 @@ cat(paste0("FIXPERC = ", data[nrow(data),"SSKS"]/10), sep = '\n')
 #"* If SWITVP = 2, give percolation rate (mm/d) as function of calendar day"
 cat('\n')
 cat("PTABLE =
-  1., 1.0,   
+  1., 1.0,
  50., 1.0,
 100., 20.0,
 366., 20.0")
@@ -219,4 +244,65 @@ a <- c("WCLINT = 1,1,1,",
 a[nrow(data)] <- str_sub(a[nrow(data)], end = -2)
 writeLines(a[1:nrow(data)])
 sink()
+
+return(any(str_detect(list.files(path), file_name) == T))
+
+
 }
+
+
+# helpers -----------------------------------------------------------------
+
+tidy_soil_oryza <- function(soil_data){
+
+  sn = c(3,1,1)
+
+  var_names <- colnames(soil_data)
+  if(all(any(c("depth", "DEPTH", "SLB") %in% var_names) &
+         any(c("clay", "CLAY", "C", "SLCL") %in%  var_names) &
+         any(c("sand", "SAND", "S", "silt", "SILT", "SLSI", "Si") %in%  var_names) &
+         any(c("sbdm", "SBDM", "BD") %in% var_names) &
+         any(c("soc", "SOC", "OM") %in% var_names))){
+
+    message("Minimun data are available")
+
+  } else {stop(message("NO data")) }
+
+
+  soil_test %>% rename_with(tolower)
+  rename_with(~ stringr::str_replace(.x,
+                                     pattern = c("depth", "DEPTH", "SLB"),
+                                     replacement = "depth")) %>%
+    #   rename_with(~ stringr::str_replace(.x,
+    #                                      pattern = "clay|CLAY|C|SLCL",
+    #                                      replacement = "clay")) %>%
+    #   rename_with(~ stringr::str_replace(.x,
+    #                                      pattern = fixed("sand|SAND|S"),
+    #                                      replacement = "sand")) %>%
+    #   rename_with(~ stringr::str_replace(.x,
+    #                                      pattern = "sbdm|SBDM|BD",
+    #                                      replacement = "sbd")) %>%
+    #   rename_with(~ stringr::str_replace(.x,
+    #                                      pattern = "soc|SOC|OM",
+  #                                      replacement = "soc")) %>%
+  #   rename_with(~ stringr::str_replace(.x,
+  #                                     pattern = fixed("silt|SILT|SLSI|Si"),
+  #                                      replacement = "silt"))
+
+
+  data <- soil_data %>%
+    mutate(SOC = DEPTH*SBDM*100*SOC/0.58,  #(kg C/ha) https://www.agric.wa.gov.au/measuring-and-assessing-soils/what-soil-organic-carbon
+           SON = DEPTH*SBDM*SLNI/10,       #(kg C/ha)
+           SNH4X = DEPTH*SBDM*SNH4/10,      #(kg C/ha)
+           SNO3X = DEPTH*SBDM*SNO3/10)      #(kg C/ha)
+
+
+  list(soil_data, CN)
+
+
+}
+
+
+
+
+

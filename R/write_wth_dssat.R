@@ -18,7 +18,7 @@
 #' # Write file
 #' write_wth_dssat(
 #'   path = ".", id_name = "TEST", wth_data = weather,
-#'   lat = 3.8, lon = -76.5, elev = 650)
+#'   lat = 3.91, lon = -75.0, elev = 450)
 #'
 ## Update the details for the return value
 #' @return This function returns a \code{logical} if files created in path folder.
@@ -54,7 +54,7 @@ write_wth_dssat <- function(path, id_name, wth_data, lat, lon, elev, ref_ht = 2)
 
 
 
-    sink(paste0(path, id_name, '.WTH'), append = F)
+    sink(paste0(path, "/", id_name, '.WTH'), append = F)
 
 
 
@@ -83,6 +83,7 @@ tidy_wth_dssat <- function(wth_data){
 
   #var_names <- colnames(wth_data)
   var_names <- tolower(colnames(wth_data))
+  wth_data <- setNames(wth_data, var_names)
 
  # stopifnot(require(sirad))
   stopifnot(class(wth_data$date)=="Date" & all(c("tmax", "tmin", "rain", "srad") %in%  var_names))

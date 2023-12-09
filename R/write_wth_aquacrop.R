@@ -23,17 +23,17 @@
 ## Update the details for the return value
 #' @return This function returns a \code{logical} if files created in path folder.
 #'
-# @seealso \link[https://dssat.net/weather-module/]{se}
+# @seealso \link[]{}
 write_wth_aquacrop <- function(path, id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2", ...) {
 
 
-    data <- tidy_wth_aquacrop(wth_data) %>% mutate(ETo = ETo_cal(., lat, elev, ...))
+    data <- tidy_wth_aquacrop(wth_data, lat, elev)
 
     ## Split data and write .ETo / .PLU / Tnx / .CLI files.
 
     # Climate file .CLI
     write_CLI <- function(id_name){
-        sink(file = paste0(path, id_name, ".CLI"), append = F)
+        sink(file = paste0(path,"/", id_name, ".CLI"), append = F)
         cat(paste(id_name, "Station, lat:", lat, "long:", lon, "- by https://github.com/jrodriguez88"), sep = "\n")
         cat("6.0   : AquaCrop Version (March 2017)", sep = "\n")
         cat(paste0(id_name, ".Tnx"), sep = "\n")
@@ -48,7 +48,7 @@ write_wth_aquacrop <- function(path, id_name, wth_data, lat, lon, elev, co2_file
 
     # Temperature file .Tnx
     write_Tnx <- function(id_name){
-        sink(file = paste0(path , id_name, ".Tnx"), append = F)
+        sink(file = paste0(path,"/", id_name, ".Tnx"), append = F)
         cat(paste0(id_name, " : daily temperature data (", format(min(data$date), "%d %B %Y"), " - ", format(max(data$date), "%d %B %Y"), ")"))
         cat("\n")
         cat(paste0("     1  : Daily records (1=daily, 2=10-daily and 3=monthly data)"), sep = "\n")
@@ -68,7 +68,7 @@ write_wth_aquacrop <- function(path, id_name, wth_data, lat, lon, elev, co2_file
     write_Tnx(id_name)
 
     write_PLU <- function(id_name){
-        sink(file = paste0(path, id_name, ".PLU"), append = F)
+        sink(file = paste0(path,"/", id_name, ".PLU"), append = F)
         cat(paste0(id_name, " : daily rainfall data (", format(min(data$date), "%d %B %Y"), " - ", format(max(data$date), "%d %B %Y"), ")"))
         cat("\n")
         cat(paste0("     1  : Daily records (1=daily, 2=10-daily and 3=monthly data)"), sep = "\n")
@@ -85,7 +85,7 @@ write_wth_aquacrop <- function(path, id_name, wth_data, lat, lon, elev, co2_file
     write_PLU(id_name)
 
     write_ETo <- function(id_name){
-        sink(file = paste0(path, id_name, ".ETo"), append = F)
+        sink(file = paste0(path,"/", id_name, ".ETo"), append = F)
         cat(paste0(id_name, " : daily ETo data (", format(min(data$date), "%d %B %Y"), " - ", format(max(data$date), "%d %B %Y"), ")"))
         cat("\n")
         cat(paste0("     1  : Daily records (1=daily, 2=10-daily and 3=monthly data)"), sep = "\n")
@@ -108,9 +108,9 @@ write_wth_aquacrop <- function(path, id_name, wth_data, lat, lon, elev, co2_file
 
 # helpers -----------------------------------------------------------------
 
-tidy_wth_aquacrop <- function(wth_data, cal_ETo = T){
+tidy_wth_aquacrop <- function(wth_data, lat, elev, cal_ETo = T){
 
-  var_names <- colnames(wth_data)
+  var_names <- tolower(colnames(wth_data))
   wth_data <- setNames(wth_data, var_names)
 
   stopifnot(class(wth_data$date)=="Date" & all(c("tmax", "tmin", "rain") %in%  var_names))
@@ -119,7 +119,7 @@ tidy_wth_aquacrop <- function(wth_data, cal_ETo = T){
     message("Reference evapotranspiration (ETo, mm) in data")
   } else if(isTRUE(cal_ETo))
   {
-    wth_data <- wth_data %>% mutate(ETo = ETo_cal(., lat, elev, ...)) #   message("Early morning vapor pressure (VP; kPa) derived from relative humidity data")
+    wth_data <- wth_data %>% mutate(ETo = ETo_cal(., lat, elev)) #   message("Early morning vapor pressure (VP; kPa) derived from relative humidity data")
 
   } else {
     wth_data <- mutate(wth_data, VP = NA_real_)

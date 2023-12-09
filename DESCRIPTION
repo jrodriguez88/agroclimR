@@ -1,0 +1,23 @@
+Package: agroclimR
+Title: agroclimR: A R-Toolkit for Agroclimatic Data Management and Crop Model File Creation
+Version: 0.0.0.9000
+Authors@R: 
+    person("Jeferson", "Rodriguez-Espinoza", , "jrodriguezespinoza@outlook.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-5914-6571"))
+Description: agroclimR is a package designed to streamline the management, manipulation, and generation of process-based model files for systems like DSSAT v 4.8, ORYZA v3.0, and Aquacrop v6.0.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+Imports: 
+    dplyr,
+    lubridate,
+    purrr,
+    sirad

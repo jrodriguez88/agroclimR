@@ -1,0 +1,19 @@
+---
+title: "Generating_Crop_Model_Wheather_Files_with_agroclimR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Generating_Crop_Model_Wheather_Files_with_agroclimR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(agroclimR)
+```

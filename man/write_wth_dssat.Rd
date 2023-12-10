@@ -31,6 +31,6 @@ Function compute weather information DSSAT v4.8 weather file.
 # Write file
 write_wth_dssat(
   path = ".", id_name = "TEST", wth_data = weather,
-  lat = 3.8, lon = -76.5, elev = 650)
+  lat = 3.91, lon = -75.0, elev = 450)
 
 }

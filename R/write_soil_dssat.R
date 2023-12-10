@@ -1,6 +1,6 @@
-#' Write ORYZA v3 Soil File
+#' Write DSSAT v4.8 Soil File
 #'
-#' Function compute Soil information to ORYZA soil file.
+#' Function compute Soil information to DSSAT v4.8 soil file.
 #'
 #' @param path A string indicating path folder or working directory
 #' @param id_name A String. 4 letters string of locality name. (ex. "JR")
@@ -15,7 +15,7 @@
 #' @import stringr
 #' @export
 #' @examples
-#' # Write ORYZA Soil file
+#' # Write DSSAT v4.8 Soil file
 #' soil = group_by(soil, NL) %>% sample_n(1)
 #' write_soil_dssat(id_name = "test_soil", soil_data = soil)
 #'

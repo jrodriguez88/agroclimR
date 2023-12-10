@@ -1,7 +1,7 @@
 *WEATHER DATA : TEST DSSAT Weather file - by https://github.com/jrodriguez88
 
 @ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT
-  ACRP    3.800  -76.500   650  28.7   9.9   2.0   2.0
+  ACRP    3.910  -75.000   450  28.7   9.9   2.0   2.0
 @DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM
 13001  20.9  36.0  25.7   0.0                          66.3
 13002  21.6  35.7  25.1   0.2                          73.3

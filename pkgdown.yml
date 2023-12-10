@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   Generating_Summaries_with_Data_Summary: Generating_Summaries_with_Data_Summary.html
-last_built: 2023-12-10T00:56Z
+last_built: 2023-12-10T01:24Z
 urls:
   reference: https://jrodriguez88.github.io/agroclimR/reference
   article: https://jrodriguez88.github.io/agroclimR/articles

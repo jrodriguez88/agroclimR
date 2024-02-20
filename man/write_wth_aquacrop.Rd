@@ -43,6 +43,3 @@ write_wth_aquacrop(
   lat = 3.8, lon = -76.5, elev = 650)
 
 }
-\seealso{
-\link[]{}
-}

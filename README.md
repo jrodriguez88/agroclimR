@@ -15,7 +15,7 @@ v6.0](https://www.fao.org/aquacrop/).
 ## Installation
 
 You can install the development version of agroclimR from
-[GitHub](https://github.com/) with:
+[GitHub](https://github.com/jrodriguez88/agroclimR) with:
 
 ``` r
 # install.packages("devtools")
@@ -30,15 +30,61 @@ weather file with agroclimR:
 ``` r
 library(agroclimR)
 
-## basic example code
+path = "."
+id_name = "TEST"
+wth_data = weather
+lat = 3.8
+lon = -76.5
+elev = 650
 
- write_wth_oryza(
-   path = ".", id_name = "TEST", wth_data = weather,
-   lat = 3.8, lon = -76.5, elev = 650)
+## basic example code to create ORYZA weather file
+
+write_wth_oryza(path, id_name, wth_data, lat, lon, elev)
 #> Early morning vapor pressure (VP; kPa) derived from relative humidity data
 #> Wind Speed is not Available - Set as NA: -99
 #> [1] TRUE
+
+## basic example code to create DSSAT weather file
+write_wth_dssat(path, id_name, wth_data, lat, lon, elev)
+#> [1] TRUE
  
- list.files(pattern = "TEST")
-#> [1] "TEST1.013" "TEST1.014" "TEST1.015" "TEST1.016"
+## basic example code to create AquaCrop weather file  
+write_wth_aquacrop(path, id_name, wth_data, lat, lon, elev)
+#> Wind Speed = 2m/s was used
+#> Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation  +  Assumption: Wind Speed mean = 2m/s
+#> [1] TRUE
+```
+
+This is a basic example which shows you how to create a crop model Soil
+file with agroclimR:
+
+``` r
+
+library(agroclimR)
+library(magrittr)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+
+soil_sample = group_by(soil, NL) %>% sample_n(1)
+
+
+## basic example code to create ORYZA soil file
+
+write_soil_oryza(path = ".", id_name, soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)
+#> [1] TRUE
+
+## basic example code to create DSSAT soil file
+
+#write_soil_dssat(path = ".", id_name, soil_sample)
+ 
+
+ 
+ 
 ```

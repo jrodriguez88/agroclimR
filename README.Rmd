@@ -11,6 +11,8 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+options(knitr.duplicate.label = "allow")
 ```
 
 # agroclimR: A R-Toolkit for Agroclimatic Data Management and Crop Model File Creation
@@ -22,7 +24,7 @@ agroclimR is a package designed to streamline the management, manipulation, and 
 
 ## Installation
 
-You can install the development version of agroclimR from [GitHub](https://github.com/) with:
+You can install the development version of agroclimR from [GitHub](https://github.com/jrodriguez88/agroclimR) with:
 
 ``` r
 # install.packages("devtools")
@@ -36,13 +38,47 @@ This is a basic example which shows you how to create a crop model weather file 
 ```{r example}
 library(agroclimR)
 
-## basic example code
+path = "."
+id_name = "TEST"
+wth_data = weather
+lat = 3.8
+lon = -76.5
+elev = 650
 
- write_wth_oryza(
-   path = ".", id_name = "TEST", wth_data = weather,
-   lat = 3.8, lon = -76.5, elev = 650)
+## basic example code to create ORYZA weather file
+
+write_wth_oryza(path, id_name, wth_data, lat, lon, elev)
+
+## basic example code to create DSSAT weather file
+write_wth_dssat(path, id_name, wth_data, lat, lon, elev)
  
- list.files(pattern = "TEST")
+## basic example code to create AquaCrop weather file  
+write_wth_aquacrop(path, id_name, wth_data, lat, lon, elev)
+ 
+```
+
+This is a basic example which shows you how to create a crop model Soil file with agroclimR:
+
+```{r example2}
+
+library(agroclimR)
+library(magrittr)
+library(dplyr)
+
+soil_sample = group_by(soil, NL) %>% sample_n(1)
+
+
+## basic example code to create ORYZA soil file
+
+write_soil_oryza(path = ".", id_name, soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)
+
+## basic example code to create DSSAT soil file
+
+#write_soil_dssat(path = ".", id_name, soil_sample)
+ 
+
+ 
+ 
 ```
 
 

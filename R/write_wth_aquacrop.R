@@ -22,7 +22,7 @@
 #'
 #' @return This function returns a logical value indicating whether the files were successfully created in the specified path folder.
 #'
-#' @seealso \link[]{}
+# @seealso \link[]{}
 write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2", ...) {
 
 

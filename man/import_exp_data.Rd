@@ -4,7 +4,7 @@
 \alias{import_exp_data}
 \title{Import Experimental data from INPUT_data workbook}
 \usage{
-import_exp_data(path, files, model = "oryza")
+import_exp_data(path = ., files, model = "oryza")
 }
 \arguments{
 \item{path}{A string indicating path folder or working directory}
@@ -12,18 +12,6 @@ import_exp_data(path, files, model = "oryza")
 \item{files}{A String vector. Vector of strings from workbooks names}
 
 \item{model}{A string of workbook names}
-
-\item{salb}{Numeric. Albedo, fraction}
-
-\item{evapL}{Numeric. Evaporation limit, (mm)}
-
-\item{slnf}{Numeric. Mineralization factor, 0 to 1 scale.}
-
-\item{slpf}{Numeric. Photosynthesis factor, 0 to 1 scale}
-
-\item{multi}{Logical. Soil annual average temperature of the first layers}
-
-\item{max_depth}{description}
 }
 \value{
 This function returns a \code{logical} if files created in path folder.
@@ -32,8 +20,9 @@ This function returns a \code{logical} if files created in path folder.
 Function to extract experimental data from INPUT_data workbook
 }
 \examples{
-# Write Aquacrop v6 Soil file
-soil_sample = group_by(soil, NL) \%>\% sample_n(1)
-write_soil_aquacrop(path = ".", id_name = "test_soil", soil_data = soil_sample)
+# Import Experimental data from INPUT_data workbook
+path = "data/"
+files <- list.files(path = "data/", pattern = "xls")
+import_exp_data <- function(path = ., files, model = "oryza")
 
 }

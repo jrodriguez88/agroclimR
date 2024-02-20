@@ -4,7 +4,7 @@
 \alias{write_wth_dssat}
 \title{Write DSSAT v4.8 Weather File}
 \usage{
-write_wth_dssat(path, id_name, wth_data, lat, lon, elev, ref_ht = 2)
+write_wth_dssat(path = ".", id_name, wth_data, lat, lon, elev, ref_ht = 2)
 }
 \arguments{
 \item{path}{A string indicating path folder or working directory}

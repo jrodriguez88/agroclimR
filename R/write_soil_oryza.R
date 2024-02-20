@@ -15,8 +15,8 @@
 #' @export
 #' @examples
 #' # Write ORYZA Soil file
-#' soil = group_by(soil, NL) %>% sample_n(1)
-#' write_soil_oryza(id_name = "test_soil", soil_data = soil)
+#' soil_sample = group_by(soil, NL) %>% sample_n(1)
+#' write_soil_oryza(id_name = "test_soil", soil_data = soil_sample)
 #'
 ## Update the details for the return value
 #' @return This function returns a \code{logical} if files created in path folder.
@@ -252,7 +252,7 @@ return(any(str_detect(list.files(path), file_name) == T))
 
 
 # helpers -----------------------------------------------------------------
-
+# Testing function to tidy soil data
 tidy_soil_oryza <- function(soil_data){
 
   sn = c(3,1,1)

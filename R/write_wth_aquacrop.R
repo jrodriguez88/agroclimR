@@ -1,30 +1,29 @@
 #' Write AquaCrop Weather File
 #'
-#' Function compute weather information AquaCrop v6.0  weather file.
+#' Function to compute weather information AquaCrop v6.0 weather file.
 #'
-#' @param path A string indicating path folder or working directory
-#' @param id_name A String. 4 letters string of locality name. "AIHU" = Aipe, Huila
-#' @param wth_data A Data frame Weather data. minimum = date, tmax, tmin, rain
-#' @param lat Numeric. Latitude (decimal degrees)
-#' @param lon Numeric. Longitude (decimal degrees)
-#' @param elev Numeric. Elevation (meters above sea level)
-#' @param co2_file A String. Default is "MaunaLoa.CO2".  *.CO2 files are available in Aquacrop default DB
+#' @param path A string indicating the path folder or working directory where the weather files will be saved.
+#' @param id_name A 4-letter string representing the locality name abbreviation. For example, "AIHU" stands for Aipe, Huila.
+#' @param wth_data A data frame containing weather data with at least the following columns: date, tmax, tmin, rain.
+#' @param lat Numeric. Latitude of the location in decimal degrees.
+#' @param lon Numeric. Longitude of the location in decimal degrees.
+#' @param elev Numeric. Elevation of the location in meters above sea level.
+#' @param co2_file A string representing the CO2 file to be used. Default is "MaunaLoa.CO2". CO2 files are available in the Aquacrop default database.
 #' @import dplyr
 #' @import purrr
 #' @import lubridate
 #' @import stringr
 #' @export
 #' @examples
-#' # Write file
+#' # Write AquaCrop weather file
 #' write_wth_aquacrop(
 #'   path = ".", id_name = "TEST", wth_data = weather,
 #'   lat = 3.8, lon = -76.5, elev = 650)
 #'
-## Update the details for the return value
-#' @return This function returns a \code{logical} if files created in path folder.
+#' @return This function returns a logical value indicating whether the files were successfully created in the specified path folder.
 #'
-# @seealso \link[]{}
-write_wth_aquacrop <- function(path, id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2", ...) {
+#' @seealso \link[]{}
+write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2", ...) {
 
 
     data <- tidy_wth_aquacrop(wth_data, lat, elev)
@@ -107,6 +106,8 @@ write_wth_aquacrop <- function(path, id_name, wth_data, lat, lon, elev, co2_file
 
 
 # helpers -----------------------------------------------------------------
+
+
 
 tidy_wth_aquacrop <- function(wth_data, lat, elev, cal_ETo = T){
 

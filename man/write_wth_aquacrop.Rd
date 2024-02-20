@@ -5,7 +5,7 @@
 \title{Write AquaCrop Weather File}
 \usage{
 write_wth_aquacrop(
-  path,
+  path = ".",
   id_name,
   wth_data,
   lat,
@@ -16,30 +16,33 @@ write_wth_aquacrop(
 )
 }
 \arguments{
-\item{path}{A string indicating path folder or working directory}
+\item{path}{A string indicating the path folder or working directory where the weather files will be saved.}
 
-\item{id_name}{A String. 4 letters string of locality name. "AIHU" = Aipe, Huila}
+\item{id_name}{A 4-letter string representing the locality name abbreviation. For example, "AIHU" stands for Aipe, Huila.}
 
-\item{wth_data}{A Data frame Weather data. minimum = date, tmax, tmin, rain}
+\item{wth_data}{A data frame containing weather data with at least the following columns: date, tmax, tmin, rain.}
 
-\item{lat}{Numeric. Latitude (decimal degrees)}
+\item{lat}{Numeric. Latitude of the location in decimal degrees.}
 
-\item{lon}{Numeric. Longitude (decimal degrees)}
+\item{lon}{Numeric. Longitude of the location in decimal degrees.}
 
-\item{elev}{Numeric. Elevation (meters above sea level)}
+\item{elev}{Numeric. Elevation of the location in meters above sea level.}
 
-\item{co2_file}{A String. Default is "MaunaLoa.CO2".  *.CO2 files are available in Aquacrop default DB}
+\item{co2_file}{A string representing the CO2 file to be used. Default is "MaunaLoa.CO2". CO2 files are available in the Aquacrop default database.}
 }
 \value{
-This function returns a \code{logical} if files created in path folder.
+This function returns a logical value indicating whether the files were successfully created in the specified path folder.
 }
 \description{
-Function compute weather information AquaCrop v6.0  weather file.
+Function to compute weather information AquaCrop v6.0 weather file.
 }
 \examples{
-# Write file
+# Write AquaCrop weather file
 write_wth_aquacrop(
   path = ".", id_name = "TEST", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
 
+}
+\seealso{
+\link[]{}
 }

@@ -1,8 +1,8 @@
 ---
-title: "Generating_Crop_Model_Wheather_Files_with_agroclimR"
+title: "Wheather_files_with_agroclimR"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Generating_Crop_Model_Wheather_Files_with_agroclimR}
+  %\VignetteIndexEntry{Wheather_files_with_agroclimR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

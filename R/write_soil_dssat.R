@@ -9,7 +9,7 @@
 #' @param evapL Numeric. Evaporation limit, (mm)
 #' @param slnf Numeric. Mineralization factor, 0 to 1 scale.
 #' @param slpf Numeric. Photosynthesis factor, 0 to 1 scale
-#' @param multi Logical. Soil annual average temperature of the first layers
+#' @param multi Logical. All soil profiles in the same file
 #' @param max_depth description
 #' @import dplyr
 #' @import stringr
@@ -23,7 +23,7 @@
 #' @return This function returns a \code{logical} if files created in path folder.
 #'
 # @seealso \link[sirad]{se}
-write_soil_dssat <- function(path, id_name, soil_data, salb = 0.13, evapL=6, sldr = 0.6, slnf = 1, slpf = 1, multi = F) {
+write_soil_dssat <- function(path = ".", id_name, soil_data, salb = 0.13, evapL = 6, sldr = 0.6, slnf = 1, slpf = 1, multi = F) {
 
 stc <- soil_data$STC
 data <- tidy_soil_dssat(soil_data)
@@ -147,7 +147,7 @@ sink()
 tidy_soil_dssat <- function(soil_data, max_depth = 200){
 
   var_names <- colnames(soil_data)
-  if(all(any(c("depth", "DEPTH", "SLB") %in% var_names) &
+  if(all(any(c("depth", "DEPTH") %in% var_names) &
          any(c("clay", "CLAY", "C", "SLCL") %in%  var_names) &
          any(c("sand", "SAND", "S", "silt", "SILT", "SLSI", "Si") %in%  var_names) &
          any(c("sbdm", "SBDM", "BD") %in% var_names) &

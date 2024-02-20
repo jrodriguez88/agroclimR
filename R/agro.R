@@ -1,0 +1,23 @@
+#' Observed Agronomic Data
+#'
+#' A dataset containing observed agronomic management data.
+#'
+#' @format A data frame of 7 rows and 12 columns
+#' \describe{
+#'   \item{ID}{Trial ID}{character}{XXXX}
+#'   \item{LOC_ID}{Locality ID}{character}{name}
+#'   \item{PROJECT}{Project ID}{character}{name}
+#'   \item{CULTIVAR}{Cultivar name}{character}{name}
+#'   \item{TR_N}{Treatment number}{character}{cn}
+#'   \item{LAT}{Latitude}{numeric}{Decimal degrees}
+#'   \item{LONG}{Longitude}{numeric}{Decimal degrees}
+#'   \item{ALT}{Elevation}{numeric}{meters above sea level}
+#'   \item{PDAT}{Planting date}{date}{MM/DD/YYYY}
+#'   \item{CROP_SYS}{Crop system}{character}{IRRIGATED-RAINFED}
+#'   \item{ESTAB}{Establishment}{character}{TRANSPLANT-DIRECT-SEED}
+#'   \item{NPLDS}{Number of plants per square meter}{numeric}{number/m²}
+#'   \item{SBDUR}{Seed-bed duration}{numeric}{days}
+#'   \item{TRDAT}{Transplanting date}{date}{MM/DD/YYYY}
+#' }
+#' @source FEDEARROZ-FNA
+"agro"

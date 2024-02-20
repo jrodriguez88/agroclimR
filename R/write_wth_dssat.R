@@ -24,7 +24,7 @@
 #' @return This function returns a \code{logical} if files created in path folder.
 #'
 # @seealso \link[https://dssat.net/weather-module/]{se}
-write_wth_dssat <- function(path, id_name, wth_data, lat, lon, elev, ref_ht = 2){
+write_wth_dssat <- function(path = ".", id_name, wth_data, lat, lon, elev, ref_ht = 2){
 
     data <- tidy_wth_dssat(wth_data)
     var_names <- colnames(wth_data)

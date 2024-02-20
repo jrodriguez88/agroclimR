@@ -2,8 +2,8 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  Generating_Summaries_with_Data_Summary: Generating_Summaries_with_Data_Summary.html
-last_built: 2023-12-10T01:24Z
+  Wheather_files_with_agroclimR: Wheather_files_with_agroclimR.html
+last_built: 2024-02-20T21:03Z
 urls:
   reference: https://jrodriguez88.github.io/agroclimR/reference
   article: https://jrodriguez88.github.io/agroclimR/articles

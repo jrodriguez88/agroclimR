@@ -10,7 +10,7 @@
     <loc>https://jrodriguez88.github.io/agroclimR/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://jrodriguez88.github.io/agroclimR/articles/Generating_Summaries_with_Data_Summary.html</loc>
+    <loc>https://jrodriguez88.github.io/agroclimR/articles/Wheather_files_with_agroclimR.html</loc>
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/articles/index.html</loc>
@@ -25,16 +25,37 @@
     <loc>https://jrodriguez88.github.io/agroclimR/reference/ETo_cal.html</loc>
   </url>
   <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/agro.html</loc>
+  </url>
+  <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/agroclimR.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/fertil.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/import_exp_data.html</loc>
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/phenol.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/plant.html</loc>
+  </url>
+  <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/run_drates_param.html</loc>
   </url>
   <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/soil.html</loc>
+  </url>
+  <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/weather.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/write_soil_aquacrop.html</loc>
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/write_soil_dssat.html</loc>
@@ -50,5 +71,8 @@
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/write_wth_oryza.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/yield.html</loc>
   </url>
 </urlset>

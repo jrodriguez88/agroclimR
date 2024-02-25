@@ -7,4 +7,10 @@
 #' @author Jeferson Rodriguez-Espinoza \email{jrodriguezespinoza@outlook.com}
 #' @docType package
 #' @name agroclimR
+#' \seealso{
+#' Useful links:
+#'   \itemize{
+#'       \item \url{https://jrodriguez88.github.io/agroclimR/}
+#'         }
+
 "_PACKAGE"

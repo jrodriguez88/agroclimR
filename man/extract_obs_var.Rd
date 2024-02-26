@@ -2,12 +2,12 @@
 % Please edit documentation in R/import_exp_data.R
 \name{extract_obs_var}
 \alias{extract_obs_var}
-\title{Extract from base data - agroclimR_data format xlsx}
+\title{Extract from base data - agroclimR data format xlsx}
 \usage{
 extract_obs_var(obs_data, variable, model = "oryza")
 }
 \arguments{
-\item{obs_data}{A list of agroclimR_data_workbook read by  \code{read_agroclimr_data} function.}
+\item{obs_data}{A list of agroclimR data_workbooks read by  \code{read_agroclimr_data} function.}
 
 \item{variable}{A String value. options = variable  <- c("phen", "lai", "dry_matter", "yield")}
 
@@ -17,10 +17,10 @@ extract_obs_var(obs_data, variable, model = "oryza")
 This function returns a \code{tibble} with de data for the specific selected variable ( "phen", "lai", "dry_matter" or  "yield") and model.
 }
 \description{
-Function to extract experimental data by variable from agroclimR_data workbook
+Function to extract experimental data by variable from agroclimR data workbook
 }
 \examples{
-# Extract Experimental data by variable from agroclimR_data workbook
+# Extract Experimental data by variable from agroclimR data workbook
 
 obs_data  = list(list(AGRO_man = agro,
 FERT_obs = fertil,

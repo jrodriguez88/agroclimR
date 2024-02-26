@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_exp_data.R
 \name{import_exp_data}
 \alias{import_exp_data}
-\title{Import Experimental data from agroclimR_data workbook}
+\title{Import Experimental data from agroclimR data workbook}
 \usage{
 import_exp_data(path = ., files, model = "oryza")
 }
@@ -14,15 +14,16 @@ import_exp_data(path = ., files, model = "oryza")
 \item{model}{A string of workbook names}
 }
 \value{
-This function returns a \code{list} if files created in path folder.
+This function returns a \code{list} of raw data and observed data by component (phen, dry_matter, lai and yield)
 }
 \description{
-Function to extract experimental data from agroclimR_data workbook
+Function to extract experimental data from agroclimR data workbook
 }
 \examples{
-# Import Experimental data from agroclimR_data workbook
+# Import Experimental data from agroclimR data workbook
+#Assuming you have n workbooks with agroclimR data workbook format in a specific folder \code{path}
 path = "data/"
-files <- list.files(path = "data/", pattern = "xls")
-import_exp_data <- function(path = ., files, model = "oryza")
+files <- list.files(path = path, pattern = "xls")
+obs_data <- import_exp_data(path = path, files, model = "oryza")
 
 }

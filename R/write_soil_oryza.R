@@ -29,7 +29,7 @@ write_soil_oryza <- function(path = ".", id_name, soil_data, ZRTMS = 0.50, WL0I 
 #    dirfol <- paste0(path,'/', 'SOIL')
 #    dir.create((paste0(path,"/SOIL")), showWarnings = FALSE)
     data <- soil_data %>%
-        mutate(SOC = DEPTH*SBDM*100*SC/0.58,
+        mutate(SOC = DEPTH*SBDM*100*SOC/0.58,
                SON = DEPTH*SBDM*SLON/10,
                SNH4X = DEPTH*SBDM*SNH4/10,
                SNO3X = DEPTH*SBDM*SNO3/10)

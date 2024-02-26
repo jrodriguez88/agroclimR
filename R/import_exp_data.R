@@ -10,6 +10,7 @@
 #' @import readxl
 #' @import purrr
 #' @import tibble
+#' @import tidyr
 #' @export
 #' @examples
 #' # Import Experimental data from agroclimR data workbook
@@ -39,16 +40,16 @@ import_exp_data <- function(path = ., files, model = "oryza"){
     mutate(input_data =  map(file, ~read_agroclimr_data(paste0(path, .))))
 
 
-  ## Extrae agro data
-  agro <- data$input_data %>% map("AGRO_man") %>% bind_rows() %>%
-    dplyr::select(LOC_ID, contains("LAT"), contains("LONG"), starts_with("A")) %>%
+  ## Extrae location data
+  location_data <- data$input_data %>% map("AGRO_man") %>% bind_rows() %>%
+    dplyr::select(LOC_ID, LAT, LONG, ALT) %>% #contains("LAT"), contains("LONG"), starts_with("A")) %>%
     distinct() %>% set_names(c("site", "lat", "lon", "elev")) %>%
     group_by(site) %>% slice(1) %>%
     ungroup()
 
 
   ## Extrae datos de suelo
-  soil <- data %>%
+  soil_data <- data %>%
     mutate(soil_data = map(input_data, ~.x$SOIL_obs))  %>%
     dplyr::select(-input_data)  %>%
     unnest(soil_data) %>%
@@ -57,12 +58,13 @@ import_exp_data <- function(path = ., files, model = "oryza"){
     summarize_if(is.numeric, .funs = mean) %>%
     mutate(ID=LOC_ID, STC = get_STC(SAND, CLAY)) %>% ungroup() %>%
     split(.$ID) %>%
-    enframe(name = "site", value = "soil")
+    enframe(name = "site", value = "soil") %>%
+    left_join(location_data, by = "site")
 
 
   ## Extrae datos de clima
 
-  wth <- data %>% mutate(wth = map(input_data, ~.x$WTH_obs )) %>%
+  wth_data <- data %>% mutate(wth = map(input_data, ~.x$WTH_obs )) %>%
     select(file, wth) %>%
     #  group_by(localidad) %>% slice(1) %>%
     unnest(wth) %>%
@@ -71,8 +73,8 @@ import_exp_data <- function(path = ., files, model = "oryza"){
     set_names(tolower(names(.))) %>%
     dplyr::select(-file) %>%
     dplyr::distinct() %>%
-    nest(wth = -c(loc_id, ws_id)) %>% rename(site = loc_id ) %>%
-    left_join(agro, by = "site") #%>% rename(stn = ws_id) #%>%
+    nest(wth = -contains("id")) %>% rename(site = loc_id ) %>%
+    left_join(location_data, by = "site") #%>% rename(stn = ws_id) #%>%
   #  mutate(path = "data/OUTPUTS/WTH/") %>%
   #  select(path, id_name, wth_data, lat, lon, elev, stn)
 
@@ -99,7 +101,7 @@ import_exp_data <- function(path = ., files, model = "oryza"){
   # crea lista de datos extraidos
   data_list <- list(
 
-    data =  data %>% left_join(soil, by = "site") %>% left_join(wth, by = "site"),
+    data =  data , soil = soil_data, wth = wth_data,
 
     phen =  phen, lai = lai, dry_matter = dry_matter, yield = yield
 
@@ -144,6 +146,7 @@ read_agroclimr_data <- function(file) {
 #' @import readxl
 #' @import purrr
 #' @import tibble
+#' @import tidyr
 #' @export
 #' @examples
 #' # Extract Experimental data by variable from agroclimR data workbook
@@ -207,6 +210,17 @@ extract_obs_var <- function(obs_data, variable, model = "oryza") {
     dplyr::select(-LOC_ID, -CULTIVAR) %>%
     nest(data = -c(ID)) %>% right_join(set, by= "ID") %>% unnest(data) %>%
     select(-c(LOC_ID, CULTIVAR, PROJECT, TR_N))
+
+
+
+   ## Revisa columnas plant_gro -- INPUT data cambios
+  for(y in 1:length(obs_data2$data)){
+
+    obs_data2$data[[y]]$PLANT_gro = data$data[[y]]$PLANT_gro %>%
+      set_names(colnames(data$data[[y]]$PLANT_gro) %>%
+                  str_replace_all(pattern = "_S_S", replacement = "delete") %>%
+                  str_replace_all(pattern = "_SD", replacement = "_SE")) %>%
+      dplyr::select(-contains("delete"))}
 
 
 

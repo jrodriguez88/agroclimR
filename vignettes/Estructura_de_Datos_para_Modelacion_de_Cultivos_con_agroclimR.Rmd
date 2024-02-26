@@ -42,7 +42,7 @@ Las celdas vacias se consideran datos faltantes o nulos. Veamos en mas detalle c
 Un conjunto de datos para información agronómica detallada y general sobre ensayos experimentales para la modelación de cultivos. Sirve como la tabla maestra para el libro de trabajo propuesto en el paquete agroclimR.
 
 | VAR_NAME | DESCRIPTION                  | TYPE      | UNITS                  | Calculation method            | Agrovoc URL                                                           |
-|----------|------------------------------|-----------|------------------------|-------------------------------|-----------------------------------------------------------------------|
+|-----------|-----------|-----------|-----------|-----------|--------------------|
 | ID       | Trial ID                     | character | XXXX                   |                               |                                                                       |
 | LOC_ID   | locality ID                  | character | name                   |                               |                                                                       |
 | PROJECT  | Project ID                   | character | name                   |                               |                                                                       |
@@ -78,7 +78,7 @@ str(agro)
 Un conjunto de datos que detalla la gestión o aplicación de fertilización a través de varios ensayos experimentales o regiones. Incluye información sobre la identificación del ensayo, localidad, IDs del proyecto y detalles específicos sobre las aplicaciones de fertilizantes.
 
 | VAR_NAME | DESCRIPTION          | TYPE      | UNITS  | Calculation method | Agrovoc URL                                                        |
-|----------|----------------------|-----------|--------|--------------------|--------------------------------------------------------------------|
+|----------|----------|----------|----------|----------|-------------------------|
 | ID       | Trial ID             | character | XXXX   |                    |                                                                    |
 | LOC_ID   | locality ID          | character | name   |                    |                                                                    |
 | FERT_No  | Fertilize app number | numeric   | number | Field Manual       | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_10795) |
@@ -99,7 +99,7 @@ str(fertil)
 Un conjunto de datos que contiene fechas fenológicas clave para los cultivares de plantas utilizados en ensayos de modelación de cultivos. Cada registro detalla las etapas fenológicas del crecimiento de las plantas.
 
 | VAR_NAME | DESCRIPTION             | TYPE      | UNITS      | Calculation method    | Agrovoc URL                                                         |
-|----------|-------------------------|-----------|------------|-----------------------|---------------------------------------------------------------------|
+|----------|----------|----------|----------|----------|------------------------|
 | ID       | Trial ID                | character | XXXX       |                       |                                                                     |
 | LOC_ID   | locality ID             | character | name       |                       |                                                                     |
 | CULTIVAR | Cultivar name           | character | name       |                       |                                                                     |
@@ -120,7 +120,7 @@ str(phenol)
 Un conjunto de datos completo de métricas de crecimiento de plantas observadas, incluyendo número de órganos, muestreos de materia seca y area foliar. Estas mediciones son integrales para estudios de modelación de cultivos y fisiología, ofreciendo percepciones sobre el desarrollo y salud de diferentes cultivares bajo condiciones variadas.
 
 | VAR_NAME      | DESCRIPTION              | TYPE      | UNITS               | Calculation method                       | Agrovoc URL                                                         |
-|---------------|--------------------------|-----------|---------------------|------------------------------------------|---------------------------------------------------------------------|
+|-----------|-----------|-----------|-----------|-----------|-------------------|
 | ID            | Trial ID                 | character | XXXX                |                                          |                                                                     |
 | LOC_ID        | locality ID              | character | name                |                                          |                                                                     |
 | CULTIVAR      | Cultivar name            | character | name                |                                          |                                                                     |
@@ -156,7 +156,7 @@ str(plant)
 Un conjunto de datos que captura el rendimiento de grano detallado y los componentes del rendimiento de ensayos experimentales. Estas observaciones son críticas para evaluar el rendimiento del modelo a través de diferentes condiciones de cultivo.
 
 | VAR_NAME    | DESCRIPTION                        | TYPE      | UNITS          | Calculation method                               | Agrovoc URL                                                         |
-|-------------|------------------------------------|-----------|----------------|--------------------------------------------------|---------------------------------------------------------------------|
+|-----------|-----------|-----------|-----------|-----------|------------------|
 | ID          | Trial ID                           | character | XXXX           |                                                  |                                                                     |
 | LOC_ID      | locality ID                        | character | name           |                                                  |                                                                     |
 | CULTIVAR    | Cultivar name                      | character | name           |                                                  |                                                                     |
@@ -190,7 +190,7 @@ str(yield)
 Un conjunto de datos de suelo observado que proporciona propiedades químicas y físicas detalladas del suelo de ensayos experimentales. Es esencial para entender las condiciones ambientales que afectan el crecimiento y desarrollo del cultivo.
 
 | VAR_NAME | DESCRIPTION                                | TYPE      | UNITS              | Calculation method       | Agrovoc URL                                                            |
-|----------|--------------------------------------------|-----------|--------------------|--------------------------|------------------------------------------------------------------------|
+|-----------|-----------|-----------|-----------|-----------|--------------------|
 | ID       | Trial ID                                   | character | XXXX               |                          |                                                                        |
 | LOC_ID   | locality ID                                | character | name               |                          |                                                                        |
 | NL       | Number of soil layers (maximum is 10)      | numeric   | number             |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7799)     |
@@ -224,7 +224,7 @@ str(soil)
 Un conjunto de datos que captura observaciones meteorológicas diarias. Incluye datos sobre temperatura, precipitación, radiación solar, humedad relativa y velocidad del viento, recopilados de estaciones meteorológicas. Estos datos son vitales para que los modelos de simulación de cultivos reflejen con precisión el impacto de las condiciones meteorológicas en el crecimiento y rendimiento de los cultivos.
 
 | VAR_NAME | DESCRIPTION         | TYPE      | UNITS           | Calculation method | Agrovoc URL                                                         |
-|----------|---------------------|-----------|-----------------|--------------------|---------------------------------------------------------------------|
+|----------|----------|----------|----------|----------|------------------------|
 | ID       | Trial ID            | character | XXXX            |                    |                                                                     |
 | LOC_ID   | locality ID         | character | name            |                    |                                                                     |
 | WS_ID    | Weather Station ID  | numeric   | number          |                    |                                                                     |
@@ -243,9 +243,10 @@ head(weather)
 str(weather)
 ```
 
-Finalmente, para crear pipes o flujos de trabajo usando `agroclimR`es necesario tener una estructura de lista donde se reunan todas las tablas o entidades. Se sugiere que la creacion de estos libros de trabajo se realice por conjuntos de datos de Localidad-Cultivar, es decir uniendo `LOC_ID` y `CULTIVAR`, usar "`_`" para unir los nombres del archivo (ejemplo = `LOC1_CULTIVAR1.xls`), usar nombres sin espacios. Es recomendable realizar la modelacion de un determinado cultivar por separado , de esta manera e sposible reunir multiples libros de trabajo que en R se trasnforan en `list` format. 
+Finalmente, para crear pipes o flujos de trabajo usando `agroclimR`es necesario tener una estructura de lista donde se reunan todas las tablas o entidades. Se sugiere que la creacion de estos libros de trabajo se realice por conjuntos de datos de Localidad-Cultivar, es decir uniendo `LOC_ID` y `CULTIVAR`, usar "`_`" para unir los nombres del archivo (ejemplo = `LOC1_CULTIVAR1.xls`), usar nombres sin espacios. Es recomendable realizar la modelacion de un determinado cultivar por separado , de esta manera es posible reunir multiples libros de trabajo que en R se trasnforan en `list` format.
 
 ```{r worklist}
+library(agroclimR)
 # Código de ejemplo para crear lista de conjunto de datos Localidad-Cultivar
 # Asumiendo que agroclimR esta cargado
 obs_data  = list(list(AGRO_man = agro, 
@@ -258,9 +259,11 @@ obs_data  = list(list(AGRO_man = agro,
 
 # con la lista de trabajo es posible acceder a un conjunto de herramientas para manipular y analizar datos de modelacion
 
-extract_obs_var(list_data, "yield")
+yield_data <- extract_obs_var(obs_data, "yield")
+head(yield_data)
+
+# Cargamos ggplot y visualizamos
+library(ggplot2)
+plot_yield_obs(yield_data)
 
 ```
-
-
-

@@ -2,7 +2,7 @@
 % Please edit documentation in R/import_exp_data.R
 \name{import_exp_data}
 \alias{import_exp_data}
-\title{Import Experimental data from INPUT_data workbook}
+\title{Import Experimental data from agroclimR_data workbook}
 \usage{
 import_exp_data(path = ., files, model = "oryza")
 }
@@ -14,13 +14,13 @@ import_exp_data(path = ., files, model = "oryza")
 \item{model}{A string of workbook names}
 }
 \value{
-This function returns a \code{logical} if files created in path folder.
+This function returns a \code{list} if files created in path folder.
 }
 \description{
-Function to extract experimental data from INPUT_data workbook
+Function to extract experimental data from agroclimR_data workbook
 }
 \examples{
-# Import Experimental data from INPUT_data workbook
+# Import Experimental data from agroclimR_data workbook
 path = "data/"
 files <- list.files(path = "data/", pattern = "xls")
 import_exp_data <- function(path = ., files, model = "oryza")

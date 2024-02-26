@@ -1,0 +1,19 @@
+---
+title: "Analisis Exploratorio de Datos con agroclimR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analisis_Exploratorio_de_Datos_con_agroclimR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(agroclimR)
+```

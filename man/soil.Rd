@@ -7,6 +7,9 @@
 \format{
 A \code{\link[data.frame]{data.frame}} with 18 rows and 22 columns:
 \describe{
+\item{ID}{Trial ID - (\code{character}). A unique identifier for each trial. Example: \code{"LOC1T1PROJ1"}.}
+\item{LOC_ID}{Locality ID - (\code{character}). Indicates the location of the trial. Example: \code{"LOC1"}.}
+\item{SAMPLING_DATE}{Sampling date - (\code{date}). The date when the plant sampling was conducted, in MM/DD/YYYY format.}
 \item{NL}{Number of soil layers - (\code{numeric}). Indicates the maximum layers considered, up to 10.}
 \item{DEPTH}{Thickness of each soil layer - (\code{numeric}). Measured in centimeters (\code{cm}).}
 \item{STC}{Soil Texture Class (12-USDA) - (\code{character}). Represents the USDA texture class.}

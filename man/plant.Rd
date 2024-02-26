@@ -9,7 +9,6 @@ A \code{\link[data.frame]{data.frame}} with 77 rows and 22 columns:
 \describe{
 \item{ID}{Trial ID - (\code{character}). A unique identifier for each trial. Example: \code{"LOC1T1PROJ1"}.}
 \item{LOC_ID}{Locality ID - (\code{character}). Indicates the location of the trial. Example: \code{"LOC1"}.}
-\item{PROJECT}{Project ID - (\code{character}). Associates the trial with a specific project. Example: \code{"PROJ1"}.}
 \item{CULTIVAR}{Cultivar name - (\code{character}). Specifies the plant cultivar used in the trial. Example: \code{"CULTIVAR1"}.}
 \item{SAMPLING_DATE}{Sampling date - (\code{date}). The date when the plant sampling was conducted, in MM/DD/YYYY format.}
 \item{LAI_OBS}{Leaf Area Index observed - (\code{numeric}). Measures the area of leaves per unit area of ground, in m² leaf/m² ground.}

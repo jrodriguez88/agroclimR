@@ -7,6 +7,8 @@
 \format{
 A \code{\link[data.frame]{data.frame}} with 1461 rows and 7 columns:
 \describe{
+\item{ID}{Trial ID - (\code{character}). Serves as a unique identifier for each trial. Example: \code{"LOC1T1PROJ1"}.}
+\item{LOC_ID}{Locality ID - (\code{character}). Identifies the location of the trial. Example: \code{"LOC1"}.}
 \item{DATE}{Date of observation - (\code{Date}). Captures daily dates of weather observations.}
 \item{TMAX}{Maximum temperature observed - (\code{numeric}). Values are in degrees Celsius (\code{oC}).}
 \item{TMIN}{Minimum temperature observed - (\code{numeric}). Values are in degrees Celsius (\code{oC}).}

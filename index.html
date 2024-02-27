@@ -41,7 +41,8 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="articles/Estructura_de_Datos_para_Modelaci-n_de_Cultivos_con_agroclimR.html">Estructura_de_Datos_para_Modelación_de_Cultivos_con_agroclimR</a>
+    <a class="dropdown-item" href="articles/Analisis_Exploratorio_de_Datos_con_agroclimR.html">Analisis Exploratorio de Datos con agroclimR</a>
+    <a class="dropdown-item" href="articles/Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR.html">Estructura de Datos para Modelación de Cultivos con agroclimR</a>
     <a class="dropdown-item" href="articles/Wheather_files_with_agroclimR.html">Wheather_files_with_agroclimR</a>
   </div>
 </li>
@@ -58,11 +59,27 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="agroclimr-a-r-toolkit-for-agroclimatic-data-management-and-crop-model-file-creation">agroclimR: A R-Toolkit for Agroclimatic Data Management and Crop Model File Creation<a class="anchor" aria-label="anchor" href="#agroclimr-a-r-toolkit-for-agroclimatic-data-management-and-crop-model-file-creation"></a>
+<div class="page-header"><h1 id="agroclimr-streamlining-agroclimatic-data-for-crop-modeling">agroclimR: Streamlining Agroclimatic Data for Crop Modeling<a class="anchor" aria-label="anchor" href="#agroclimr-streamlining-agroclimatic-data-for-crop-modeling"></a>
 </h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>agroclimR is a package designed to streamline the management, manipulation, and generation of process-based model files for systems like <a href="https://dssat.net/" class="external-link">DSSAT v 4.8</a>, <a href="https://www.irri.org/oryza" class="external-link">ORYZA v3.0</a>, and <a href="https://www.fao.org/aquacrop/" class="external-link">Aquacrop v6.0</a>.</p>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p><code>agroclimR</code> is an R package developed from years of agricultural research and application, designed to simplify the management and transformation of agroclimatic data into crop model-ready formats. It supports major modeling systems like <a href="https://dssat.net/" class="external-link">DSSAT v 4.8</a>, <a href="https://www.irri.org/oryza" class="external-link">ORYZA v3.0</a>, and <a href="https://www.fao.org/aquacrop/" class="external-link">Aquacrop v6.0</a>. An R-toolkit for researchers and students in agricultural sciences.</p>
+</div>
+<div class="section level2">
+<h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
+</h2>
+<ul>
+<li>
+<strong>Efficient Data Management:</strong> Offers a relational database structure for easy data format conversion. See</li>
+<li>
+<strong>Tidyverse Integration:</strong> Utilizes tidyverse functions for seamless data manipulation.</li>
+<li>
+<strong>Visualization:</strong> Leverages ggplot2 for insightful data visualization.</li>
+</ul>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -116,13 +133,12 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
 <span></span>
-<span><span class="va">soil_sample</span> <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">soil</span>, <span class="va">NL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="co">#soil_sample = group_by(soil, NL) %&gt;% sample_n(1)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## basic example code to create ORYZA soil file</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/write_soil_oryza.html">write_soil_oryza</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, <span class="va">id_name</span>, <span class="va">soil_sample</span>, ZRTMS <span class="op">=</span> <span class="fl">0.50</span>, WL0I <span class="op">=</span> <span class="fl">0</span>, WCLI <span class="op">=</span> <span class="st">'FC'</span> , RIWCLI <span class="op">=</span> <span class="st">'NO'</span>, SATAV <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#write_soil_oryza(path = ".", id_name, soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)</span></span>
 <span></span>
 <span><span class="co">## basic example code to create DSSAT soil file</span></span>
 <span></span>
@@ -131,6 +147,21 @@
 <span></span>
 <span> </span>
 <span> </span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="connect">Connect<a class="anchor" aria-label="anchor" href="#connect"></a>
+</h2>
+<p>For inquiries or feedback, contact Jeferson Rodriguez-Espinoza at <a href="mailto:jrodriguezespinoza@outlook.com" class="email">jrodriguezespinoza@outlook.com</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="explore-more">Explore More<a class="anchor" aria-label="anchor" href="#explore-more"></a>
+</h2>
+<ul>
+<li><a href="https://jrodriguez88.github.io/agroclimR/">Documentation</a></li>
+<li><a href="https://dssat.net/" class="external-link">DSSAT</a></li>
+<li><a href="https://www.irri.org/oryza" class="external-link">ORYZA</a></li>
+<li><a href="https://www.fao.org/aquacrop/" class="external-link">Aquacrop</a></li>
+</ul>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">

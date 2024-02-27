@@ -10,7 +10,10 @@
     <loc>https://jrodriguez88.github.io/agroclimR/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://jrodriguez88.github.io/agroclimR/articles/Estructura_de_Datos_para_Modelaci-n_de_Cultivos_con_agroclimR.html</loc>
+    <loc>https://jrodriguez88.github.io/agroclimR/articles/Analisis_Exploratorio_de_Datos_con_agroclimR.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/articles/Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR.html</loc>
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/articles/Wheather_files_with_agroclimR.html</loc>
@@ -31,7 +34,10 @@
     <loc>https://jrodriguez88.github.io/agroclimR/reference/agro.html</loc>
   </url>
   <url>
-    <loc>https://jrodriguez88.github.io/agroclimR/reference/agroclimR-package.html</loc>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/agroclimR.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/extract_obs_var.html</loc>
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/fertil.html</loc>

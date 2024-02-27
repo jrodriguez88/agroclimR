@@ -24,7 +24,8 @@
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
-    <a class="dropdown-item" href="../articles/Estructura_de_Datos_para_Modelaci-n_de_Cultivos_con_agroclimR.html">Estructura_de_Datos_para_Modelación_de_Cultivos_con_agroclimR</a>
+    <a class="dropdown-item" href="../articles/Analisis_Exploratorio_de_Datos_con_agroclimR.html">Analisis Exploratorio de Datos con agroclimR</a>
+    <a class="dropdown-item" href="../articles/Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR.html">Estructura de Datos para Modelación de Cultivos con agroclimR</a>
     <a class="dropdown-item" href="../articles/Wheather_files_with_agroclimR.html">Wheather_files_with_agroclimR</a>
   </div>
 </li>
@@ -110,11 +111,10 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Write DSSAT v4.8 Soil file</span></span></span>
-<span class="r-in"><span><span class="va">soil</span> <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">soil</span>, <span class="va">NL</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in group_by(soil, NL) %&gt;% sample_n(1):</span> could not find function "%&gt;%"</span>
-<span class="r-in"><span><span class="fu">write_soil_dssat</span><span class="op">(</span>id_name <span class="op">=</span> <span class="st">"test_soil"</span>, soil_data <span class="op">=</span> <span class="va">soil</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Minimun data are available</span>
+<span class="r-in"><span><span class="co">#soil = group_by(soil, NL) %&gt;% sample_n(1)</span></span></span>
+<span class="r-in"><span><span class="co">#write_soil_dssat(id_name = "test_soil", soil_data = soil)</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

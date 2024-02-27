@@ -1,10 +1,12 @@
-#' Import Experimental data from agroclimR data workbook
+#' Import Experimental Data from agroclimR Data Workbook
 #'
-#' Function to extract experimental data from agroclimR data workbook
+#' Extracts experimental data from the agroclimR data workbook, including
+#' location, soil, climate data, and observed data for phenology, leaf area index,
+#' dry matter, and yield.
 #'
-#' @param path A string indicating path folder or working directory
-#' @param files A String vector. Vector of strings from workbooks names
-#' @param model A string of workbook names
+#' @param path String indicating the path folder or working directory.
+#' @param files Vector of strings with workbook names (.xls ext. file included).
+#' @param model String indicating the model name, default "oryza",("dssat", "oryza").
 #' @import dplyr
 #' @import stringr
 #' @import readxl
@@ -13,26 +15,16 @@
 #' @import tidyr
 #' @export
 #' @examples
-#' # Import Experimental data from agroclimR data workbook
-#' #Assuming you have n workbooks with agroclimR data workbook format in a specific folder \code{path}
-#' path = "data/"
-#' files <- list.files(path = path, pattern = "xls")
-#' obs_data <- import_exp_data(path = path, files, model = "oryza")
-#'
-## Update the details for the return value
-#' @return This function returns a \code{list} of raw data and observed data by component (phen, dry_matter, lai and yield)
-#'
-# @seealso \link[sirad]{se}
-
+#' #path = "inst/"
+#' #files = list.files(path = path, pattern = "xls")
+#' #obs_data = import_exp_data(path = path, files, model = "oryza")
+#' @return List containing raw and observed data by component (phen, dry_matter, lai, yield).
+#' @seealso \link[sirad]{?sirad}
 
 
 import_exp_data <- function(path = ., files, model = "oryza"){
 
-  # listar los archivos o listas de experimentos disponibles en la carpeta de datos
-
-  # files_cultivar <- list.files(path, pattern = fixed(cultivar))
-
-  ## Importa datos de trabajo
+  # Import and process data files
   data <- files %>%
     enframe(name = NULL, value = "file") %>%
  #   mutate(loc_cul = str_sub(file, 1,-6)) %>%
@@ -48,7 +40,8 @@ import_exp_data <- function(path = ., files, model = "oryza"){
     ungroup()
 
 
-  ## Extrae datos de suelo
+  # Extract soil data
+
   soil_data <- data %>%
     mutate(soil_data = map(input_data, ~.x$SOIL_obs))  %>%
     dplyr::select(-input_data)  %>%
@@ -116,65 +109,62 @@ import_exp_data <- function(path = ., files, model = "oryza"){
 }
 
 
-# helpers -----------------------------------------------------------------
+# Helper Functions --------------------------------------------------------
 
-
-# 'read_agroclimr_data' function to read xlsx files ---->  c(LOC_ID, cultivar), base_raw_data
-# file <- agroclimR data_workbook file
-read_agroclimr_data <- function(file) {
-
-  sheets <- readxl::excel_sheets(file)
-  x <-    lapply(sheets, function(X) readxl::read_excel(file, sheet = X))
-  names(x) <- sheets
-
-  return(x)
-
+#' Read agroclimR Data
+#'
+#' Reads data from agroclimR workbook sheets.
+#'
+#' @param agroclimR_workbook String with the workbook name (full name).
+#' @return List of data frames for each sheet in the workbook.
+read_agroclimr_data <- function(agroclimR_workbook) {
+  sheets <- excel_sheets(agroclimR_workbook)
+  data <- lapply(sheets, function(sheet) read_excel(agroclimR_workbook, sheet = sheet))
+  names(data) <- sheets
+  return(data)
 }
 
 
 
-# variable  <- c("phen", "lai", "dry_matter", "yield")
-#' Extract from base data - agroclimR data format xlsx
+#' Extract Experimental Data by Variable from agroclimR Data Workbook
 #'
-#' Function to extract experimental data by variable from agroclimR data workbook
+#' Extracts experimental data based on specified variables from a set of agroclimR data workbooks. This function is tailored to handle data in the agroclimR xlsx format, facilitating the retrieval of agricultural research data for different variables and models. It supports a range of variables such as phenological data, leaf area index, dry matter, and yield, across various crop models.
 #'
-#' @param obs_data A list of agroclimR data_workbooks read by  \code{read_agroclimr_data} function.
-#' @param variable A String value. options = variable  <- c("phen", "lai", "dry_matter", "yield")
-#' @param model A string of model name. options = model  <- c("oryza", "dssat", "aquacrop"),
-#' @import dplyr
-#' @import stringr
-#' @import readxl
-#' @import purrr
-#' @import tibble
-#' @import tidyr
-#' @export
+#' @param obs_data A list containing one or more agroclimR data workbooks, as read by the `read_agroclimr_data` function. Each element of the list should be a named list representing a single workbook, where each name-value pair corresponds to a specific type of observational data.
+#' @param variable A character string specifying the variable to extract. Valid options are "phen" (phenological data), "lai" (leaf area index), "dry_matter" (dry matter), and "yield". This parameter determines which type of data the function will extract from the provided workbooks.
+#' @param model A character string specifying the crop model for which data is being extracted. Valid options include "oryza" (for rice), "dssat" (for various crops), and "aquacrop" (for water-driven crop growth). This parameter allows the function to tailor the extraction process to the data structure used by different crop models.
+#' @return A `tibble` containing the extracted data for the specified variable and model. The returned tibble is structured to facilitate further analysis and visualization, making it a valuable resource for agricultural researchers and analysts.
 #' @examples
-#' # Extract Experimental data by variable from agroclimR data workbook
+#' # Prepare a sample list of agroclimR data workbooks
+#' obs_data = list(
+#'   list(
+#'     AGRO_man = agro,
+#'     FERT_obs = fertil,
+#'     PHEN_obs = phenol,
+#'     PLANT_obs = plant,
+#'     YIELD_obs = yield,
+#'     SOIL_obs = soil,
+#'     WTH_obs = weather
+#'   )
+#' )
 #'
-#' obs_data  = list(list(AGRO_man = agro,
-#' FERT_obs = fertil,
-#' PHEN_obs = phenol,
-#' PLANT_obs = plant,
-#' YIELD_obs = yield,
-#' SOIL_obs = soil,
-#' WTH_obs = weather))
-#'
+#' # Extract phenological data for the "oryza" model
 #' phenological_data <- extract_obs_var(obs_data, "phen", model = "oryza")
-#'
 #' print(phenological_data)
 #'
+#' # Extract yield data for the "oryza" model
+#' yield_data <- extract_obs_var(obs_data, "yield", model = "oryza")
+#' print(yield_data)
 #'
-## Update the details for the return value
-#' @return This function returns a \code{tibble} with de data for the specific selected variable ( "phen", "lai", "dry_matter" or  "yield") and model.
-#'
-# @seealso \link[https://jrodriguez88.github.io/agroclimR/reference/import_exp_data.html]{se}
+#' @export
+# @seealso \link[agroclimR]{https://jrodriguez88.github.io/agroclimR/reference/import_exp_data.html} for more information on the agroclimR package and its data structure.
 
 extract_obs_var <- function(obs_data, variable, model = "oryza") {
 
   # vars select sheet names required
   vars <- switch(variable,
-                 dry_matter = "PLANT_gro",
-                 lai = "PLANT_gro",
+                 dry_matter = "PLANT_obs",
+                 lai = "PLANT_obs",
                  yield = "YIELD_obs",
                  phen = "PHEN_obs")
 
@@ -214,16 +204,13 @@ extract_obs_var <- function(obs_data, variable, model = "oryza") {
 
 
    ## Revisa columnas plant_gro -- INPUT data cambios
-  for(y in 1:length(obs_data2$data)){
-
-    obs_data2$data[[y]]$PLANT_gro = data$data[[y]]$PLANT_gro %>%
-      set_names(colnames(data$data[[y]]$PLANT_gro) %>%
-                  str_replace_all(pattern = "_S_S", replacement = "delete") %>%
-                  str_replace_all(pattern = "_SD", replacement = "_SE")) %>%
-      dplyr::select(-contains("delete"))}
-
-
-
+#  for(y in 1:length(obs_data2$data)){
+#
+#    obs_data2$data[[y]]$PLANT_obs = obs_data2$data[[y]]$PLANT_obs %>%
+#      set_names(colnames(obs_data2$data[[y]]$PLANT_obs) %>%
+#                  str_replace_all(pattern = "_S_S", replacement = "delete") %>%
+#                  str_replace_all(pattern = "_SD", replacement = "_SE")) %>%
+#      dplyr::select(-contains("delete"))}
 
 
 
@@ -267,7 +254,8 @@ extract_obs_var <- function(obs_data, variable, model = "oryza") {
     phen_data <- obs_data %>%
       map(., ~.[["PHEN_obs"]]) %>%
       bind_rows() %>% left_join(set, by = join_by(ID, LOC_ID, CULTIVAR)) %>%
-      dplyr::select(exp_file, IDAT, FDAT) %>% mutate(across(contains("DAT"), as.Date))
+      dplyr::select(exp_file, IDAT, FDAT) %>%
+      mutate(across(contains("DAT"), as.Date))
 
 
 

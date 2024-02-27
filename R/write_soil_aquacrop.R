@@ -16,8 +16,8 @@
 #' @export
 #' @examples
 #' # Write Aquacrop v6 Soil file
-#' soil_sample = group_by(soil, NL) %>% sample_n(1)
-#' write_soil_aquacrop(path = ".", id_name = "test_soil", soil_data = soil_sample)
+#' #soil_sample = group_by(soil, NL) %>% sample_n(1)
+#' #write_soil_aquacrop(path = ".", id_name = "test_soil", soil_data = soil_sample)
 #'
 ## Update the details for the return value
 #' @return This function returns a \code{logical} if files created in path folder.

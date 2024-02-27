@@ -15,12 +15,20 @@ knitr::opts_chunk$set(
 options(knitr.duplicate.label = "allow")
 ```
 
-# agroclimR: A R-Toolkit for Agroclimatic Data Management and Crop Model File Creation
+# agroclimR: Streamlining Agroclimatic Data for Crop Modeling
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-agroclimR is a package designed to streamline the management, manipulation, and generation of process-based model files for systems like [DSSAT v 4.8](https://dssat.net/), [ORYZA v3.0](https://www.irri.org/oryza), and [Aquacrop v6.0](https://www.fao.org/aquacrop/).
+## Overview
+
+`agroclimR` is an R package developed from years of agricultural research and application, designed to simplify the management and transformation of agroclimatic data into crop model-ready formats. It supports major modeling systems like [DSSAT v 4.8](https://dssat.net/), [ORYZA v3.0](https://www.irri.org/oryza), and [Aquacrop v6.0](https://www.fao.org/aquacrop/). An R-toolkit for researchers and students in agricultural sciences.
+
+## Features
+
+- **Efficient Data Management:** Offers a relational database structure for easy data format conversion. See 
+- **Tidyverse Integration:** Utilizes tidyverse functions for seamless data manipulation.
+- **Visualization:** Leverages ggplot2 for insightful data visualization.
 
 ## Installation
 
@@ -65,12 +73,12 @@ library(agroclimR)
 library(magrittr)
 library(dplyr)
 
-soil_sample = group_by(soil, NL) %>% sample_n(1)
+#soil_sample = group_by(soil, NL) %>% sample_n(1)
 
 
 ## basic example code to create ORYZA soil file
 
-write_soil_oryza(path = ".", id_name, soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)
+#write_soil_oryza(path = ".", id_name, soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)
 
 ## basic example code to create DSSAT soil file
 
@@ -81,5 +89,15 @@ write_soil_oryza(path = ".", id_name, soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI 
  
 ```
 
+## Connect
+
+For inquiries or feedback, contact Jeferson Rodriguez-Espinoza at <jrodriguezespinoza@outlook.com>.
+
+## Explore More
+
+- [Documentation](https://jrodriguez88.github.io/agroclimR/)
+- [DSSAT](https://dssat.net/)
+- [ORYZA](https://www.irri.org/oryza)
+- [Aquacrop](https://www.fao.org/aquacrop/)
 
 

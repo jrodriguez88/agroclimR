@@ -25,7 +25,7 @@ Function to extract experimental data by variable from agroclimR data workbook
 obs_data  = list(list(AGRO_man = agro,
 FERT_obs = fertil,
 PHEN_obs = phenol,
-PLANT_obs = plant,
+PLANT_gro = plant,
 YIELD_obs = yield,
 SOIL_obs = soil,
 WTH_obs = weather))
@@ -33,6 +33,8 @@ WTH_obs = weather))
 phenological_data <- extract_obs_var(obs_data, "phen", model = "oryza")
 
 print(phenological_data)
+
+extract_obs_var(obs_data, "yield", model = "oryza")
 
 
 }

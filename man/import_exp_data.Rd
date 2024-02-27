@@ -21,7 +21,7 @@ Function to extract experimental data from agroclimR data workbook
 }
 \examples{
 # Import Experimental data from agroclimR data workbook
-#Assuming you have n workbooks with agroclimR data workbook format in a specific folder \code{path}
+#Assuming you have 'n'  workbooks with agroclimR data workbook format in a specific folder \code{path}
 path = "data/"
 files <- list.files(path = path, pattern = "xls")
 obs_data <- import_exp_data(path = path, files, model = "oryza")

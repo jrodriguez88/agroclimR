@@ -16,8 +16,8 @@
 #' @export
 #' @examples
 #' # Write DSSAT v4.8 Soil file
-#' soil = group_by(soil, NL) %>% sample_n(1)
-#' write_soil_dssat(id_name = "test_soil", soil_data = soil)
+#' #soil = group_by(soil, NL) %>% sample_n(1)
+#' #write_soil_dssat(id_name = "test_soil", soil_data = soil)
 #'
 ## Update the details for the return value
 #' @return This function returns a \code{logical} if files created in path folder.

@@ -252,18 +252,18 @@ library(agroclimR)
 obs_data  = list(list(AGRO_man = agro, 
                   FERT_obs = fertil,
                   PHEN_obs = phenol,
-                  PLANT_obs = plant,
+                  PLANT_gro = plant,
                   YIELD_obs = yield,
                   SOIL_obs = soil,
                   WTH_obs = weather))
 
 # con la lista de trabajo es posible acceder a un conjunto de herramientas para manipular y analizar datos de modelacion
 
-yield_data <- extract_obs_var(obs_data, "yield")
-head(yield_data)
+#yield_data <- extract_obs_var(obs_data, "yield")
+#head(yield_data)
 
 # Cargamos ggplot y visualizamos
-library(ggplot2)
-plot_yield_obs(yield_data)
+#ibrary(ggplot2)
+#plot_yield_obs(yield_data)
 
 ```

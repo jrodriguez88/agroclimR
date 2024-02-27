@@ -43,7 +43,7 @@ Function compute Soil information to DSSAT v4.8 soil file.
 }
 \examples{
 # Write DSSAT v4.8 Soil file
-soil = group_by(soil, NL) \%>\% sample_n(1)
-write_soil_dssat(id_name = "test_soil", soil_data = soil)
+#soil = group_by(soil, NL) \%>\% sample_n(1)
+#write_soil_dssat(id_name = "test_soil", soil_data = soil)
 
 }

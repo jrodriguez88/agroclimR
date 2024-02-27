@@ -33,7 +33,7 @@ Function compute Soil information to Aquacrop v6.1 soil file.
 }
 \examples{
 # Write Aquacrop v6 Soil file
-soil_sample = group_by(soil, NL) \%>\% sample_n(1)
-write_soil_aquacrop(path = ".", id_name = "test_soil", soil_data = soil_sample)
+#soil_sample = group_by(soil, NL) \%>\% sample_n(1)
+#write_soil_aquacrop(path = ".", id_name = "test_soil", soil_data = soil_sample)
 
 }

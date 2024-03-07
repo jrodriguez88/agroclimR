@@ -42,9 +42,12 @@ weather file with agroclimR:
 
 ``` r
 library(agroclimR)
+#> Warning: replacing previous import 'magrittr::set_names' by 'purrr::set_names'
+#> when loading 'agroclimR'
+#> Warning: replacing previous import 'magrittr::extract' by 'tidyr::extract' when
+#> loading 'agroclimR'
 
 path = "."
-id_name = "TEST"
 wth_data = weather
 lat = 3.8
 lon = -76.5
@@ -52,19 +55,17 @@ elev = 650
 
 ## basic example code to create ORYZA weather file
 
-write_wth_oryza(path, id_name, wth_data, lat, lon, elev)
+write_wth_oryza(path, "wth_oryza", wth_data, lat, lon, elev)
 #> Early morning vapor pressure (VP; kPa) derived from relative humidity data
-#> Wind Speed is not Available - Set as NA: -99
 #> [1] TRUE
 
 ## basic example code to create DSSAT weather file
-write_wth_dssat(path, id_name, wth_data, lat, lon, elev)
+write_wth_dssat(path, "wth_dssat", wth_data, lat, lon, elev)
 #> [1] TRUE
  
 ## basic example code to create AquaCrop weather file  
-write_wth_aquacrop(path, id_name, wth_data, lat, lon, elev)
-#> Wind Speed = 2m/s was used
-#> Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation  +  Assumption: Wind Speed mean = 2m/s
+write_wth_aquacrop(path, "wth_aquacrop", wth_data, lat, lon, elev)
+#> Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation
 #> [1] TRUE
 ```
 
@@ -73,32 +74,29 @@ file with agroclimR:
 
 ``` r
 
-library(agroclimR)
-library(magrittr)
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+#library(agroclimR)
+#library(magrittr)
+#library(dplyr)
 
-#soil_sample = group_by(soil, NL) %>% sample_n(1)
+soil_sample = dplyr::group_by(soil, NL) |> 
+  dplyr::sample_n(1) |> dplyr::ungroup()
 
 
 ## basic example code to create ORYZA soil file
 
-#write_soil_oryza(path = ".", id_name, soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)
+write_soil_oryza(path = ".", "soil_oryza", soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)
+#> [1] TRUE
 
 ## basic example code to create DSSAT soil file
 
-#write_soil_dssat(path = ".", id_name, soil_sample)
- 
-
- 
- 
+write_soil_dssat(path = ".", "soil_dssat", soil_sample)
+#> Minimun data are available
+#> WCFC was estimated using Saxton-PTF
+#> Porosity was estimated using 2.65g/cm3 as particle density
+#> WCFC was estimated using Saxton-PTF
+#> Porosity was estimated using 2.65g/cm3 as particle density
+#> WCFC was estimated using Saxton-PTF
+#> Porosity was estimated using 2.65g/cm3 as particle density
 ```
 
 ## Connect

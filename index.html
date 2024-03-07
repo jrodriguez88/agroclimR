@@ -94,9 +94,12 @@
 <p>This is a basic example which shows you how to create a crop model weather file with agroclimR:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jrodriguez88.github.io/agroclimR/">agroclimR</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: replacing previous import 'magrittr::set_names' by 'purrr::set_names'</span></span>
+<span><span class="co">#&gt; when loading 'agroclimR'</span></span>
+<span><span class="co">#&gt; Warning: replacing previous import 'magrittr::extract' by 'tidyr::extract' when</span></span>
+<span><span class="co">#&gt; loading 'agroclimR'</span></span>
 <span></span>
 <span><span class="va">path</span> <span class="op">=</span> <span class="st">"."</span></span>
-<span><span class="va">id_name</span> <span class="op">=</span> <span class="st">"TEST"</span></span>
 <span><span class="va">wth_data</span> <span class="op">=</span> <span class="va">weather</span></span>
 <span><span class="va">lat</span> <span class="op">=</span> <span class="fl">3.8</span></span>
 <span><span class="va">lon</span> <span class="op">=</span> <span class="op">-</span><span class="fl">76.5</span></span>
@@ -104,49 +107,44 @@
 <span></span>
 <span><span class="co">## basic example code to create ORYZA weather file</span></span>
 <span></span>
-<span><span class="fu"><a href="reference/write_wth_oryza.html">write_wth_oryza</a></span><span class="op">(</span><span class="va">path</span>, <span class="va">id_name</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/write_wth_oryza.html">write_wth_oryza</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_oryza"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Early morning vapor pressure (VP; kPa) derived from relative humidity data</span></span>
-<span><span class="co">#&gt; Wind Speed is not Available - Set as NA: -99</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span></span>
 <span><span class="co">## basic example code to create DSSAT weather file</span></span>
-<span><span class="fu"><a href="reference/write_wth_dssat.html">write_wth_dssat</a></span><span class="op">(</span><span class="va">path</span>, <span class="va">id_name</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/write_wth_dssat.html">write_wth_dssat</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_dssat"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span> </span>
 <span><span class="co">## basic example code to create AquaCrop weather file  </span></span>
-<span><span class="fu"><a href="reference/write_wth_aquacrop.html">write_wth_aquacrop</a></span><span class="op">(</span><span class="va">path</span>, <span class="va">id_name</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Wind Speed = 2m/s was used</span></span>
-<span><span class="co">#&gt; Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation  +  Assumption: Wind Speed mean = 2m/s</span></span>
+<span><span class="fu"><a href="reference/write_wth_aquacrop.html">write_wth_aquacrop</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_aquacrop"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
 <p>This is a basic example which shows you how to create a crop model Soil file with agroclimR:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jrodriguez88.github.io/agroclimR/">agroclimR</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     filter, lag</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span><span class="co">#library(agroclimR)</span></span>
+<span><span class="co">#library(magrittr)</span></span>
+<span><span class="co">#library(dplyr)</span></span>
 <span></span>
-<span><span class="co">#soil_sample = group_by(soil, NL) %&gt;% sample_n(1)</span></span>
+<span><span class="va">soil_sample</span> <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">soil</span>, <span class="va">NL</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span></span>
 <span><span class="co">## basic example code to create ORYZA soil file</span></span>
 <span></span>
-<span><span class="co">#write_soil_oryza(path = ".", id_name, soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)</span></span>
+<span><span class="fu"><a href="reference/write_soil_oryza.html">write_soil_oryza</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, <span class="st">"soil_oryza"</span>, <span class="va">soil_sample</span>, ZRTMS <span class="op">=</span> <span class="fl">0.50</span>, WL0I <span class="op">=</span> <span class="fl">0</span>, WCLI <span class="op">=</span> <span class="st">'FC'</span> , RIWCLI <span class="op">=</span> <span class="st">'NO'</span>, SATAV <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
 <span></span>
 <span><span class="co">## basic example code to create DSSAT soil file</span></span>
 <span></span>
-<span><span class="co">#write_soil_dssat(path = ".", id_name, soil_sample)</span></span>
-<span> </span>
-<span></span>
-<span> </span>
-<span> </span></code></pre></div>
+<span><span class="fu"><a href="reference/write_soil_dssat.html">write_soil_dssat</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, <span class="st">"soil_dssat"</span>, <span class="va">soil_sample</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Minimun data are available</span></span>
+<span><span class="co">#&gt; WCFC was estimated using Saxton-PTF</span></span>
+<span><span class="co">#&gt; Porosity was estimated using 2.65g/cm3 as particle density</span></span>
+<span><span class="co">#&gt; WCFC was estimated using Saxton-PTF</span></span>
+<span><span class="co">#&gt; Porosity was estimated using 2.65g/cm3 as particle density</span></span>
+<span><span class="co">#&gt; WCFC was estimated using Saxton-PTF</span></span>
+<span><span class="co">#&gt; Porosity was estimated using 2.65g/cm3 as particle density</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="connect">Connect<a class="anchor" aria-label="anchor" href="#connect"></a>

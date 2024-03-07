@@ -62,8 +62,9 @@
 
 
 
-
-<div class="row">
+<script src="Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR_files/plotly-binding-4.10.4/plotly.js"></script><script src="Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR_files/typedarray-0.1/typedarray.min.js"></script><link href="Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR_files/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR_files/crosstalk-1.2.1/js/crosstalk.min.js"></script><link href="Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR_files/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR_files/plotly-main-2.11.1/plotly-latest.min.js"></script><div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Estructura de Datos para Modelación de Cultivos con agroclimR</h1>
                         <h4 data-toc-skip class="author">Jeferson
@@ -76,6 +77,10 @@ Rodriguez-Espinoza</h4>
 
     
     
+<pre><code><span><span class="co">## Warning: replacing previous import 'magrittr::set_names' by 'purrr::set_names'</span></span>
+<span><span class="co">## when loading 'agroclimR'</span></span></code></pre>
+<pre><code><span><span class="co">## Warning: replacing previous import 'magrittr::extract' by 'tidyr::extract' when</span></span>
+<span><span class="co">## loading 'agroclimR'</span></span></code></pre>
 <pre><code><span><span class="co">## Warning: no DISPLAY variable so Tk is not available</span></span></code></pre>
 <div class="section level2">
 <h2 id="introducción">Introducción<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n"></a>
@@ -279,11 +284,11 @@ proyecto específico. Ejemplo: “PROJ1”.</li>
 de planta utilizado en el ensayo. Ejemplo: “CULTIVAR1”.</li>
 <li>Número de Tratamiento (<code>TR_N</code>): Ejemplo: “T1”.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Código de ejemplo para mostrar las primeras filas del conjunto de datos AGRO</span></span>
 <span><span class="co"># Asumiendo que 'agro' es el conjunto de datos cargado con agroclimR</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">agro</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 12</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 14</span></span></span>
 <span><span class="co">#&gt;   ID         LOC_ID PROJECT CULTIVAR TR_N    LAT  LONG   ALT PDAT       CROP_SYS</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SDTOS1MAD… SDTO   MADRI   FED2000  S1     3.91 -<span style="color: #BB0000;">75.0</span>   415 2013-04-29 IRRIGAT…</span></span>
@@ -291,9 +296,9 @@ de planta utilizado en el ensayo. Ejemplo: “CULTIVAR1”.</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SDTOS2MAD… SDTO   MADRI   FED2000  S2     3.91 -<span style="color: #BB0000;">75.0</span>   415 2013-12-05 IRRIGAT…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SDTOS2MAD… SDTO   MADRII  FED2000  S2     3.91 -<span style="color: #BB0000;">75.0</span>   415 2015-11-03 IRRIGAT…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: ESTAB &lt;chr&gt;, NPLDS &lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: ESTAB &lt;chr&gt;, NPLDS &lt;dbl&gt;, SBDUR &lt;lgl&gt;, TRDAT &lt;lgl&gt;</span></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">agro</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tibble [7 × 12] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt; tibble [7 × 14] (S3: tbl_df/tbl/data.frame)</span></span>
 <span><span class="co">#&gt;  $ ID      : chr [1:7] "SDTOS1MADRI" "SDTOS1MADRII" "SDTOS2MADRI" "SDTOS2MADRII" ...</span></span>
 <span><span class="co">#&gt;  $ LOC_ID  : chr [1:7] "SDTO" "SDTO" "SDTO" "SDTO" ...</span></span>
 <span><span class="co">#&gt;  $ PROJECT : chr [1:7] "MADRI" "MADRII" "MADRI" "MADRII" ...</span></span>
@@ -305,7 +310,9 @@ de planta utilizado en el ensayo. Ejemplo: “CULTIVAR1”.</li>
 <span><span class="co">#&gt;  $ PDAT    : Date[1:7], format: "2013-04-29" "2015-06-05" ...</span></span>
 <span><span class="co">#&gt;  $ CROP_SYS: chr [1:7] "IRRIGATED" "IRRIGATED" "IRRIGATED" "IRRIGATED" ...</span></span>
 <span><span class="co">#&gt;  $ ESTAB   : chr [1:7] "DIRECT-SEED" "DIRECT-SEED" "DIRECT-SEED" "DIRECT-SEED" ...</span></span>
-<span><span class="co">#&gt;  $ NPLDS   : num [1:7] 131 84 152 84 160 122 160</span></span></code></pre></div>
+<span><span class="co">#&gt;  $ NPLDS   : num [1:7] 131 84 152 84 160 122 160</span></span>
+<span><span class="co">#&gt;  $ SBDUR   : logi [1:7] NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ TRDAT   : logi [1:7] NA NA NA NA NA NA ...</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="fert-datos-observados-del-plan-de-fertilización-">FERT: Datos Observados del Plan de Fertilización.<a class="anchor" aria-label="anchor" href="#fert-datos-observados-del-plan-de-fertilizaci%C3%B3n-"></a>
@@ -391,28 +398,27 @@ fertilizantes.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Código de ejemplo para mostrar las primeras filas del conjunto de datos FERT</span></span>
 <span><span class="co"># Asumiendo que 'fertil' es el conjunto de datos cargado con agroclimR</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">fertil</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 8</span></span></span>
-<span><span class="co">#&gt;   ID          LOC_ID CULTIVAR FERT_No   DDE     N     P     K</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SDTOS1MADRI SDTO   FED2000        1    10  42    21.5    33</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SDTOS1MADRI SDTO   FED2000        2    23  58     1.5    33</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SDTOS1MADRI SDTO   FED2000        3    38  56.5   0      30</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SDTOS1MADRI SDTO   FED2000        4    52  51.2   0      15</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
+<span><span class="co">#&gt;   ID          LOC_ID FERT_No   DDE     N     P     K</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SDTOS1MADRI SDTO         1    10  42    21.5    33</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SDTOS1MADRI SDTO         2    23  58     1.5    33</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SDTOS1MADRI SDTO         3    38  56.5   0      30</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SDTOS1MADRI SDTO         4    52  51.2   0      15</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more rows</span></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">fertil</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tibble [37 × 8] (S3: tbl_df/tbl/data.frame)</span></span>
-<span><span class="co">#&gt;  $ ID      : chr [1:37] "SDTOS1MADRI" "SDTOS1MADRI" "SDTOS1MADRI" "SDTOS1MADRI" ...</span></span>
-<span><span class="co">#&gt;  $ LOC_ID  : chr [1:37] "SDTO" "SDTO" "SDTO" "SDTO" ...</span></span>
-<span><span class="co">#&gt;  $ CULTIVAR: chr [1:37] "FED2000" "FED2000" "FED2000" "FED2000" ...</span></span>
-<span><span class="co">#&gt;  $ FERT_No : num [1:37] 1 2 3 4 5 1 2 3 4 5 ...</span></span>
-<span><span class="co">#&gt;  $ DDE     : num [1:37] 10 23 38 52 64 9 23 37 50 62 ...</span></span>
-<span><span class="co">#&gt;  $ N       : num [1:37] 42 58 56.5 51.2 18.4 ...</span></span>
-<span><span class="co">#&gt;  $ P       : num [1:37] 21.5 1.5 0 0 0 21.5 31.5 0 0 0 ...</span></span>
-<span><span class="co">#&gt;  $ K       : num [1:37] 33 33 30 15 0 48 33 30 15 0 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [37 × 7] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ ID     : chr [1:37] "SDTOS1MADRI" "SDTOS1MADRI" "SDTOS1MADRI" "SDTOS1MADRI" ...</span></span>
+<span><span class="co">#&gt;  $ LOC_ID : chr [1:37] "SDTO" "SDTO" "SDTO" "SDTO" ...</span></span>
+<span><span class="co">#&gt;  $ FERT_No: num [1:37] 1 2 3 4 5 1 2 3 4 5 ...</span></span>
+<span><span class="co">#&gt;  $ DDE    : num [1:37] 10 23 38 52 64 9 23 37 50 62 ...</span></span>
+<span><span class="co">#&gt;  $ N      : num [1:37] 42 58 56.5 51.2 18.4 ...</span></span>
+<span><span class="co">#&gt;  $ P      : num [1:37] 21.5 1.5 0 0 0 21.5 31.5 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ K      : num [1:37] 33 33 30 15 0 48 33 30 15 0 ...</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="phen-datos-fenológicos-observados-en-el-cultivo">PHEN: Datos Fenológicos observados en el cultivo<a class="anchor" aria-label="anchor" href="#phen-datos-fenol%C3%B3gicos-observados-en-el-cultivo"></a>
@@ -497,7 +503,7 @@ plantas.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Código de ejemplo para mostrar las primeras filas del conjunto de datos PHEN</span></span>
 <span><span class="co"># Asumiendo que 'phenol' es el conjunto de datos cargado con agroclimR</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">phenol</span><span class="op">)</span></span>
@@ -724,7 +730,7 @@ salud de diferentes cultivares bajo condiciones variadas.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Código de ejemplo para mostrar las primeras filas del conjunto de datos PLANT</span></span>
 <span><span class="co"># Asumiendo que 'plant' es el conjunto de datos cargado con agroclimR</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">plant</span><span class="op">)</span></span>
@@ -951,12 +957,12 @@ través de diferentes condiciones de cultivo.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Código de ejemplo para mostrar las primeras filas del conjunto de datos YIELD</span></span>
 <span><span class="co"># Asumiendo que 'yield' es el conjunto de datos cargado con agroclimR</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">yield</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 20</span></span></span>
-<span><span class="co">#&gt;   ID        LOC_ID CULTIVAR YIELD_AVG YIELD_MIN YIELD_MAX  HIAM HIAM_SE PAN_fert</span></span>
+<span><span class="co">#&gt;   ID        LOC_ID CULTIVAR YIELD_AVG YIELD_MIN YIELD_MAX  HIAD HIAD_SE PAN_fert</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SDTOS1MA… SDTO   FED2000      <span style="text-decoration: underline;">8</span>103.     <span style="text-decoration: underline;">7</span>331.     <span style="text-decoration: underline;">8</span>931. 0.335 8.90<span style="color: #949494;">e</span><span style="color: #BB0000;">-3</span>     88.9</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SDTOS2MA… SDTO   FED2000      <span style="text-decoration: underline;">4</span>474.     <span style="text-decoration: underline;">3</span>795.     <span style="text-decoration: underline;">5</span>244. 0.300 5.65<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span>     95.5</span></span>
@@ -974,8 +980,8 @@ través de diferentes condiciones de cultivo.</p>
 <span><span class="co">#&gt;  $ YIELD_AVG  : num [1:7] 8103 4474 5032 4935 5542 ...</span></span>
 <span><span class="co">#&gt;  $ YIELD_MIN  : num [1:7] 7331 3795 4247 4403 4927 ...</span></span>
 <span><span class="co">#&gt;  $ YIELD_MAX  : num [1:7] 8931 5244 5951 5365 6056 ...</span></span>
-<span><span class="co">#&gt;  $ HIAM       : num [1:7] 0.335 0.3 0.305 0.415 0.39 ...</span></span>
-<span><span class="co">#&gt;  $ HIAM_SE    : num [1:7] 0.008903 0.000565 0.002955 0.011861 0.029848 ...</span></span>
+<span><span class="co">#&gt;  $ HIAD       : num [1:7] 0.335 0.3 0.305 0.415 0.39 ...</span></span>
+<span><span class="co">#&gt;  $ HIAD_SE    : num [1:7] 0.008903 0.000565 0.002955 0.011861 0.029848 ...</span></span>
 <span><span class="co">#&gt;  $ PAN_fert   : num [1:7] 88.9 95.5 92.9 88.5 81.3 ...</span></span>
 <span><span class="co">#&gt;  $ PAN_fert_SE: num [1:7] 0.589 0.393 0.966 1.714 2.313 ...</span></span>
 <span><span class="co">#&gt;  $ GW1000     : num [1:7] 24.7 23.5 20.8 25.4 24.4 ...</span></span>
@@ -1176,25 +1182,24 @@ crecimiento y desarrollo del cultivo.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Código de ejemplo para mostrar las primeras filas del conjunto de datos SOIL</span></span>
 <span><span class="co"># Asumiendo que 'soil' es el conjunto de datos cargado con agroclimR</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">soil</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 22</span></span></span>
-<span><span class="co">#&gt;   ID       TR_N  PROJECT SAMPLING_DATE    NL DEPTH STC    SAND  SILT  CLAY  SBDM</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SDTOS1M… S1    MADRI   2013-05-10        1    20 Lo     39.2  45.6  15.2  1.53</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SDTOS1M… S1    MADRI   2013-05-10        2    20 Lo     37.9  46.9  15.2  1.71</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SDTOS1M… S1    MADRI   2013-05-10        3    20 Lo     40.3  44.5  15.2  1.66</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SDTOS1M… S1    MADRII  2015-08-10        1    20 SaLo   70.9  17.6  11.6  1.40</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 21</span></span></span>
+<span><span class="co">#&gt;   ID        LOC_ID SAMPLING_DATE    NL DEPTH STC    SAND  SILT  CLAY  SBDM   SOC</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SDTOS1MA… SDTO   2013-05-10        1    20 Lo     39.2  45.6  15.2  1.53  6.63</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SDTOS1MA… SDTO   2013-05-10        2    20 Lo     37.9  46.9  15.2  1.71 11.4 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SDTOS1MA… SDTO   2013-05-10        3    20 Lo     40.3  44.5  15.2  1.66  6.52</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SDTOS1MA… SDTO   2015-08-10        1    20 SaLo   70.9  17.6  11.6  1.40  2.5 </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more variables: SC &lt;dbl&gt;, SLON &lt;dbl&gt;, SNH4 &lt;dbl&gt;, SNO3 &lt;dbl&gt;, PH &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: SLON &lt;dbl&gt;, SNH4 &lt;dbl&gt;, SNO3 &lt;dbl&gt;, PH &lt;dbl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   SCEC &lt;dbl&gt;, WCST &lt;dbl&gt;, WCFC &lt;dbl&gt;, WCWP &lt;dbl&gt;, WCAD &lt;dbl&gt;, SSKS &lt;dbl&gt;</span></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">soil</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tibble [18 × 22] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt; tibble [18 × 21] (S3: tbl_df/tbl/data.frame)</span></span>
 <span><span class="co">#&gt;  $ ID           : chr [1:18] "SDTOS1MADRI" "SDTOS1MADRI" "SDTOS1MADRI" "SDTOS1MADRII" ...</span></span>
-<span><span class="co">#&gt;  $ TR_N         : chr [1:18] "S1" "S1" "S1" "S1" ...</span></span>
-<span><span class="co">#&gt;  $ PROJECT      : chr [1:18] "MADRI" "MADRI" "MADRI" "MADRII" ...</span></span>
+<span><span class="co">#&gt;  $ LOC_ID       : chr [1:18] "SDTO" "SDTO" "SDTO" "SDTO" ...</span></span>
 <span><span class="co">#&gt;  $ SAMPLING_DATE: Date[1:18], format: "2013-05-10" "2013-05-10" ...</span></span>
 <span><span class="co">#&gt;  $ NL           : num [1:18] 1 2 3 1 2 3 1 2 3 1 ...</span></span>
 <span><span class="co">#&gt;  $ DEPTH        : num [1:18] 20 20 20 20 20 20 20 20 20 20 ...</span></span>
@@ -1203,7 +1208,7 @@ crecimiento y desarrollo del cultivo.</p>
 <span><span class="co">#&gt;  $ SILT         : num [1:18] 45.63 46.9 44.5 17.56 8.77 ...</span></span>
 <span><span class="co">#&gt;  $ CLAY         : num [1:18] 15.2 15.2 15.2 11.6 11.6 ...</span></span>
 <span><span class="co">#&gt;  $ SBDM         : num [1:18] 1.53 1.71 1.66 1.4 1.49 ...</span></span>
-<span><span class="co">#&gt;  $ SC           : num [1:18] 6.63 11.37 6.52 2.5 1.5 ...</span></span>
+<span><span class="co">#&gt;  $ SOC          : num [1:18] 6.63 11.37 6.52 2.5 1.5 ...</span></span>
 <span><span class="co">#&gt;  $ SLON         : num [1:18] 407 914 382 388 300 ...</span></span>
 <span><span class="co">#&gt;  $ SNH4         : num [1:18] 5.19 7.95 4.81 6.11 6.11 ...</span></span>
 <span><span class="co">#&gt;  $ SNO3         : num [1:18] 4.078 10.373 3.605 12.126 0.028 ...</span></span>
@@ -1325,26 +1330,29 @@ cultivos.</p>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Código de ejemplo para mostrar las primeras filas del conjunto de datos WTH</span></span>
 <span><span class="co"># Asumiendo que 'weather' es el conjunto de datos cargado con agroclimR</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">weather</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
-<span><span class="co">#&gt;   DATE        TMAX  TMIN  RAIN  SRAD  RHUM</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 2013-01-01  36.0  25.7   0    20.9  66.3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> 2013-01-02  35.7  25.1   0.2  21.6  73.3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> 2013-01-03  38.5  24.0   0    23.1  61.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> 2013-01-04  35.7  22.9   0    21.4  68.9</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 9</span></span></span>
+<span><span class="co">#&gt;   LOC_ID WS_ID DATE        TMAX  TMIN  RAIN  SRAD  RHUM WSPD </span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> SDTO       1 2013-01-01  36.0  25.7   0    20.9  66.3 <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> SDTO       1 2013-01-02  35.7  25.1   0.2  21.6  73.3 <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> SDTO       1 2013-01-03  38.5  24.0   0    23.1  61.4 <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> SDTO       1 2013-01-04  35.7  22.9   0    21.4  68.9 <span style="color: #BB0000;">NA</span>   </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more rows</span></span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">weather</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tibble [1,461 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
-<span><span class="co">#&gt;  $ DATE: Date[1:1461], format: "2013-01-01" "2013-01-02" ...</span></span>
-<span><span class="co">#&gt;  $ TMAX: num [1:1461] 36 35.7 38.5 35.7 38.8 ...</span></span>
-<span><span class="co">#&gt;  $ TMIN: num [1:1461] 25.7 25.1 24 22.9 23.8 ...</span></span>
-<span><span class="co">#&gt;  $ RAIN: num [1:1461] 0 0.2 0 0 0 1.2 0 0 0 0 ...</span></span>
-<span><span class="co">#&gt;  $ SRAD: num [1:1461] 20.9 21.6 23.1 21.4 22.9 ...</span></span>
-<span><span class="co">#&gt;  $ RHUM: num [1:1461] 66.3 73.3 61.4 68.9 69.5 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [1,461 × 9] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ LOC_ID: chr [1:1461] "SDTO" "SDTO" "SDTO" "SDTO" ...</span></span>
+<span><span class="co">#&gt;  $ WS_ID : num [1:1461] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ DATE  : Date[1:1461], format: "2013-01-01" "2013-01-02" ...</span></span>
+<span><span class="co">#&gt;  $ TMAX  : num [1:1461] 36 35.7 38.5 35.7 38.8 ...</span></span>
+<span><span class="co">#&gt;  $ TMIN  : num [1:1461] 25.7 25.1 24 22.9 23.8 ...</span></span>
+<span><span class="co">#&gt;  $ RAIN  : num [1:1461] 0 0.2 0 0 0 1.2 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ SRAD  : num [1:1461] 20.9 21.6 23.1 21.4 22.9 ...</span></span>
+<span><span class="co">#&gt;  $ RHUM  : num [1:1461] 66.3 73.3 61.4 68.9 69.5 ...</span></span>
+<span><span class="co">#&gt;  $ WSPD  : logi [1:1461] NA NA NA NA NA NA ...</span></span></code></pre></div>
 <p>Finalmente, para crear pipes o flujos de trabajo usando
 <code>agroclimR</code>es necesario tener una estructura de lista donde
 se reunan todas las tablas o entidades. Se sugiere que la creacion de
@@ -1356,7 +1364,7 @@ espacios. Es recomendable realizar la modelacion de un determinado
 cultivar por separado , de esta manera es posible reunir multiples
 libros de trabajo que en R se trasnforan en <code>list</code>
 format.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jrodriguez88.github.io/agroclimR/">agroclimR</a></span><span class="op">)</span></span>
 <span><span class="co"># Código de ejemplo para crear lista de conjunto de datos Localidad-Cultivar</span></span>
 <span><span class="co"># Asumiendo que agroclimR esta cargado</span></span>
@@ -1369,13 +1377,38 @@ format.</p>
 <span>                  WTH_obs <span class="op">=</span> <span class="va">weather</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># con la lista de trabajo es posible acceder a un conjunto de herramientas para manipular y analizar datos de modelacion</span></span>
-<span></span>
-<span><span class="co">#yield_data &lt;- extract_obs_var(obs_data, "yield")</span></span>
+<span><span class="va">yield_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extract_obs_var.html">extract_obs_var</a></span><span class="op">(</span><span class="va">obs_data</span>, <span class="st">"yield"</span><span class="op">)</span></span>
 <span><span class="co">#head(yield_data)</span></span>
 <span></span>
 <span><span class="co"># Cargamos ggplot y visualizamos</span></span>
-<span><span class="co">#ibrary(ggplot2)</span></span>
-<span><span class="co">#plot_yield_obs(yield_data)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">plot</span> <span class="op">&lt;-</span> <span class="fu">agroclimR</span><span class="fu">:::</span><span class="fu">plot_yield_obs</span><span class="op">(</span><span class="va">yield_data</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">plotly</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/ggplotly.html" class="external-link">ggplotly</a></span><span class="op">(</span><span class="va">plot</span><span class="op">)</span></span></code></pre></div>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-fa1926454cb28a2eb6a1" style="width:750px;height:901.318500206016px;"></div>
+<script type="application/json" data-for="htmlwidget-fa1926454cb28a2eb6a1">{"x":{"data":[{"x":[8103.2521906976799,4474.11033872599,5031.9514155712804,4935.37109776528,5541.6081904744697,5430.3641003053799,5113.8528960755802],"y":[3,4,5,1,2,6,7],"text":["exp_file: SDTO_FED2000_MADRI_S1<br />value: 8103.252<br />exp_file: SDTO_FED2000_MADRI_S1","exp_file: SDTO_FED2000_MADRI_S2<br />value: 4474.110<br />exp_file: SDTO_FED2000_MADRI_S2","exp_file: SDTO_FED2000_MADRI_S3<br />value: 5031.951<br />exp_file: SDTO_FED2000_MADRI_S3","exp_file: SDTO_FED2000_COL_S3<br />value: 4935.371<br />exp_file: SDTO_FED2000_COL_S3","exp_file: SDTO_FED2000_COL_S4<br />value: 5541.608<br />exp_file: SDTO_FED2000_COL_S4","exp_file: SDTO_FED2000_MADRII_S1<br />value: 5430.364<br />exp_file: SDTO_FED2000_MADRII_S1","exp_file: SDTO_FED2000_MADRII_S2<br />value: 5113.853<br />exp_file: SDTO_FED2000_MADRII_S2"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[8103.2521906976799,4474.11033872599,5031.9514155712804,4935.37109776528,5541.6081904744697,5430.3641003053799,5113.8528960755802],"y":[3,4,5,1,2,6,7],"text":["exp_file: SDTO_FED2000_MADRI_S1<br />value: 8103.252<br />exp_file: SDTO_FED2000_MADRI_S1<br />value - se: 7303.071<br />value + se: 8903.433<br />locality: SDTO","exp_file: SDTO_FED2000_MADRI_S2<br />value: 4474.110<br />exp_file: SDTO_FED2000_MADRI_S2<br />value - se: 3749.785<br />value + se: 5198.436<br />locality: SDTO","exp_file: SDTO_FED2000_MADRI_S3<br />value: 5031.951<br />exp_file: SDTO_FED2000_MADRI_S3<br />value - se: 4180.062<br />value + se: 5883.841<br />locality: SDTO","exp_file: SDTO_FED2000_COL_S3<br />value: 4935.371<br />exp_file: SDTO_FED2000_COL_S3<br />value - se: 4454.551<br />value + se: 5416.192<br />locality: SDTO","exp_file: SDTO_FED2000_COL_S4<br />value: 5541.608<br />exp_file: SDTO_FED2000_COL_S4<br />value - se: 4976.976<br />value + se: 6106.241<br />locality: SDTO","exp_file: SDTO_FED2000_MADRII_S1<br />value: 5430.364<br />exp_file: SDTO_FED2000_MADRII_S1<br />value - se: 5130.882<br />value + se: 5729.846<br />locality: SDTO","exp_file: SDTO_FED2000_MADRII_S2<br />value: 5113.853<br />exp_file: SDTO_FED2000_MADRII_S2<br />value - se: 4676.623<br />value + se: 5551.083<br />locality: SDTO"],"type":"scatter","mode":"lines","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[800.18083100775038,724.32564301061939,851.88945904954471,480.82056238523455,564.63239322316531,299.48164507538968,437.23032096354018],"arrayminus":[800.18083100775038,724.32564301061984,851.88945904954471,480.82056238523455,564.63239322316531,299.48164507538968,437.23032096354018],"type":"data","width":0.01226629334391309,"symmetric":false,"color":"rgba(248,118,109,1)"},"name":"SDTO","legendgroup":"SDTO","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[8103.2521906976799,4474.11033872599,5031.9514155712804,4935.37109776528,5541.6081904744697,5430.3641003053799,5113.8528960755802],"y":[3,4,5,1,2,6,7],"text":["exp_file: SDTO_FED2000_MADRI_S1<br />value: 8103.252<br />exp_file: SDTO_FED2000_MADRI_S1<br />locality: SDTO","exp_file: SDTO_FED2000_MADRI_S2<br />value: 4474.110<br />exp_file: SDTO_FED2000_MADRI_S2<br />locality: SDTO","exp_file: SDTO_FED2000_MADRI_S3<br />value: 5031.951<br />exp_file: SDTO_FED2000_MADRI_S3<br />locality: SDTO","exp_file: SDTO_FED2000_COL_S3<br />value: 4935.371<br />exp_file: SDTO_FED2000_COL_S3<br />locality: SDTO","exp_file: SDTO_FED2000_COL_S4<br />value: 5541.608<br />exp_file: SDTO_FED2000_COL_S4<br />locality: SDTO","exp_file: SDTO_FED2000_MADRII_S1<br />value: 5430.364<br />exp_file: SDTO_FED2000_MADRII_S1<br />locality: SDTO","exp_file: SDTO_FED2000_MADRII_S2<br />value: 5113.853<br />exp_file: SDTO_FED2000_MADRII_S2<br />locality: SDTO"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"SDTO","legendgroup":"SDTO","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"visible":false,"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","x":[null],"y":[null],"frame":null}],"layout":{"margin":{"t":45.356726924421878,"r":7.3059360730593621,"b":43.818455386996689,"l":154.15525114155253},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Rice Yield - Cultivar FED2000","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-445.17165108527155,9348.6046727907014],"tickmode":"array","ticktext":["0","2500","5000","7500"],"tickvals":[0,2500,5000,7500],"categoryorder":"array","categoryarray":["0","2500","5000","7500"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716894984},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Yield (Kg/ha - 14% grain moisture )","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,7.5999999999999996],"tickmode":"array","ticktext":["SDTO_FED2000_COL_S3","SDTO_FED2000_COL_S4","SDTO_FED2000_MADRI_S1","SDTO_FED2000_MADRI_S2","SDTO_FED2000_MADRI_S3","SDTO_FED2000_MADRII_S1","SDTO_FED2000_MADRII_S2"],"tickvals":[1,2,3,4.0000000000000009,5,6,7],"categoryorder":"array","categoryarray":["SDTO_FED2000_COL_S3","SDTO_FED2000_COL_S4","SDTO_FED2000_MADRI_S1","SDTO_FED2000_MADRI_S2","SDTO_FED2000_MADRI_S3","SDTO_FED2000_MADRII_S1","SDTO_FED2000_MADRII_S2"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Experimental file","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716894984},"title":{"text":"Site: ","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1e2e2557332f":{"x":{},"y":{},"label":{},"type":"scatter"},"1e2e7ade6bfe":{"x":{},"y":{},"label":{},"ymin":{},"ymax":{},"colour":{}},"1e2e5ab4f727":{"x":{},"y":{},"label":{},"colour":{}},"1e2e35b90d6a":{"y":{}}},"cur_data":"1e2e2557332f","visdat":{"1e2e2557332f":["function (y) ","x"],"1e2e7ade6bfe":["function (y) ","x"],"1e2e5ab4f727":["function (y) ","x"],"1e2e35b90d6a":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script><p>Un resultado similar podemos obtener si exportamos los dtos desde el
+libreo de trabajo propuesto en agroclimR</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># File name</span></span>
+<span><span class="va">file_name</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"SDTO_F2000.xlsx"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Files directory</span></span>
+<span><span class="va">path_file</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata"</span>, <span class="va">file_name</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, package <span class="op">=</span> <span class="st">"agroclimR"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">obs_data2</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">read_agroclimr_data</span><span class="op">(</span><span class="va">path_file</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="va">yield_data2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/extract_obs_var.html">extract_obs_var</a></span><span class="op">(</span><span class="va">obs_data2</span>, <span class="st">"yield"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#head(yield_data)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">plot2</span> <span class="op">&lt;-</span> <span class="fu">agroclimR</span><span class="fu">:::</span><span class="fu">plot_yield_obs</span><span class="op">(</span><span class="va">yield_data2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">plotly</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/plotly/man/ggplotly.html" class="external-link">ggplotly</a></span><span class="op">(</span><span class="va">plot2</span><span class="op">)</span></span></code></pre></div>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-810c2ec0024fded4c38a" style="width:750px;height:901.318500206016px;"></div>
+<script type="application/json" data-for="htmlwidget-810c2ec0024fded4c38a">{"x":{"data":[{"x":[8103.2521906976799,4474.11033872599,5031.9514155712804,4935.37109776528,5541.6081904744697,5430.3641003053799,5113.8528960755802],"y":[3,4,5,1,2,6,7],"text":["exp_file: SDTO_FED2000_MADRI_S1<br />value: 8103.252<br />exp_file: SDTO_FED2000_MADRI_S1","exp_file: SDTO_FED2000_MADRI_S2<br />value: 4474.110<br />exp_file: SDTO_FED2000_MADRI_S2","exp_file: SDTO_FED2000_MADRI_S3<br />value: 5031.951<br />exp_file: SDTO_FED2000_MADRI_S3","exp_file: SDTO_FED2000_COL_S3<br />value: 4935.371<br />exp_file: SDTO_FED2000_COL_S3","exp_file: SDTO_FED2000_COL_S4<br />value: 5541.608<br />exp_file: SDTO_FED2000_COL_S4","exp_file: SDTO_FED2000_MADRII_S1<br />value: 5430.364<br />exp_file: SDTO_FED2000_MADRII_S1","exp_file: SDTO_FED2000_MADRII_S2<br />value: 5113.853<br />exp_file: SDTO_FED2000_MADRII_S2"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[8103.2521906976799,4474.11033872599,5031.9514155712804,4935.37109776528,5541.6081904744697,5430.3641003053799,5113.8528960755802],"y":[3,4,5,1,2,6,7],"text":["exp_file: SDTO_FED2000_MADRI_S1<br />value: 8103.252<br />exp_file: SDTO_FED2000_MADRI_S1<br />value - se: 7303.071<br />value + se: 8903.433<br />locality: SDTO","exp_file: SDTO_FED2000_MADRI_S2<br />value: 4474.110<br />exp_file: SDTO_FED2000_MADRI_S2<br />value - se: 3749.785<br />value + se: 5198.436<br />locality: SDTO","exp_file: SDTO_FED2000_MADRI_S3<br />value: 5031.951<br />exp_file: SDTO_FED2000_MADRI_S3<br />value - se: 4180.062<br />value + se: 5883.841<br />locality: SDTO","exp_file: SDTO_FED2000_COL_S3<br />value: 4935.371<br />exp_file: SDTO_FED2000_COL_S3<br />value - se: 4454.551<br />value + se: 5416.192<br />locality: SDTO","exp_file: SDTO_FED2000_COL_S4<br />value: 5541.608<br />exp_file: SDTO_FED2000_COL_S4<br />value - se: 4976.976<br />value + se: 6106.241<br />locality: SDTO","exp_file: SDTO_FED2000_MADRII_S1<br />value: 5430.364<br />exp_file: SDTO_FED2000_MADRII_S1<br />value - se: 5130.882<br />value + se: 5729.846<br />locality: SDTO","exp_file: SDTO_FED2000_MADRII_S2<br />value: 5113.853<br />exp_file: SDTO_FED2000_MADRII_S2<br />value - se: 4676.623<br />value + se: 5551.083<br />locality: SDTO"],"type":"scatter","mode":"lines","opacity":1,"line":{"color":"transparent"},"error_x":{"array":[800.18083100775038,724.32564301061939,851.88945904954471,480.82056238523455,564.63239322316531,299.48164507538968,437.23032096354018],"arrayminus":[800.18083100775038,724.32564301061984,851.88945904954471,480.82056238523455,564.63239322316531,299.48164507538968,437.23032096354018],"type":"data","width":0.01226629334391309,"symmetric":false,"color":"rgba(248,118,109,1)"},"name":"SDTO","legendgroup":"SDTO","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[8103.2521906976799,4474.11033872599,5031.9514155712804,4935.37109776528,5541.6081904744697,5430.3641003053799,5113.8528960755802],"y":[3,4,5,1,2,6,7],"text":["exp_file: SDTO_FED2000_MADRI_S1<br />value: 8103.252<br />exp_file: SDTO_FED2000_MADRI_S1<br />locality: SDTO","exp_file: SDTO_FED2000_MADRI_S2<br />value: 4474.110<br />exp_file: SDTO_FED2000_MADRI_S2<br />locality: SDTO","exp_file: SDTO_FED2000_MADRI_S3<br />value: 5031.951<br />exp_file: SDTO_FED2000_MADRI_S3<br />locality: SDTO","exp_file: SDTO_FED2000_COL_S3<br />value: 4935.371<br />exp_file: SDTO_FED2000_COL_S3<br />locality: SDTO","exp_file: SDTO_FED2000_COL_S4<br />value: 5541.608<br />exp_file: SDTO_FED2000_COL_S4<br />locality: SDTO","exp_file: SDTO_FED2000_MADRII_S1<br />value: 5430.364<br />exp_file: SDTO_FED2000_MADRII_S1<br />locality: SDTO","exp_file: SDTO_FED2000_MADRII_S2<br />value: 5113.853<br />exp_file: SDTO_FED2000_MADRII_S2<br />locality: SDTO"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":5.6692913385826778,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"SDTO","legendgroup":"SDTO","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"visible":false,"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","x":[null],"y":[null],"frame":null}],"layout":{"margin":{"t":45.356726924421878,"r":7.3059360730593621,"b":43.818455386996689,"l":154.15525114155253},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Rice Yield - Cultivar FED2000","font":{"color":"rgba(0,0,0,1)","family":"","size":17.534246575342465},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-445.17165108527155,9348.6046727907014],"tickmode":"array","ticktext":["0","2500","5000","7500"],"tickvals":[0,2500,5000,7500],"categoryorder":"array","categoryarray":["0","2500","5000","7500"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716894984},"tickangle":-45,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Yield (Kg/ha - 14% grain moisture )","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,7.5999999999999996],"tickmode":"array","ticktext":["SDTO_FED2000_COL_S3","SDTO_FED2000_COL_S4","SDTO_FED2000_MADRI_S1","SDTO_FED2000_MADRI_S2","SDTO_FED2000_MADRI_S3","SDTO_FED2000_MADRII_S1","SDTO_FED2000_MADRII_S2"],"tickvals":[1,2,3,4.0000000000000009,5,6,7],"categoryorder":"array","categoryarray":["SDTO_FED2000_COL_S3","SDTO_FED2000_COL_S4","SDTO_FED2000_MADRI_S1","SDTO_FED2000_MADRI_S2","SDTO_FED2000_MADRI_S3","SDTO_FED2000_MADRII_S1","SDTO_FED2000_MADRII_S2"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Experimental file","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":"transparent","line":{"color":"rgba(51,51,51,1)","width":0.66417600664176002,"linetype":"solid"},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716894984},"title":{"text":"Site: ","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"1e2e6a4fd176":{"x":{},"y":{},"label":{},"type":"scatter"},"1e2e6561864a":{"x":{},"y":{},"label":{},"ymin":{},"ymax":{},"colour":{}},"1e2e224ac100":{"x":{},"y":{},"label":{},"colour":{}},"1e2e2cf2cfcb":{"y":{}}},"cur_data":"1e2e6a4fd176","visdat":{"1e2e6a4fd176":["function (y) ","x"],"1e2e6561864a":["function (y) ","x"],"1e2e224ac100":["function (y) ","x"],"1e2e2cf2cfcb":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

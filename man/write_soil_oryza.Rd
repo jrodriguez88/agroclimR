@@ -40,7 +40,7 @@ Function compute Soil information to ORYZA soil file.
 }
 \examples{
 # Write ORYZA Soil file
-soil_sample = group_by(soil, NL) \%>\% sample_n(1)
+soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
 write_soil_oryza(id_name = "test_soil", soil_data = soil_sample)
 
 }

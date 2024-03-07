@@ -13,7 +13,7 @@ write_soil_dssat(
   sldr = 0.6,
   slnf = 1,
   slpf = 1,
-  multi = F
+  multi = FALSE
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ write_soil_dssat(
 
 \item{id_name}{A String. 4 letters string of locality name. (ex. "JR")}
 
-\item{soil_data}{A Data frame. Soil data. see \code{soil}}
+\item{soil_data}{A Data frame. Soil data. See \code{?soil}}
 
 \item{salb}{Numeric. Albedo, fraction}
 
@@ -43,7 +43,8 @@ Function compute Soil information to DSSAT v4.8 soil file.
 }
 \examples{
 # Write DSSAT v4.8 Soil file
-#soil = group_by(soil, NL) \%>\% sample_n(1)
-#write_soil_dssat(id_name = "test_soil", soil_data = soil)
+soil_sample = dplyr::group_by(soil, NL) |>
+dplyr::sample_n(1) |> dplyr::ungroup()
+write_soil_dssat(id_name = "test_soil", soil_data = soil_sample)
 
 }

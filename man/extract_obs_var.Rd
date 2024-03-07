@@ -2,39 +2,43 @@
 % Please edit documentation in R/import_exp_data.R
 \name{extract_obs_var}
 \alias{extract_obs_var}
-\title{Extract from base data - agroclimR data format xlsx}
+\title{Extract Experimental Data by Variable from agroclimR Data Workbook}
 \usage{
 extract_obs_var(obs_data, variable, model = "oryza")
 }
 \arguments{
-\item{obs_data}{A list of agroclimR data_workbooks read by  \code{read_agroclimr_data} function.}
+\item{obs_data}{A list containing one or more agroclimR data workbooks, as read by the \code{read_agroclimr_data()} function. Each element of the list should be a named list representing a single workbook, where each name-value pair corresponds to a specific type of observational data.}
 
-\item{variable}{A String value. options = variable  <- c("phen", "lai", "dry_matter", "yield")}
+\item{variable}{A character string specifying the variable to extract. Valid options are "phen" (phenological data), "lai" (leaf area index), "dry_matter" (dry matter), and "yield". This parameter determines which type of data the function will extract from the provided workbooks.}
 
-\item{model}{A string of model name. options = model  <- c("oryza", "dssat", "aquacrop"),}
+\item{model}{A character string specifying the crop model for which data is being extracted. Valid options include "oryza" (for rice), "dssat" (for various crops), and "aquacrop" (for water-driven crop growth). This parameter allows the function to tailor the extraction process to the data structure used by different crop models.}
 }
 \value{
-This function returns a \code{tibble} with de data for the specific selected variable ( "phen", "lai", "dry_matter" or  "yield") and model.
+A \code{tibble} containing the extracted data for the specified variable and model. The returned tibble is structured to facilitate further analysis and visualization, making it a valuable resource for agricultural researchers and analysts.
 }
 \description{
-Function to extract experimental data by variable from agroclimR data workbook
+Extracts experimental data based on specified variables from a set of agroclimR data workbooks. This function is tailored to handle data in the agroclimR xlsx format, facilitating the retrieval of agricultural research data for different variables and models. It supports a range of variables such as phenological data, leaf area index, dry matter, and yield, across various crop models.
 }
 \examples{
-# Extract Experimental data by variable from agroclimR data workbook
+# Prepare a sample list of agroclimR data workbooks
+obs_data = list(
+  list(
+    AGRO_man = agro,
+    FERT_obs = fertil,
+    PHEN_obs = phenol,
+    PLANT_obs = plant,
+    YIELD_obs = yield,
+    SOIL_obs = soil,
+    WTH_obs = weather
+  )
+)
 
-obs_data  = list(list(AGRO_man = agro,
-FERT_obs = fertil,
-PHEN_obs = phenol,
-PLANT_gro = plant,
-YIELD_obs = yield,
-SOIL_obs = soil,
-WTH_obs = weather))
-
+# Extract phenological data for the "oryza" model
 phenological_data <- extract_obs_var(obs_data, "phen", model = "oryza")
-
 print(phenological_data)
 
-extract_obs_var(obs_data, "yield", model = "oryza")
-
+# Extract yield data for the "oryza" model
+yield_data <- extract_obs_var(obs_data, "yield", model = "oryza")
+print(yield_data)
 
 }

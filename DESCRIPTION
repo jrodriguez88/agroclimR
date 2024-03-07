@@ -17,7 +17,8 @@ Depends:
 LazyData: true
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Imports: 
     data.table,
@@ -37,5 +38,7 @@ Imports:
     soiltexture,
     stringr,
     tidyr,
-    tibble
+    tibble,
+    magrittr
 URL: https://jrodriguez88.github.io/agroclimR/
+Config/testthat/edition: 3

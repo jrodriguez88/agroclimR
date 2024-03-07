@@ -9,6 +9,7 @@
 #' @param sysclass Character string specifying the soil classification system to use.
 #'        Default is "USDA", but can be changed if other systems are supported by the `soiltexture` package.
 #' @return String with the calculated soil texture class name, based on the input percentages of sand, clay, and silt.
+#' @export
 #' @examples
 #' # Calculate the soil texture class for a soil with 30% sand and 20% clay using USDA system
 #' get_STC(30, 20)

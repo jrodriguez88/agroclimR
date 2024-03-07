@@ -15,11 +15,11 @@
 #' @export
 #' @examples
 #' # Write ORYZA Soil file
-#' soil_sample = group_by(soil, NL) %>% sample_n(1)
+#' soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
 #' write_soil_oryza(id_name = "test_soil", soil_data = soil_sample)
 #'
 ## Update the details for the return value
-#' @return This function returns a \code{logical} if files created in path folder.
+#' @returns This function returns a \code{logical} if files created in path folder.
 #'
 # @seealso \link[sirad]{se}
 write_soil_oryza <- function(path = ".", id_name, soil_data, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20){

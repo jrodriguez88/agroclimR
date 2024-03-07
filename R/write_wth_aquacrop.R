@@ -20,7 +20,7 @@
 #'   path = ".", id_name = "TEST", wth_data = weather,
 #'   lat = 3.8, lon = -76.5, elev = 650)
 #'
-#' @return This function returns a logical value indicating whether the files were successfully created in the specified path folder.
+#' @returns This function returns a logical value indicating whether the files were successfully created in the specified path folder.
 #'
 # @seealso \link[]{}
 write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2", ...) {

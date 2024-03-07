@@ -4,7 +4,7 @@
 #'
 #' @param path A string indicating path folder or working directory
 #' @param id_name A String. 4 letters string of locality name. (ex. "JR")
-#' @param soil_data A Data frame. Soil data. see `soil`
+#' @param soil_data A Data frame. Soil data. See `?soil`
 #' @param salb Numeric. Albedo, fraction
 #' @param evapL Numeric. Evaporation limit, (mm)
 #' @param slnf Numeric. Mineralization factor, 0 to 1 scale.
@@ -16,17 +16,18 @@
 #' @export
 #' @examples
 #' # Write DSSAT v4.8 Soil file
-#' #soil = group_by(soil, NL) %>% sample_n(1)
-#' #write_soil_dssat(id_name = "test_soil", soil_data = soil)
+#' soil_sample = dplyr::group_by(soil, NL) |>
+#' dplyr::sample_n(1) |> dplyr::ungroup()
+#' write_soil_dssat(id_name = "test_soil", soil_data = soil_sample)
 #'
 ## Update the details for the return value
-#' @return This function returns a \code{logical} if files created in path folder.
+#' @returns This function returns a \code{logical} if files created in path folder.
 #'
 # @seealso \link[sirad]{se}
-write_soil_dssat <- function(path = ".", id_name, soil_data, salb = 0.13, evapL = 6, sldr = 0.6, slnf = 1, slpf = 1, multi = F) {
+write_soil_dssat <- function(path = ".", id_name, soil_data, salb = 0.13, evapL = 6, sldr = 0.6, slnf = 1, slpf = 1, multi = FALSE) {
 
 stc <- soil_data$STC
-data <- tidy_soil_dssat(soil_data)
+data <- agroclimR:::tidy_soil_dssat(soil_data)
 
 
 SCOM <- "-99"    # SCOM     Color, moist, Munsell hue
@@ -87,7 +88,7 @@ if (isFALSE(multi)){
   idsoilAR <<- idsoilAR
   suppressWarnings(file.remove(paste0(path, id_name, '.SOL')))
 } else if (all(!exists("idsoilAR"), isTRUE(multi))){
-  file.remove(paste0(path, id_name, '.SOL'))
+  file.remove(paste0(path, "/", id_name, '.SOL'))
   idsoilAR <- 1
   idsoilAR <<- idsoilAR
   } else if (all(exists("idsoilAR"), isTRUE(multi), idsoilAR==1)){
@@ -105,12 +106,11 @@ max_depth <- soil_tb$SLB[[nrow(soil_tb)]]
 texture <- toupper(str_sub(stc[[1]],1,2))
 
 
-sink(paste0(path, id_name, '.SOL'), append = multi)
+sink(paste0(path, "/", id_name, '.SOL'), append = multi)
 if (isFALSE(multi)){
   cat("*SOILS: AgroclimR DSSAT Soil Input File - by https://github.com/jrodriguez88/agroclimR", sep = "\n")
   cat("\n")
-}
-else if(all(exists("idsoilAR"), idsoilAR==1)){
+} else if(all(exists("idsoilAR"), idsoilAR==1)){
   cat("*SOILS: AgroclimR DSSAT Soil Input File - by https://github.com/jrodriguez88/agroclimR", sep = "\n")
   cat("\n")
 } else if(all(exists("idsoilAR"), isTRUE(multi), idsoilAR>1)){
@@ -157,11 +157,28 @@ tidy_soil_dssat <- function(soil_data, max_depth = 200){
 
   } else {stop(message("NO data")) }
 
-  # require SRGF_cal function --> utils_crop_model
-  SRGF <- soil_data[c("depth", "DEPTH", "SLB")[which(c("depth", "DEPTH", "SLB") %in% var_names)]] %>%
-    mutate(SRGF = SRGF_cal(pull(.), max_depth, 2)) %>% pull(SRGF)
 
-  soil_data <- soil_data %>% mutate(SRGF = SRGF)
+  ## transform data to  dssat format
+  soil_to <- soil_data %>%
+    mutate(SLB  = NL*DEPTH,
+           #SBDM = SBDM,
+           SLOC = SOC/10, # %
+           SLNI = (SLON + SNH4 + SNO3)/1000,
+           OM = (100/58)*SLOC, # Organic matter (%) = Total organic carbon (%) x 1.72 https://www.soilquality.org.au/factsheets/organic-carbon
+           SSKS = pmap_dbl(.l = list(SAND, CLAY, OM, SBDM), SSKS_cal)/10,   #multimodel bootstrapping + from mm/h to  cm/h
+           SDUL = WCFC/100,
+           SSAT = WCST/100,
+           SLLL = WCWP/100,
+           SLCF = 1.5) %>%
+    rename(id_name = LOC_ID, SLCL = CLAY, SLHW = PH, SLSI = SILT ) %>%
+    dplyr::select(c(id_name, SLB,  SCEC,  SLCF,  SLCL,  SLHW,  SLSI,  SBDM,  SLOC,  SLNI,  SDUL,  SSAT,  SLLL,  SSKS, STC))
+
+
+  # require SRGF_cal function --> utils_crop_model
+  SRGF_cal <- soil_to[c("depth", "DEPTH", "SLB")[which(c("depth", "DEPTH", "SLB") %in% colnames(soil_to))]] %>%
+    mutate(SRGF = agroclimR:::SRGF_cal(pull(.), max_depth, 2)) %>% pull(SRGF)
+
+  soil_data <- soil_to %>% mutate(SRGF = SRGF_cal)
 
 
   #CN: Curve number (dimensionless)

@@ -2,28 +2,35 @@
 % Please edit documentation in R/import_exp_data.R
 \name{import_exp_data}
 \alias{import_exp_data}
-\title{Import Experimental data from agroclimR data workbook}
+\title{Import Experimental Data from agroclimR Data Workbook}
 \usage{
-import_exp_data(path = ., files, model = "oryza")
+import_exp_data(files, model = "oryza")
 }
 \arguments{
-\item{path}{A string indicating path folder or working directory}
+\item{files}{Vector of strings with workbook names (.xls extension file included).}
 
-\item{files}{A String vector. Vector of strings from workbooks names}
-
-\item{model}{A string of workbook names}
+\item{model}{String indicating the model name, default "oryza",options: ("dssat", "aquacrop").}
 }
 \value{
-This function returns a \code{list} of raw data and observed data by component (phen, dry_matter, lai and yield)
+List containing raw and observed data by component ("data", "soil", "wth", "phen", "lai", "dry_matter", "yield").
 }
 \description{
-Function to extract experimental data from agroclimR data workbook
+\code{import_exp_data()} performs extraction of experimental data from the agroclimR data workbook, including
+location, soil, climate data, and observed data for phenology, leaf area index,
+dry matter, and yield.
 }
 \examples{
-# Import Experimental data from agroclimR data workbook
-#Assuming you have 'n'  workbooks with agroclimR data workbook format in a specific folder \code{path}
-path = "data/"
-files <- list.files(path = path, pattern = "xls")
-obs_data <- import_exp_data(path = path, files, model = "oryza")
+#' # File names vector, extension include
+name_file = c("SDTO_F2000.xlsx")
 
+# Files directory
+test_file = system.file("extdata", name_file[1], package = "agroclimR")
+
+# Import data to R lists and tibble formats
+obs_data = import_exp_data(test_file, model = "oryza")
+
+head(obs_data)
+}
+\seealso{
+\link[sirad]{?sirad}
 }

@@ -49,6 +49,6 @@ write_wth_oryza(
 
 write_wth_oryza(
   path = ".", id_name = "TEST2", wth_data = weather,
-  lat = 3.8, lon = -76.5, elev = 650, multiyear = T, tag = T)
+  lat = 3.8, lon = -76.5, elev = 650, multiyear = TRUE, tag = TRUE)
 
 }

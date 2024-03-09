@@ -2,7 +2,7 @@ plot_lai_obs <-
 function(lai_data){
 
 
-  lai_ <- lai %>% #drop_na() %>%
+  lai_ <- lai_data %>% #drop_na() %>%
     mutate(locality = word(exp_file, 1, sep = "_"),
            cultivar = word(exp_file, 2, sep = "_"),
            pat_rem = paste0(locality, "_", cultivar,"_"),

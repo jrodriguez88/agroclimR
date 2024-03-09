@@ -7,7 +7,7 @@
 # @param path String indicating the path folder or working directory.
 #' @param files Vector of strings with workbook names (.xls extension file included).
 #' @param model String indicating the model name, default "oryza",options: ("dssat", "aquacrop").
-#' @import magrittr
+# @import magrittr
 #' @import dplyr
 #' @import stringr
 # @import readxl
@@ -59,7 +59,7 @@ import_exp_data <- function(files, model = "oryza"){
    # mutate(LOC_ID = str_sub(ID, 1, 4)) %>%
     group_by(LOC_ID, NL) %>%
     summarize_if(is.numeric, .funs = mean) %>%
-    mutate(ID=LOC_ID, STC = agroclimR:::get_STC(SAND, CLAY)) %>% ungroup() %>%
+    mutate(ID=LOC_ID, STC = agroclimR::get_STC(SAND, CLAY)) %>% ungroup() %>%
     split(.$ID) %>%
     tibble::enframe(name = "site", value = "soil") %>%
     left_join(location_data, by = "site")
@@ -197,7 +197,7 @@ extract_obs_var <- function(obs_data, variable, model = "oryza") {
   remove_unders <- function(var){str_replace_all(var, "_", "")}
 
   set <- obs_data %>%
-    purrr::map(., ~.[["AGRO_man"]]) %>% dplyr::bind_rows() %>%
+    purrr::map(~ .x[["AGRO_man"]]) %>% dplyr::bind_rows() %>%
     dplyr::mutate_at(.vars = vars(LOC_ID, CULTIVAR, PROJECT, TR_N), .funs = remove_unders) %>%
     dplyr::mutate(exp_file = paste(LOC_ID, CULTIVAR, PROJECT, TR_N, sep = "_")) %>%
     dplyr::select(c(ID,	exp_file, LOC_ID,	PROJECT,	CULTIVAR,	TR_N))
@@ -207,7 +207,7 @@ extract_obs_var <- function(obs_data, variable, model = "oryza") {
 
 
   obs_data2 <- obs_data %>%
-    purrr::map(., ~.[[vars]]) %>%
+    purrr::map( ~ .x[[vars]]) %>%
     dplyr::bind_rows() %>%
     dplyr::select(-LOC_ID, -CULTIVAR) %>%
     nest(data = -c(ID)) %>% right_join(set, by= "ID") %>% tidyr::unnest(data) %>%

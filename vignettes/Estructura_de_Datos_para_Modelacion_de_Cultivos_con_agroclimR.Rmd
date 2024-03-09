@@ -15,6 +15,7 @@ vignette: >
 knitr::opts_chunk$set(collapse = T, comment = "#>")
 knitr::opts_chunk$set(out.width='750px', dpi=200)
 options(tibble.print_min = 4L, tibble.print_max = 4L)
+options(rmarkdown.html_vignette.check_title = FALSE)
 library(agroclimR)
 
 ```
@@ -247,7 +248,6 @@ str(weather)
 Finalmente, para crear pipes o flujos de trabajo usando `agroclimR`es necesario tener una estructura de lista donde se reunan todas las tablas o entidades. Se sugiere que la creacion de estos libros de trabajo se realice por conjuntos de datos de Localidad-Cultivar, es decir uniendo `LOC_ID` y `CULTIVAR`, usar "`_`" para unir los nombres del archivo (ejemplo = `LOC1_CULTIVAR1.xls`), usar nombres sin espacios. Es recomendable realizar la modelacion de un determinado cultivar por separado , de esta manera es posible reunir multiples libros de trabajo que en R se trasnforan en `list` format.
 
 ```{r worklist, message = FALSE}
-library(agroclimR)
 # Código de ejemplo para crear lista de conjunto de datos Localidad-Cultivar
 # Asumiendo que agroclimR esta cargado
 obs_data  = list(list(AGRO_man = agro, 
@@ -271,7 +271,7 @@ plotly::ggplotly(plot)
 ```
 
 
-Un resultado similar podemos obtener si exportamos los dtos desde el libreo de trabajo propuesto en agroclimR
+Podemos obtener el mismo resultado si exportamos los datos desde el libro de trabajo propuesto en este articulo.
 
 
 ``` {r from_workbook, message = FALSE}
@@ -282,14 +282,12 @@ file_name = c("SDTO_F2000.xlsx")
 # Files directory
 path_file = system.file("extdata", file_name[1], package = "agroclimR")
 
-
-obs_data2 = list(read_agroclimr_data(path_file))
+# A Partir de un libro de datos 
+obs_data2 = list(agroclimR:::read_agroclimr_data(path_file))
 
 
 yield_data2 <- extract_obs_var(obs_data2, "yield")
 
-#head(yield_data)
-library(ggplot2)
 plot2 <- agroclimR:::plot_yield_obs(yield_data2) + coord_flip()
 
 plotly::ggplotly(plot2)

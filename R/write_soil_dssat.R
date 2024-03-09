@@ -27,7 +27,7 @@
 write_soil_dssat <- function(path = ".", id_name, soil_data, salb = 0.13, evapL = 6, sldr = 0.6, slnf = 1, slpf = 1, multi = FALSE) {
 
 stc <- soil_data$STC
-data <- agroclimR:::tidy_soil_dssat(soil_data)
+data <- tidy_soil_dssat(soil_data)
 
 
 SCOM <- "-99"    # SCOM     Color, moist, Munsell hue
@@ -176,7 +176,7 @@ tidy_soil_dssat <- function(soil_data, max_depth = 200){
 
   # require SRGF_cal function --> utils_crop_model
   SRGF_cal <- soil_to[c("depth", "DEPTH", "SLB")[which(c("depth", "DEPTH", "SLB") %in% colnames(soil_to))]] %>%
-    mutate(SRGF = agroclimR:::SRGF_cal(pull(.), max_depth, 2)) %>% pull(SRGF)
+    mutate(SRGF = SRGF_cal(pull(.), max_depth, 2)) %>% pull(SRGF)
 
   soil_data <- soil_to %>% mutate(SRGF = SRGF_cal)
 

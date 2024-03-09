@@ -16,6 +16,7 @@
 #' @import stringr
 #' @import lubridate
 #' @importFrom sirad es
+#' @importFrom utils write.table
 #' @export
 #' @examples
 #' # Write file
@@ -110,7 +111,7 @@ cat("*  Column    Daily Value
 
 # helpers -----------------------------------------------------------------
 
-tidy_wth_oryza <- function(wth_data, cal_VP = T){
+tidy_wth_oryza <- function(wth_data, cal_VP = TRUE){
 
   #stopifnot(require(sirad))
   # Tidy weather data

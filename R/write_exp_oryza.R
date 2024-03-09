@@ -1,5 +1,4 @@
-write_exp_oryza <-
-function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
+write_exp_oryza <- function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
 
     #funcion para remover separadores "_" de las variables a analizar
     remove_unders <- function(var){str_replace_all(var, "_", "")}
@@ -52,7 +51,7 @@ function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
         cat(paste0('* File name        : ', str_replace(exp_file, out_path, ""), '                     *'), sep = '\n')
         cat(paste0('* Crop             : ', CULTIVAR, '                                       *') ,sep = '\n')
         cat(paste0('* Year/Season      : ', year(PDAT), '                                            *') ,sep = '\n')
-        cat(paste0('* Additional info  : ', 'Create with https://github.com/jrodriguez88', '     *') ,sep = '\n')
+        cat(paste0('* Additional info  : ', 'Create with agroclimR', '     *') ,sep = '\n')
         cat('*--------------------------------------------------------------------*',sep = '\n')
         cat('\n')
 
@@ -327,7 +326,7 @@ function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
 
         if (length(var2)<1){
 
-            message(paste0("No LAI in exp_file: ", exp_file ))
+            print(paste0("No LAI in exp_file: ", exp_file ))
 
         } else {
             a <- sprintf("%.1f", var2[,1])
@@ -459,7 +458,7 @@ function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
             PLANT_obs <-na.omit(PLANT_obs)
             var <- cbind(year(PLANT_obs$SAMPLING_DATE),yday(PLANT_obs$SAMPLING_DATE), PLANT_obs$WAGT_OBS)%>%
                 na.omit()
-            print(paste0("## Exist NA in Growth Tables! ##-->EXP:", i))
+            print(paste0("## Exist NA in Growth Tables! ##-->EXP:", exp_file))
         } else {
             var <- cbind(year(PLANT_obs$SAMPLING_DATE),yday(PLANT_obs$SAMPLING_DATE), PLANT_obs$WAGT_OBS)
         }

@@ -23,17 +23,21 @@
 #' @returns This function returns a logical value indicating whether the files were successfully created in the specified path folder.
 #'
 # @seealso \link[]{}
-write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2", ...) {
+write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2") {
 
 
     data <- tidy_wth_aquacrop(wth_data, lat, elev)
 
     ## Split data and write .ETo / .PLU / Tnx / .CLI files.
+    cli_file <- paste0(path,"/", id_name, ".CLI")
+    temp_file <- paste0(path,"/", id_name, ".Tnx")
+    rain_file <- paste0(path,"/", id_name, ".PLU")
+    eto_file <-  paste0(path,"/", id_name, ".ETo")
 
     # Climate file .CLI
     write_CLI <- function(id_name){
-        sink(file = paste0(path,"/", id_name, ".CLI"), append = F)
-        cat(paste(id_name, "Station, lat:", lat, "long:", lon, "- by https://github.com/jrodriguez88"), sep = "\n")
+        sink(file = cli_file, append = F)
+        cat(paste(id_name, "Station, lat:", lat, "long:", lon, "- by agroclimR"), sep = "\n")
         cat("6.0   : AquaCrop Version (March 2017)", sep = "\n")
         cat(paste0(id_name, ".Tnx"), sep = "\n")
         cat(paste0(id_name, ".ETo"), sep = "\n")
@@ -47,7 +51,7 @@ write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co
 
     # Temperature file .Tnx
     write_Tnx <- function(id_name){
-        sink(file = paste0(path,"/", id_name, ".Tnx"), append = F)
+        sink(file = temp_file, append = F)
         cat(paste0(id_name, " : daily temperature data (", format(min(data$date), "%d %B %Y"), " - ", format(max(data$date), "%d %B %Y"), ")"))
         cat("\n")
         cat(paste0("     1  : Daily records (1=daily, 2=10-daily and 3=monthly data)"), sep = "\n")
@@ -67,7 +71,7 @@ write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co
     write_Tnx(id_name)
 
     write_PLU <- function(id_name){
-        sink(file = paste0(path,"/", id_name, ".PLU"), append = F)
+        sink(file = rain_file, append = F)
         cat(paste0(id_name, " : daily rainfall data (", format(min(data$date), "%d %B %Y"), " - ", format(max(data$date), "%d %B %Y"), ")"))
         cat("\n")
         cat(paste0("     1  : Daily records (1=daily, 2=10-daily and 3=monthly data)"), sep = "\n")
@@ -84,7 +88,7 @@ write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co
     write_PLU(id_name)
 
     write_ETo <- function(id_name){
-        sink(file = paste0(path,"/", id_name, ".ETo"), append = F)
+        sink(file = eto_file, append = F)
         cat(paste0(id_name, " : daily ETo data (", format(min(data$date), "%d %B %Y"), " - ", format(max(data$date), "%d %B %Y"), ")"))
         cat("\n")
         cat(paste0("     1  : Daily records (1=daily, 2=10-daily and 3=monthly data)"), sep = "\n")
@@ -100,7 +104,12 @@ write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co
     }
     write_ETo(id_name)
 
-    return(any(str_detect(list.files(path, id_name), id_name) == T))
+    files_created <- c(cli_file, temp_file, rain_file, eto_file)
+
+    message(paste("Oryza Weather Files created in ", path, " : \n",
+                  paste(files_created, collapse = " ,")))
+
+    files_created
 
 }
 
@@ -109,7 +118,7 @@ write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co
 
 
 
-tidy_wth_aquacrop <- function(wth_data, lat, elev, cal_ETo = T){
+tidy_wth_aquacrop <- function(wth_data, lat, elev, cal_ETo = TRUE){
 
   var_names <- tolower(colnames(wth_data))
   wth_data <- setNames(wth_data, var_names)

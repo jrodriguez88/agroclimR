@@ -43,6 +43,9 @@
     <loc>https://jrodriguez88.github.io/agroclimR/reference/fertil.html</loc>
   </url>
   <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/get_STC.html</loc>
+  </url>
+  <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/import_exp_data.html</loc>
   </url>
   <url>
@@ -55,6 +58,9 @@
     <loc>https://jrodriguez88.github.io/agroclimR/reference/plant.html</loc>
   </url>
   <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/read_agroclimr_data.html</loc>
+  </url>
+  <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/run_drates_param.html</loc>
   </url>
   <url>
@@ -62,6 +68,9 @@
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/weather.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/write_exp_oryza.html</loc>
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/write_soil_aquacrop.html</loc>

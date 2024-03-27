@@ -56,7 +56,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>obs_data</dt>
-<dd><p>A list containing one or more agroclimR data workbooks, as read by the <code>read_agroclimr_data()</code> function. Each element of the list should be a named list representing a single workbook, where each name-value pair corresponds to a specific type of observational data.</p></dd>
+<dd><p>A list containing one or more agroclimR data workbooks, as read by the <code><a href="read_agroclimr_data.html">read_agroclimr_data()</a></code> function. Each element of the list should be a named list representing a single workbook, where each name-value pair corresponds to a specific type of observational data.</p></dd>
 
 
 <dt>variable</dt>
@@ -77,9 +77,8 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Prepare a sample list of agroclimR data workbooks</span></span></span>
-<span class="r-in"><span><span class="va">obs_data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    AGRO_man <span class="op">=</span> <span class="va">agro</span>,</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">agroclimR_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>AGRO_man <span class="op">=</span> <span class="va">agro</span>,</span></span>
 <span class="r-in"><span>    FERT_obs <span class="op">=</span> <span class="va">fertil</span>,</span></span>
 <span class="r-in"><span>    PHEN_obs <span class="op">=</span> <span class="va">phenol</span>,</span></span>
 <span class="r-in"><span>    PLANT_obs <span class="op">=</span> <span class="va">plant</span>,</span></span>
@@ -87,11 +86,12 @@
 <span class="r-in"><span>    SOIL_obs <span class="op">=</span> <span class="va">soil</span>,</span></span>
 <span class="r-in"><span>    WTH_obs <span class="op">=</span> <span class="va">weather</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">obs_data</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">agroclimR_list</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extract phenological data for the "oryza" model</span></span></span>
 <span class="r-in"><span><span class="va">phenological_data</span> <span class="op">&lt;-</span> <span class="fu">extract_obs_var</span><span class="op">(</span><span class="va">obs_data</span>, <span class="st">"phen"</span>, model <span class="op">=</span> <span class="st">"oryza"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">phenological_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">phenological_data</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 21 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    exp_file               data             var   value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
@@ -109,7 +109,7 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Extract yield data for the "oryza" model</span></span></span>
 <span class="r-in"><span><span class="va">yield_data</span> <span class="op">&lt;-</span> <span class="fu">extract_obs_var</span><span class="op">(</span><span class="va">obs_data</span>, <span class="st">"yield"</span>, model <span class="op">=</span> <span class="st">"oryza"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">yield_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">yield_data</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   exp_file               var   value    se</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>

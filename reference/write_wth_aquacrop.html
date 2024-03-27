@@ -57,8 +57,7 @@
 <span>  <span class="va">lat</span>,</span>
 <span>  <span class="va">lon</span>,</span>
 <span>  <span class="va">elev</span>,</span>
-<span>  co2_file <span class="op">=</span> <span class="st">"MaunaLoa.CO2"</span>,</span>
-<span>  <span class="va">...</span></span>
+<span>  co2_file <span class="op">=</span> <span class="st">"MaunaLoa.CO2"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -96,19 +95,23 @@
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>This function returns a logical value indicating whether the files were successfully created in the specified path folder.</p>
+<p>This function returns a vector of model files created in path folder.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Write AquaCrop weather file</span></span></span>
-<span class="r-in"><span><span class="fu">write_wth_aquacrop</span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">wth_files_created</span> <span class="op">&lt;-</span> <span class="fu">write_wth_aquacrop</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  path <span class="op">=</span> <span class="st">"."</span>, id_name <span class="op">=</span> <span class="st">"TEST"</span>, wth_data <span class="op">=</span> <span class="va">weather</span>,</span></span>
 <span class="r-in"><span>  lat <span class="op">=</span> <span class="fl">3.8</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">76.5</span>, elev <span class="op">=</span> <span class="fl">650</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Oryza Weather Files created in  .  : </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  ./TEST.CLI ,./TEST.Tnx ,./TEST.PLU ,./TEST.ETo</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">wth_files_created</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "./TEST.CLI" "./TEST.Tnx" "./TEST.PLU" "./TEST.ETo"</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">wth_files_created</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE TRUE TRUE TRUE</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

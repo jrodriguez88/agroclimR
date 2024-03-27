@@ -16,14 +16,17 @@
 #' @export
 #' @examples
 #' # Write file
-#' write_wth_dssat(
+#' wth_files_created <- write_wth_dssat(
 #'   path = ".", id_name = "TEST", wth_data = weather,
 #'   lat = 3.91, lon = -75.0, elev = 450)
 #'
-## Update the details for the return value
-#' @return This function returns a \code{logical} if files created in path folder.
+#' wth_files_created
+#' file.remove(wth_files_created)
 #'
-# @seealso \link[https://dssat.net/weather-module/]{se}
+## Update the details for the return value
+#' @returns This function returns a vector of model files created in path folder.
+#'
+#' @seealso \link[https://dssat.net/weather-module/]{DSSAT Weather module}
 write_wth_dssat <- function(path = ".", id_name, wth_data, lat, lon, elev, ref_ht = 2){
 
     data <- tidy_wth_dssat(wth_data)
@@ -52,9 +55,10 @@ write_wth_dssat <- function(path = ".", id_name, wth_data, lat, lon, elev, ref_h
     rhum <- if(is.numeric(data$wth_data$rhum)) as.character(sprintf("%2.1f", data$wth_data$rhum)) else data$wth_data$rhum
 
 
+    #File name
+    file_name = paste0(path, "/", id_name, '.WTH')
 
-
-    sink(paste0(path, "/", id_name, '.WTH'), append = F)
+    sink(file_name, append = F)
 
 
 
@@ -71,7 +75,10 @@ write_wth_dssat <- function(path = ".", id_name, wth_data, lat, lon, elev, ref_h
                       date, srad, tmax, tmin, rain, " ", wspd, " ", " ", rhum)), sep = "\n")
     sink()
 
-    return(any(str_detect(list.files(path, id_name), id_name) == T))
+    message(paste("DSSAT Weather Files created in ", path, " : \n",
+                  paste(file_name, collapse = " ,")))
+    file_name
+
 
 
 }
@@ -86,7 +93,7 @@ tidy_wth_dssat <- function(wth_data){
   wth_data <- setNames(wth_data, var_names)
 
  # stopifnot(require(sirad))
-  stopifnot(class(wth_data$date)=="Date" & all(c("tmax", "tmin", "rain", "srad") %in%  var_names))
+  stopifnot(is.Date(wth_data$date) & all(c("tmax", "tmin", "rain", "srad") %in%  var_names))
 
   if (!"rhum" %in% var_names) {
     wth_data <- mutate(wth_data, rhum = " ")

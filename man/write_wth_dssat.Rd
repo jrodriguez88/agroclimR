@@ -22,15 +22,21 @@ write_wth_dssat(path = ".", id_name, wth_data, lat, lon, elev, ref_ht = 2)
 \item{ref_ht}{Numeric. Reference height (meters)- weather station}
 }
 \value{
-This function returns a \code{logical} if files created in path folder.
+This function returns a vector of model files created in path folder.
 }
 \description{
 Function compute weather information DSSAT v4.8 weather file.
 }
 \examples{
 # Write file
-write_wth_dssat(
+wth_files_created <- write_wth_dssat(
   path = ".", id_name = "TEST", wth_data = weather,
   lat = 3.91, lon = -75.0, elev = 450)
 
+wth_files_created
+file.remove(wth_files_created)
+
+}
+\seealso{
+\link[https://dssat.net/weather-module/]{DSSAT Weather module}
 }

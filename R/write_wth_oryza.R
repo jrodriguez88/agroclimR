@@ -1,4 +1,4 @@
-#' Write ORYZA v3 Weather File
+#' Write ORYZA v3 Weather File (.WTH - .CLI)
 #'
 #' Function compute weather information to ORYZA weather file.
 #'
@@ -20,16 +20,21 @@
 #' @export
 #' @examples
 #' # Write file
-#' write_wth_oryza(
+#' files_created <- write_wth_oryza(
 #'   path = ".", id_name = "TEST", wth_data = weather,
 #'   lat = 3.8, lon = -76.5, elev = 650)
+#' files_created
+#' file.remove(files_created)
 #'
-#' write_wth_oryza(
+#' files_created2 <- write_wth_oryza(
 #'   path = ".", id_name = "TEST2", wth_data = weather,
 #'   lat = 3.8, lon = -76.5, elev = 650, multiyear = TRUE, tag = TRUE)
 #'
+#' files_created2
+#' file.remove(files_created2)
+#'
 ## Update the details for the return value
-#' @return This function returns a \code{logical} if files created in path folder.
+#' @returns This function returns a vector of model files created in path folder.
 #'
 # @seealso \link[sirad]{se}
 write_wth_oryza <- function(path = ".", id_name, wth_data, lat, lon, elev, stn=1, multiyear = F, tag = F) {
@@ -82,8 +87,8 @@ cat("*  Column    Daily Value
 
     if(isTRUE(multiyear)){
     #DATA=read.table(file, head=T)
-        fname <- paste0(path, "/" , id_name, stn, ".cli")
-        sink(file = fname, append = F)
+        file_name <- paste0(path, "/" , id_name, stn, ".cli")
+        sink(file = file_name, append = F)
         if(isTRUE(tag)) print_tag()
         cat(set_head)
         cat("\n")
@@ -91,9 +96,10 @@ cat("*  Column    Daily Value
         sink()
     } else {
         data_list <- split(data_to, data_to$year)
-        walk(data_list, function(x){
-            fname <- paste(path,"/", id_name, stn,".", str_sub(unique(x$year), 2), sep = "")
-            sink(file=fname)
+        file_name <- paste(path,"/", id_name, stn,".", str_sub(names(data_list), 2), sep = "")
+        walk2(data_list, file_name, function(x,y) {
+
+            sink(file=y)
             if(isTRUE(tag)) print_tag()
             cat(set_head)
             cat("\n")
@@ -103,8 +109,10 @@ cat("*  Column    Daily Value
 
     }
 
+    message(paste("Oryza Weather Files created in ", path, " : \n",
+                  paste(file_name, collapse = " ,")))
+    file_name
 
-    return(any(str_detect(list.files(path, id_name), id_name) == T))
 
 
 }

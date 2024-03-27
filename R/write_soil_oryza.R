@@ -16,10 +16,13 @@
 #' @examples
 #' # Write ORYZA Soil file
 #' soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
-#' write_soil_oryza(id_name = "test_soil", soil_data = soil_sample)
+#' soil_files_created <- write_soil_oryza(id_name = "soil_oryza", soil_data = soil_sample)
+#'
+#' soil_files_created
+#' file.remove(soil_files_created)
 #'
 ## Update the details for the return value
-#' @returns This function returns a \code{logical} if files created in path folder.
+#' @returns This function returns a vector of model files created in path folder.
 #'
 # @seealso \link[sirad]{se}
 write_soil_oryza <- function(path = ".", id_name, soil_data, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20){
@@ -34,9 +37,9 @@ write_soil_oryza <- function(path = ".", id_name, soil_data, ZRTMS = 0.50, WL0I 
                SNH4X = DEPTH*SBDM*SNH4/10,
                SNO3X = DEPTH*SBDM*SNO3/10)
 
-    file_name = paste0(id_name, ".sol")
+    file_name = paste0(path,'/', paste0(id_name, ".sol"))
 
-    sink(file = paste0(path,'/', file_name), append = F)
+    sink(file = file_name , append = F)
 
 ########################################
 ### 0. Head_sol
@@ -245,7 +248,12 @@ a[nrow(data)] <- str_sub(a[nrow(data)], end = -2)
 writeLines(a[1:nrow(data)])
 sink()
 
-return(any(str_detect(list.files(path), file_name) == T))
+
+
+message(paste("Oryza Experimental Files created in ", path, " : \n",
+              paste(file_name, collapse = " ,")))
+file_name
+
 
 
 }

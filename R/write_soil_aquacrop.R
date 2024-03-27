@@ -16,18 +16,25 @@
 #' @export
 #' @examples
 #' # Write Aquacrop v6 Soil file
-#' #soil_sample = group_by(soil, NL) %>% sample_n(1)
-#' #write_soil_aquacrop(path = ".", id_name = "test_soil", soil_data = soil_sample)
+#' soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
+#' soil_files_created <- write_soil_aquacrop(
+#' path = ".",
+#' id_name = "soil_aquacrop",
+#' soil_data = soil_sample)
+#'
+#' soil_files_created
+#' file.remove(soil_files_created)
 #'
 ## Update the details for the return value
-#' @return This function returns a \code{logical} if files created in path folder.
+#' @returns This function returns a vector of model files created in path folder.
 #'
 # @seealso \link[sirad]{se}
 
 
 write_soil_aquacrop <- function(path = ".", id_name, soil_data, model_version = 6.1) {
 
-    data <- as.data.frame(soil_data)
+    data <- as.data.frame(soil_data) %>%
+      tidy_soil_aquacrop()
 
     #CN: Curve number (dimensionless)
     CN <- data[1,] %>%
@@ -44,7 +51,9 @@ write_soil_aquacrop <- function(path = ".", id_name, soil_data, model_version = 
                              REW_cal < 0 ~ 0,
                              TRUE ~ REW_cal)) %>% pull(REW) %>% sprintf("%1.f", .)
 
-    sink(paste0(path, "/", id_name, ".SOL"), F)
+    file_name <- paste0(path, "/", id_name, ".SOL")
+
+    sink(file_name, F)
     cat(paste0(id_name, " AquaCrop soil file - by https://github.com/jrodriguez88"))
     cat('\n')
     cat(paste0("        ", model_version,"                 : AquaCrop Version (May 2018)"), sep = "\n")
@@ -67,6 +76,10 @@ write_soil_aquacrop <- function(path = ".", id_name, soil_data, model_version = 
                 row.names = F, quote = F, col.names = F)
     sink()
 
+    message(paste("AquaCrop soil Files created in ", path, " : \n",
+                  paste(file_name, collapse = " ,")))
+    file_name
+
 }
 
 
@@ -76,14 +89,15 @@ write_soil_aquacrop <- function(path = ".", id_name, soil_data, model_version = 
 tidy_soil_aquacrop <- function(soil_data, max_depth = 200){
 
 
-  soil_data %>% ifelse()
+  soil_data %>%
+
     #  mutate(SOC = case_when(SOC > 20 ~ SOC/5,
     #                       TRUE ~ SOC)) %>%
     mutate(Penetrability = 100,
            TKL = c(DEPTH/100),
            bdod = SBDM, Gravel = 0,
            OM = (100/58)*SOC/10, # Organic matter (%) = Total organic carbon (%) x 1.72
-           SSKS = pmap_dbl(.l = list(SAND, CLAY, OM, SBDM), SSKS_cal)*24,
+           SSKS = SSKS*24,
            CRa = case_when(str_detect(STC, "Sa|LoSa|SaLo") ~ (-0.3112 - SSKS*10^(-5)),
                            str_detect(STC, "Lo|SiLo|Si") ~ (-0.4986 + SSKS*9*10^(-5)),
                            str_detect(STC, "SaCl|SaClLo|ClLo") ~ (-0.5677 - SSKS*4*10^(-5)),
@@ -92,7 +106,7 @@ tidy_soil_aquacrop <- function(soil_data, max_depth = 200){
                            str_detect(STC, "Lo|SiLo|Si") ~ (-2.1320 + 0.4778*log(SSKS)),
                            str_detect(STC, "SaCl|SaClLo|ClLo") ~ (-3.7189 + 0.5922*log(SSKS)),
                            str_detect(STC, "SiClLo|SiCl|Cl") ~ (-1.9165 + 0.7063*log(SSKS)))) %>%
-    dplyr::select(id_name = site, TKL, WCST, WCFC, WCWP, SSKS, Penetrability, Gravel, CRa, CRb, STC) %>%
+    dplyr::select(id_name = LOC_ID, TKL, WCST, WCFC, WCWP, SSKS, Penetrability, Gravel, CRa, CRb, STC) %>%
     setNames(c("id_name", "Thickness", "Sat", "FC", "WP", "Ksat", "Penetrability", "Gravel", "CRa", "CRb", "description"))
 
 
@@ -100,6 +114,8 @@ tidy_soil_aquacrop <- function(soil_data, max_depth = 200){
 
 
 }
+
+
 
 
 

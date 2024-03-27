@@ -21,16 +21,13 @@ dry matter, and yield.
 }
 \examples{
 #' # File names vector, extension include
-name_file = c("SDTO_F2000.xlsx")
+name_file = c("agroclimR_workbook.xlsx")
 
 # Files directory
-test_file = system.file("extdata", name_file[1], package = "agroclimR")
+test_file = system.file("extdata", name_file, package = "agroclimR")
 
 # Import data to R lists and tibble formats
 obs_data = import_exp_data(test_file, model = "oryza")
 
 head(obs_data)
-}
-\seealso{
-\link[sirad]{?sirad}
 }

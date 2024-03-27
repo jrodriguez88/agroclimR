@@ -18,7 +18,10 @@
 #' # Write DSSAT v4.8 Soil file
 #' soil_sample = dplyr::group_by(soil, NL) |>
 #' dplyr::sample_n(1) |> dplyr::ungroup()
-#' write_soil_dssat(id_name = "test_soil", soil_data = soil_sample)
+#' soil_files_created <- write_soil_dssat(id_name = "soil_dssat", soil_data = soil_sample)
+#'
+#' soil_files_created
+#' file.remove(soil_files_created)
 #'
 ## Update the details for the return value
 #' @returns This function returns a \code{logical} if files created in path folder.
@@ -82,11 +85,13 @@ soil_tb <- map2(soil_data_col, format_data_col,
                   ~format_var(soil_data = data[[1]], par = .x, pat = .y)) %>%
   set_names(soil_data_col) %>% bind_cols()
 
+file_name <- paste0(path, id_name, '.SOL')
+
 #create id for multisoil profile
 if (isFALSE(multi)){
   idsoilAR <- 1
   idsoilAR <<- idsoilAR
-  suppressWarnings(file.remove(paste0(path, id_name, '.SOL')))
+  suppressWarnings(file.remove(file_name))
 } else if (all(!exists("idsoilAR"), isTRUE(multi))){
   file.remove(paste0(path, "/", id_name, '.SOL'))
   idsoilAR <- 1
@@ -106,7 +111,7 @@ max_depth <- soil_tb$SLB[[nrow(soil_tb)]]
 texture <- toupper(str_sub(stc[[1]],1,2))
 
 
-sink(paste0(path, "/", id_name, '.SOL'), append = multi)
+sink(file_name, append = multi)
 if (isFALSE(multi)){
   cat("*SOILS: AgroclimR DSSAT Soil Input File - by https://github.com/jrodriguez88/agroclimR", sep = "\n")
   cat("\n")
@@ -139,6 +144,13 @@ cat(cbind(sprintf("%6s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %5s %
 #if(isTRUE(multi)){cat("\n")}
 sink()
 
+message(paste("DSSAT soil Files created in ", path, " : \n",
+              paste(file_name, collapse = " ,")))
+file_name
+
+
+
+
 }
 
 
@@ -165,7 +177,7 @@ tidy_soil_dssat <- function(soil_data, max_depth = 200){
            SLOC = SOC/10, # %
            SLNI = (SLON + SNH4 + SNO3)/1000,
            OM = (100/58)*SLOC, # Organic matter (%) = Total organic carbon (%) x 1.72 https://www.soilquality.org.au/factsheets/organic-carbon
-           SSKS = pmap_dbl(.l = list(SAND, CLAY, OM, SBDM), SSKS_cal)/10,   #multimodel bootstrapping + from mm/h to  cm/h
+ #          SSKS = pmap_dbl(.l = list(SAND, CLAY, OM, SBDM), SSKS_cal)/10,   #multimodel bootstrapping + from mm/h to  cm/h
            SDUL = WCFC/100,
            SSAT = WCST/100,
            SLLL = WCWP/100,

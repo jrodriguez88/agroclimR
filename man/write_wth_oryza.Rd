@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_wth_oryza.R
 \name{write_wth_oryza}
 \alias{write_wth_oryza}
-\title{Write ORYZA v3 Weather File}
+\title{Write ORYZA v3 Weather File (.WTH - .CLI)}
 \usage{
 write_wth_oryza(
   path = ".",
@@ -36,19 +36,24 @@ write_wth_oryza(
 \item{tag}{A Logical. TRUE = write information for each file}
 }
 \value{
-This function returns a \code{logical} if files created in path folder.
+This function returns a vector of model files created in path folder.
 }
 \description{
 Function compute weather information to ORYZA weather file.
 }
 \examples{
 # Write file
-write_wth_oryza(
+files_created <- write_wth_oryza(
   path = ".", id_name = "TEST", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
+files_created
+file.remove(files_created)
 
-write_wth_oryza(
+files_created2 <- write_wth_oryza(
   path = ".", id_name = "TEST2", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650, multiyear = TRUE, tag = TRUE)
+
+files_created2
+file.remove(files_created2)
 
 }

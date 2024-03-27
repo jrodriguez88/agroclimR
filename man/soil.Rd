@@ -27,7 +27,7 @@ A \code{\link[data.frame]{data.frame}} with 18 rows and 22 columns:
 \item{WCFC}{Volumetric water content at field capacity - (\code{numeric}). Percentage of water content at field capacity (\%).}
 \item{WCWP}{Volumetric water content at wilting point - (\code{numeric}). Percentage of water content at wilting point (\%).}
 \item{WCAD}{Volumetric water content at air dryness - (\code{numeric}). Percentage of water content when soil is air dry (\%).}
-\item{SSKS}{Saturated hydraulic conductivity - (\code{numeric}). Measured in centimeters per hour (\code{cm/h}).}
+\item{SSKS}{Saturated hydraulic conductivity - (\code{numeric}). Measured in milimeters per hour (\code{mm/h}).}
 }
 }
 \source{

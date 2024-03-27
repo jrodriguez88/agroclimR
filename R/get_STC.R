@@ -3,12 +3,11 @@
 #' This function calculates the soil texture class based on the percentages of sand and clay
 #' using the specified soil classification system (default is USDA).
 #'
-#' @noRd
 #' @param S Numeric vector indicating the percentage of sand in the soil.
 #' @param C Numeric vector indicating the percentage of clay in the soil.
 #' @param sysclass Character string specifying the soil classification system to use.
 #'        Default is "USDA", but can be changed if other systems are supported by the `soiltexture` package.
-#' @return String with the calculated soil texture class name, based on the input percentages of sand, clay, and silt.
+#' @returns String with the calculated soil texture class name, based on the input percentages of sand, clay, and silt.
 #' @export
 #' @examples
 #' # Calculate the soil texture class for a soil with 30% sand and 20% clay using USDA system

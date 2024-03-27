@@ -26,14 +26,20 @@ write_soil_aquacrop(path = ".", id_name, soil_data, model_version = 6.1)
 \item{max_depth}{description}
 }
 \value{
-This function returns a \code{logical} if files created in path folder.
+This function returns a vector of model files created in path folder.
 }
 \description{
 Function compute Soil information to Aquacrop v6.1 soil file.
 }
 \examples{
 # Write Aquacrop v6 Soil file
-#soil_sample = group_by(soil, NL) \%>\% sample_n(1)
-#write_soil_aquacrop(path = ".", id_name = "test_soil", soil_data = soil_sample)
+soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
+soil_files_created <- write_soil_aquacrop(
+path = ".",
+id_name = "soil_aquacrop",
+soil_data = soil_sample)
+
+soil_files_created
+file.remove(soil_files_created)
 
 }

@@ -1,30 +1,63 @@
-write_exp_oryza <- function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
+#'  Write ORYZA v3 Experimental File (.EXP)
+#'
+#' `write_exp_oryza()` performs transformation from experimental data to ORYZA v3 file model format.
+#'
+#' @param agroclimr_list R list imported from excel workbook using `read_agroclimr_data()`.
+#' @param path A string indicating path folder or working directory
+#' @param ET_mod String indicating is method for evapotranspiration calculation,
+#' 'PENMAN' = Penman-based (Van Kraalingen& Stol,1996), 'PRIESTLY TAYLOR' = Priestly-Taylor ("),
+#  'MAKKINK' = Makkink (Van Kraalingen&Stol, 1996)
+#' @import dplyr
+#' @import stringr
+#' @import purrr
+#' @import tibble
+#' @import tidyr
+#' @export
+#' @examples
+#' #' # File names vector, extension include
+#' name_file = c("agroclimR_workbook.xlsx")
+#'
+#' # Files directory
+#' test_file = system.file("extdata", name_file, package = "agroclimR")
+#'
+#' # Import data to R lists and tibble formats
+#' agroclimr_list = read_agroclimr_data(test_file)
+#'
+#' # Write Oryza Experimental Files
+#' exp_files_created <- write_exp_oryza(agroclimr_list, path = "./")
+#'
+#' exp_files_created
+#' file.remove(exp_files_created)
+#'
+#' @returns This function returns a \code{vector} of model files created in path folder.
+
+write_exp_oryza <- function(agroclimr_list, path, ET_mod = "PRIESTLY TAYLOR") {
 
     #funcion para remover separadores "_" de las variables a analizar
     remove_unders <- function(var){str_replace_all(var, "_", "")}
 
 
     #tabla de experimentos crea nombre de archivos experimentales == ID
-    exp_data <- INPUT_data$AGRO_man %>%
+    exp_data <- agroclimr_list$AGRO_man %>%
         mutate_at(.vars = vars(LOC_ID, CULTIVAR, PROJECT, TR_N), .funs = remove_unders) %>%
         mutate(PDAT = as.Date(PDAT), exp_file  = paste(LOC_ID, CULTIVAR, PROJECT, TR_N, sep = "_") %>%
-                   paste0(out_path, .,".exp"))
+                   paste0(path, .,".exp"))
 
 
 
     # Extrae datos por componente del archivo experiental
 
     # Datos  de fertilizacion
-    FERT <- nest(INPUT_data$FERT_obs, FERT_obs = - ID)
+    FERT <- nest(agroclimr_list$FERT_obs, FERT_obs = - ID)
 
     # Datos de Fenologia
-    PHEN <- nest(INPUT_data$PHEN_obs, PHEN_obs = - ID)
+    PHEN <- nest(agroclimr_list$PHEN_obs, PHEN_obs = - ID)
 
     # Datos de crecimiento y desarrollo
-    PLANT <- nest(INPUT_data$PLANT_obs, PLANT_obs = - ID)
+    PLANT <- nest(agroclimr_list$PLANT_obs, PLANT_obs = - ID)
 
     # Datos de Rendimiento
-    YIELD <-  nest(INPUT_data$YIELD_obs, YIELD_obs = - ID)
+    YIELD <-  nest(agroclimr_list$YIELD_obs, YIELD_obs = - ID)
 
     if(any(colnames(exp_data) == "SBDUR")){} else {
         exp_data <- mutate(exp_data, SBDUR  = NA)
@@ -48,7 +81,7 @@ write_exp_oryza <- function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
         cat('*--------------------------------------------------------------------*',sep = '\n')
         cat('* EXPERIMENTAL DATA FILE                                             *',sep = '\n')
         cat('*                                                                    *',sep = '\n')
-        cat(paste0('* File name        : ', str_replace(exp_file, out_path, ""), '                     *'), sep = '\n')
+        cat(paste0('* File name        : ', str_replace(exp_file, path, ""), '                     *'), sep = '\n')
         cat(paste0('* Crop             : ', CULTIVAR, '                                       *') ,sep = '\n')
         cat(paste0('* Year/Season      : ', year(PDAT), '                                            *') ,sep = '\n')
         cat(paste0('* Additional info  : ', 'Create with agroclimR', '     *') ,sep = '\n')
@@ -326,7 +359,7 @@ write_exp_oryza <- function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
 
         if (length(var2)<1){
 
-            print(paste0("No LAI in exp_file: ", exp_file ))
+            message(paste0("No LAI in exp_file: ", exp_file ))
 
         } else {
             a <- sprintf("%.1f", var2[,1])
@@ -458,7 +491,7 @@ write_exp_oryza <- function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
             PLANT_obs <-na.omit(PLANT_obs)
             var <- cbind(year(PLANT_obs$SAMPLING_DATE),yday(PLANT_obs$SAMPLING_DATE), PLANT_obs$WAGT_OBS)%>%
                 na.omit()
-            print(paste0("## Exist NA in Growth Tables! ##-->EXP:", exp_file))
+            message(paste0("## Exist NA in Growth Tables! ##-->EXP:", exp_file))
         } else {
             var <- cbind(year(PLANT_obs$SAMPLING_DATE),yday(PLANT_obs$SAMPLING_DATE), PLANT_obs$WAGT_OBS)
         }
@@ -503,6 +536,6 @@ write_exp_oryza <- function(INPUT_data, out_path, ET_mod = "PRIESTLY TAYLOR") {
     }
 
     dplyr::select(to_write_exp, exp_file, LOC_ID, CULTIVAR, PDAT, ESTAB, SBDUR, NPLDS, CROP_SYS, TRDAT, FERT_obs, PHEN_obs, PLANT_obs)  %>%
-        mutate(file = pmap(., write_exp))
+        mutate(file = pmap(., write_exp)) %>% pull(exp_file)
 
 }

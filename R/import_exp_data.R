@@ -19,20 +19,21 @@
 #' @export
 #' @examples
 #' #' # File names vector, extension include
-#' name_file = c("SDTO_F2000.xlsx")
+#' name_file = c("agroclimR_workbook.xlsx")
 #'
 #' # Files directory
-#' test_file = system.file("extdata", name_file[1], package = "agroclimR")
+#' test_file = system.file("extdata", name_file, package = "agroclimR")
 #'
 #' # Import data to R lists and tibble formats
 #' obs_data = import_exp_data(test_file, model = "oryza")
 #'
 #' head(obs_data)
-#' @return List containing raw and observed data by component ("data", "soil", "wth", "phen", "lai", "dry_matter", "yield").
-#' @seealso \link[sirad]{?sirad}
+#' @returns List containing raw and observed data by component ("data", "soil", "wth", "phen", "lai", "dry_matter", "yield").
+# @seealso \link[?sirad]{sirad}
 
 
 import_exp_data <- function(files, model = "oryza"){
+
 
   # Import and process data files
   data <- files %>%
@@ -126,9 +127,19 @@ import_exp_data <- function(files, model = "oryza"){
 #' Reads data from agroclimR workbook sheets.
 #'
 #' @param agroclimR_workbook String with the workbook name (full name).
-#' @return List of data frames for each sheet in the workbook.
+#' @returns agroclimR list. A List of data frames for each sheet in the workbook.
 #' @export
-#' @noRd
+#' @examples
+#' #' # File names vector, extension include
+#' name_file = c("agroclimR_workbook.xlsx")
+#'
+#' # Files directory
+#' test_file = system.file("extdata", name_file, package = "agroclimR")
+#'
+#' # Import data to R lists and tibble formats
+#' agroclimr_list = read_agroclimr_data(test_file)
+#' agroclimr_list
+#'
 read_agroclimr_data <- function(agroclimR_workbook) {
   sheets <- readxl::excel_sheets(agroclimR_workbook)
   data <- lapply(sheets, function(sheet) readxl::read_excel(agroclimR_workbook, sheet = sheet))
@@ -145,12 +156,11 @@ read_agroclimr_data <- function(agroclimR_workbook) {
 #' @param obs_data A list containing one or more agroclimR data workbooks, as read by the `read_agroclimr_data()` function. Each element of the list should be a named list representing a single workbook, where each name-value pair corresponds to a specific type of observational data.
 #' @param variable A character string specifying the variable to extract. Valid options are "phen" (phenological data), "lai" (leaf area index), "dry_matter" (dry matter), and "yield". This parameter determines which type of data the function will extract from the provided workbooks.
 #' @param model A character string specifying the crop model for which data is being extracted. Valid options include "oryza" (for rice), "dssat" (for various crops), and "aquacrop" (for water-driven crop growth). This parameter allows the function to tailor the extraction process to the data structure used by different crop models.
-#' @return A `tibble` containing the extracted data for the specified variable and model. The returned tibble is structured to facilitate further analysis and visualization, making it a valuable resource for agricultural researchers and analysts.
+#' @returns A `tibble` containing the extracted data for the specified variable and model. The returned tibble is structured to facilitate further analysis and visualization, making it a valuable resource for agricultural researchers and analysts.
 #' @examples
 #' # Prepare a sample list of agroclimR data workbooks
-#' obs_data = list(
-#'   list(
-#'     AGRO_man = agro,
+#'
+#' agroclimR_list <- list(AGRO_man = agro,
 #'     FERT_obs = fertil,
 #'     PHEN_obs = phenol,
 #'     PLANT_obs = plant,
@@ -158,15 +168,16 @@ read_agroclimr_data <- function(agroclimR_workbook) {
 #'     SOIL_obs = soil,
 #'     WTH_obs = weather
 #'   )
-#' )
+#'
+#' obs_data = list(agroclimR_list)
 #'
 #' # Extract phenological data for the "oryza" model
 #' phenological_data <- extract_obs_var(obs_data, "phen", model = "oryza")
-#' print(phenological_data)
+#' phenological_data
 #'
 #' # Extract yield data for the "oryza" model
 #' yield_data <- extract_obs_var(obs_data, "yield", model = "oryza")
-#' print(yield_data)
+#' yield_data
 #'
 #' @export
 # @seealso [?agroclimR] for more information on the agroclimR package and its data structure.

@@ -21,9 +21,8 @@ Extracts experimental data based on specified variables from a set of agroclimR 
 }
 \examples{
 # Prepare a sample list of agroclimR data workbooks
-obs_data = list(
-  list(
-    AGRO_man = agro,
+
+agroclimR_list <- list(AGRO_man = agro,
     FERT_obs = fertil,
     PHEN_obs = phenol,
     PLANT_obs = plant,
@@ -31,14 +30,15 @@ obs_data = list(
     SOIL_obs = soil,
     WTH_obs = weather
   )
-)
+
+obs_data = list(agroclimR_list)
 
 # Extract phenological data for the "oryza" model
 phenological_data <- extract_obs_var(obs_data, "phen", model = "oryza")
-print(phenological_data)
+phenological_data
 
 # Extract yield data for the "oryza" model
 yield_data <- extract_obs_var(obs_data, "yield", model = "oryza")
-print(yield_data)
+yield_data
 
 }

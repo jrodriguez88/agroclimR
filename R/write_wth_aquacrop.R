@@ -16,11 +16,14 @@
 #' @export
 #' @examples
 #' # Write AquaCrop weather file
-#' write_wth_aquacrop(
+#' wth_files_created <- write_wth_aquacrop(
 #'   path = ".", id_name = "TEST", wth_data = weather,
 #'   lat = 3.8, lon = -76.5, elev = 650)
 #'
-#' @returns This function returns a logical value indicating whether the files were successfully created in the specified path folder.
+#' wth_files_created
+#' file.remove(wth_files_created)
+#'
+#' @returns This function returns a vector of model files created in path folder.
 #'
 # @seealso \link[]{}
 write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2") {
@@ -129,7 +132,10 @@ tidy_wth_aquacrop <- function(wth_data, lat, elev, cal_ETo = TRUE){
     message("Reference evapotranspiration (ETo, mm) in data")
   } else if(isTRUE(cal_ETo))
   {
-    wth_data <- wth_data %>% mutate(ETo = ETo_cal(., lat, elev)) #   message("Early morning vapor pressure (VP; kPa) derived from relative humidity data")
+  # message("Early morning vapor pressure (VP; kPa) derived from relative humidity data")
+
+    wth_data <- wth_data %>%
+      mutate(ETo = agroclimR::ETo_cal(., lat, elev))
 
   } else {
     wth_data <- mutate(wth_data, VP = NA_real_)

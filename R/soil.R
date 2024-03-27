@@ -28,7 +28,7 @@
 #'   \item{WCFC}{Volumetric water content at field capacity - (\code{numeric}). Percentage of water content at field capacity (%).}
 #'   \item{WCWP}{Volumetric water content at wilting point - (\code{numeric}). Percentage of water content at wilting point (%).}
 #'   \item{WCAD}{Volumetric water content at air dryness - (\code{numeric}). Percentage of water content when soil is air dry (%).}
-#'   \item{SSKS}{Saturated hydraulic conductivity - (\code{numeric}). Measured in centimeters per hour (\code{cm/h}).}
+#'   \item{SSKS}{Saturated hydraulic conductivity - (\code{numeric}). Measured in milimeters per hour (\code{mm/h}).}
 #' }
 #' @source \code{\link[agroclimR]{Rodriguez-Espinoza J, (2024)}} and \code{CIAT-MADR-FEDEARROZ, (2016)}
 #' @examples

@@ -22,7 +22,13 @@ library(agroclimR)
 
 # Introducción
 
-Este documento describe la estructura del libro de Excel utilizado para recolectar y organizar datos con fines de modelación y simulación de cultivos. A continuación, se detalla la información de cada hoja y las variables que contiene el libro de trabajo recomendado para trabajar con agroclimR.
+
+La estructura adecuada y organización de datos son fundamentales para la modelación y simulación de cultivos, permitiendo a investigadores y analistas reproducir los ejemplos y aprovechar al máximo las capacidades del paquete agroclimR en R. Este paquete facilita la automatización de tareas de modelación agroclimática, mejorando la eficiencia y precisión de los análisis. La organización del libro de trabajo recomendado, con hojas que abarcan desde datos generales del ensayo experimental hasta información detallada sobre fenología, crecimiento de plantas, rendimiento, datos del suelo y climáticos, asegura que todos los componentes necesarios para modelos basados en procesos estén accesibles y bien documentados.
+
+Conocimientos en tidyverse y el uso efectivo del operador pipe %>% son esenciales para manipular y preparar los datos, facilitando la creación de flujos de trabajo de procesamiento de datos que son esenciales para la obtención de resultados confiables y la toma de decisiones informadas en el ámbito de la agroclimatología.
+
+A continuación, se detalla la información de cada hoja y las variables que contiene el libro de trabajo recomendado para trabajar con agroclimR.
+
 
 # Estructura del Libro de Excel y Descripción de Variables
 
@@ -245,53 +251,8 @@ head(weather)
 str(weather)
 ```
 
-Finalmente, para crear pipes o flujos de trabajo usando `agroclimR`es necesario tener una estructura de lista donde se reunan todas las tablas o entidades. Se sugiere que la creacion de estos libros de trabajo se realice por conjuntos de datos de Localidad-Cultivar, es decir uniendo `LOC_ID` y `CULTIVAR`, usar "`_`" para unir los nombres del archivo (ejemplo = `LOC1_CULTIVAR1.xls`), usar nombres sin espacios. Es recomendable realizar la modelacion de un determinado cultivar por separado , de esta manera es posible reunir multiples libros de trabajo que en R se trasnforan en `list` format.
-
-```{r worklist, message = FALSE}
-# Código de ejemplo para crear lista de conjunto de datos Localidad-Cultivar
-# Asumiendo que agroclimR esta cargado
-obs_data  = list(list(AGRO_man = agro, 
-                  FERT_obs = fertil,
-                  PHEN_obs = phenol,
-                  PLANT_gro = plant,
-                  YIELD_obs = yield,
-                  SOIL_obs = soil,
-                  WTH_obs = weather))
-
-# con la lista de trabajo es posible acceder a un conjunto de herramientas para manipular y analizar datos de modelacion
-yield_data <- extract_obs_var(obs_data, "yield")
-#head(yield_data)
-
-# Cargamos ggplot y visualizamos
-library(ggplot2)
-plot <- agroclimR:::plot_yield_obs(yield_data) + coord_flip()
-
-plotly::ggplotly(plot)
-
-```
 
 
-Podemos obtener el mismo resultado si exportamos los datos desde el libro de trabajo propuesto en este articulo.
 
-
-``` {r from_workbook, message = FALSE}
-
-# File name
-file_name = c("SDTO_F2000.xlsx")
-
-# Files directory
-path_file = system.file("extdata", file_name[1], package = "agroclimR")
-
-# A Partir de un libro de datos 
-obs_data2 = list(agroclimR:::read_agroclimr_data(path_file))
-
-
-yield_data2 <- extract_obs_var(obs_data2, "yield")
-
-plot2 <- agroclimR:::plot_yield_obs(yield_data2) + coord_flip()
-
-plotly::ggplotly(plot2)
-
-```
 
 

@@ -11,8 +11,7 @@ write_wth_aquacrop(
   lat,
   lon,
   elev,
-  co2_file = "MaunaLoa.CO2",
-  ...
+  co2_file = "MaunaLoa.CO2"
 )
 }
 \arguments{
@@ -31,15 +30,18 @@ write_wth_aquacrop(
 \item{co2_file}{A string representing the CO2 file to be used. Default is "MaunaLoa.CO2". CO2 files are available in the Aquacrop default database.}
 }
 \value{
-This function returns a logical value indicating whether the files were successfully created in the specified path folder.
+This function returns a vector of model files created in path folder.
 }
 \description{
 Function to compute weather information AquaCrop v6.0 weather file.
 }
 \examples{
 # Write AquaCrop weather file
-write_wth_aquacrop(
+wth_files_created <- write_wth_aquacrop(
   path = ".", id_name = "TEST", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
+
+wth_files_created
+file.remove(wth_files_created)
 
 }

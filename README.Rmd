@@ -22,13 +22,14 @@ options(knitr.duplicate.label = "allow")
 
 ## Overview
 
-`agroclimR` is an R package developed from years of agricultural research and application, designed to simplify the management and transformation of agroclimatic data into crop model-ready formats. It supports major modeling systems like [DSSAT v 4.8](https://dssat.net/), [ORYZA v3.0](https://www.irri.org/oryza), and [Aquacrop v6.0](https://www.fao.org/aquacrop/). An R-toolkit for researchers and students in agricultural sciences.
+`agroclimR` is an R package developed to  facilitate the management and transformation of agroclimatic data into crop model-ready formats. It supports major modeling systems such as [DSSAT v 4.8](https://dssat.net/), [ORYZA v3.0](https://www.irri.org/oryza), and [Aquacrop v6.0](https://www.fao.org/aquacrop/). This toolkit serves as a resource for researchers and students specializing in agricultural sciences.
 
 ## Features
 
-- **Efficient Data Management:** Offers a relational database structure for easy data format conversion. See 
-- **Tidyverse Integration:** Utilizes tidyverse functions for seamless data manipulation.
-- **Visualization:** Leverages ggplot2 for insightful data visualization.
+- **Efficient Data Management:** Provides a relational database structure that simplifies data handling and seamlessly integrates with the agroclimR framework. Learn more about the data structure in [data-format](https://jrodriguez88.github.io/agroclimR/articles/Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR.html)
+- **Easy Data Transformation to Crop Model-Ready Formats:** Utilizes R to convert various model format files efficiently.
+- **Tidyverse Integration:** Employs tidyverse functions for smooth data manipulation and offers insightful data visualization capabilities using ggplot2.
+
 
 ## Installation
 
@@ -39,9 +40,11 @@ You can install the development version of agroclimR from [GitHub](https://githu
 devtools::install_github("jrodriguez88/agroclimR")
 ```
 
-## Example
+## Example: Creating Weather and Soil Model Format Files
 
-This is a basic example which shows you how to create a crop model weather file with agroclimR:
+### Weather Model Files
+
+Here's a basic example demonstrating how to create a crop model weather file using agroclimR:
 
 ```{r example}
 library(agroclimR)
@@ -53,39 +56,49 @@ lon = -76.5
 elev = 650
 
 ## basic example code to create ORYZA weather file
-
-write_wth_oryza(path, "wth_oryza", wth_data, lat, lon, elev)
+wth_files_oryza <- write_wth_oryza(path, "wth_oryza", wth_data, lat, lon, elev, tag = TRUE)
+readLines(wth_files_oryza[1], n = 24) |> writeLines()
+file.remove(wth_files_oryza)
 
 ## basic example code to create DSSAT weather file
-write_wth_dssat(path, "wth_dssat", wth_data, lat, lon, elev)
+wth_files_dssat <- write_wth_dssat(path, "wth_dssat", wth_data, lat, lon, elev)
+readLines(wth_files_dssat[1], n = 10) |> writeLines()
+file.remove(wth_files_dssat)
  
 ## basic example code to create AquaCrop weather file  
-write_wth_aquacrop(path, "wth_aquacrop", wth_data, lat, lon, elev)
+wth_files_aquacrop <- write_wth_aquacrop(path, "wth_aquacrop", wth_data, lat, lon, elev)
+readLines(wth_files_aquacrop[1], n = 10) |> writeLines()
+readLines(wth_files_aquacrop[2], n = 13) |> writeLines()
+file.remove(wth_files_aquacrop)
  
 ```
 
+### Soil Model Files
+
 This is a basic example which shows you how to create a crop model Soil file with agroclimR:
 
-```{r example2}
+```{r example2_soil}
 
-#library(agroclimR)
-#library(magrittr)
-#library(dplyr)
 
 soil_sample = dplyr::group_by(soil, NL) |> 
   dplyr::sample_n(1) |> dplyr::ungroup()
 
 
-## basic example code to create ORYZA soil file
+# basic example code to create ORYZA soil file
+soil_files_oryza <- write_soil_oryza(id_name = "soil_oryza", soil_data = soil_sample)
+readLines(soil_files_oryza[1], n = 27) |> writeLines()
+file.remove(soil_files_oryza)
 
-write_soil_oryza(path = ".", "soil_oryza", soil_sample, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20)
+# basic example code to create DSSAT soil file
+soil_files_dssat <- write_soil_dssat(path = ".", "soil_dssat", soil_sample)
+readLines(soil_files_dssat[1], n = 15) |> writeLines()
+file.remove(soil_files_dssat)
 
-## basic example code to create DSSAT soil file
+# basic example code to create Aquacrop soil file
+soil_files_aquacrop <- write_soil_aquacrop(path = ".", "soil_dssat", soil_sample)
+readLines(soil_files_aquacrop[1], n = 15) |> writeLines()
+file.remove(soil_files_aquacrop)
 
-write_soil_dssat(path = ".", "soil_dssat", soil_sample)
- 
-
- 
  
 ```
 

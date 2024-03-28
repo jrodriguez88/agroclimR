@@ -20,13 +20,17 @@
 #'   path = ".", id_name = "TEST", wth_data = weather,
 #'   lat = 3.91, lon = -75.0, elev = 450)
 #'
-#' wth_files_created
+#' readLines(wth_files_created[1], n = 15) |> writeLines()
 #' file.remove(wth_files_created)
 #'
 ## Update the details for the return value
 #' @returns This function returns a vector of model files created in path folder.
 #'
-#' @seealso \link[https://dssat.net/weather-module/]{DSSAT Weather module}
+#' @references
+#' - DSSAT Weather module: <https://dssat.net/weather-module/>
+#'
+#' - Brakensiek et al. (1984) for SSKS_Brakensiek
+# @seealso \link[https://dssat.net/weather-module/]{DSSAT Weather module}
 write_wth_dssat <- function(path = ".", id_name, wth_data, lat, lon, elev, ref_ht = 2){
 
     data <- tidy_wth_dssat(wth_data)
@@ -62,7 +66,7 @@ write_wth_dssat <- function(path = ".", id_name, wth_data, lat, lon, elev, ref_h
 
 
 
-    cat(paste("*WEATHER DATA :"), paste(id_name), "DSSAT Weather file - by https://github.com/jrodriguez88")
+    cat(paste("*WEATHER DATA :"), paste(id_name), "DSSAT Weather file - by agroclimR")
     cat("\n")
     cat("\n")
     cat(c("@ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT"))

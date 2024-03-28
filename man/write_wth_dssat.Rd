@@ -33,10 +33,13 @@ wth_files_created <- write_wth_dssat(
   path = ".", id_name = "TEST", wth_data = weather,
   lat = 3.91, lon = -75.0, elev = 450)
 
-wth_files_created
+readLines(wth_files_created[1], n = 15) |> writeLines()
 file.remove(wth_files_created)
 
 }
-\seealso{
-\link[https://dssat.net/weather-module/]{DSSAT Weather module}
+\references{
+\itemize{
+\item DSSAT Weather module: \url{https://dssat.net/weather-module/}
+\item Brakensiek et al. (1984) for SSKS_Brakensiek
+}
 }

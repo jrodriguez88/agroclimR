@@ -20,7 +20,7 @@
 #' dplyr::sample_n(1) |> dplyr::ungroup()
 #' soil_files_created <- write_soil_dssat(id_name = "soil_dssat", soil_data = soil_sample)
 #'
-#' soil_files_created
+#' readLines(soil_files_created[1], n = 15) |> writeLines()
 #' file.remove(soil_files_created)
 #'
 ## Update the details for the return value
@@ -113,10 +113,10 @@ texture <- toupper(str_sub(stc[[1]],1,2))
 
 sink(file_name, append = multi)
 if (isFALSE(multi)){
-  cat("*SOILS: AgroclimR DSSAT Soil Input File - by https://github.com/jrodriguez88/agroclimR", sep = "\n")
+  cat("*SOILS: AgroclimR DSSAT Soil Input File - by agroclimR", sep = "\n")
   cat("\n")
 } else if(all(exists("idsoilAR"), idsoilAR==1)){
-  cat("*SOILS: AgroclimR DSSAT Soil Input File - by https://github.com/jrodriguez88/agroclimR", sep = "\n")
+  cat("*SOILS: AgroclimR DSSAT Soil Input File - by agroclimR", sep = "\n")
   cat("\n")
 } else if(all(exists("idsoilAR"), isTRUE(multi), idsoilAR>1)){
   cat("\n")

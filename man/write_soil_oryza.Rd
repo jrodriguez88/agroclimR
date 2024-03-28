@@ -43,7 +43,7 @@ Function compute Soil information to ORYZA soil file.
 soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
 soil_files_created <- write_soil_oryza(id_name = "soil_oryza", soil_data = soil_sample)
 
-soil_files_created
+readLines(soil_files_created[1], n = 30) |> writeLines()
 file.remove(soil_files_created)
 
 }

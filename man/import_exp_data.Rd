@@ -2,22 +2,31 @@
 % Please edit documentation in R/import_exp_data.R
 \name{import_exp_data}
 \alias{import_exp_data}
+\alias{read_agroclimr_data}
 \title{Import Experimental Data from agroclimR Data Workbook}
 \usage{
 import_exp_data(files, model = "oryza")
+
+read_agroclimr_data(workbook_name)
 }
 \arguments{
 \item{files}{Vector of strings with workbook names (.xls extension file included).}
 
 \item{model}{String indicating the model name, default "oryza",options: ("dssat", "aquacrop").}
+
+\item{workbook_name}{String with the workbook name (full name).}
 }
 \value{
 List containing raw and observed data by component ("data", "soil", "wth", "phen", "lai", "dry_matter", "yield").
+
+agroclimR list. A List of data frames for each sheet in the workbook.
 }
 \description{
 \code{import_exp_data()} performs extraction of experimental data from the agroclimR data workbook, including
 location, soil, climate data, and observed data for phenology, leaf area index,
 dry matter, and yield.
+
+Reads data from agroclimR workbook sheets.
 }
 \examples{
 #' # File names vector, extension include
@@ -30,4 +39,14 @@ test_file = system.file("extdata", name_file, package = "agroclimR")
 obs_data = import_exp_data(test_file, model = "oryza")
 
 head(obs_data)
+#' # File names vector, extension include
+name_file = c("agroclimR_workbook.xlsx")
+
+# Files directory
+test_file = system.file("extdata", name_file, package = "agroclimR")
+
+# Import data to R lists and tibble formats
+agroclimr_list = read_agroclimr_data(test_file)
+agroclimr_list
+
 }

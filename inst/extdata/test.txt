@@ -1,2711 +1,0 @@
-== Documenting ===============================================================================================================================
-
-== Building ==================================================================================================================================
-Setting env vars:
-* CFLAGS    : -Wall -pedantic
-* CXXFLAGS  : -Wall -pedantic
-* CXX11FLAGS: -Wall -pedantic
-* CXX14FLAGS: -Wall -pedantic
-* CXX17FLAGS: -Wall -pedantic
-* CXX20FLAGS: -Wall -pedantic
--- R CMD build -------------------------------------------------------------------------------------------------------------------------------
-         checking for file 'D:\00_DEVELOPER\agroclimR/DESCRIPTION' ...  v  checking for file 'D:\00_DEVELOPER\agroclimR/DESCRIPTION'
-      -  preparing 'agroclimR': (787ms)
-   checking DESCRIPTION meta-information ...     checking DESCRIPTION meta-information ...   v  checking DESCRIPTION meta-information
-      -  installing the package to build vignettes
-         creating vignettes ...     creating vignettes ...   v  creating vignettes (21.8s)
-      -  checking for LF line-endings in source and make files and shell scripts (532ms)
-      -  checking for empty or unneeded directories
-      -  building 'agroclimR_0.0.0.9000.tar.gz'
-     
-== Checking ==================================================================================================================================
-Setting env vars:
-* _R_CHECK_CRAN_INCOMING_REMOTE_               : FALSE
-* _R_CHECK_CRAN_INCOMING_                      : FALSE
-* _R_CHECK_FORCE_SUGGESTS_                     : FALSE
-* _R_CHECK_PACKAGES_USED_IGNORE_UNUSED_IMPORTS_: FALSE
-* NOT_CRAN                                     : true
--- R CMD check -------------------------------------------------------------------------------------------------------------------------------
-    -  -  using log directory 'C:/Users/jrodr/AppData/Local/Temp/RtmpUz2mg5/file2bb459282822/agroclimR.Rcheck'
--  using R version 4.3.2 (2023-10-31 ucrt)
--  using platform: x86_64-w64-mingw32 (64-bit)
--  R was compiled by
-       gcc.exe (GCC) 12.3.0
-       GNU Fortran (GCC) 12.3.0
--  running under: Windows 11 x64 (build 22631)
-\  -  using session charset: UTF-8
-|/    -  -  using options '--no-manual --as-cran'
-\  v  checking for file 'agroclimR/DESCRIPTION'
--  this is package 'agroclimR' version '0.0.0.9000'
--  package encoding: UTF-8
-v  checking package namespace information
-   checking package dependencies ...|/-\|/-\|     checking package dependencies ... /  v  checking package dependencies (1.7s)
-   checking if this is a source package ...-     checking if this is a source package ... \  v  checking if this is a source package
-v  checking if there is a namespace
-|/    -     checking for executable files ...\|/-\|/-\|/     checking for executable files ... -  v  checking for executable files (2.3s)
-   checking for hidden files and directories ...\     checking for hidden files and directories ... |  v  checking for hidden files and directories
-   checking for portable file names .../     checking for portable file names ... -  v  checking for portable file names
-\     checking serialization versions ...|     checking serialization versions ... /  v  checking serialization versions
--     checking whether package 'agroclimR' can be installed ...\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/     checking whether package 'agroclimR' can be installed ... [15s]-     checking whether package 'agroclimR' can be installed ... [15s] \  -  checking whether package 'agroclimR' can be installed ... [15s] OK (15.5s)
-   checking installed package size ...|/-\|     checking installed package size ... /  v  checking installed package size (890ms)
--    \  v  checking package directory
-   checking for future file timestamps ...|/     checking for future file timestamps ... -  v  checking for future file timestamps
-   checking 'build' directory ...\  v  checking 'build' directory
-   checking DESCRIPTION meta-information ...|/     checking DESCRIPTION meta-information ... -  v  checking DESCRIPTION meta-information (342ms)
-v  checking top-level files
-   checking for left-over files ...\  v  checking for left-over files
-   checking index information ...|/     checking index information ... -  v  checking index information
-   checking package subdirectories ...\|     checking package subdirectories ... /  v  checking package subdirectories
-   checking R files for non-ASCII characters ...-     checking R files for non-ASCII characters ... \  v  checking R files for non-ASCII characters
-   checking R files for syntax errors ...|     checking R files for syntax errors ... /  v  checking R files for syntax errors
-   checking whether the package can be loaded ...-\|/-\|/-\|/-\|/-\     checking whether the package can be loaded ... |  v  checking whether the package can be loaded (3.7s)
-   checking whether the package can be loaded with stated dependencies .../-\|/-\|/-\|/-\|/-     checking whether the package can be loaded with stated dependencies ... \  v  checking whether the package can be loaded with stated dependencies (3.6s)
-   checking whether the package can be unloaded cleanly ...|/-\|/-\|/-\|/-\|/     checking whether the package can be unloaded cleanly ... -  v  checking whether the package can be unloaded cleanly (3.6s)
-   checking whether the namespace can be loaded with stated dependencies ...\|/-\|/-\|/-\|/-\     checking whether the namespace can be loaded with stated dependencies ... |  v  checking whether the namespace can be loaded with stated dependencies (3.5s)
-   checking whether the namespace can be unloaded cleanly .../-\|/-\|/-\|/-\|/-     checking whether the namespace can be unloaded cleanly ... \  v  checking whether the namespace can be unloaded cleanly (3.7s)
-   checking loading without being on the library search path ...|/-\|/-\|/-\|/-\|/-     checking loading without being on the library search path ... \  v  checking loading without being on the library search path (3.8s)
-|/-\|/-\|/-\|/-\|/    -     checking dependencies in R code ...\|/-\|/-\|/-\|/-\|/     checking dependencies in R code ... -  W  checking dependencies in R code (7.6s)
-   '::' or ':::' import not declared from: 'tictoc'
-   'library' or 'require' calls not declared from:
-     'Hmisc' 'lubridate' 'naniar' 'sirad' 'tidyverse'
-   'library' or 'require' calls in package code:
-     'Hmisc' 'lubridate' 'naniar' 'sirad' 'tidyverse'
-     Please use :: or requireNamespace() instead.
-     See section 'Suggested packages' in the 'Writing R Extensions' manual.
-   Namespaces in Imports field not imported from:
-     'GA' 'Hmisc' 'data.table' 'doFuture' 'ggplot2' 'magrittr' 'naniar'
-     'parallel' 'plotly' 'scales'
-     All declared Imports should be used.
-   checking S3 generic/method consistency ...\|/-\|/-\|/-\|/-\|/     checking S3 generic/method consistency ... -  v  checking S3 generic/method consistency (3.8s)
-   checking replacement functions ...\|/-\|/-\|/-\|/-\     checking replacement functions ... |  v  checking replacement functions (3.5s)
-   checking foreign function calls .../-\|/-\|/-\|/-\|/-\     checking foreign function calls ... |  v  checking foreign function calls (3.8s)
-   checking R code for possible problems .../-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/     checking R code for possible problems ... [25s]-  -  checking R code for possible problems ... [25s] NOTE (25.1s)
-\     Alpha_Tomasella: no visible binding for global variable 'SMBD'
-   BPART_plot1: no visible binding for global variable 'Growth_Phase'
-   BPART_plot1: no visible binding for global variable 'exp_file'
-   BPART_plot1: no visible global function definition for 'ggplot'
-   BPART_plot1: no visible global function definition for 'aes'
-   BPART_plot1: no visible binding for global variable 'DVSM'
-   BPART_plot1: no visible binding for global variable 'Value'
-   BPART_plot1: no visible global function definition for 'geom_smooth'
-   BPART_plot1: no visible binding for global variable
-     'Partition_Parameter'
-   BPART_plot1: no visible global function definition for 'geom_rect'
-   BPART_plot1: no visible binding for global variable 'start'
-   BPART_plot1: no visible binding for global variable 'end'
-   BPART_plot1: no visible global function definition for
-     'scale_fill_manual'
-   BPART_plot1: no visible global function definition for 'alpha'
-   BPART_plot1: no visible global function definition for 'labs'
-   BPART_plot1: no visible global function definition for
-     'scale_x_continuous'
-   BPART_plot1: no visible global function definition for
-     'scale_y_continuous'
-   BPART_plot1: no visible global function definition for 'geom_point'
-   BPART_plot1: no visible global function definition for 'theme_bw'
-   BPART_plot1: no visible global function definition for 'ggsave'
-   BPART_plot2: no visible binding for global variable 'exp_file'
-   BPART_plot2: no visible global function definition for 'ggplot'
-   BPART_plot2: no visible global function definition for 'aes'
-   BPART_plot2: no visible binding for global variable 'DVSM'
-   BPART_plot2: no visible binding for global variable 'Value'
-   BPART_plot2: no visible global function definition for 'geom_point'
-   BPART_plot2: no visible global function definition for 'geom_smooth'
-   BPART_plot2: no visible global function definition for 'facet_grid'
-   BPART_plot2: no visible global function definition for 'labs'
-   BPART_plot2: no visible global function definition for 'theme_bw'
-BPA|     BPART_plot2: no visible global function definition for 'ggsave'
-   BPART_plot3: no visible binding for global variable 'Growth_Phase'
-   BPART_plot3: no visible binding for global variable 'exp_file'
-   BPART_plot3: no visible global function definition for 'ggplot'
-   BPART_plot3: no visible global function definition for 'aes'
-   BPART_plot3: no visible binding for global variable 'DVSM'
-   BPART_plot3: no visible binding for global variable 'Value'
-   BPART_plot3: no visible global function definition for 'geom_smooth'
-   BPART_plot3: no visible binding for global variable 'LOC_ID'
-   BPART_plot3: no visible global function definition for 'geom_rect'
-   BPART_plot3: no visible binding for global variable 'start'
-   BPART_plot3: no visible binding for global variable 'end'
-   BPART_plot3: no visible global function definition for
-     'scale_fill_manual'
-   BPART_plot3: no visible global function definition for 'alpha'
-   BPART_plot3: no visible global function definition for 'geom_point'
-   BPART_plot3: no visible global function definition for
-     'scale_x_continuous'
-   BPART_plot3: no visible global function definition for
-     'scale_y_continuous'
-   BPART_plot3: no visible global function definition for 'facet_grid'
-   BPART_plot3: no visible global function definition for 'labs'
-   BPART_plot3: no visible global function definition for 'theme_bw'
-   BPART_plot3: no visible global function definition for 'ggsave'
-   DRLV_plot: no visible binding for global variable 'exp_file'
-   DRLV_plot: no visible binding for global variable 'DVSM'
-   DRLV_plot: no visible binding for global variable 'DVS'
-   DRLV_plot: no visible global function definition for 'ggplot'
-   DRLV_plot: no visible global function definition for 'aes'
-   DRLV_plot: no visible binding for global variable 'DRLV'
-   DRLV_plot: no visible global function definition for 'geom_point'
-   DRLV_plot: no visible binding for global variable 'LOC_ID'
-   DRLV_plot: no visible global function definition for 'geom_smooth'
-DRLV_plot: no visible global function definition /     DRLV_plot: no visible global function definition for 'labs'
-   DRLV_plot: no visible global function definition for 'theme_bw'
-   DVR_plot1: no visible binding for global variable 'exp_file'
-   DVR_plot1: no visible global function definition for 'ggplot'
-   DVR_plot1: no visible global function definition for 'aes'
-   DVR_plot1: no visible binding for global variable 'DVR'
-   DVR_plot1: no visible binding for global variable 'Value'
-   DVR_plot1: no visible global function definition for 'geom_jitter'
-   DVR_plot1: no visible binding for global variable 'LOC_ID'
-   DVR_plot1: no visible global function definition for 'stat_summary'
-   DVR_plot1: no visible binding for global variable 'mean_cl_boot'
-   DVR_plot1: no visible global function definition for 'labs'
-   DVR_plot1: no visible global function definition for 'theme_bw'
-   DVR_plot1: no visible global function definition for 'ggsave'
-   DVR_plot2: no visible binding for global variable 'exp_file'
-   DVR_plot2: no visible binding for global variable 'DVR'
-   DVR_plot2: no visible global function definition for 'ggplot'
-   DVR_plot2: no visible global function definition for 'aes'
-   DVR_plot2: no visible binding for global variable 'Value'
-   DVR_plot2: no visible global function definition for 'geom_density'
-   DVR_plot2: no visible global function definition for 'geom_rug'
-   DVR_plot2: no visible global function definition for 'position_jitter'
-   DVR_plot2: no visible global function definition for 'labs'
-   DVR_plot2: no visible global function definition for 'facet_grid'
-   DVR_plot2: no visible global function definition for 'theme_bw'
-   DVR_plot2: no visible global function definition for 'theme'
-   DVR_plot2: no visible global function definition for 'element_blank'
-   DVR_plot2: no visible global function definition for 'ggsave'
-   DVR_plot3: no visible binding for global variable 'exp_file'
-   DVR_plot3: no visible global function definition for 'ggplot'
-   DVR_plot3: no visible global function definition for 'aes'
-   DVR_plot3: no visible binding for global variable 'LOC_ID'
-DVR_plot3: no visible binding -     DVR_plot3: no visible binding for global variable 'Value'
-   DVR_plot3: no visible global function definition for 'stat_summary'
-   DVR_plot3: no visible binding for global variable 'mean_cl_boot'
-   DVR_plot3: no visible global function definition for 'position_dodge'
-   DVR_plot3: no visible global function definition for 'labs'
-   DVR_plot3: no visible global function definition for 'facet_grid'
-   DVR_plot3: no visible global function definition for 'theme_bw'
-   DVR_plot3: no visible global function definition for 'theme'
-   DVR_plot3: no visible global function definition for 'element_blank'
-   DVR_plot3: no visible global function definition for 'element_rect'
-   DVR_plot3: no visible global function definition for 'element_text'
-   DVR_plot3: no visible global function definition for 'ggsave'
-   ETo_cal: no visible global function definition for 'setNames'
-   ETo_cal: no visible binding for global variable 'tmax'
-   ETo_cal: no visible binding for global variable 'tmin'
-   ETo_cal: no visible binding for global variable 'rhum'
-   ETo_cal: no visible binding for global variable 'ea'
-   ETo_cal: no visible binding for global variable 'srad'
-   ETo_cal: no visible binding for global variable 'wspd'
-   FSTR_plot: no visible binding for global variable 'exp_file'
-   FSTR_plot: no visible binding for global variable 'FSTR'
-   FSTR_plot: no visible global function definition for 'ggplot'
-   FSTR_plot: no visible global function definition for 'aes'
-   FSTR_plot: no visible binding for global variable 'LOC_ID'
-   FSTR_plot: no visible global function definition for 'geom_jitter'
-   FSTR_plot: no visible global function definition for 'stat_summary'
-   FSTR_plot: no visible binding for global variable 'mean_se'
-   FSTR_plot: no visible global function definition for 'geom_hline'
-   FSTR_plot: no visible global function definition for 'annotate'
-   FSTR_plot: no visible global function definition for 'labs'
-   FSTR_plot: no visible global function definition for 'theme_bw'
-   N_Tomasella: no visible binding for global variable 'SMBD'
-SLA_max: no visible bin\     SLA_max: no visible binding for global variable 'DVSM'
-   SLA_max: no visible global function definition for 'lm'
-   SLA_max: no visible binding for global variable '.'
-   SLA_max: no visible binding for global variable 'Estimate'
-   SLA_max: no visible binding for global variable 'Std. Error'
-   SSKS_cal: no visible binding for global variable 'KS_PTF'
-   SSKS_cal: no visible binding for global variable 'SSKS'
-   SSKS_cal: no visible global function definition for 'median'
-   SSKS_cal: no visible global function definition for 'quantile'
-   SSKS_cal: no visible global function definition for 'sd'
-   basic_qc: no visible global function definition for 'boxplot'
-   basic_qc: no visible binding for global variable 'tmax'
-   basic_qc: no visible binding for global variable 'tmin'
-   basic_qc: no visible binding for global variable 'rain'
-   basic_qc: no visible binding for global variable 'tmin2'
-   basic_qc: no visible binding for global variable 'tmax2'
-   basic_qc: no visible binding for global variable 'prec'
-   bootstrap_param: no visible global function definition for
-     'smean.cl.boot'
-   cal_aquacrop_global: no visible global function definition for 'runif'
-   cal_aquacrop_global: no visible binding for global variable
-     'read_lines'
-   cal_aquacrop_global: no visible binding for global variable 'var'
-   cal_canopycover_params: no visible binding for global variable 'var'
-   cal_canopycover_params: no visible binding for global variable 'value'
-   cal_canopycover_params: no visible binding for global variable 'tmax'
-   cal_canopycover_params: no visible binding for global variable 'tmin'
-   cal_canopycover_params: no visible binding for global variable 'rhum'
-   cal_canopycover_params: no visible binding for global variable 'HUH'
-   cal_canopycover_params: no visible binding for global variable 'gdd'
-   cal_canopycover_params: no visible binding for global variable 'se'
-   cal_canopycover_params: no visible global function definition for
-     'na.omit'
-   cal_canopycover_params: no visible binding for global variable 'lai'
-cal_canopycover_par|     cal_canopycover_params: no visible binding for global variable 'k'
-   cal_canopycover_params: no visible global function definition for 'lm'
-   cal_canopycover_params: no visible global function definition for
-     'predict'
-   cal_canopycover_params: no visible global function definition for
-     'coef'
-   cal_canopycover_params: no visible global function definition for
-     'lines'
-   cal_canopycover_params: no visible global function definition for
-     'points'
-   cal_canopycover_params: no visible global function definition for
-     'abline'
-   cal_dssat_global: no visible global function definition for 'runif'
-   cal_dssat_global: no visible binding for global variable 'var'
-   cal_growth_aquacrop: no visible binding for global variable 'Base'
-   cal_growth_aquacrop: no visible binding for global variable 'Set_cal'
-   cal_growth_aquacrop: no visible global function definition for 'runif'
-   cal_growth_aquacrop: no visible binding for global variable
-     'read_lines'
-   cal_growth_aquacrop: no visible binding for global variable 'var'
-   cal_growth_dssat: no visible binding for global variable 'Base'
-   cal_growth_dssat: no visible binding for global variable 'Set_cal'
-   cal_growth_dssat: no visible global function definition for 'runif'
-   cal_growth_dssat: no visible binding for global variable 'var'
-   cal_growth_oryza: no visible binding for global variable 'Parameter'
-   cal_growth_oryza: no visible binding for global variable 'tables'
-   cal_growth_oryza: no visible binding for global variable 'data'
-   cal_growth_oryza: no visible binding for global variable 'Base'
-   cal_growth_oryza: no visible binding for global variable 'Set_cal'
-   cal_growth_oryza: no visible global function definition for 'runif'
-   cal_growth_oryza: no visible binding for global variable 'var'
-   cal_metrics_wth: no visible binding for global variable 'var'
-   cal_metrics_wth: no visible binding for global variable 'data'
-   cal_metrics_wth: no visible binding for global variable 'metrics'
-   cal_oryza_global: no visible binding for global variable 'Parameter'
-/     cal_oryza_global: no visible binding for global variable 'tables'
-   cal_oryza_global: no visible binding for global variable 'data'
-   cal_oryza_global: no visible global function definition for 'runif'
-   cal_oryza_global: no visible binding for global variable 'var'
-   cal_phen_aquacrop: no visible binding for global variable 'Base'
-   cal_phen_aquacrop: no visible binding for global variable 'Set_cal'
-   cal_phen_aquacrop: no visible global function definition for 'runif'
-   cal_phen_aquacrop: no visible binding for global variable 'read_lines'
-   cal_phen_dssat: no visible binding for global variable 'Base'
-   cal_phen_dssat: no visible binding for global variable 'Set_cal'
-   cal_phen_dssat: no visible global function definition for 'runif'
-   cal_phen_oryza: no visible binding for global variable 'Base'
-   cal_phen_oryza: no visible binding for global variable 'Set_cal'
-   cal_phen_oryza: no visible global function definition for 'runif'
-   cal_phenol_aquacrop: no visible binding for global variable 'var'
-   cal_phenol_aquacrop: no visible binding for global variable 'value'
-   cal_phenol_aquacrop: no visible binding for global variable 'tmax'
-   cal_phenol_aquacrop: no visible binding for global variable 'tmin'
-   cal_phenol_aquacrop: no visible binding for global variable 'rhum'
-   cal_phenol_aquacrop : filter_data_gdd: no visible binding for global
-     variable 'HUH'
-   cal_phenol_aquacrop : filter_data_gdd: no visible binding for global
-     variable 'sum_gdd'
-   cal_phenol_aquacrop : filter_data_days: no visible binding for global
-     variable 'sum_days'
-   cal_phenol_aquacrop: no visible binding for global variable '.'
-   cal_yield_aquacrop: no visible binding for global variable 'Base'
-   cal_yield_aquacrop: no visible binding for global variable 'Set_cal'
-   cal_yield_aquacrop: no visible global function definition for 'runif'
-   cal_yield_aquacrop: no visible binding for global variable 'read_lines'
-   cal_yield_aquacrop: no visible binding for global variable 'var'
-cal_yield_dssat: no visible binding for -     cal_yield_dssat: no visible binding for global variable 'Base'
-   cal_yield_dssat: no visible binding for global variable 'Set_cal'
-   cal_yield_dssat: no visible global function definition for 'runif'
-   cal_yield_dssat: no visible binding for global variable 'var'
-   cal_yield_oryza: no visible binding for global variable 'Base'
-   cal_yield_oryza: no visible binding for global variable 'Set_cal'
-   cal_yield_oryza: no visible global function definition for 'runif'
-   cal_yield_oryza: no visible binding for global variable 'var'
-   calibration_aquacrop_GA: no visible global function definition for
-     'registerDoFuture'
-   calibration_aquacrop_GA: no visible global function definition for
-     'makeCluster'
-   calibration_aquacrop_GA: no visible global function definition for
-     'plan'
-   calibration_aquacrop_GA: no visible global function definition for
-     'tic'
-   calibration_aquacrop_GA: no visible global function definition for 'ga'
-   calibration_aquacrop_GA: no visible global function definition for
-     'toc'
-   calibration_aquacrop_GA: no visible binding for '<<-' assignment to
-     'global_params'
-   calibration_aquacrop_GA: no visible binding for global variable
-     'global_params'
-   calibration_aquacrop_GA: no visible binding for global variable
-     'Parameter'
-   calibration_aquacrop_GA: no visible binding for '<<-' assignment to
-     'phen_params'
-   calibration_aquacrop_GA: no visible binding for global variable
-     'Set_cal'
-   calibration_aquacrop_GA: no visible binding for global variable
-     'phen_params'
-   calibration_aquacrop_GA: no visible binding for global variable 'Base'
-   calibration_aquacrop_GA : <anonymous>: no visible binding for global
-     variable 'phen_params'
-   calibration_aquacrop_GA: no visible binding for '<<-' assignment to
-     'yield_params'
-   calibration_aquacrop_GA: no visible binding for global variable
-     'yield_params'
-   calibration_dssat_GA: no visible global function definition for
-     'registerDoFuture'
-   calibration_dssat_GA: no visible global function definition for
-     'makeCluster'
-calibration_dssat_GA: no visibl\     calibration_dssat_GA: no visible global function definition for 'plan'
-   calibration_dssat_GA: no visible global function definition for 'tic'
-   calibration_dssat_GA: no visible global function definition for 'ga'
-   calibration_dssat_GA: no visible global function definition for 'toc'
-   calibration_dssat_GA: no visible binding for '<<-' assignment to
-     'global_params'
-   calibration_dssat_GA: no visible binding for global variable
-     'global_params'
-   calibration_dssat_GA: no visible binding for global variable
-     'Parameter'
-   calibration_dssat_GA: no visible binding for '<<-' assignment to
-     'phen_params'
-   calibration_dssat_GA: no visible binding for global variable 'Set_cal'
-   calibration_dssat_GA: no visible binding for global variable
-     'phen_params'
-   calibration_dssat_GA: no visible binding for global variable 'Base'
-   calibration_dssat_GA : <anonymous>: no visible binding for global
-     variable 'phen_params'
-   calibration_dssat_GA: no visible binding for '<<-' assignment to
-     'yield_params'
-   calibration_dssat_GA: no visible binding for global variable
-     'yield_params'
-   calibration_oryza_GA: no visible global function definition for
-     'registerDoFuture'
-   calibration_oryza_GA: no visible global function definition for
-     'makeCluster'
-   calibration_oryza_GA: no visible global function definition for 'plan'
-   calibration_oryza_GA: no visible global function definition for 'tic'
-   calibration_oryza_GA: no visible global function definition for 'ga'
-   calibration_oryza_GA: no visible global function definition for 'toc'
-   calibration_oryza_GA: no visible binding for global variable
-     'Parameter'
-   calibration_oryza_GA: no visible binding for global variable 'tables'
-   calibration_oryza_GA: no visible binding for global variable 'Set_cal'
-   calibration_oryza_GA: no visible binding for global variable 'data'
-   calibration_oryza_GA: no visible binding for '<<-' assignment to
-     'global_params'
-   calibration_oryza_GA: no visible binding for global variable
-     'global_params'
-calibration_oryza_GA: no visible bin|     calibration_oryza_GA: no visible binding for global variable 'Base'
-   crop_name_setup: no visible binding for global variable 'crop_name'
-   crop_name_setup: no visible binding for global variable 'CR'
-   download_ORYZA_Tools: no visible global function definition for
-     'download.file'
-   download_ORYZA_Tools: no visible global function definition for 'unzip'
-   eval_sim_aquacrop: no visible binding for global variable 'exp_file'
-   eval_sim_aquacrop: no visible global function definition for
-     'complete.cases'
-   eval_sim_aquacrop: no visible binding for global variable '.'
-   eval_sim_aquacrop: no visible binding for global variable 'obs'
-   eval_sim_aquacrop: no visible binding for global variable 'var'
-   eval_sim_aquacrop: no visible binding for global variable 'data'
-   eval_sim_aquacrop: no visible global function definition for 'ggplot'
-   eval_sim_aquacrop: no visible global function definition for 'aes'
-   eval_sim_aquacrop: no visible binding for global variable 'sim'
-   eval_sim_aquacrop: no visible global function definition for
-     'geom_point'
-   eval_sim_aquacrop: no visible global function definition for
-     'expand_limits'
-   eval_sim_aquacrop: no visible global function definition for
-     'geom_abline'
-   eval_sim_aquacrop: no visible global function definition for 'theme_bw'
-   eval_sim_dssat: no visible global function definition for
-     'complete.cases'
-   eval_sim_dssat: no visible binding for global variable '.'
-   eval_sim_dssat: no visible binding for global variable 'obs'
-   eval_sim_dssat: no visible binding for global variable 'var'
-   eval_sim_dssat: no visible binding for global variable 'data'
-   eval_sim_dssat: no visible global function definition for 'ggplot'
-   eval_sim_dssat: no visible global function definition for 'aes'
-   eval_sim_dssat: no visible binding for global variable 'sim'
-   eval_sim_dssat: no visible global function definition for 'geom_point'
-   eval_sim_dssat: no visible binding for global variable 'exp_file'
-   eval_sim_dssat: no visible global function definition for
-     'expand_limits'
-eval_sim_dssat:/     eval_sim_dssat: no visible global function definition for 'geom_abline'
-   eval_sim_dssat: no visible global function definition for 'theme_bw'
-   eval_sim_oryza: no visible binding for global variable 'exp_file'
-   eval_sim_oryza: no visible global function definition for
-     'complete.cases'
-   eval_sim_oryza: no visible binding for global variable '.'
-   eval_sim_oryza: no visible binding for global variable 'obs'
-   eval_sim_oryza: no visible binding for global variable 'var'
-   eval_sim_oryza: no visible binding for global variable 'data'
-   eval_sim_oryza: no visible global function definition for 'ggplot'
-   eval_sim_oryza: no visible global function definition for 'aes'
-   eval_sim_oryza: no visible binding for global variable 'sim'
-   eval_sim_oryza: no visible global function definition for 'geom_point'
-   eval_sim_oryza: no visible global function definition for
-     'expand_limits'
-   eval_sim_oryza: no visible global function definition for 'geom_abline'
-   eval_sim_oryza: no visible global function definition for 'theme_bw'
-   extract_drates_param : read_DVR_drate: no visible global function
-     definition for 'read_lines'
-   extract_drates_param : read_DVR_drate: no visible binding for global
-     variable 'exp_file'
-   extract_drates_param : read_PHEN_drate: no visible global function
-     definition for 'read_lines'
-   extract_drates_param : read_PHEN_drate: no visible binding for global
-     variable 'exp_file'
-   extract_drates_param : read_biomass_param: no visible global function
-     definition for 'read_lines'
-   extract_drates_param : read_biomass_param: no visible global function
-     definition for 'fread'
-   extract_drates_param : read_biomass_param: no visible binding for
-     global variable 'DVS'
-   extract_drates_param : read_biomass_param: no visible binding for
-     global variable 'WLVG'
-   extract_drates_param : read_biomass_param: no visible binding for
-     global variable 'WLVD'
-   extract_drates_param : read_biomass_param: no visible binding for
-     global variable 'WST'
-extract_drates_param : read_biomass_pa-     extract_drates_param : read_biomass_param: no visible binding for
-     global variable 'WSO'
-   extract_drates_param : read_biomass_param: no visible binding for
-     global variable 'exp_file'
-   extract_drates_param : read_biomass_partition_param: no visible global
-     function definition for 'read_lines'
-   extract_drates_param : read_biomass_partition_param: no visible global
-     function definition for 'fread'
-   extract_drates_param : read_biomass_partition_param: no visible binding
-     for global variable 'DVSM'
-   extract_drates_param : read_biomass_partition_param: no visible binding
-     for global variable 'FLV'
-   extract_drates_param : read_biomass_partition_param: no visible binding
-     for global variable 'FST'
-   extract_drates_param : read_biomass_partition_param: no visible binding
-     for global variable 'FSO'
-   extract_drates_param : read_biomass_partition_param: no visible binding
-     for global variable 'exp_file'
-   extract_drates_param : read_LAI_param: no visible global function
-     definition for 'read_lines'
-   extract_drates_param : read_LAI_param: no visible global function
-     definition for 'fread'
-   extract_drates_param : read_LAI_param: no visible binding for global
-     variable 'exp_file'
-   extract_drates_param : read_FSTR_param: no visible global function
-     definition for 'read_lines'
-   extract_drates_param : read_FSTR_param: no visible binding for global
-     variable 'fread'
-   extract_drates_param : read_FSTR_param: no visible binding for global
-     variable 'exp_file'
-   extract_drates_param : read_DRLV_param: no visible global function
-     definition for 'read_lines'
-   extract_drates_param : read_DRLV_param: no visible binding for global
-     variable 'fread'
-   extract_obs_var : date_to_dae: no visible binding for global variable
-     'var'
-   extract_obs_var : date_to_dae: no visible binding for global variable
-     'value'
-   extract_obs_var: no visible binding for global variable 'LOC_ID'
-   extract_obs_var: no visible binding for global variable 'CULTIVAR'
-extract_obs_var: no visible binding for global variable 'PRO\     extract_obs_var: no visible binding for global variable 'PROJECT'
-   extract_obs_var: no visible binding for global variable 'TR_N'
-   extract_obs_var: no visible binding for global variable 'ID'
-   extract_obs_var: no visible binding for global variable 'exp_file'
-   extract_obs_var: no visible binding for global variable 'data'
-   extract_obs_var: no visible binding for global variable 'SAMPLING_DATE'
-   extract_obs_var: no visible binding for global variable 'WAGT_SE'
-   extract_obs_var: no visible binding for global variable 'var'
-   extract_obs_var: no visible binding for global variable 'value'
-   extract_obs_var: no visible binding for global variable 'metric'
-   extract_obs_var: no visible binding for global variable 'OBS'
-   extract_obs_var: no visible binding for global variable 'SE'
-   extract_obs_var: no visible binding for global variable 'se'
-   extract_obs_var: no visible binding for global variable 'LAI_OBS'
-   extract_obs_var: no visible binding for global variable 'LAI_SE'
-   extract_obs_var: no visible binding for global variable 'YIELD_AVG'
-   extract_obs_var: no visible binding for global variable 'YIELD_MIN'
-   extract_obs_var: no visible binding for global variable 'YIELD_MAX'
-   extract_obs_var: no visible binding for global variable 'ymin'
-   extract_obs_var: no visible binding for global variable 'ymax'
-   extract_obs_var: no visible binding for global variable 'diff_max'
-   extract_obs_var: no visible binding for global variable 'diff_min'
-   extract_obs_var: no visible binding for global variable 'phen_dae'
-   extract_obs_var: no visible binding for global variable '.'
-   extract_obs_var: no visible binding for global variable 'IDAT'
-   extract_obs_var: no visible binding for global variable 'FDAT'
-   extract_obs_var: no visible global function definition for 'na.omit'
-   extract_obs_var : <anonymous>: no visible binding for global variable
-     'k'
-   extract_obs_var : <anonymous>: no visible binding for global variable
-     'value'
-   extract_obs_var : <anonymous>: no visible binding for global variable
-     'canopy'
-extract_obs_var : <anonymous>: no visibl|     extract_obs_var : <anonymous>: no visible binding for global variable
-     'se'
-   extract_obs_var: no visible binding for global variable 'canopy'
-   extract_sim_aquacrop: no visible binding for global variable '.'
-   extract_sim_aquacrop: no visible binding for global variable 'Stage'
-   extract_sim_aquacrop: no visible binding for global variable 'exp_file'
-   extract_sim_aquacrop : date_to_dae: no visible binding for global
-     variable 'Stage'
-   extract_sim_aquacrop : date_to_dae: no visible binding for global
-     variable 'value'
-   extract_sim_aquacrop: no visible binding for global variable 'Biomass'
-   extract_sim_aquacrop: no visible binding for global variable 'var'
-   extract_sim_aquacrop: no visible binding for global variable 'value'
-   extract_sim_aquacrop: no visible binding for global variable 'CC'
-   extract_sim_aquacrop: no visible binding for global variable
-     'YieldPart'
-   extract_sim_aquacrop: no visible binding for global variable 'DAP'
-   extract_sim_aquacrop: no visible binding for global variable 'data'
-   extract_sim_aquacrop: no visible binding for global variable 'phen_dae'
-   extract_sim_dssat: no visible binding for global variable 'exp_file'
-   extract_sim_dssat : date_to_dae: no visible binding for global variable
-     'GSTD'
-   extract_sim_dssat : date_to_dae: no visible binding for global variable
-     'min_dap'
-   extract_sim_dssat : date_to_dae: no visible binding for global variable
-     'value'
-   extract_sim_dssat: no visible binding for global variable 'CWAD'
-   extract_sim_dssat: no visible binding for global variable 'LWAD'
-   extract_sim_dssat: no visible binding for global variable 'SWAD'
-   extract_sim_dssat: no visible binding for global variable 'EWAD'
-   extract_sim_dssat: no visible binding for global variable 'var'
-   extract_sim_dssat: no visible binding for global variable 'value'
-   extract_sim_dssat: no visible binding for global variable 'LAID'
-   extract_sim_dssat: no visible binding for global variable 'GSTD'
-   extract_sim_dssat: no visible binding for global variable 'GWAD'
-extract_sim_dssat: no visible b/     extract_sim_dssat: no visible binding for global variable 'DAP'
-   extract_sim_dssat: no visible binding for global variable 'data'
-   extract_sim_dssat: no visible binding for global variable 'phen_dae'
-   extract_sim_oryza : date_to_dae: no visible binding for global variable
-     'var'
-   extract_sim_oryza : date_to_dae: no visible binding for global variable
-     'value'
-   extract_sim_oryza: no visible binding for global variable '.'
-   extract_sim_oryza: no visible binding for global variable 'var'
-   extract_sim_oryza: no visible binding for global variable 'value'
-   extract_sim_oryza: no visible binding for global variable 'LAI'
-   extract_sim_oryza: no visible binding for global variable 'exp_file'
-   extract_sim_oryza: no visible binding for global variable 'DVS'
-   extract_sim_oryza: no visible binding for global variable 'WRR14'
-   extract_sim_oryza: no visible binding for global variable 'data'
-   extract_sim_oryza: no visible binding for global variable 'ref'
-   extract_sim_oryza: no visible binding for global variable 'phen_dae'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'Parameter'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'Min'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'Max'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'tables'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'min.x'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'max.x'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'min.y'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'max.y'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'combinations'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'samples'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'Var1'
-   generate_combinations_paramsTb: no visible binding for global variable
-   'Var2-       'Var2'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'Var3'
-   generate_combinations_paramsTb: no visible binding for global variable
-     'data'
-   get_elevation: no visible global function definition for 'fromJSON'
-   get_metrics: no visible global function definition for 'complete.cases'
-   get_metrics: no visible binding for global variable '.'
-   get_metrics: no visible global function definition for 'cor'
-   get_metrics: no visible binding for global variable 'obs'
-   get_metrics: no visible binding for global variable 'sim'
-   get_metrics: no visible binding for global variable 'RMSE'
-   get_metrics: no visible global function definition for 'lm'
-   get_params_aquacrop: no visible binding for global variable 'var'
-   get_params_aquacrop: no visible binding for global variable 'exp_file'
-   get_params_aquacrop: no visible binding for global variable 'data'
-   get_params_aquacrop: no visible binding for global variable 'value'
-   get_params_aquacrop: no visible binding for global variable 'se'
-   get_params_aquacrop: no visible binding for global variable 'WAGT'
-   get_params_aquacrop: no visible binding for global variable 'LOC_ID'
-   get_params_aquacrop: no visible binding for global variable 'CULTIVAR'
-   get_params_aquacrop: no visible binding for global variable 'PROJECT'
-   get_params_aquacrop: no visible binding for global variable 'TR_N'
-   get_params_aquacrop: no visible binding for global variable 'PDAT'
-   get_params_aquacrop: no visible binding for global variable 'NPLDS'
-   get_params_aquacrop: no visible binding for global variable 'site'
-   get_params_aquacrop: no visible binding for global variable 'id_name'
-   get_params_aquacrop: no visible binding for global variable 'wth'
-   get_params_aquacrop: no visible binding for global variable 'lat'
-   get_params_aquacrop: no visible binding for global variable 'lon'
-   get_params_aquacrop: no visible binding for global variable 'elev'
-   get_params_oryza: no visible binding for global variable
-     'DVR_Parameter'
-get_params_oryza: no\     get_params_oryza: no visible binding for global variable 'Value'
-   get_params_oryza : paste_crp: no visible binding for global variable
-     'Partition_Parameter'
-   get_params_oryza : paste_crp: no visible binding for global variable
-     'Value'
-   get_params_oryza : paste_crp: no visible binding for global variable
-     'DVS'
-   get_params_oryza: no visible global function definition for
-     'SPGF_cal_safe'
-   import_exp_data: no visible binding for global variable 'LOC_ID'
-   import_exp_data: no visible binding for global variable 'LAT'
-   import_exp_data: no visible binding for global variable 'LONG'
-   import_exp_data: no visible binding for global variable 'ALT'
-   import_exp_data: no visible binding for global variable 'site'
-   import_exp_data: no visible binding for global variable 'input_data'
-   import_exp_data: no visible binding for global variable 'NL'
-   import_exp_data: no visible binding for global variable 'SAND'
-   import_exp_data: no visible binding for global variable 'CLAY'
-   import_exp_data: no visible binding for global variable '.'
-   import_exp_data: no visible binding for global variable 'wth'
-   import_exp_data: no visible binding for global variable 'DATE'
-   import_exp_data: no visible binding for global variable 'loc_id'
-   impute_mean_wth: no visible binding for global variable 'data'
-   inpack: no visible global function definition for 'installed.packages'
-   inpack: no visible global function definition for 'install.packages'
-   join_data: no visible binding for global variable 'tmin.x'
-   join_data: no visible binding for global variable 'tmin.y'
-   join_data: no visible binding for global variable 'tmax.x'
-   join_data: no visible binding for global variable 'tmax.y'
-   join_data: no visible binding for global variable 'rain.x'
-   join_data: no visible binding for global variable 'rain.y'
-   join_data: no visible binding for global variable 'rain'
-   join_data: no visible binding for global variable 'tmax'
-   join_data: no visible binding for global variable 'tmin'
-join_data: no visible binding for global vari|     join_data: no visible binding for global variable 'srad'
-   join_data: no visible binding for global variable 'wspd'
-   join_data: no visible binding for global variable 'rhum'
-   make_grow_curves: no visible binding for global variable 'Value'
-   make_grow_curves: no visible binding for global variable 'predict_tb'
-   make_grow_curves: no visible binding for global variable 'DVS'
-   make_grow_curves : find_best_model: no visible global function
-     definition for 'lm'
-   make_grow_curves : find_best_model: no visible global function
-     definition for 'glm'
-   make_grow_curves : find_best_model: no visible global function
-     definition for 'quasibinomial'
-   make_grow_curves : find_best_model : calculate_aic: no visible global
-     function definition for 'AIC'
-   make_grow_curves : crp_pf_tb: no visible binding for global variable
-     'Partition_Parameter'
-   make_grow_curves : crp_pf_tb: no visible binding for global variable
-     'DVS'
-   make_grow_curves : crp_pf_tb: no visible binding for global variable
-     'Value'
-   make_grow_curves : crp_pf_tb: no visible binding for global variable
-     'FLV'
-   make_grow_curves : crp_pf_tb: no visible binding for global variable
-     'FSO'
-   make_grow_curves : crp_pf_tb: no visible binding for global variable
-     'FST'
-   make_grow_curves : crp_pf_tb: no visible binding for global variable
-     'PF_sum'
-   make_grow_curves : crp_sla_tb: no visible binding for global variable
-     'DVS'
-   make_grow_curves : crp_drlv_tb: no visible binding for global variable
-     'DVS'
-   mean_boot: no visible global function definition for 'smean.cl.boot'
-   plot_drymatter_obs: no visible binding for global variable 'exp_file'
-   plot_drymatter_obs: no visible binding for global variable 'locality'
-   plot_drymatter_obs: no visible binding for global variable 'cultivar'
-   plot_drymatter_obs: no visible binding for global variable 'pat_rem'
-   plot_drymatter_obs: no visible global function definition for 'ggplot'
-   plot_drymatter_obs: no visible global function definition for 'aes'
-plot_drymatter_obs: no visible binding for global variable 'valu/     plot_drymatter_obs: no visible binding for global variable 'value'
-   plot_drymatter_obs: no visible global function definition for
-     'geom_point'
-   plot_drymatter_obs: no visible binding for global variable 'var'
-   plot_drymatter_obs: no visible global function definition for
-     'geom_errorbar'
-   plot_drymatter_obs: no visible binding for global variable 'se'
-   plot_drymatter_obs: no visible global function definition for
-     'geom_smooth'
-   plot_drymatter_obs: no visible global function definition for
-     'facet_wrap'
-   plot_drymatter_obs: no visible global function definition for
-     'theme_bw'
-   plot_drymatter_obs: no visible global function definition for 'theme'
-   plot_drymatter_obs: no visible global function definition for
-     'element_blank'
-   plot_drymatter_obs: no visible global function definition for
-     'element_rect'
-   plot_drymatter_obs: no visible global function definition for
-     'element_text'
-   plot_drymatter_obs: no visible global function definition for 'ylim'
-   plot_drymatter_obs: no visible global function definition for 'labs'
-   plot_lai_obs: no visible binding for global variable 'lai'
-   plot_lai_obs: no visible binding for global variable 'exp_file'
-   plot_lai_obs: no visible binding for global variable 'locality'
-   plot_lai_obs: no visible binding for global variable 'cultivar'
-   plot_lai_obs: no visible binding for global variable 'pat_rem'
-   plot_lai_obs: no visible global function definition for 'ggplot'
-   plot_lai_obs: no visible global function definition for 'aes'
-   plot_lai_obs: no visible binding for global variable 'value'
-   plot_lai_obs: no visible global function definition for 'geom_smooth'
-   plot_lai_obs: no visible global function definition for 'geom_point'
-   plot_lai_obs: no visible global function definition for 'geom_errorbar'
-   plot_lai_obs: no visible binding for global variable 'se'
-   plot_lai_obs: no visible global function definition for 'theme_bw'
-   plot_lai_obs: no visible global function definition for 'facet_wrap'
-   plot_lai_obs: no visible global function definition for 'theme'
-plot_lai_obs: no visible gl-     plot_lai_obs: no visible global function definition for 'element_blank'
-   plot_lai_obs: no visible global function definition for 'element_rect'
-   plot_lai_obs: no visible global function definition for 'element_text'
-   plot_lai_obs: no visible global function definition for 'labs'
-   plot_lai_obs: no visible global function definition for 'ylim'
-   plot_na_wth: no visible global function definition for 'vis_miss'
-   plot_na_wth: no visible global function definition for 'labs'
-   plot_na_wth: no visible global function definition for
-     'scale_y_continuous'
-   plot_na_wth: no visible global function definition for 'coord_flip'
-   plot_na_wth: no visible global function definition for 'theme'
-   plot_na_wth: no visible global function definition for 'element_text'
-   plot_pf_loess: no visible binding for global variable 'Growth_Phase'
-   plot_pf_loess: no visible binding for global variable 'exp_file'
-   plot_pf_loess: no visible binding for global variable 'DVSM'
-   plot_pf_loess: no visible global function definition for 'ggplot'
-   plot_pf_loess: no visible global function definition for 'aes'
-   plot_pf_loess: no visible binding for global variable 'DVS'
-   plot_pf_loess: no visible binding for global variable 'Value'
-   plot_pf_loess: no visible global function definition for 'geom_rect'
-   plot_pf_loess: no visible binding for global variable 'start'
-   plot_pf_loess: no visible binding for global variable 'end'
-   plot_pf_loess: no visible global function definition for 'geom_point'
-   plot_pf_loess: no visible binding for global variable 'LOC_ID'
-   plot_pf_loess: no visible global function definition for 'geom_line'
-   plot_pf_loess: no visible global function definition for 'theme_bw'
-   plot_pf_loess: no visible global function definition for 'theme'
-   plot_pf_loess: no visible global function definition for 'element_rect'
-   plot_pf_loess: no visible global function definition for 'labs'
-   plot_pf_loess: no visible global function definition for
-     'scale_x_continuous'
-   plot_pf_loess: no visible global function definition for
-   '\       'scale_y_continuous'
-   plot_pf_loess: no visible global function definition for
-     'scale_fill_manual'
-   plot_pf_loess: no visible global function definition for 'alpha'
-   plot_pf_loess: no visible global function definition for
-     'scale_shape_discrete'
-   plot_pf_loess: no visible global function definition for
-     'scale_color_manual'
-   plot_pf_loess: no visible global function definition for 'facet_grid'
-   plot_phen_obs: no visible binding for global variable 'exp_file'
-   plot_phen_obs: no visible binding for global variable 'locality'
-   plot_phen_obs: no visible binding for global variable 'cultivar'
-   plot_phen_obs: no visible binding for global variable 'pat_rem'
-   plot_phen_obs: no visible binding for global variable 'var'
-   plot_phen_obs: no visible global function definition for 'ggplot'
-   plot_phen_obs: no visible global function definition for 'aes'
-   plot_phen_obs: no visible binding for global variable 'value'
-   plot_phen_obs: no visible global function definition for 'geom_jitter'
-   plot_phen_obs: no visible global function definition for 'facet_grid'
-   plot_phen_obs: no visible global function definition for 'stat_summary'
-   plot_phen_obs: no visible binding for global variable 'mean_cl_normal'
-   plot_phen_obs: no visible global function definition for 'theme_bw'
-   plot_phen_obs: no visible global function definition for 'theme'
-   plot_phen_obs: no visible global function definition for
-     'element_blank'
-   plot_phen_obs: no visible global function definition for 'element_rect'
-   plot_phen_obs: no visible global function definition for 'element_text'
-   plot_phen_obs: no visible global function definition for
-     'expand_limits'
-   plot_phen_obs: no visible global function definition for 'labs'
-   plot_sla_loess: no visible binding for global variable 'Growth_Phase'
-   plot_sla_loess: no visible binding for global variable 'exp_file'
-   plot_sla_loess: no visible binding for global variable 'DVSM'
-   plot_sla_loess: no visible global function definition for 'ggplot'
-plot_sla_loess: no v|     plot_sla_loess: no visible global function definition for 'aes'
-   plot_sla_loess: no visible binding for global variable 'DVS'
-   plot_sla_loess: no visible binding for global variable 'Value'
-   plot_sla_loess: no visible global function definition for 'geom_rect'
-   plot_sla_loess: no visible binding for global variable 'start'
-   plot_sla_loess: no visible binding for global variable 'end'
-   plot_sla_loess: no visible global function definition for 'geom_point'
-   plot_sla_loess: no visible binding for global variable 'LOC_ID'
-   plot_sla_loess: no visible global function definition for 'geom_line'
-   plot_sla_loess: no visible global function definition for 'theme_bw'
-   plot_sla_loess: no visible global function definition for 'theme'
-   plot_sla_loess: no visible global function definition for
-     'element_rect'
-   plot_sla_loess: no visible global function definition for 'labs'
-   plot_sla_loess: no visible global function definition for
-     'scale_x_continuous'
-   plot_sla_loess: no visible global function definition for
-     'scale_fill_manual'
-   plot_sla_loess: no visible global function definition for 'alpha'
-   plot_sla_loess: no visible global function definition for
-     'scale_shape_discrete'
-   plot_sla_loess: no visible global function definition for
-     'scale_color_manual'
-   plot_wth_dat: no visible binding for global variable 'tmax'
-   plot_wth_dat: no visible binding for global variable 'tmin'
-   plot_wth_dat: no visible binding for global variable 'rain'
-   plot_wth_dat: no visible global function definition for 'ggplot'
-   plot_wth_dat: no visible global function definition for 'aes'
-   plot_wth_dat: no visible binding for global variable 'value'
-   plot_wth_dat: no visible global function definition for 'geom_line'
-   plot_wth_dat: no visible binding for global variable 'var'
-   plot_wth_dat: no visible global function definition for 'facet_grid'
-   plot_wth_dat: no visible global function definition for 'theme_bw'
-   plot_wth_dat: no visible global function definition for 'theme'
-plot_wth_dat: no visible global functi/     plot_wth_dat: no visible global function definition for
-     'scale_colour_manual'
-   plot_yield_obs: no visible binding for global variable 'exp_file'
-   plot_yield_obs: no visible binding for global variable 'locality'
-   plot_yield_obs: no visible binding for global variable 'cultivar'
-   plot_yield_obs: no visible binding for global variable 'pat_rem'
-   plot_yield_obs: no visible global function definition for 'ggplot'
-   plot_yield_obs: no visible global function definition for 'aes'
-   plot_yield_obs: no visible binding for global variable 'value'
-   plot_yield_obs: no visible global function definition for 'geom_point'
-   plot_yield_obs: no visible global function definition for
-     'geom_errorbar'
-   plot_yield_obs: no visible binding for global variable 'se'
-   plot_yield_obs: no visible global function definition for
-     'position_dodge'
-   plot_yield_obs: no visible global function definition for 'theme_bw'
-   plot_yield_obs: no visible global function definition for 'theme'
-   plot_yield_obs: no visible global function definition for
-     'element_text'
-   plot_yield_obs: no visible global function definition for
-     'element_blank'
-   plot_yield_obs: no visible global function definition for
-     'element_rect'
-   plot_yield_obs: no visible global function definition for
-     'expand_limits'
-   plot_yield_obs: no visible global function definition for 'labs'
-   plot_yield_obs: no visible global function definition for 'coord_flip'
-   read_aquacrop_day: no visible global function definition for
-     'read_lines'
-   read_aquacrop_day: no visible binding for global variable '.'
-   read_aquacrop_day: no visible binding for global variable 'fread'
-   read_aquacrop_day: no visible global function definition for 'setNames'
-   read_aquacrop_season: no visible global function definition for
-     'read_lines'
-   read_aquacrop_season: no visible binding for global variable '.'
-   read_aquacrop_season: no visible global function definition for 'fread'
-   read_aquacrop_season: no visible global function definition for
-     'setNames'
-read_evaluate: no visible global func-     read_evaluate: no visible global function definition for 'read_table'
-   read_evaluate: no visible global function definition for 'cols'
-   read_plantgro: no visible global function definition for 'read_lines'
-   read_plantgro: no visible binding for global variable '@YEAR'
-   read_plantgro: no visible binding for global variable 'DOY'
-   read_res_big: no visible global function definition for 'read_lines'
-   read_res_big: no visible binding for global variable '.'
-   read_res_exp: no visible global function definition for 'read_lines'
-   read_res_exp: no visible binding for global variable 'fread'
-   read_res_exp: no visible binding for global variable '.'
-   read_summary: no visible global function definition for 'read_lines'
-   read_summary: no visible global function definition for 'fread'
-   read_summary: no visible binding for global variable 'SDAT'
-   read_summary: no visible binding for global variable 'PDAT'
-   read_summary: no visible binding for global variable 'EDAT'
-   read_summary: no visible binding for global variable 'ADAT'
-   read_summary: no visible binding for global variable 'MDAT'
-   read_summary: no visible binding for global variable 'HDAT'
-   read_wth: no visible global function definition for 'read_lines'
-   read_wth : cal_summ: no visible binding for global variable 'TMXD'
-   read_wth : cal_summ: no visible binding for global variable 'TMND'
-   read_wth : cal_summ: no visible binding for global variable 'SRAD'
-   remote_data_correction: no visible binding for global variable 'tmax.x'
-   remote_data_correction: no visible binding for global variable 'tmax.y'
-   remote_data_correction: no visible binding for global variable 'tmin.x'
-   remote_data_correction: no visible binding for global variable 'tmin.y'
-   remote_data_correction: no visible binding for global variable 'tmax'
-   remote_data_correction: no visible binding for global variable 'tmin'
-   remote_data_correction: no visible binding for global variable 'rain'
-   remote_data_correction: no visible binding for global variable 'corr'
-remote_data_correction: no visible bindin\     remote_data_correction: no visible binding for global variable 'var'
-   replace_outlier: no visible global function definition for 'median'
-   replace_outlier: no visible global function definition for
-     'boxplot.stats'
-   run_drates_param : make_reruns2: no visible global function definition
-     for 'read_lines'
-   set_theme_jre: no visible binding for '<<-' assignment to 'theme_jre'
-   set_theme_jre: no visible global function definition for 'theme_bw'
-   set_theme_jre: no visible global function definition for 'theme'
-   set_theme_jre: no visible global function definition for
-     'element_blank'
-   set_theme_jre: no visible global function definition for 'element_rect'
-   set_theme_jre: no visible global function definition for 'element_text'
-   srad_cal: no visible global function definition for 'ap'
-   srad_cal: no visible binding for global variable 'lon'
-   srad_cal: no visible binding for global variable 'extraT'
-   srad_cal: no visible binding for global variable 'sbri'
-   srad_cal: no visible binding for global variable 'tmax'
-   srad_cal: no visible binding for global variable 'tmin'
-   srad_cal: no visible binding for global variable 'srad'
-   srad_cal: no visible global function definition for 'median'
-   srad_cal: no visible binding for global variable 'step1'
-   tidy_params_oryza: no visible binding for global variable 'FLV'
-   tidy_params_oryza: no visible binding for global variable 'FSO'
-   tidy_params_oryza: no visible binding for global variable
-     'Partition_Parameter'
-   tidy_params_oryza: no visible binding for global variable 'FST'
-   tidy_params_oryza: no visible binding for global variable 'exp_file'
-   tidy_params_oryza: no visible binding for global variable 'DVS'
-   tidy_params_oryza: no visible binding for global variable 'LAI'
-   tidy_params_oryza: no visible global function definition for 'na.omit'
-   tidy_params_oryza: no visible binding for global variable 'WLVG'
-   tidy_params_oryza: no visible binding for global variable 'SLA'
-   tidy_params_oryza: no visible binding for global variable 'Value'
-tidy_params_oryza: no visible bi|     tidy_params_oryza: no visible binding for global variable
-     'DVR_Parameter'
-   tidy_params_oryza: no visible binding for global variable 'DRLV'
-   tidy_params_oryza: no visible binding for global variable 'Parameter'
-   tidy_params_oryza: no visible binding for global variable 'DVSM'
-   tidy_params_oryza: no visible binding for global variable 'FSTR'
-   tidy_params_oryza: no visible binding for global variable '.'
-   tidy_params_oryza: no visible binding for global variable 'LOC_ID'
-   tidy_params_oryza: no visible binding for global variable 'CULTIVAR'
-   tidy_params_oryza: no visible binding for global variable 'PROJECT'
-   tidy_params_oryza: no visible binding for global variable 'TR_N'
-   tidy_params_oryza: no visible binding for global variable 'ID'
-   tidy_params_oryza: no visible binding for global variable 'YIELD_AVG'
-   tidy_params_oryza: no visible binding for global variable 'GW1000'
-   tidy_params_oryza: no visible binding for global variable 'ST_M2'
-   tidy_params_oryza: no visible binding for global variable 'PAN_M2'
-   tidy_params_oryza: no visible binding for global variable 'GT_PAN'
-   tidy_params_oryza: no visible binding for global variable 'GF_PAN'
-   tidy_params_oryza: no visible binding for global variable
-     'SPGF_extract'
-   tidy_soil_aquacrop: no visible binding for global variable 'DEPTH'
-   tidy_soil_aquacrop: no visible binding for global variable 'SBDM'
-   tidy_soil_aquacrop: no visible binding for global variable 'SOC'
-   tidy_soil_aquacrop: no visible binding for global variable 'SAND'
-   tidy_soil_aquacrop: no visible binding for global variable 'CLAY'
-   tidy_soil_aquacrop: no visible binding for global variable 'OM'
-   tidy_soil_aquacrop: no visible binding for global variable 'site'
-   tidy_soil_aquacrop: no visible binding for global variable 'TKL'
-   tidy_soil_aquacrop: no visible binding for global variable 'WCST'
-   tidy_soil_aquacrop: no visible binding for global variable 'WCFC'
-   tidy_soil_aquacrop: no visible binding for global variable 'WCWP'
-tidy_soil_aquacrop: no visible binding for global variable 'SSKS/     tidy_soil_aquacrop: no visible binding for global variable 'SSKS'
-   tidy_soil_aquacrop: no visible binding for global variable
-     'Penetrability'
-   tidy_soil_aquacrop: no visible binding for global variable 'Gravel'
-   tidy_soil_aquacrop: no visible binding for global variable 'CRa'
-   tidy_soil_aquacrop: no visible binding for global variable 'CRb'
-   tidy_soil_aquacrop: no visible binding for global variable 'STC'
-   tidy_soil_aquacrop: no visible global function definition for
-     'setNames'
-   tidy_soil_dssat: no visible binding for global variable 'NL'
-   tidy_soil_dssat: no visible binding for global variable 'DEPTH'
-   tidy_soil_dssat: no visible binding for global variable 'SOC'
-   tidy_soil_dssat: no visible binding for global variable 'SLON'
-   tidy_soil_dssat: no visible binding for global variable 'SNH4'
-   tidy_soil_dssat: no visible binding for global variable 'SNO3'
-   tidy_soil_dssat: no visible binding for global variable 'SLOC'
-   tidy_soil_dssat: no visible binding for global variable 'SAND'
-   tidy_soil_dssat: no visible binding for global variable 'CLAY'
-   tidy_soil_dssat: no visible binding for global variable 'OM'
-   tidy_soil_dssat: no visible binding for global variable 'SBDM'
-   tidy_soil_dssat: no visible binding for global variable 'WCFC'
-   tidy_soil_dssat: no visible binding for global variable 'WCST'
-   tidy_soil_dssat: no visible binding for global variable 'WCWP'
-   tidy_soil_dssat: no visible binding for global variable 'LOC_ID'
-   tidy_soil_dssat: no visible binding for global variable 'PH'
-   tidy_soil_dssat: no visible binding for global variable 'SILT'
-   tidy_soil_dssat: no visible binding for global variable 'id_name'
-   tidy_soil_dssat: no visible binding for global variable 'SLB'
-   tidy_soil_dssat: no visible binding for global variable 'SCEC'
-   tidy_soil_dssat: no visible binding for global variable 'SLCF'
-   tidy_soil_dssat: no visible binding for global variable 'SLCL'
-   tidy_soil_dssat: no visible binding for global variable 'SLHW'
-   tidy_soil_dssat: no visible binding for global variable 'SLSI'
-tidy_soil_dssat: no visible binding for -     tidy_soil_dssat: no visible binding for global variable 'SLNI'
-   tidy_soil_dssat: no visible binding for global variable 'SDUL'
-   tidy_soil_dssat: no visible binding for global variable 'SSAT'
-   tidy_soil_dssat: no visible binding for global variable 'SLLL'
-   tidy_soil_dssat: no visible binding for global variable 'SSKS'
-   tidy_soil_dssat: no visible binding for global variable 'STC'
-   tidy_soil_dssat: no visible binding for global variable '.'
-   tidy_soil_dssat: no visible binding for global variable 'SRGF'
-   tidy_soil_oryza: no visible binding for global variable 'soil_test'
-   tidy_soil_oryza: no visible global function definition for '%>%<-'
-   tidy_soil_oryza: no visible binding for global variable 'data'
-   tidy_soil_oryza: no visible global function definition for
-     'rename_with<-'
-   tidy_soil_oryza: no visible global function definition for '~<-'
-   tidy_soil_oryza: no visible binding for global variable 'DEPTH'
-   tidy_soil_oryza: no visible binding for global variable 'SBDM'
-   tidy_soil_oryza: no visible binding for global variable 'SOC'
-   tidy_soil_oryza: no visible binding for global variable 'SLNI'
-   tidy_soil_oryza: no visible binding for global variable 'SNH4'
-   tidy_soil_oryza: no visible binding for global variable 'SNO3'
-   tidy_soil_oryza: no visible binding for global variable 'CN'
-   tidy_to_write_crop: no visible binding for global variable 'Base.x'
-   tidy_to_write_crop: no visible binding for global variable 'Base.y'
-   tidy_to_write_crop: no visible binding for global variable 'Min.x'
-   tidy_to_write_crop: no visible binding for global variable 'Min.y'
-   tidy_to_write_crop: no visible binding for global variable 'Max.x'
-   tidy_to_write_crop: no visible binding for global variable 'Max.y'
-   tidy_wth_aquacrop: no visible global function definition for 'setNames'
-   tidy_wth_aquacrop: no visible binding for global variable '.'
-   tidy_wth_dssat: no visible global function definition for 'setNames'
-   tidy_wth_dssat: no visible binding for global variable 'wspd'
-tidy_wth_dssat: no visible binding for global variable 'tmax'\     tidy_wth_dssat: no visible binding for global variable 'tmax'
-   tidy_wth_dssat: no visible binding for global variable 'tmin'
-   tidy_wth_dssat: no visible binding for global variable 'tmean'
-   tidy_wth_oryza: no visible global function definition for 'setNames'
-   tidy_wth_oryza: no visible binding for global variable 'tmax'
-   tidy_wth_oryza: no visible binding for global variable 'tmin'
-   tidy_wth_oryza: no visible binding for global variable 'rhum'
-   transform_fert_table: no visible binding for global variable 'DDE'
-   transform_fert_table: no visible binding for global variable 'N'
-   transform_fert_table: no visible binding for global variable 'P'
-   transform_fert_table: no visible binding for global variable 'K'
-   transform_fert_table: no visible binding for global variable 'FDATE'
-   transform_fert_table: no visible binding for global variable 'FMCD'
-   transform_fert_table: no visible binding for global variable 'FACD'
-   transform_fert_table: no visible binding for global variable 'FDEP'
-   transform_fert_table: no visible binding for global variable 'FAMN'
-   transform_fert_table: no visible binding for global variable 'FAMP'
-   transform_fert_table: no visible binding for global variable 'FAMK'
-   transform_fert_table: no visible binding for global variable 'FAMC'
-   transform_fert_table: no visible binding for global variable 'FAMO'
-   transform_fert_table: no visible binding for global variable 'FOCD'
-   transform_fert_table: no visible binding for global variable 'FERNAME'
-   write_crop_oryza : crp_tb: no visible global function definition for
-     'write.table'
-   write_exp_aquacrop: no visible global function definition for
-     'setNames'
-   write_exp_aquacrop : cal_cycles_project: no visible global function
-     definition for 'capture.output'
-   write_exp_aquacrop: no visible binding for global variable '.'
-   write_exp_oryza: no visible binding for global variable 'LOC_ID'
-   write_exp_oryza: no visible binding for global variable 'CULTIVAR'
-   write_exp_oryza: no visible binding for global variable 'PROJECT'
-write_exp_oryza: no visible binding for global var|     write_exp_oryza: no visible binding for global variable 'TR_N'
-   write_exp_oryza: no visible binding for global variable 'PDAT'
-   write_exp_oryza: no visible binding for global variable '.'
-   write_exp_oryza: no visible binding for global variable 'ID'
-   write_exp_oryza : Fert_tb: no visible binding for global variable 'DDE'
-   write_exp_oryza : Fert_tb: no visible binding for global variable 'N'
-   write_exp_oryza : Fert_tb: no visible global function definition for
-     'write.table'
-   write_exp_oryza : LAI_tb: no visible global function definition for
-     'na.omit'
-   write_exp_oryza : LAI_tb: no visible global function definition for
-     'write.table'
-   write_exp_oryza : WLVG_tb: no visible global function definition for
-     'na.omit'
-   write_exp_oryza : WLVG_tb: no visible global function definition for
-     'write.table'
-   write_exp_oryza : WLVD_tb: no visible global function definition for
-     'na.omit'
-   write_exp_oryza : WLVD_tb: no visible global function definition for
-     'write.table'
-   write_exp_oryza : WST_tb: no visible global function definition for
-     'na.omit'
-   write_exp_oryza : WST_tb: no visible global function definition for
-     'write.table'
-   write_exp_oryza : WSO_tb: no visible global function definition for
-     'na.omit'
-   write_exp_oryza : WSO_tb: no visible global function definition for
-     'write.table'
-   write_exp_oryza : WAGT_tb: no visible global function definition for
-     'na.omit'
-   write_exp_oryza : WAGT_tb: no visible binding for global variable 'i'
-   write_exp_oryza : WAGT_tb: no visible global function definition for
-     'write.table'
-   write_exp_oryza: no visible binding for global variable 'exp_file'
-   write_exp_oryza: no visible binding for global variable 'ESTAB'
-   write_exp_oryza: no visible binding for global variable 'SBDUR'
-   write_exp_oryza: no visible binding for global variable 'NPLDS'
-   write_exp_oryza: no visible binding for global variable 'CROP_SYS'
-   write_exp_oryza: no visible binding for global variable 'TRDAT'
-   write_exp_oryza: no visible binding for global variable 'FERT_obs'
-write_exp_oryza: no/     write_exp_oryza: no visible binding for global variable 'PHEN_obs'
-   write_exp_oryza: no visible binding for global variable 'PLANT_obs'
-   write_files_aquacrop: no visible binding for global variable 'site'
-   write_files_aquacrop: no visible binding for global variable 'path'
-   write_files_aquacrop: no visible binding for global variable 'id_name'
-   write_files_aquacrop: no visible binding for global variable 'wth'
-   write_files_aquacrop: no visible binding for global variable 'lat'
-   write_files_aquacrop: no visible binding for global variable 'lon'
-   write_files_aquacrop: no visible binding for global variable 'elev'
-   write_files_aquacrop: no visible binding for global variable '.'
-   write_files_aquacrop: no visible binding for global variable 'soil'
-   write_files_aquacrop: no visible binding for global variable 'DEPTH'
-   write_files_aquacrop: no visible binding for global variable 'SBDM'
-   write_files_aquacrop: no visible binding for global variable 'SOC'
-   write_files_aquacrop: no visible binding for global variable 'SAND'
-   write_files_aquacrop: no visible binding for global variable 'CLAY'
-   write_files_aquacrop: no visible binding for global variable 'OM'
-   write_files_aquacrop: no visible binding for global variable 'TKL'
-   write_files_aquacrop: no visible binding for global variable 'WCST'
-   write_files_aquacrop: no visible binding for global variable 'WCFC'
-   write_files_aquacrop: no visible binding for global variable 'WCWP'
-   write_files_aquacrop: no visible binding for global variable 'SSKS'
-   write_files_aquacrop: no visible binding for global variable
-     'Penetrability'
-   write_files_aquacrop: no visible binding for global variable 'Gravel'
-   write_files_aquacrop: no visible binding for global variable 'CRa'
-   write_files_aquacrop: no visible binding for global variable 'CRb'
-   write_files_aquacrop: no visible binding for global variable 'STC'
-   write_files_aquacrop: no visible global function definition for
-     'setNames'
-   write_files_aquacrop: no visible binding for global variable 'data'
-writ-     write_files_aquacrop: no visible binding for global variable 'LOC_ID'
-   write_files_aquacrop: no visible binding for global variable 'CULTIVAR'
-   write_files_aquacrop: no visible binding for global variable 'PROJECT'
-   write_files_aquacrop: no visible binding for global variable 'TR_N'
-   write_files_aquacrop: no visible binding for global variable 'PDAT'
-   write_files_aquacrop: no visible binding for global variable 'exp_file'
-   write_files_aquacrop: no visible binding for global variable 'NPLDS'
-   write_files_aquacrop: no visible binding for global variable 'MDAT'
-   write_files_aquacrop: no visible binding for global variable 'CROP_SYS'
-   write_files_dssat: no visible binding for global variable 'site'
-   write_files_dssat: no visible binding for global variable 'path'
-   write_files_dssat: no visible binding for global variable 'id_name'
-   write_files_dssat: no visible binding for global variable 'wth'
-   write_files_dssat: no visible binding for global variable 'lat'
-   write_files_dssat: no visible binding for global variable 'lon'
-   write_files_dssat: no visible binding for global variable 'elev'
-   write_files_dssat: no visible binding for global variable 'wth_data'
-   write_files_dssat: no visible binding for global variable '.'
-   write_files_dssat: no visible binding for global variable 'soil'
-   write_files_dssat: no visible binding for global variable 'input_data'
-   write_files_dssat: no visible binding for global variable 'NL'
-   write_files_dssat: no visible binding for global variable 'DEPTH'
-   write_files_dssat: no visible binding for global variable 'SOC'
-   write_files_dssat: no visible binding for global variable 'SLON'
-   write_files_dssat: no visible binding for global variable 'SNH4'
-   write_files_dssat: no visible binding for global variable 'SNO3'
-   write_files_dssat: no visible binding for global variable 'SLOC'
-   write_files_dssat: no visible binding for global variable 'SAND'
-   write_files_dssat: no visible binding for global variable 'CLAY'
-write_files_dssat: no visible binding fo\     write_files_dssat: no visible binding for global variable 'OM'
-   write_files_dssat: no visible binding for global variable 'SBDM'
-   write_files_dssat: no visible binding for global variable 'WCFC'
-   write_files_dssat: no visible binding for global variable 'WCST'
-   write_files_dssat: no visible binding for global variable 'WCWP'
-   write_files_dssat: no visible binding for global variable 'PH'
-   write_files_dssat: no visible binding for global variable 'SILT'
-   write_files_dssat: no visible binding for global variable 'SLB'
-   write_files_dssat: no visible binding for global variable 'SCEC'
-   write_files_dssat: no visible binding for global variable 'SLCF'
-   write_files_dssat: no visible binding for global variable 'SLCL'
-   write_files_dssat: no visible binding for global variable 'SLHW'
-   write_files_dssat: no visible binding for global variable 'SLSI'
-   write_files_dssat: no visible binding for global variable 'SLNI'
-   write_files_dssat: no visible binding for global variable 'SDUL'
-   write_files_dssat: no visible binding for global variable 'SSAT'
-   write_files_dssat: no visible binding for global variable 'SLLL'
-   write_files_dssat: no visible binding for global variable 'SSKS'
-   write_files_dssat: no visible binding for global variable 'STC'
-   write_files_dssat: no visible binding for global variable 'data'
-   write_files_dssat: no visible binding for global variable 'LOC_ID'
-   write_files_dssat: no visible binding for global variable 'CULTIVAR'
-   write_files_dssat: no visible binding for global variable 'PROJECT'
-write_files_dssat: no visible binding for global variab|     write_files_dssat: no visible binding for global variable 'TR_N'
-   write_files_dssat: no visible binding for global variable 'PDAT'
-   write_files_dssat: no visible binding for global variable 'ID'
-   write_files_dssat: no visible binding for global variable 'fert_tb'
-   write_files_dssat: no visible binding for global variable 'exp_file'
-   write_files_dssat: no visible binding for global variable 'NPLDS'
-   write_files_dssat: no visible binding for global variable 'fert_in'
-   write_files_dssat: no visible binding for global variable 'var'
-   write_files_dssat: no visible binding for global variable 'ESTAB'
-   write_files_dssat: no visible binding for global variable 'CROP_SYS'
-   write_files_dssat: no visible binding for global variable 'PLME'
-   write_files_dssat: no visible binding for global variable 'PLDS'
-   write_files_dssat: no visible binding for global variable 'PLRS'
-   write_files_dssat: no visible binding for global variable 'PLRD'
-   write_files_dssat: no visible binding for global variable 'PLDP'
-   write_files_dssat: no visible binding for global variable
-     'planting_details'
-   write_files_dssat: no visible binding for global variable 'irri'
-   write_files_dssat: no visible binding for global variable 'start_date'
-   write_files_dssat: no visible binding for global variable 'EDAT'
-   write_files_dssat: no visible binding for global variable
-     'treatments_number'
-   write_files_oryza: no visible binding for global variable 'site'
-   write_files_oryza: no visible binding for global variable 'path'
-   write_files_oryza: no visible binding for global variable 'id_name'
-   write_files_oryza: no visible binding for global variable 'wth'
-   write_files_oryza: no visible binding for global variable 'lat'
-   write_files_oryza: no visible binding for global variable 'lon'
-   write_files_oryza: no visible binding for global variable 'elev'
-   write_files_oryza: no visible binding for global variable 'wth_data'
-   write_files_oryza: no visible binding for global variable '.'
-   write_soil_aquacrop: no visible binding for global variable 'FC'
-write_soil_aquacrop: no /     write_soil_aquacrop: no visible binding for global variable 'WP'
-   write_soil_aquacrop: no visible binding for global variable '.'
-   write_soil_aquacrop: no visible global function definition for
-     'write.table'
-   write_soil_oryza: no visible binding for global variable 'DEPTH'
-   write_soil_oryza: no visible binding for global variable 'SBDM'
-   write_soil_oryza: no visible binding for global variable 'SOC'
-   write_soil_oryza: no visible binding for global variable 'SLON'
-   write_soil_oryza: no visible binding for global variable 'SNH4'
-   write_soil_oryza: no visible binding for global variable 'SNO3'
-   write_wth_aquacrop : write_Tnx: no visible global function definition
-     for 'write.table'
-   write_wth_oryza: no visible binding for global variable 'srad'
-   write_wth_oryza: no visible global function definition for 'median'
-   write_wth_oryza: no visible binding for global variable '.'
-   write_wth_oryza: no visible binding for global variable 'tmax'
-   write_wth_oryza: no visible binding for global variable 'tmin'
-   write_wth_oryza: no visible binding for global variable 'rain'
-   write_wth_oryza: no visible binding for global variable 'vp'
-   write_wth_oryza: no visible binding for global variable 'wspd'
-   write_wth_oryza: no visible global function definition for
-     'write.table'
-   write_wth_oryza : <anonymous>: no visible global function definition
-     for 'write.table'
-   Undefined global functions or variables:
-     %>%<- . @YEAR ADAT AIC ALT Base Base.x Base.y Biomass CC CLAY CN CR
-     CROP_SYS CRa CRb CULTIVAR CWAD DAP DATE DDE DEPTH DOY DRLV DVR
-     DVR_Parameter DVS DVSM EDAT ESTAB EWAD Estimate FACD FAMC FAMK FAMN
-     FAMO FAMP FC FDAT FDATE FDEP FERNAME FERT_obs FLV FMCD FOCD FSO FST
-     FSTR GF_PAN GSTD GT_PAN GW1000 GWAD Gravel Growth_Phase HDAT HUH ID
-     IDAT K KS_PTF LAI LAID LAI_OBS LAI_SE LAT LOC_ID LONG LWAD MDAT Max
-     Max.x Max.y Min Min.x Min.y N NL NPLDS OBS OM P PAN_M2 PDAT PF_sum PH
-     PHEN_obs PLANT_obs PLDP PLDS PLME PLRD PLRS PROJECT Parameter
-   Partition_Parameter Penetrability RMSE SAMPLING-       Partition_Parameter Penetrability RMSE SAMPLING_DATE SAND SBDM SBDUR
-     SCEC SDAT SDUL SE SILT SLA SLB SLCF SLCL SLHW SLLL SLNI SLOC SLON
-     SLSI SMBD SNH4 SNO3 SOC SPGF_cal_safe SPGF_extract SRAD SRGF SSAT
-     SSKS STC ST_M2 SWAD Set_cal Stage Std. Error TKL TMND TMXD TRDAT TR_N
-     Value Var1 Var2 Var3 WAGT WAGT_SE WCFC WCST WCWP WLVD WLVG WP WRR14
-     WSO WST YIELD_AVG YIELD_MAX YIELD_MIN YieldPart abline aes alpha
-     annotate ap boxplot boxplot.stats canopy capture.output coef cols
-     combinations complete.cases coord_flip cor corr crop_name cultivar
-     data diff_max diff_min download.file ea element_blank element_rect
-     element_text elev end exp_file expand_limits extraT facet_grid
-     facet_wrap fert_in fert_tb fread fromJSON ga gdd geom_abline
-     geom_density geom_errorbar geom_hline geom_jitter geom_line
-     geom_point geom_rect geom_rug geom_smooth ggplot ggsave glm
-     global_params i id_name input_data install.packages
-     installed.packages irri k labs lai lat lines lm loc_id locality lon
-     makeCluster max.x max.y mean_cl_boot mean_cl_normal mean_se median
-     metric metrics min.x min.y min_dap na.omit obs pat_rem path phen_dae
-     phen_params plan planting_details points position_dodge
-     position_jitter prec predict predict_tb quantile quasibinomial rain
-     rain.x rain.y read_lines read_table ref registerDoFuture
-     rename_with<- rhum runif samples sbri scale_color_manual
-     scale_colour_manual scale_fill_manual scale_shape_discrete
-     scale_x_continuous scale_y_continuous sd se setNames sim site
-     smean.cl.boot soil soil_test srad start start_date stat_summary step1
-     sum_days sum_gdd tables theme theme_bw tic tmax tmax.x tmax.y tmax2
-     tmean tmin tmin.x tmin.y tmin2 toc treatments_number unzip value var
-     vis_miss vp write.table wspd wth wth_data yield_params ylim ymax ymin
-     ~<-
-   Consider adding
-     importFrom("grDevices", "boxplot.stats")
-     importFrom("graphics", "abline", "boxplot", "lines", "points")
-     importFrom("stats", "AIC", "coef", "complete.cases", "cor", "end",
-              "glm", "lm"\                  "glm", "lm", "median", "na.omit", "predict", "quantile",
-                "quasibinomial", "runif", "sd", "setNames", "start", "var")
-     importFrom("utils", "capture.output", "data", "download.file",
-                "install.packages", "installed.packages", "unzip",
-                "write.table")
-   to your NAMESPACE file.
-   checking Rd files ...|/     checking Rd files ... -  v  checking Rd files
-   checking Rd metadata ...\     checking Rd metadata ... |  v  checking Rd metadata
-   checking Rd line widths .../     checking Rd line widths ... -  v  checking Rd line widths
-   checking Rd cross-references ...\|/-\|/-\|/-\|/-\|/-\|     checking Rd cross-references ... /  W  checking Rd cross-references (4.3s)
-   Unknown package 'data.frame' in Rd xrefs
-   Missing link or links in documentation object 'agro.Rd':
-     '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-   
-   Missing link or links in documentation object 'fertil.Rd':
-     '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-   
-   Missing link or links in documentation object 'import_exp_data.Rd':
-     '[sirad]{?sirad}'
-   
-   Missing link or links in documentation object 'phenol.Rd':
-     '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-   
-   Missing link or links in documentation object 'plant.Rd':
-     '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-   
-   Missing link or links in documentation object 'soil.Rd':
-     '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-   
-   Missing link or links in documentation object 'weather.Rd':
-     '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-   
-   Missing link or links in documentation object 'yield.Rd':
-     '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-   
-   See section 'Cross-references' in the 'Writing R Extensions' manual.
-   checking for missing documentation entries ...-\|/-\|/-\|/-\|/-\     checking for missing documentation entries ... |  W  checking for missing documentation entries (3.6s)
-   Undocumented code objects:
-     'get_STC' 'read_agroclimr_data'
-   All user-level objects in a package should have documentation entries.
-/     See chapter 'Writing R documentation files' in the 'Writing R
-   Extensions' manual.
-   checking for code/documentation mismatches ...-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-     checking for code/documentation mismatches ... \  v  checking for code/documentation mismatches (10.8s)
-   checking Rd \usage sections ...|/     checking Rd \usage sections ... -  W  checking Rd \usage sections (337ms)
-   Undocumented arguments in documentation object 'run_drates_param'
-     'exp_names' 'path'
-   
-   Undocumented arguments in documentation object 'write_soil_aquacrop'
-     'model_version'
-   Documented arguments not in \usage in documentation object 'write_soil_aquacrop':
-     'salb' 'evapL' 'slnf' 'slpf' 'multi' 'max_depth'
-   
-   Undocumented arguments in documentation object 'write_soil_dssat'
-     'sldr'
-   Documented arguments not in \usage in documentation object 'write_soil_dssat':
-     'max_depth'
-   
-   Undocumented arguments in documentation object 'write_wth_aquacrop'
-     '...'
-   
-   Functions with \usage entries need to have the appropriate \alias
-   entries, and all their arguments documented.
-   The \usage entries must correspond to syntactically valid R code.
-\     See chapter 'Writing R documentation files' in the 'Writing R
-   Extensions' manual.
-|/-\|/-\|/-\|/-\|/    -     checking Rd contents ...\     checking Rd contents ... |  v  checking Rd contents (3.8s)
-   checking for unstated dependencies in examples .../-     checking for unstated dependencies in examples ... \  v  checking for unstated dependencies in examples
-   checking contents of 'data' directory ...|     checking contents of 'data' directory ... /  v  checking contents of 'data' directory
-   checking data for non-ASCII characters ...-\     checking data for non-ASCII characters ... |  v  checking data for non-ASCII characters
-/  v  checking LazyData
-   checking data for ASCII and uncompressed saves ...-\     checking data for ASCII and uncompressed saves ... |  v  checking data for ASCII and uncompressed saves
-/    -     checking installed files from 'inst/doc' ...\     checking installed files from 'inst/doc' ... |  v  checking installed files from 'inst/doc'
-   checking files in 'vignettes' .../     checking files in 'vignettes' ... -  v  checking files in 'vignettes'
-   checking examples ...\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/     checking examples ... -  v  checking examples (8s)
-\     checking for unstated dependencies in 'tests' ...|     checking for unstated dependencies in 'tests' ... /  v  checking for unstated dependencies in 'tests'
-   checking tests ...-  -  checking tests
-\     Running 'testthat.R'|/-\|/-\|/-\|/-\|/  -    \  v  Running 'testthat.R' (3.7s)
-|    /     checking for unstated dependencies in vignettes ...-\     checking for unstated dependencies in vignettes ... |  v  checking for unstated dependencies in vignettes
-   checking package vignettes in 'inst/doc' .../     checking package vignettes in 'inst/doc' ... -  v  checking package vignettes in 'inst/doc'
-   checking re-building of vignette outputs ...\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|     checking re-building of vignette outputs ... [15s]/     checking re-building of vignette outputs ... [15s] -  -  checking re-building of vignette outputs ... [15s] OK (15.3s)
-N  checking for non-standard things in the check directory
-\     Found the following files/directories:
-     'TEST.CLI' 'TEST.ETo' 'TEST.PLU' 'TEST.Tnx' 'TEST.WTH' 'TEST1.013'
-     'TEST1.014' 'TEST1.015' 'TEST1.016' 'TEST21.cli' 'test_soil.SOL'
-v  checking for detritus in the temp directory
-   
-   See
-     'C:/Users/jrodr/AppData/Local/Temp/RtmpUz2mg5/file2bb459282822/agroclimR.Rcheck/00check.log'
-   for details.
-   
-   
-|/-\|/ -- R CMD check results ------------------------------------------------------------------------------- agroclimR 0.0.0.9000 ----
-Duration: 2m 20.8s
-
-> checking dependencies in R code ... WARNING
-  '::' or ':::' import not declared from: 'tictoc'
-  'library' or 'require' calls not declared from:
-    'Hmisc' 'lubridate' 'naniar' 'sirad' 'tidyverse'
-  'library' or 'require' calls in package code:
-    'Hmisc' 'lubridate' 'naniar' 'sirad' 'tidyverse'
-    Please use :: or requireNamespace() instead.
-    See section 'Suggested packages' in the 'Writing R Extensions' manual.
-  Namespaces in Imports field not imported from:
-    'GA' 'Hmisc' 'data.table' 'doFuture' 'ggplot2' 'magrittr' 'naniar'
-    'parallel' 'plotly' 'scales'
-    All declared Imports should be used.
-
-> checking Rd cross-references ... WARNING
-  Unknown package 'data.frame' in Rd xrefs
-  Missing link or links in documentation object 'agro.Rd':
-    '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-  
-  Missing link or links in documentation object 'fertil.Rd':
-    '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-  
-  Missing link or links in documentation object 'import_exp_data.Rd':
-    '[sirad]{?sirad}'
-  
-  Missing link or links in documentation object 'phenol.Rd':
-    '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-  
-  Missing link or links in documentation object 'plant.Rd':
-    '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-  
-  Missing link or links in documentation object 'soil.Rd':
-    '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-  
-  Missing link or links in documentation object 'weather.Rd':
-    '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-  
-  Missing link or links in documentation object 'yield.Rd':
-    '[agroclimR]{Rodriguez-Espinoza J, (2024)}'
-  
-  See section 'Cross-references' in the 'Writing R Extensions' manual.
-
-> checking for missing documentation entries ... WARNING
-  Undocumented code objects:
-    'get_STC' 'read_agroclimr_data'
-  All user-level objects in a package should have documentation entries.
-  See chapter 'Writing R documentation files' in the 'Writing R
-  Extensions' manual.
-
-> checking Rd \usage sections ... WARNING
-  Undocumented arguments in documentation object 'run_drates_param'
-    'exp_names' 'path'
-  
-  Undocumented arguments in documentation object 'write_soil_aquacrop'
-    'model_version'
-  Documented arguments not in \usage in documentation object 'write_soil_aquacrop':
-    'salb' 'evapL' 'slnf' 'slpf' 'multi' 'max_depth'
-  
-  Undocumented arguments in documentation object 'write_soil_dssat'
-    'sldr'
-  Documented arguments not in \usage in documentation object 'write_soil_dssat':
-    'max_depth'
-  
-  Undocumented arguments in documentation object 'write_wth_aquacrop'
-    '...'
-  
-  Functions with \usage entries need to have the appropriate \alias
-  entries, and all their arguments documented.
-  The \usage entries must correspond to syntactically valid R code.
-  See chapter 'Writing R documentation files' in the 'Writing R
-  Extensions' manual.
-
-> checking R code for possible problems ... [25s] NOTE
-  Alpha_Tomasella: no visible binding for global variable 'SMBD'
-  BPART_plot1: no visible binding for global variable 'Growth_Phase'
-  BPART_plot1: no visible binding for global variable 'exp_file'
-  BPART_plot1: no visible global function definition for 'ggplot'
-  BPART_plot1: no visible global function definition for 'aes'
-  BPART_plot1: no visible binding for global variable 'DVSM'
-  BPART_plot1: no visible binding for global variable 'Value'
-  BPART_plot1: no visible global function definition for 'geom_smooth'
-  BPART_plot1: no visible binding for global variable
-    'Partition_Parameter'
-  BPART_plot1: no visible global function definition for 'geom_rect'
-  BPART_plot1: no visible binding for global variable 'start'
-  BPART_plot1: no visible binding for global variable 'end'
-  BPART_plot1: no visible global function definition for
-    'scale_fill_manual'
-  BPART_plot1: no visible global function definition for 'alpha'
-  BPART_plot1: no visible global function definition for 'labs'
-  BPART_plot1: no visible global function definition for
-    'scale_x_continuous'
-  BPART_plot1: no visible global function definition for
-    'scale_y_continuous'
-  BPART_plot1: no visible global function definition for 'geom_point'
-  BPART_plot1: no visible global function definition for 'theme_bw'
-  BPART_plot1: no visible global function definition for 'ggsave'
-  BPART_plot2: no visible binding for global variable 'exp_file'
-  BPART_plot2: no visible global function definition for 'ggplot'
-  BPART_plot2: no visible global function definition for 'aes'
-  BPART_plot2: no visible binding for global variable 'DVSM'
-  BPART_plot2: no visible binding for global variable 'Value'
-  BPART_plot2: no visible global function definition for 'geom_point'
-  BPART_plot2: no visible global function definition for 'geom_smooth'
-  BPART_plot2: no visible global function definition for 'facet_grid'
-  BPART_plot2: no visible global function definition for 'labs'
-  BPART_plot2: no visible global function definition for 'theme_bw'
-  BPART_plot2: no visible global function definition for 'ggsave'
-  BPART_plot3: no visible binding for global variable 'Growth_Phase'
-  BPART_plot3: no visible binding for global variable 'exp_file'
-  BPART_plot3: no visible global function definition for 'ggplot'
-  BPART_plot3: no visible global function definition for 'aes'
-  BPART_plot3: no visible binding for global variable 'DVSM'
-  BPART_plot3: no visible binding for global variable 'Value'
-  BPART_plot3: no visible global function definition for 'geom_smooth'
-  BPART_plot3: no visible binding for global variable 'LOC_ID'
-  BPART_plot3: no visible global function definition for 'geom_rect'
-  BPART_plot3: no visible binding for global variable 'start'
-  BPART_plot3: no visible binding for global variable 'end'
-  BPART_plot3: no visible global function definition for
-    'scale_fill_manual'
-  BPART_plot3: no visible global function definition for 'alpha'
-  BPART_plot3: no visible global function definition for 'geom_point'
-  BPART_plot3: no visible global function definition for
-    'scale_x_continuous'
-  BPART_plot3: no visible global function definition for
-    'scale_y_continuous'
-  BPART_plot3: no visible global function definition for 'facet_grid'
-  BPART_plot3: no visible global function definition for 'labs'
-  BPART_plot3: no visible global function definition for 'theme_bw'
-  BPART_plot3: no visible global function definition for 'ggsave'
-  DRLV_plot: no visible binding for global variable 'exp_file'
-  DRLV_plot: no visible binding for global variable 'DVSM'
-  DRLV_plot: no visible binding for global variable 'DVS'
-  DRLV_plot: no visible global function definition for 'ggplot'
-  DRLV_plot: no visible global function definition for 'aes'
-  DRLV_plot: no visible binding for global variable 'DRLV'
-  DRLV_plot: no visible global function definition for 'geom_point'
-  DRLV_plot: no visible binding for global variable 'LOC_ID'
-  DRLV_plot: no visible global function definition for 'geom_smooth'
-  DRLV_plot: no visible global function definition for 'labs'
-  DRLV_plot: no visible global function definition for 'theme_bw'
-  DVR_plot1: no visible binding for global variable 'exp_file'
-  DVR_plot1: no visible global function definition for 'ggplot'
-  DVR_plot1: no visible global function definition for 'aes'
-  DVR_plot1: no visible binding for global variable 'DVR'
-  DVR_plot1: no visible binding for global variable 'Value'
-  DVR_plot1: no visible global function definition for 'geom_jitter'
-  DVR_plot1: no visible binding for global variable 'LOC_ID'
-  DVR_plot1: no visible global function definition for 'stat_summary'
-  DVR_plot1: no visible binding for global variable 'mean_cl_boot'
-  DVR_plot1: no visible global function definition for 'labs'
-  DVR_plot1: no visible global function definition for 'theme_bw'
-  DVR_plot1: no visible global function definition for 'ggsave'
-  DVR_plot2: no visible binding for global variable 'exp_file'
-  DVR_plot2: no visible binding for global variable 'DVR'
-  DVR_plot2: no visible global function definition for 'ggplot'
-  DVR_plot2: no visible global function definition for 'aes'
-  DVR_plot2: no visible binding for global variable 'Value'
-  DVR_plot2: no visible global function definition for 'geom_density'
-  DVR_plot2: no visible global function definition for 'geom_rug'
-  DVR_plot2: no visible global function definition for 'position_jitter'
-  DVR_plot2: no visible global function definition for 'labs'
-  DVR_plot2: no visible global function definition for 'facet_grid'
-  DVR_plot2: no visible global function definition for 'theme_bw'
-  DVR_plot2: no visible global function definition for 'theme'
-  DVR_plot2: no visible global function definition for 'element_blank'
-  DVR_plot2: no visible global function definition for 'ggsave'
-  DVR_plot3: no visible binding for global variable 'exp_file'
-  DVR_plot3: no visible global function definition for 'ggplot'
-  DVR_plot3: no visible global function definition for 'aes'
-  DVR_plot3: no visible binding for global variable 'LOC_ID'
-  DVR_plot3: no visible binding for global variable 'Value'
-  DVR_plot3: no visible global function definition for 'stat_summary'
-  DVR_plot3: no visible binding for global variable 'mean_cl_boot'
-  DVR_plot3: no visible global function definition for 'position_dodge'
-  DVR_plot3: no visible global function definition for 'labs'
-  DVR_plot3: no visible global function definition for 'facet_grid'
-  DVR_plot3: no visible global function definition for 'theme_bw'
-  DVR_plot3: no visible global function definition for 'theme'
-  DVR_plot3: no visible global function definition for 'element_blank'
-  DVR_plot3: no visible global function definition for 'element_rect'
-  DVR_plot3: no visible global function definition for 'element_text'
-  DVR_plot3: no visible global function definition for 'ggsave'
-  ETo_cal: no visible global function definition for 'setNames'
-  ETo_cal: no visible binding for global variable 'tmax'
-  ETo_cal: no visible binding for global variable 'tmin'
-  ETo_cal: no visible binding for global variable 'rhum'
-  ETo_cal: no visible binding for global variable 'ea'
-  ETo_cal: no visible binding for global variable 'srad'
-  ETo_cal: no visible binding for global variable 'wspd'
-  FSTR_plot: no visible binding for global variable 'exp_file'
-  FSTR_plot: no visible binding for global variable 'FSTR'
-  FSTR_plot: no visible global function definition for 'ggplot'
-  FSTR_plot: no visible global function definition for 'aes'
-  FSTR_plot: no visible binding for global variable 'LOC_ID'
-  FSTR_plot: no visible global function definition for 'geom_jitter'
-  FSTR_plot: no visible global function definition for 'stat_summary'
-  FSTR_plot: no visible binding for global variable 'mean_se'
-  FSTR_plot: no visible global function definition for 'geom_hline'
-  FSTR_plot: no visible global function definition for 'annotate'
-  FSTR_plot: no visible global function definition for 'labs'
-  FSTR_plot: no visible global function definition for 'theme_bw'
-  N_Tomasella: no visible binding for global variable 'SMBD'
-  SLA_max: no visible binding for global variable 'DVSM'
-  SLA_max: no visible global function definition for 'lm'
-  SLA_max: no visible binding for global variable '.'
-  SLA_max: no visible binding for global variable 'Estimate'
-  SLA_max: no visible binding for global variable 'Std. Error'
-  SSKS_cal: no visible binding for global variable 'KS_PTF'
-  SSKS_cal: no visible binding for global variable 'SSKS'
-  SSKS_cal: no visible global function definition for 'median'
-  SSKS_cal: no visible global function definition for 'quantile'
-  SSKS_cal: no visible global function definition for 'sd'
-  basic_qc: no visible global function definition for 'boxplot'
-  basic_qc: no visible binding for global variable 'tmax'
-  basic_qc: no visible binding for global variable 'tmin'
-  basic_qc: no visible binding for global variable 'rain'
-  basic_qc: no visible binding for global variable 'tmin2'
-  basic_qc: no visible binding for global variable 'tmax2'
-  basic_qc: no visible binding for global variable 'prec'
-  bootstrap_param: no visible global function definition for
-    'smean.cl.boot'
-  cal_aquacrop_global: no visible global function definition for 'runif'
-  cal_aquacrop_global: no visible binding for global variable
-    'read_lines'
-  cal_aquacrop_global: no visible binding for global variable 'var'
-  cal_canopycover_params: no visible binding for global variable 'var'
-  cal_canopycover_params: no visible binding for global variable 'value'
-  cal_canopycover_params: no visible binding for global variable 'tmax'
-  cal_canopycover_params: no visible binding for global variable 'tmin'
-  cal_canopycover_params: no visible binding for global variable 'rhum'
-  cal_canopycover_params: no visible binding for global variable 'HUH'
-  cal_canopycover_params: no visible binding for global variable 'gdd'
-  cal_canopycover_params: no visible binding for global variable 'se'
-  cal_canopycover_params: no visible global function definition for
-    'na.omit'
-  cal_canopycover_params: no visible binding for global variable 'lai'
-  cal_canopycover_params: no visible binding for global variable 'k'
-  cal_canopycover_params: no visible global function definition for 'lm'
-  cal_canopycover_params: no visible global function definition for
-    'predict'
-  cal_canopycover_params: no visible global function definition for
-    'coef'
-  cal_canopycover_params: no visible global function definition for
-    'lines'
-  cal_canopycover_params: no visible global function definition for
-    'points'
-  cal_canopycover_params: no visible global function definition for
-    'abline'
-  cal_dssat_global: no visible global function definition for 'runif'
-  cal_dssat_global: no visible binding for global variable 'var'
-  cal_growth_aquacrop: no visible binding for global variable 'Base'
-  cal_growth_aquacrop: no visible binding for global variable 'Set_cal'
-  cal_growth_aquacrop: no visible global function definition for 'runif'
-  cal_growth_aquacrop: no visible binding for global variable
-    'read_lines'
-  cal_growth_aquacrop: no visible binding for global variable 'var'
-  cal_growth_dssat: no visible binding for global variable 'Base'
-  cal_growth_dssat: no visible binding for global variable 'Set_cal'
-  cal_growth_dssat: no visible global function definition for 'runif'
-  cal_growth_dssat: no visible binding for global variable 'var'
-  cal_growth_oryza: no visible binding for global variable 'Parameter'
-  cal_growth_oryza: no visible binding for global variable 'tables'
-  cal_growth_oryza: no visible binding for global variable 'data'
-  cal_growth_oryza: no visible binding for global variable 'Base'
-  cal_growth_oryza: no visible binding for global variable 'Set_cal'
-  cal_growth_oryza: no visible global function definition for 'runif'
-  cal_growth_oryza: no visible binding for global variable 'var'
-  cal_metrics_wth: no visible binding for global variable 'var'
-  cal_metrics_wth: no visible binding for global variable 'data'
-  cal_metrics_wth: no visible binding for global variable 'metrics'
-  cal_oryza_global: no visible binding for global variable 'Parameter'
-  cal_oryza_global: no visible binding for global variable 'tables'
-  cal_oryza_global: no visible binding for global variable 'data'
-  cal_oryza_global: no visible global function definition for 'runif'
-  cal_oryza_global: no visible binding for global variable 'var'
-  cal_phen_aquacrop: no visible binding for global variable 'Base'
-  cal_phen_aquacrop: no visible binding for global variable 'Set_cal'
-  cal_phen_aquacrop: no visible global function definition for 'runif'
-  cal_phen_aquacrop: no visible binding for global variable 'read_lines'
-  cal_phen_dssat: no visible binding for global variable 'Base'
-  cal_phen_dssat: no visible binding for global variable 'Set_cal'
-  cal_phen_dssat: no visible global function definition for 'runif'
-  cal_phen_oryza: no visible binding for global variable 'Base'
-  cal_phen_oryza: no visible binding for global variable 'Set_cal'
-  cal_phen_oryza: no visible global function definition for 'runif'
-  cal_phenol_aquacrop: no visible binding for global variable 'var'
-  cal_phenol_aquacrop: no visible binding for global variable 'value'
-  cal_phenol_aquacrop: no visible binding for global variable 'tmax'
-  cal_phenol_aquacrop: no visible binding for global variable 'tmin'
-  cal_phenol_aquacrop: no visible binding for global variable 'rhum'
-  cal_phenol_aquacrop : filter_data_gdd: no visible binding for global
-    variable 'HUH'
-  cal_phenol_aquacrop : filter_data_gdd: no visible binding for global
-    variable 'sum_gdd'
-  cal_phenol_aquacrop : filter_data_days: no visible binding for global
-    variable 'sum_days'
-  cal_phenol_aquacrop: no visible binding for global variable '.'
-  cal_yield_aquacrop: no visible binding for global variable 'Base'
-  cal_yield_aquacrop: no visible binding for global variable 'Set_cal'
-  cal_yield_aquacrop: no visible global function definition for 'runif'
-  cal_yield_aquacrop: no visible binding for global variable 'read_lines'
-  cal_yield_aquacrop: no visible binding for global variable 'var'
-  cal_yield_dssat: no visible binding for global variable 'Base'
-  cal_yield_dssat: no visible binding for global variable 'Set_cal'
-  cal_yield_dssat: no visible global function definition for 'runif'
-  cal_yield_dssat: no visible binding for global variable 'var'
-  cal_yield_oryza: no visible binding for global variable 'Base'
-  cal_yield_oryza: no visible binding for global variable 'Set_cal'
-  cal_yield_oryza: no visible global function definition for 'runif'
-  cal_yield_oryza: no visible binding for global variable 'var'
-  calibration_aquacrop_GA: no visible global function definition for
-    'registerDoFuture'
-  calibration_aquacrop_GA: no visible global function definition for
-    'makeCluster'
-  calibration_aquacrop_GA: no visible global function definition for
-    'plan'
-  calibration_aquacrop_GA: no visible global function definition for
-    'tic'
-  calibration_aquacrop_GA: no visible global function definition for 'ga'
-  calibration_aquacrop_GA: no visible global function definition for
-    'toc'
-  calibration_aquacrop_GA: no visible binding for '<<-' assignment to
-    'global_params'
-  calibration_aquacrop_GA: no visible binding for global variable
-    'global_params'
-  calibration_aquacrop_GA: no visible binding for global variable
-    'Parameter'
-  calibration_aquacrop_GA: no visible binding for '<<-' assignment to
-    'phen_params'
-  calibration_aquacrop_GA: no visible binding for global variable
-    'Set_cal'
-  calibration_aquacrop_GA: no visible binding for global variable
-    'phen_params'
-  calibration_aquacrop_GA: no visible binding for global variable 'Base'
-  calibration_aquacrop_GA : <anonymous>: no visible binding for global
-    variable 'phen_params'
-  calibration_aquacrop_GA: no visible binding for '<<-' assignment to
-    'yield_params'
-  calibration_aquacrop_GA: no visible binding for global variable
-    'yield_params'
-  calibration_dssat_GA: no visible global function definition for
-    'registerDoFuture'
-  calibration_dssat_GA: no visible global function definition for
-    'makeCluster'
-  calibration_dssat_GA: no visible global function definition for 'plan'
-  calibration_dssat_GA: no visible global function definition for 'tic'
-  calibration_dssat_GA: no visible global function definition for 'ga'
-  calibration_dssat_GA: no visible global function definition for 'toc'
-  calibration_dssat_GA: no visible binding for '<<-' assignment to
-    'global_params'
-  calibration_dssat_GA: no visible binding for global variable
-    'global_params'
-  calibration_dssat_GA: no visible binding for global variable
-    'Parameter'
-  calibration_dssat_GA: no visible binding for '<<-' assignment to
-    'phen_params'
-  calibration_dssat_GA: no visible binding for global variable 'Set_cal'
-  calibration_dssat_GA: no visible binding for global variable
-    'phen_params'
-  calibration_dssat_GA: no visible binding for global variable 'Base'
-  calibration_dssat_GA : <anonymous>: no visible binding for global
-    variable 'phen_params'
-  calibration_dssat_GA: no visible binding for '<<-' assignment to
-    'yield_params'
-  calibration_dssat_GA: no visible binding for global variable
-    'yield_params'
-  calibration_oryza_GA: no visible global function definition for
-    'registerDoFuture'
-  calibration_oryza_GA: no visible global function definition for
-    'makeCluster'
-  calibration_oryza_GA: no visible global function definition for 'plan'
-  calibration_oryza_GA: no visible global function definition for 'tic'
-  calibration_oryza_GA: no visible global function definition for 'ga'
-  calibration_oryza_GA: no visible global function definition for 'toc'
-  calibration_oryza_GA: no visible binding for global variable
-    'Parameter'
-  calibration_oryza_GA: no visible binding for global variable 'tables'
-  calibration_oryza_GA: no visible binding for global variable 'Set_cal'
-  calibration_oryza_GA: no visible binding for global variable 'data'
-  calibration_oryza_GA: no visible binding for '<<-' assignment to
-    'global_params'
-  calibration_oryza_GA: no visible binding for global variable
-    'global_params'
-  calibration_oryza_GA: no visible binding for global variable 'Base'
-  crop_name_setup: no visible binding for global variable 'crop_name'
-  crop_name_setup: no visible binding for global variable 'CR'
-  download_ORYZA_Tools: no visible global function definition for
-    'download.file'
-  download_ORYZA_Tools: no visible global function definition for 'unzip'
-  eval_sim_aquacrop: no visible binding for global variable 'exp_file'
-  eval_sim_aquacrop: no visible global function definition for
-    'complete.cases'
-  eval_sim_aquacrop: no visible binding for global variable '.'
-  eval_sim_aquacrop: no visible binding for global variable 'obs'
-  eval_sim_aquacrop: no visible binding for global variable 'var'
-  eval_sim_aquacrop: no visible binding for global variable 'data'
-  eval_sim_aquacrop: no visible global function definition for 'ggplot'
-  eval_sim_aquacrop: no visible global function definition for 'aes'
-  eval_sim_aquacrop: no visible binding for global variable 'sim'
-  eval_sim_aquacrop: no visible global function definition for
-    'geom_point'
-  eval_sim_aquacrop: no visible global function definition for
-    'expand_limits'
-  eval_sim_aquacrop: no visible global function definition for
-    'geom_abline'
-  eval_sim_aquacrop: no visible global function definition for 'theme_bw'
-  eval_sim_dssat: no visible global function definition for
-    'complete.cases'
-  eval_sim_dssat: no visible binding for global variable '.'
-  eval_sim_dssat: no visible binding for global variable 'obs'
-  eval_sim_dssat: no visible binding for global variable 'var'
-  eval_sim_dssat: no visible binding for global variable 'data'
-  eval_sim_dssat: no visible global function definition for 'ggplot'
-  eval_sim_dssat: no visible global function definition for 'aes'
-  eval_sim_dssat: no visible binding for global variable 'sim'
-  eval_sim_dssat: no visible global function definition for 'geom_point'
-  eval_sim_dssat: no visible binding for global variable 'exp_file'
-  eval_sim_dssat: no visible global function definition for
-    'expand_limits'
-  eval_sim_dssat: no visible global function definition for 'geom_abline'
-  eval_sim_dssat: no visible global function definition for 'theme_bw'
-  eval_sim_oryza: no visible binding for global variable 'exp_file'
-  eval_sim_oryza: no visible global function definition for
-    'complete.cases'
-  eval_sim_oryza: no visible binding for global variable '.'
-  eval_sim_oryza: no visible binding for global variable 'obs'
-  eval_sim_oryza: no visible binding for global variable 'var'
-  eval_sim_oryza: no visible binding for global variable 'data'
-  eval_sim_oryza: no visible global function definition for 'ggplot'
-  eval_sim_oryza: no visible global function definition for 'aes'
-  eval_sim_oryza: no visible binding for global variable 'sim'
-  eval_sim_oryza: no visible global function definition for 'geom_point'
-  eval_sim_oryza: no visible global function definition for
-    'expand_limits'
-  eval_sim_oryza: no visible global function definition for 'geom_abline'
-  eval_sim_oryza: no visible global function definition for 'theme_bw'
-  extract_drates_param : read_DVR_drate: no visible global function
-    definition for 'read_lines'
-  extract_drates_param : read_DVR_drate: no visible binding for global
-    variable 'exp_file'
-  extract_drates_param : read_PHEN_drate: no visible global function
-    definition for 'read_lines'
-  extract_drates_param : read_PHEN_drate: no visible binding for global
-    variable 'exp_file'
-  extract_drates_param : read_biomass_param: no visible global function
-    definition for 'read_lines'
-  extract_drates_param : read_biomass_param: no visible global function
-    definition for 'fread'
-  extract_drates_param : read_biomass_param: no visible binding for
-    global variable 'DVS'
-  extract_drates_param : read_biomass_param: no visible binding for
-    global variable 'WLVG'
-  extract_drates_param : read_biomass_param: no visible binding for
-    global variable 'WLVD'
-  extract_drates_param : read_biomass_param: no visible binding for
-    global variable 'WST'
-  extract_drates_param : read_biomass_param: no visible binding for
-    global variable 'WSO'
-  extract_drates_param : read_biomass_param: no visible binding for
-    global variable 'exp_file'
-  extract_drates_param : read_biomass_partition_param: no visible global
-    function definition for 'read_lines'
-  extract_drates_param : read_biomass_partition_param: no visible global
-    function definition for 'fread'
-  extract_drates_param : read_biomass_partition_param: no visible binding
-    for global variable 'DVSM'
-  extract_drates_param : read_biomass_partition_param: no visible binding
-    for global variable 'FLV'
-  extract_drates_param : read_biomass_partition_param: no visible binding
-    for global variable 'FST'
-  extract_drates_param : read_biomass_partition_param: no visible binding
-    for global variable 'FSO'
-  extract_drates_param : read_biomass_partition_param: no visible binding
-    for global variable 'exp_file'
-  extract_drates_param : read_LAI_param: no visible global function
-    definition for 'read_lines'
-  extract_drates_param : read_LAI_param: no visible global function
-    definition for 'fread'
-  extract_drates_param : read_LAI_param: no visible binding for global
-    variable 'exp_file'
-  extract_drates_param : read_FSTR_param: no visible global function
-    definition for 'read_lines'
-  extract_drates_param : read_FSTR_param: no visible binding for global
-    variable 'fread'
-  extract_drates_param : read_FSTR_param: no visible binding for global
-    variable 'exp_file'
-  extract_drates_param : read_DRLV_param: no visible global function
-    definition for 'read_lines'
-  extract_drates_param : read_DRLV_param: no visible binding for global
-    variable 'fread'
-  extract_obs_var : date_to_dae: no visible binding for global variable
-    'var'
-  extract_obs_var : date_to_dae: no visible binding for global variable
-    'value'
-  extract_obs_var: no visible binding for global variable 'LOC_ID'
-  extract_obs_var: no visible binding for global variable 'CULTIVAR'
-  extract_obs_var: no visible binding for global variable 'PROJECT'
-  extract_obs_var: no visible binding for global variable 'TR_N'
-  extract_obs_var: no visible binding for global variable 'ID'
-  extract_obs_var: no visible binding for global variable 'exp_file'
-  extract_obs_var: no visible binding for global variable 'data'
-  extract_obs_var: no visible binding for global variable 'SAMPLING_DATE'
-  extract_obs_var: no visible binding for global variable 'WAGT_SE'
-  extract_obs_var: no visible binding for global variable 'var'
-  extract_obs_var: no visible binding for global variable 'value'
-  extract_obs_var: no visible binding for global variable 'metric'
-  extract_obs_var: no visible binding for global variable 'OBS'
-  extract_obs_var: no visible binding for global variable 'SE'
-  extract_obs_var: no visible binding for global variable 'se'
-  extract_obs_var: no visible binding for global variable 'LAI_OBS'
-  extract_obs_var: no visible binding for global variable 'LAI_SE'
-  extract_obs_var: no visible binding for global variable 'YIELD_AVG'
-  extract_obs_var: no visible binding for global variable 'YIELD_MIN'
-  extract_obs_var: no visible binding for global variable 'YIELD_MAX'
-  extract_obs_var: no visible binding for global variable 'ymin'
-  extract_obs_var: no visible binding for global variable 'ymax'
-  extract_obs_var: no visible binding for global variable 'diff_max'
-  extract_obs_var: no visible binding for global variable 'diff_min'
-  extract_obs_var: no visible binding for global variable 'phen_dae'
-  extract_obs_var: no visible binding for global variable '.'
-  extract_obs_var: no visible binding for global variable 'IDAT'
-  extract_obs_var: no visible binding for global variable 'FDAT'
-  extract_obs_var: no visible global function definition for 'na.omit'
-  extract_obs_var : <anonymous>: no visible binding for global variable
-    'k'
-  extract_obs_var : <anonymous>: no visible binding for global variable
-    'value'
-  extract_obs_var : <anonymous>: no visible binding for global variable
-    'canopy'
-  extract_obs_var : <anonymous>: no visible binding for global variable
-    'se'
-  extract_obs_var: no visible binding for global variable 'canopy'
-  extract_sim_aquacrop: no visible binding for global variable '.'
-  extract_sim_aquacrop: no visible binding for global variable 'Stage'
-  extract_sim_aquacrop: no visible binding for global variable 'exp_file'
-  extract_sim_aquacrop : date_to_dae: no visible binding for global
-    variable 'Stage'
-  extract_sim_aquacrop : date_to_dae: no visible binding for global
-    variable 'value'
-  extract_sim_aquacrop: no visible binding for global variable 'Biomass'
-  extract_sim_aquacrop: no visible binding for global variable 'var'
-  extract_sim_aquacrop: no visible binding for global variable 'value'
-  extract_sim_aquacrop: no visible binding for global variable 'CC'
-  extract_sim_aquacrop: no visible binding for global variable
-    'YieldPart'
-  extract_sim_aquacrop: no visible binding for global variable 'DAP'
-  extract_sim_aquacrop: no visible binding for global variable 'data'
-  extract_sim_aquacrop: no visible binding for global variable 'phen_dae'
-  extract_sim_dssat: no visible binding for global variable 'exp_file'
-  extract_sim_dssat : date_to_dae: no visible binding for global variable
-    'GSTD'
-  extract_sim_dssat : date_to_dae: no visible binding for global variable
-    'min_dap'
-  extract_sim_dssat : date_to_dae: no visible binding for global variable
-    'value'
-  extract_sim_dssat: no visible binding for global variable 'CWAD'
-  extract_sim_dssat: no visible binding for global variable 'LWAD'
-  extract_sim_dssat: no visible binding for global variable 'SWAD'
-  extract_sim_dssat: no visible binding for global variable 'EWAD'
-  extract_sim_dssat: no visible binding for global variable 'var'
-  extract_sim_dssat: no visible binding for global variable 'value'
-  extract_sim_dssat: no visible binding for global variable 'LAID'
-  extract_sim_dssat: no visible binding for global variable 'GSTD'
-  extract_sim_dssat: no visible binding for global variable 'GWAD'
-  extract_sim_dssat: no visible binding for global variable 'DAP'
-  extract_sim_dssat: no visible binding for global variable 'data'
-  extract_sim_dssat: no visible binding for global variable 'phen_dae'
-  extract_sim_oryza : date_to_dae: no visible binding for global variable
-    'var'
-  extract_sim_oryza : date_to_dae: no visible binding for global variable
-    'value'
-  extract_sim_oryza: no visible binding for global variable '.'
-  extract_sim_oryza: no visible binding for global variable 'var'
-  extract_sim_oryza: no visible binding for global variable 'value'
-  extract_sim_oryza: no visible binding for global variable 'LAI'
-  extract_sim_oryza: no visible binding for global variable 'exp_file'
-  extract_sim_oryza: no visible binding for global variable 'DVS'
-  extract_sim_oryza: no visible binding for global variable 'WRR14'
-  extract_sim_oryza: no visible binding for global variable 'data'
-  extract_sim_oryza: no visible binding for global variable 'ref'
-  extract_sim_oryza: no visible binding for global variable 'phen_dae'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'Parameter'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'Min'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'Max'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'tables'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'min.x'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'max.x'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'min.y'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'max.y'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'combinations'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'samples'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'Var1'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'Var2'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'Var3'
-  generate_combinations_paramsTb: no visible binding for global variable
-    'data'
-  get_elevation: no visible global function definition for 'fromJSON'
-  get_metrics: no visible global function definition for 'complete.cases'
-  get_metrics: no visible binding for global variable '.'
-  get_metrics: no visible global function definition for 'cor'
-  get_metrics: no visible binding for global variable 'obs'
-  get_metrics: no visible binding for global variable 'sim'
-  get_metrics: no visible binding for global variable 'RMSE'
-  get_metrics: no visible global function definition for 'lm'
-  get_params_aquacrop: no visible binding for global variable 'var'
-  get_params_aquacrop: no visible binding for global variable 'exp_file'
-  get_params_aquacrop: no visible binding for global variable 'data'
-  get_params_aquacrop: no visible binding for global variable 'value'
-  get_params_aquacrop: no visible binding for global variable 'se'
-  get_params_aquacrop: no visible binding for global variable 'WAGT'
-  get_params_aquacrop: no visible binding for global variable 'LOC_ID'
-  get_params_aquacrop: no visible binding for global variable 'CULTIVAR'
-  get_params_aquacrop: no visible binding for global variable 'PROJECT'
-  get_params_aquacrop: no visible binding for global variable 'TR_N'
-  get_params_aquacrop: no visible binding for global variable 'PDAT'
-  get_params_aquacrop: no visible binding for global variable 'NPLDS'
-  get_params_aquacrop: no visible binding for global variable 'site'
-  get_params_aquacrop: no visible binding for global variable 'id_name'
-  get_params_aquacrop: no visible binding for global variable 'wth'
-  get_params_aquacrop: no visible binding for global variable 'lat'
-  get_params_aquacrop: no visible binding for global variable 'lon'
-  get_params_aquacrop: no visible binding for global variable 'elev'
-  get_params_oryza: no visible binding for global variable
-    'DVR_Parameter'
-  get_params_oryza: no visible binding for global variable 'Value'
-  get_params_oryza : paste_crp: no visible binding for global variable
-    'Partition_Parameter'
-  get_params_oryza : paste_crp: no visible binding for global variable
-    'Value'
-  get_params_oryza : paste_crp: no visible binding for global variable
-    'DVS'
-  get_params_oryza: no visible global function definition for
-    'SPGF_cal_safe'
-  import_exp_data: no visible binding for global variable 'LOC_ID'
-  import_exp_data: no visible binding for global variable 'LAT'
-  import_exp_data: no visible binding for global variable 'LONG'
-  import_exp_data: no visible binding for global variable 'ALT'
-  import_exp_data: no visible binding for global variable 'site'
-  import_exp_data: no visible binding for global variable 'input_data'
-  import_exp_data: no visible binding for global variable 'NL'
-  import_exp_data: no visible binding for global variable 'SAND'
-  import_exp_data: no visible binding for global variable 'CLAY'
-  import_exp_data: no visible binding for global variable '.'
-  import_exp_data: no visible binding for global variable 'wth'
-  import_exp_data: no visible binding for global variable 'DATE'
-  import_exp_data: no visible binding for global variable 'loc_id'
-  impute_mean_wth: no visible binding for global variable 'data'
-  inpack: no visible global function definition for 'installed.packages'
-  inpack: no visible global function definition for 'install.packages'
-  join_data: no visible binding for global variable 'tmin.x'
-  join_data: no visible binding for global variable 'tmin.y'
-  join_data: no visible binding for global variable 'tmax.x'
-  join_data: no visible binding for global variable 'tmax.y'
-  join_data: no visible binding for global variable 'rain.x'
-  join_data: no visible binding for global variable 'rain.y'
-  join_data: no visible binding for global variable 'rain'
-  join_data: no visible binding for global variable 'tmax'
-  join_data: no visible binding for global variable 'tmin'
-  join_data: no visible binding for global variable 'srad'
-  join_data: no visible binding for global variable 'wspd'
-  join_data: no visible binding for global variable 'rhum'
-  make_grow_curves: no visible binding for global variable 'Value'
-  make_grow_curves: no visible binding for global variable 'predict_tb'
-  make_grow_curves: no visible binding for global variable 'DVS'
-  make_grow_curves : find_best_model: no visible global function
-    definition for 'lm'
-  make_grow_curves : find_best_model: no visible global function
-    definition for 'glm'
-  make_grow_curves : find_best_model: no visible global function
-    definition for 'quasibinomial'
-  make_grow_curves : find_best_model : calculate_aic: no visible global
-    function definition for 'AIC'
-  make_grow_curves : crp_pf_tb: no visible binding for global variable
-    'Partition_Parameter'
-  make_grow_curves : crp_pf_tb: no visible binding for global variable
-    'DVS'
-  make_grow_curves : crp_pf_tb: no visible binding for global variable
-    'Value'
-  make_grow_curves : crp_pf_tb: no visible binding for global variable
-    'FLV'
-  make_grow_curves : crp_pf_tb: no visible binding for global variable
-    'FSO'
-  make_grow_curves : crp_pf_tb: no visible binding for global variable
-    'FST'
-  make_grow_curves : crp_pf_tb: no visible binding for global variable
-    'PF_sum'
-  make_grow_curves : crp_sla_tb: no visible binding for global variable
-    'DVS'
-  make_grow_curves : crp_drlv_tb: no visible binding for global variable
-    'DVS'
-  mean_boot: no visible global function definition for 'smean.cl.boot'
-  plot_drymatter_obs: no visible binding for global variable 'exp_file'
-  plot_drymatter_obs: no visible binding for global variable 'locality'
-  plot_drymatter_obs: no visible binding for global variable 'cultivar'
-  plot_drymatter_obs: no visible binding for global variable 'pat_rem'
-  plot_drymatter_obs: no visible global function definition for 'ggplot'
-  plot_drymatter_obs: no visible global function definition for 'aes'
-  plot_drymatter_obs: no visible binding for global variable 'value'
-  plot_drymatter_obs: no visible global function definition for
-    'geom_point'
-  plot_drymatter_obs: no visible binding for global variable 'var'
-  plot_drymatter_obs: no visible global function definition for
-    'geom_errorbar'
-  plot_drymatter_obs: no visible binding for global variable 'se'
-  plot_drymatter_obs: no visible global function definition for
-    'geom_smooth'
-  plot_drymatter_obs: no visible global function definition for
-    'facet_wrap'
-  plot_drymatter_obs: no visible global function definition for
-    'theme_bw'
-  plot_drymatter_obs: no visible global function definition for 'theme'
-  plot_drymatter_obs: no visible global function definition for
-    'element_blank'
-  plot_drymatter_obs: no visible global function definition for
-    'element_rect'
-  plot_drymatter_obs: no visible global function definition for
-    'element_text'
-  plot_drymatter_obs: no visible global function definition for 'ylim'
-  plot_drymatter_obs: no visible global function definition for 'labs'
-  plot_lai_obs: no visible binding for global variable 'lai'
-  plot_lai_obs: no visible binding for global variable 'exp_file'
-  plot_lai_obs: no visible binding for global variable 'locality'
-  plot_lai_obs: no visible binding for global variable 'cultivar'
-  plot_lai_obs: no visible binding for global variable 'pat_rem'
-  plot_lai_obs: no visible global function definition for 'ggplot'
-  plot_lai_obs: no visible global function definition for 'aes'
-  plot_lai_obs: no visible binding for global variable 'value'
-  plot_lai_obs: no visible global function definition for 'geom_smooth'
-  plot_lai_obs: no visible global function definition for 'geom_point'
-  plot_lai_obs: no visible global function definition for 'geom_errorbar'
-  plot_lai_obs: no visible binding for global variable 'se'
-  plot_lai_obs: no visible global function definition for 'theme_bw'
-  plot_lai_obs: no visible global function definition for 'facet_wrap'
-  plot_lai_obs: no visible global function definition for 'theme'
-  plot_lai_obs: no visible global function definition for 'element_blank'
-  plot_lai_obs: no visible global function definition for 'element_rect'
-  plot_lai_obs: no visible global function definition for 'element_text'
-  plot_lai_obs: no visible global function definition for 'labs'
-  plot_lai_obs: no visible global function definition for 'ylim'
-  plot_na_wth: no visible global function definition for 'vis_miss'
-  plot_na_wth: no visible global function definition for 'labs'
-  plot_na_wth: no visible global function definition for
-    'scale_y_continuous'
-  plot_na_wth: no visible global function definition for 'coord_flip'
-  plot_na_wth: no visible global function definition for 'theme'
-  plot_na_wth: no visible global function definition for 'element_text'
-  plot_pf_loess: no visible binding for global variable 'Growth_Phase'
-  plot_pf_loess: no visible binding for global variable 'exp_file'
-  plot_pf_loess: no visible binding for global variable 'DVSM'
-  plot_pf_loess: no visible global function definition for 'ggplot'
-  plot_pf_loess: no visible global function definition for 'aes'
-  plot_pf_loess: no visible binding for global variable 'DVS'
-  plot_pf_loess: no visible binding for global variable 'Value'
-  plot_pf_loess: no visible global function definition for 'geom_rect'
-  plot_pf_loess: no visible binding for global variable 'start'
-  plot_pf_loess: no visible binding for global variable 'end'
-  plot_pf_loess: no visible global function definition for 'geom_point'
-  plot_pf_loess: no visible binding for global variable 'LOC_ID'
-  plot_pf_loess: no visible global function definition for 'geom_line'
-  plot_pf_loess: no visible global function definition for 'theme_bw'
-  plot_pf_loess: no visible global function definition for 'theme'
-  plot_pf_loess: no visible global function definition for 'element_rect'
-  plot_pf_loess: no visible global function definition for 'labs'
-  plot_pf_loess: no visible global function definition for
-    'scale_x_continuous'
-  plot_pf_loess: no visible global function definition for
-    'scale_y_continuous'
-  plot_pf_loess: no visible global function definition for
-    'scale_fill_manual'
-  plot_pf_loess: no visible global function definition for 'alpha'
-  plot_pf_loess: no visible global function definition for
-    'scale_shape_discrete'
-  plot_pf_loess: no visible global function definition for
-    'scale_color_manual'
-  plot_pf_loess: no visible global function definition for 'facet_grid'
-  plot_phen_obs: no visible binding for global variable 'exp_file'
-  plot_phen_obs: no visible binding for global variable 'locality'
-  plot_phen_obs: no visible binding for global variable 'cultivar'
-  plot_phen_obs: no visible binding for global variable 'pat_rem'
-  plot_phen_obs: no visible binding for global variable 'var'
-  plot_phen_obs: no visible global function definition for 'ggplot'
-  plot_phen_obs: no visible global function definition for 'aes'
-  plot_phen_obs: no visible binding for global variable 'value'
-  plot_phen_obs: no visible global function definition for 'geom_jitter'
-  plot_phen_obs: no visible global function definition for 'facet_grid'
-  plot_phen_obs: no visible global function definition for 'stat_summary'
-  plot_phen_obs: no visible binding for global variable 'mean_cl_normal'
-  plot_phen_obs: no visible global function definition for 'theme_bw'
-  plot_phen_obs: no visible global function definition for 'theme'
-  plot_phen_obs: no visible global function definition for
-    'element_blank'
-  plot_phen_obs: no visible global function definition for 'element_rect'
-  plot_phen_obs: no visible global function definition for 'element_text'
-  plot_phen_obs: no visible global function definition for
-    'expand_limits'
-  plot_phen_obs: no visible global function definition for 'labs'
-  plot_sla_loess: no visible binding for global variable 'Growth_Phase'
-  plot_sla_loess: no visible binding for global variable 'exp_file'
-  plot_sla_loess: no visible binding for global variable 'DVSM'
-  plot_sla_loess: no visible global function definition for 'ggplot'
-  plot_sla_loess: no visible global function definition for 'aes'
-  plot_sla_loess: no visible binding for global variable 'DVS'
-  plot_sla_loess: no visible binding for global variable 'Value'
-  plot_sla_loess: no visible global function definition for 'geom_rect'
-  plot_sla_loess: no visible binding for global variable 'start'
-  plot_sla_loess: no visible binding for global variable 'end'
-  plot_sla_loess: no visible global function definition for 'geom_point'
-  plot_sla_loess: no visible binding for global variable 'LOC_ID'
-  plot_sla_loess: no visible global function definition for 'geom_line'
-  plot_sla_loess: no visible global function definition for 'theme_bw'
-  plot_sla_loess: no visible global function definition for 'theme'
-  plot_sla_loess: no visible global function definition for
-    'element_rect'
-  plot_sla_loess: no visible global function definition for 'labs'
-  plot_sla_loess: no visible global function definition for
-    'scale_x_continuous'
-  plot_sla_loess: no visible global function definition for
-    'scale_fill_manual'
-  plot_sla_loess: no visible global function definition for 'alpha'
-  plot_sla_loess: no visible global function definition for
-    'scale_shape_discrete'
-  plot_sla_loess: no visible global function definition for
-    'scale_color_manual'
-  plot_wth_dat: no visible binding for global variable 'tmax'
-  plot_wth_dat: no visible binding for global variable 'tmin'
-  plot_wth_dat: no visible binding for global variable 'rain'
-  plot_wth_dat: no visible global function definition for 'ggplot'
-  plot_wth_dat: no visible global function definition for 'aes'
-  plot_wth_dat: no visible binding for global variable 'value'
-  plot_wth_dat: no visible global function definition for 'geom_line'
-  plot_wth_dat: no visible binding for global variable 'var'
-  plot_wth_dat: no visible global function definition for 'facet_grid'
-  plot_wth_dat: no visible global function definition for 'theme_bw'
-  plot_wth_dat: no visible global function definition for 'theme'
-  plot_wth_dat: no visible global function definition for
-    'scale_colour_manual'
-  plot_yield_obs: no visible binding for global variable 'exp_file'
-  plot_yield_obs: no visible binding for global variable 'locality'
-  plot_yield_obs: no visible binding for global variable 'cultivar'
-  plot_yield_obs: no visible binding for global variable 'pat_rem'
-  plot_yield_obs: no visible global function definition for 'ggplot'
-  plot_yield_obs: no visible global function definition for 'aes'
-  plot_yield_obs: no visible binding for global variable 'value'
-  plot_yield_obs: no visible global function definition for 'geom_point'
-  plot_yield_obs: no visible global function definition for
-    'geom_errorbar'
-  plot_yield_obs: no visible binding for global variable 'se'
-  plot_yield_obs: no visible global function definition for
-    'position_dodge'
-  plot_yield_obs: no visible global function definition for 'theme_bw'
-  plot_yield_obs: no visible global function definition for 'theme'
-  plot_yield_obs: no visible global function definition for
-    'element_text'
-  plot_yield_obs: no visible global function definition for
-    'element_blank'
-  plot_yield_obs: no visible global function definition for
-    'element_rect'
-  plot_yield_obs: no visible global function definition for
-    'expand_limits'
-  plot_yield_obs: no visible global function definition for 'labs'
-  plot_yield_obs: no visible global function definition for 'coord_flip'
-  read_aquacrop_day: no visible global function definition for
-    'read_lines'
-  read_aquacrop_day: no visible binding for global variable '.'
-  read_aquacrop_day: no visible binding for global variable 'fread'
-  read_aquacrop_day: no visible global function definition for 'setNames'
-  read_aquacrop_season: no visible global function definition for
-    'read_lines'
-  read_aquacrop_season: no visible binding for global variable '.'
-  read_aquacrop_season: no visible global function definition for 'fread'
-  read_aquacrop_season: no visible global function definition for
-    'setNames'
-  read_evaluate: no visible global function definition for 'read_table'
-  read_evaluate: no visible global function definition for 'cols'
-  read_plantgro: no visible global function definition for 'read_lines'
-  read_plantgro: no visible binding for global variable '@YEAR'
-  read_plantgro: no visible binding for global variable 'DOY'
-  read_res_big: no visible global function definition for 'read_lines'
-  read_res_big: no visible binding for global variable '.'
-  read_res_exp: no visible global function definition for 'read_lines'
-  read_res_exp: no visible binding for global variable 'fread'
-  read_res_exp: no visible binding for global variable '.'
-  read_summary: no visible global function definition for 'read_lines'
-  read_summary: no visible global function definition for 'fread'
-  read_summary: no visible binding for global variable 'SDAT'
-  read_summary: no visible binding for global variable 'PDAT'
-  read_summary: no visible binding for global variable 'EDAT'
-  read_summary: no visible binding for global variable 'ADAT'
-  read_summary: no visible binding for global variable 'MDAT'
-  read_summary: no visible binding for global variable 'HDAT'
-  read_wth: no visible global function definition for 'read_lines'
-  read_wth : cal_summ: no visible binding for global variable 'TMXD'
-  read_wth : cal_summ: no visible binding for global variable 'TMND'
-  read_wth : cal_summ: no visible binding for global variable 'SRAD'
-  remote_data_correction: no visible binding for global variable 'tmax.x'
-  remote_data_correction: no visible binding for global variable 'tmax.y'
-  remote_data_correction: no visible binding for global variable 'tmin.x'
-  remote_data_correction: no visible binding for global variable 'tmin.y'
-  remote_data_correction: no visible binding for global variable 'tmax'
-  remote_data_correction: no visible binding for global variable 'tmin'
-  remote_data_correction: no visible binding for global variable 'rain'
-  remote_data_correction: no visible binding for global variable 'corr'
-  remote_data_correction: no visible binding for global variable 'var'
-  replace_outlier: no visible global function definition for 'median'
-  replace_outlier: no visible global function definition for
-    'boxplot.stats'
-  run_drates_param : make_reruns2: no visible global function definition
-    for 'read_lines'
-  set_theme_jre: no visible binding for '<<-' assignment to 'theme_jre'
-  set_theme_jre: no visible global function definition for 'theme_bw'
-  set_theme_jre: no visible global function definition for 'theme'
-  set_theme_jre: no visible global function definition for
-    'element_blank'
-  set_theme_jre: no visible global function definition for 'element_rect'
-  set_theme_jre: no visible global function definition for 'element_text'
-  srad_cal: no visible global function definition for 'ap'
-  srad_cal: no visible binding for global variable 'lon'
-  srad_cal: no visible binding for global variable 'extraT'
-  srad_cal: no visible binding for global variable 'sbri'
-  srad_cal: no visible binding for global variable 'tmax'
-  srad_cal: no visible binding for global variable 'tmin'
-  srad_cal: no visible binding for global variable 'srad'
-  srad_cal: no visible global function definition for 'median'
-  srad_cal: no visible binding for global variable 'step1'
-  tidy_params_oryza: no visible binding for global variable 'FLV'
-  tidy_params_oryza: no visible binding for global variable 'FSO'
-  tidy_params_oryza: no visible binding for global variable
-    'Partition_Parameter'
-  tidy_params_oryza: no visible binding for global variable 'FST'
-  tidy_params_oryza: no visible binding for global variable 'exp_file'
-  tidy_params_oryza: no visible binding for global variable 'DVS'
-  tidy_params_oryza: no visible binding for global variable 'LAI'
-  tidy_params_oryza: no visible global function definition for 'na.omit'
-  tidy_params_oryza: no visible binding for global variable 'WLVG'
-  tidy_params_oryza: no visible binding for global variable 'SLA'
-  tidy_params_oryza: no visible binding for global variable 'Value'
-  tidy_params_oryza: no visible binding for global variable
-    'DVR_Parameter'
-  tidy_params_oryza: no visible binding for global variable 'DRLV'
-  tidy_params_oryza: no visible binding for global variable 'Parameter'
-  tidy_params_oryza: no visible binding for global variable 'DVSM'
-  tidy_params_oryza: no visible binding for global variable 'FSTR'
-  tidy_params_oryza: no visible binding for global variable '.'
-  tidy_params_oryza: no visible binding for global variable 'LOC_ID'
-  tidy_params_oryza: no visible binding for global variable 'CULTIVAR'
-  tidy_params_oryza: no visible binding for global variable 'PROJECT'
-  tidy_params_oryza: no visible binding for global variable 'TR_N'
-  tidy_params_oryza: no visible binding for global variable 'ID'
-  tidy_params_oryza: no visible binding for global variable 'YIELD_AVG'
-  tidy_params_oryza: no visible binding for global variable 'GW1000'
-  tidy_params_oryza: no visible binding for global variable 'ST_M2'
-  tidy_params_oryza: no visible binding for global variable 'PAN_M2'
-  tidy_params_oryza: no visible binding for global variable 'GT_PAN'
-  tidy_params_oryza: no visible binding for global variable 'GF_PAN'
-  tidy_params_oryza: no visible binding for global variable
-    'SPGF_extract'
-  tidy_soil_aquacrop: no visible binding for global variable 'DEPTH'
-  tidy_soil_aquacrop: no visible binding for global variable 'SBDM'
-  tidy_soil_aquacrop: no visible binding for global variable 'SOC'
-  tidy_soil_aquacrop: no visible binding for global variable 'SAND'
-  tidy_soil_aquacrop: no visible binding for global variable 'CLAY'
-  tidy_soil_aquacrop: no visible binding for global variable 'OM'
-  tidy_soil_aquacrop: no visible binding for global variable 'site'
-  tidy_soil_aquacrop: no visible binding for global variable 'TKL'
-  tidy_soil_aquacrop: no visible binding for global variable 'WCST'
-  tidy_soil_aquacrop: no visible binding for global variable 'WCFC'
-  tidy_soil_aquacrop: no visible binding for global variable 'WCWP'
-  tidy_soil_aquacrop: no visible binding for global variable 'SSKS'
-  tidy_soil_aquacrop: no visible binding for global variable
-    'Penetrability'
-  tidy_soil_aquacrop: no visible binding for global variable 'Gravel'
-  tidy_soil_aquacrop: no visible binding for global variable 'CRa'
-  tidy_soil_aquacrop: no visible binding for global variable 'CRb'
-  tidy_soil_aquacrop: no visible binding for global variable 'STC'
-  tidy_soil_aquacrop: no visible global function definition for
-    'setNames'
-  tidy_soil_dssat: no visible binding for global variable 'NL'
-  tidy_soil_dssat: no visible binding for global variable 'DEPTH'
-  tidy_soil_dssat: no visible binding for global variable 'SOC'
-  tidy_soil_dssat: no visible binding for global variable 'SLON'
-  tidy_soil_dssat: no visible binding for global variable 'SNH4'
-  tidy_soil_dssat: no visible binding for global variable 'SNO3'
-  tidy_soil_dssat: no visible binding for global variable 'SLOC'
-  tidy_soil_dssat: no visible binding for global variable 'SAND'
-  tidy_soil_dssat: no visible binding for global variable 'CLAY'
-  tidy_soil_dssat: no visible binding for global variable 'OM'
-  tidy_soil_dssat: no visible binding for global variable 'SBDM'
-  tidy_soil_dssat: no visible binding for global variable 'WCFC'
-  tidy_soil_dssat: no visible binding for global variable 'WCST'
-  tidy_soil_dssat: no visible binding for global variable 'WCWP'
-  tidy_soil_dssat: no visible binding for global variable 'LOC_ID'
-  tidy_soil_dssat: no visible binding for global variable 'PH'
-  tidy_soil_dssat: no visible binding for global variable 'SILT'
-  tidy_soil_dssat: no visible binding for global variable 'id_name'
-  tidy_soil_dssat: no visible binding for global variable 'SLB'
-  tidy_soil_dssat: no visible binding for global variable 'SCEC'
-  tidy_soil_dssat: no visible binding for global variable 'SLCF'
-  tidy_soil_dssat: no visible binding for global variable 'SLCL'
-  tidy_soil_dssat: no visible binding for global variable 'SLHW'
-  tidy_soil_dssat: no visible binding for global variable 'SLSI'
-  tidy_soil_dssat: no visible binding for global variable 'SLNI'
-  tidy_soil_dssat: no visible binding for global variable 'SDUL'
-  tidy_soil_dssat: no visible binding for global variable 'SSAT'
-  tidy_soil_dssat: no visible binding for global variable 'SLLL'
-  tidy_soil_dssat: no visible binding for global variable 'SSKS'
-  tidy_soil_dssat: no visible binding for global variable 'STC'
-  tidy_soil_dssat: no visible binding for global variable '.'
-  tidy_soil_dssat: no visible binding for global variable 'SRGF'
-  tidy_soil_oryza: no visible binding for global variable 'soil_test'
-  tidy_soil_oryza: no visible global function definition for '%>%<-'
-  tidy_soil_oryza: no visible binding for global variable 'data'
-  tidy_soil_oryza: no visible global function definition for
-    'rename_with<-'
-  tidy_soil_oryza: no visible global function definition for '~<-'
-  tidy_soil_oryza: no visible binding for global variable 'DEPTH'
-  tidy_soil_oryza: no visible binding for global variable 'SBDM'
-  tidy_soil_oryza: no visible binding for global variable 'SOC'
-  tidy_soil_oryza: no visible binding for global variable 'SLNI'
-  tidy_soil_oryza: no visible binding for global variable 'SNH4'
-  tidy_soil_oryza: no visible binding for global variable 'SNO3'
-  tidy_soil_oryza: no visible binding for global variable 'CN'
-  tidy_to_write_crop: no visible binding for global variable 'Base.x'
-  tidy_to_write_crop: no visible binding for global variable 'Base.y'
-  tidy_to_write_crop: no visible binding for global variable 'Min.x'
-  tidy_to_write_crop: no visible binding for global variable 'Min.y'
-  tidy_to_write_crop: no visible binding for global variable 'Max.x'
-  tidy_to_write_crop: no visible binding for global variable 'Max.y'
-  tidy_wth_aquacrop: no visible global function definition for 'setNames'
-  tidy_wth_aquacrop: no visible binding for global variable '.'
-  tidy_wth_dssat: no visible global function definition for 'setNames'
-  tidy_wth_dssat: no visible binding for global variable 'wspd'
-  tidy_wth_dssat: no visible binding for global variable 'tmax'
-  tidy_wth_dssat: no visible binding for global variable 'tmin'
-  tidy_wth_dssat: no visible binding for global variable 'tmean'
-  tidy_wth_oryza: no visible global function definition for 'setNames'
-  tidy_wth_oryza: no visible binding for global variable 'tmax'
-  tidy_wth_oryza: no visible binding for global variable 'tmin'
-  tidy_wth_oryza: no visible binding for global variable 'rhum'
-  transform_fert_table: no visible binding for global variable 'DDE'
-  transform_fert_table: no visible binding for global variable 'N'
-  transform_fert_table: no visible binding for global variable 'P'
-  transform_fert_table: no visible binding for global variable 'K'
-  transform_fert_table: no visible binding for global variable 'FDATE'
-  transform_fert_table: no visible binding for global variable 'FMCD'
-  transform_fert_table: no visible binding for global variable 'FACD'
-  transform_fert_table: no visible binding for global variable 'FDEP'
-  transform_fert_table: no visible binding for global variable 'FAMN'
-  transform_fert_table: no visible binding for global variable 'FAMP'
-  transform_fert_table: no visible binding for global variable 'FAMK'
-  transform_fert_table: no visible binding for global variable 'FAMC'
-  transform_fert_table: no visible binding for global variable 'FAMO'
-  transform_fert_table: no visible binding for global variable 'FOCD'
-  transform_fert_table: no visible binding for global variable 'FERNAME'
-  write_crop_oryza : crp_tb: no visible global function definition for
-    'write.table'
-  write_exp_aquacrop: no visible global function definition for
-    'setNames'
-  write_exp_aquacrop : cal_cycles_project: no visible global function
-    definition for 'capture.output'
-  write_exp_aquacrop: no visible binding for global variable '.'
-  write_exp_oryza: no visible binding for global variable 'LOC_ID'
-  write_exp_oryza: no visible binding for global variable 'CULTIVAR'
-  write_exp_oryza: no visible binding for global variable 'PROJECT'
-  write_exp_oryza: no visible binding for global variable 'TR_N'
-  write_exp_oryza: no visible binding for global variable 'PDAT'
-  write_exp_oryza: no visible binding for global variable '.'
-  write_exp_oryza: no visible binding for global variable 'ID'
-  write_exp_oryza : Fert_tb: no visible binding for global variable 'DDE'
-  write_exp_oryza : Fert_tb: no visible binding for global variable 'N'
-  write_exp_oryza : Fert_tb: no visible global function definition for
-    'write.table'
-  write_exp_oryza : LAI_tb: no visible global function definition for
-    'na.omit'
-  write_exp_oryza : LAI_tb: no visible global function definition for
-    'write.table'
-  write_exp_oryza : WLVG_tb: no visible global function definition for
-    'na.omit'
-  write_exp_oryza : WLVG_tb: no visible global function definition for
-    'write.table'
-  write_exp_oryza : WLVD_tb: no visible global function definition for
-    'na.omit'
-  write_exp_oryza : WLVD_tb: no visible global function definition for
-    'write.table'
-  write_exp_oryza : WST_tb: no visible global function definition for
-    'na.omit'
-  write_exp_oryza : WST_tb: no visible global function definition for
-    'write.table'
-  write_exp_oryza : WSO_tb: no visible global function definition for
-    'na.omit'
-  write_exp_oryza : WSO_tb: no visible global function definition for
-    'write.table'
-  write_exp_oryza : WAGT_tb: no visible global function definition for
-    'na.omit'
-  write_exp_oryza : WAGT_tb: no visible binding for global variable 'i'
-  write_exp_oryza : WAGT_tb: no visible global function definition for
-    'write.table'
-  write_exp_oryza: no visible binding for global variable 'exp_file'
-  write_exp_oryza: no visible binding for global variable 'ESTAB'
-  write_exp_oryza: no visible binding for global variable 'SBDUR'
-  write_exp_oryza: no visible binding for global variable 'NPLDS'
-  write_exp_oryza: no visible binding for global variable 'CROP_SYS'
-  write_exp_oryza: no visible binding for global variable 'TRDAT'
-  write_exp_oryza: no visible binding for global variable 'FERT_obs'
-  write_exp_oryza: no visible binding for global variable 'PHEN_obs'
-  write_exp_oryza: no visible binding for global variable 'PLANT_obs'
-  write_files_aquacrop: no visible binding for global variable 'site'
-  write_files_aquacrop: no visible binding for global variable 'path'
-  write_files_aquacrop: no visible binding for global variable 'id_name'
-  write_files_aquacrop: no visible binding for global variable 'wth'
-  write_files_aquacrop: no visible binding for global variable 'lat'
-  write_files_aquacrop: no visible binding for global variable 'lon'
-  write_files_aquacrop: no visible binding for global variable 'elev'
-  write_files_aquacrop: no visible binding for global variable '.'
-  write_files_aquacrop: no visible binding for global variable 'soil'
-  write_files_aquacrop: no visible binding for global variable 'DEPTH'
-  write_files_aquacrop: no visible binding for global variable 'SBDM'
-  write_files_aquacrop: no visible binding for global variable 'SOC'
-  write_files_aquacrop: no visible binding for global variable 'SAND'
-  write_files_aquacrop: no visible binding for global variable 'CLAY'
-  write_files_aquacrop: no visible binding for global variable 'OM'
-  write_files_aquacrop: no visible binding for global variable 'TKL'
-  write_files_aquacrop: no visible binding for global variable 'WCST'
-  write_files_aquacrop: no visible binding for global variable 'WCFC'
-  write_files_aquacrop: no visible binding for global variable 'WCWP'
-  write_files_aquacrop: no visible binding for global variable 'SSKS'
-  write_files_aquacrop: no visible binding for global variable
-    'Penetrability'
-  write_files_aquacrop: no visible binding for global variable 'Gravel'
-  write_files_aquacrop: no visible binding for global variable 'CRa'
-  write_files_aquacrop: no visible binding for global variable 'CRb'
-  write_files_aquacrop: no visible binding for global variable 'STC'
-  write_files_aquacrop: no visible global function definition for
-    'setNames'
-  write_files_aquacrop: no visible binding for global variable 'data'
-  write_files_aquacrop: no visible binding for global variable 'LOC_ID'
-  write_files_aquacrop: no visible binding for global variable 'CULTIVAR'
-  write_files_aquacrop: no visible binding for global variable 'PROJECT'
-  write_files_aquacrop: no visible binding for global variable 'TR_N'
-  write_files_aquacrop: no visible binding for global variable 'PDAT'
-  write_files_aquacrop: no visible binding for global variable 'exp_file'
-  write_files_aquacrop: no visible binding for global variable 'NPLDS'
-  write_files_aquacrop: no visible binding for global variable 'MDAT'
-  write_files_aquacrop: no visible binding for global variable 'CROP_SYS'
-  write_files_dssat: no visible binding for global variable 'site'
-  write_files_dssat: no visible binding for global variable 'path'
-  write_files_dssat: no visible binding for global variable 'id_name'
-  write_files_dssat: no visible binding for global variable 'wth'
-  write_files_dssat: no visible binding for global variable 'lat'
-  write_files_dssat: no visible binding for global variable 'lon'
-  write_files_dssat: no visible binding for global variable 'elev'
-  write_files_dssat: no visible binding for global variable 'wth_data'
-  write_files_dssat: no visible binding for global variable '.'
-  write_files_dssat: no visible binding for global variable 'soil'
-  write_files_dssat: no visible binding for global variable 'input_data'
-  write_files_dssat: no visible binding for global variable 'NL'
-  write_files_dssat: no visible binding for global variable 'DEPTH'
-  write_files_dssat: no visible binding for global variable 'SOC'
-  write_files_dssat: no visible binding for global variable 'SLON'
-  write_files_dssat: no visible binding for global variable 'SNH4'
-  write_files_dssat: no visible binding for global variable 'SNO3'
-  write_files_dssat: no visible binding for global variable 'SLOC'
-  write_files_dssat: no visible binding for global variable 'SAND'
-  write_files_dssat: no visible binding for global variable 'CLAY'
-  write_files_dssat: no visible binding for global variable 'OM'
-  write_files_dssat: no visible binding for global variable 'SBDM'
-  write_files_dssat: no visible binding for global variable 'WCFC'
-  write_files_dssat: no visible binding for global variable 'WCST'
-  write_files_dssat: no visible binding for global variable 'WCWP'
-  write_files_dssat: no visible binding for global variable 'PH'
-  write_files_dssat: no visible binding for global variable 'SILT'
-  write_files_dssat: no visible binding for global variable 'SLB'
-  write_files_dssat: no visible binding for global variable 'SCEC'
-  write_files_dssat: no visible binding for global variable 'SLCF'
-  write_files_dssat: no visible binding for global variable 'SLCL'
-  write_files_dssat: no visible binding for global variable 'SLHW'
-  write_files_dssat: no visible binding for global variable 'SLSI'
-  write_files_dssat: no visible binding for global variable 'SLNI'
-  write_files_dssat: no visible binding for global variable 'SDUL'
-  write_files_dssat: no visible binding for global variable 'SSAT'
-  write_files_dssat: no visible binding for global variable 'SLLL'
-  write_files_dssat: no visible binding for global variable 'SSKS'
-  write_files_dssat: no visible binding for global variable 'STC'
-  write_files_dssat: no visible binding for global variable 'data'
-  write_files_dssat: no visible binding for global variable 'LOC_ID'
-  write_files_dssat: no visible binding for global variable 'CULTIVAR'
-  write_files_dssat: no visible binding for global variable 'PROJECT'
-  write_files_dssat: no visible binding for global variable 'TR_N'
-  write_files_dssat: no visible binding for global variable 'PDAT'
-  write_files_dssat: no visible binding for global variable 'ID'
-  write_files_dssat: no visible binding for global variable 'fert_tb'
-  write_files_dssat: no visible binding for global variable 'exp_file'
-  write_files_dssat: no visible binding for global variable 'NPLDS'
-  write_files_dssat: no visible binding for global variable 'fert_in'
-  write_files_dssat: no visible binding for global variable 'var'
-  write_files_dssat: no visible binding for global variable 'ESTAB'
-  write_files_dssat: no visible binding for global variable 'CROP_SYS'
-  write_files_dssat: no visible binding for global variable 'PLME'
-  write_files_dssat: no visible binding for global variable 'PLDS'
-  write_files_dssat: no visible binding for global variable 'PLRS'
-  write_files_dssat: no visible binding for global variable 'PLRD'
-  write_files_dssat: no visible binding for global variable 'PLDP'
-  write_files_dssat: no visible binding for global variable
-    'planting_details'
-  write_files_dssat: no visible binding for global variable 'irri'
-  write_files_dssat: no visible binding for global variable 'start_date'
-  write_files_dssat: no visible binding for global variable 'EDAT'
-  write_files_dssat: no visible binding for global variable
-    'treatments_number'
-  write_files_oryza: no visible binding for global variable 'site'
-  write_files_oryza: no visible binding for global variable 'path'
-  write_files_oryza: no visible binding for global variable 'id_name'
-  write_files_oryza: no visible binding for global variable 'wth'
-  write_files_oryza: no visible binding for global variable 'lat'
-  write_files_oryza: no visible binding for global variable 'lon'
-  write_files_oryza: no visible binding for global variable 'elev'
-  write_files_oryza: no visible binding for global variable 'wth_data'
-  write_files_oryza: no visible binding for global variable '.'
-  write_soil_aquacrop: no visible binding for global variable 'FC'
-  write_soil_aquacrop: no visible binding for global variable 'WP'
-  write_soil_aquacrop: no visible binding for global variable '.'
-  write_soil_aquacrop: no visible global function definition for
-    'write.table'
-  write_soil_oryza: no visible binding for global variable 'DEPTH'
-  write_soil_oryza: no visible binding for global variable 'SBDM'
-  write_soil_oryza: no visible binding for global variable 'SOC'
-  write_soil_oryza: no visible binding for global variable 'SLON'
-  write_soil_oryza: no visible binding for global variable 'SNH4'
-  write_soil_oryza: no visible binding for global variable 'SNO3'
-  write_wth_aquacrop : write_Tnx: no visible global function definition
-    for 'write.table'
-  write_wth_oryza: no visible binding for global variable 'srad'
-  write_wth_oryza: no visible global function definition for 'median'
-  write_wth_oryza: no visible binding for global variable '.'
-  write_wth_oryza: no visible binding for global variable 'tmax'
-  write_wth_oryza: no visible binding for global variable 'tmin'
-  write_wth_oryza: no visible binding for global variable 'rain'
-  write_wth_oryza: no visible binding for global variable 'vp'
-  write_wth_oryza: no visible binding for global variable 'wspd'
-  write_wth_oryza: no visible global function definition for
-    'write.table'
-  write_wth_oryza : <anonymous>: no visible global function definition
-    for 'write.table'
-  Undefined global functions or variables:
-    %>%<- . @YEAR ADAT AIC ALT Base Base.x Base.y Biomass CC CLAY CN CR
-    CROP_SYS CRa CRb CULTIVAR CWAD DAP DATE DDE DEPTH DOY DRLV DVR
-    DVR_Parameter DVS DVSM EDAT ESTAB EWAD Estimate FACD FAMC FAMK FAMN
-    FAMO FAMP FC FDAT FDATE FDEP FERNAME FERT_obs FLV FMCD FOCD FSO FST
-    FSTR GF_PAN GSTD GT_PAN GW1000 GWAD Gravel Growth_Phase HDAT HUH ID
-    IDAT K KS_PTF LAI LAID LAI_OBS LAI_SE LAT LOC_ID LONG LWAD MDAT Max
-    Max.x Max.y Min Min.x Min.y N NL NPLDS OBS OM P PAN_M2 PDAT PF_sum PH
-    PHEN_obs PLANT_obs PLDP PLDS PLME PLRD PLRS PROJECT Parameter
-    Partition_Parameter Penetrability RMSE SAMPLING_DATE SAND SBDM SBDUR
-    SCEC SDAT SDUL SE SILT SLA SLB SLCF SLCL SLHW SLLL SLNI SLOC SLON
-    SLSI SMBD SNH4 SNO3 SOC SPGF_cal_safe SPGF_extract SRAD SRGF SSAT
-    SSKS STC ST_M2 SWAD Set_cal Stage Std. Error TKL TMND TMXD TRDAT TR_N
-    Value Var1 Var2 Var3 WAGT WAGT_SE WCFC WCST WCWP WLVD WLVG WP WRR14
-    WSO WST YIELD_AVG YIELD_MAX YIELD_MIN YieldPart abline aes alpha
-    annotate ap boxplot boxplot.stats canopy capture.output coef cols
-    combinations complete.cases coord_flip cor corr crop_name cultivar
-    data diff_max diff_min download.file ea element_blank element_rect
-    element_text elev end exp_file expand_limits extraT facet_grid
-    facet_wrap fert_in fert_tb fread fromJSON ga gdd geom_abline
-    geom_density geom_errorbar geom_hline geom_jitter geom_line
-    geom_point geom_rect geom_rug geom_smooth ggplot ggsave glm
-    global_params i id_name input_data install.packages
-    installed.packages irri k labs lai lat lines lm loc_id locality lon
-    makeCluster max.x max.y mean_cl_boot mean_cl_normal mean_se median
-    metric metrics min.x min.y min_dap na.omit obs pat_rem path phen_dae
-    phen_params plan planting_details points position_dodge
-    position_jitter prec predict predict_tb quantile quasibinomial rain
-    rain.x rain.y read_lines read_table ref registerDoFuture
-    rename_with<- rhum runif samples sbri scale_color_manual
-    scale_colour_manual scale_fill_manual scale_shape_discrete
-    scale_x_continuous scale_y_continuous sd se setNames sim site
-    smean.cl.boot soil soil_test srad start start_date stat_summary step1
-    sum_days sum_gdd tables theme theme_bw tic tmax tmax.x tmax.y tmax2
-    tmean tmin tmin.x tmin.y tmin2 toc treatments_number unzip value var
-    vis_miss vp write.table wspd wth wth_data yield_params ylim ymax ymin
-    ~<-
-  Consider adding
-    importFrom("grDevices", "boxplot.stats")
-    importFrom("graphics", "abline", "boxplot", "lines", "points")
-    importFrom("stats", "AIC", "coef", "complete.cases", "cor", "end",
-               "glm", "lm", "median", "na.omit", "predict", "quantile",
-               "quasibinomial", "runif", "sd", "setNames", "start", "var")
-    importFrom("utils", "capture.output", "data", "download.file",
-               "install.packages", "installed.packages", "unzip",
-               "write.table")
-  to your NAMESPACE file.
-
-> checking for non-standard things in the check directory ... NOTE
-  Found the following files/directories:
-    'TEST.CLI' 'TEST.ETo' 'TEST.PLU' 'TEST.Tnx' 'TEST.WTH' 'TEST1.013'
-    'TEST1.014' 'TEST1.015' 'TEST1.016' 'TEST21.cli' 'test_soil.SOL'
-
-0 errors v | 4 warnings x | 2 notes x

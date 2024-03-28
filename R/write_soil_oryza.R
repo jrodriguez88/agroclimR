@@ -18,7 +18,7 @@
 #' soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
 #' soil_files_created <- write_soil_oryza(id_name = "soil_oryza", soil_data = soil_sample)
 #'
-#' soil_files_created
+#' readLines(soil_files_created[1], n = 30) |> writeLines()
 #' file.remove(soil_files_created)
 #'
 ## Update the details for the return value
@@ -50,7 +50,7 @@ cat("**********************************************************************",sep
 cat(paste0("* Soil        : ", id_name, " - texture classes:", paste(data[1:nrow(data),"STC"], collapse = "-"), sep = '\n'))
 cat(paste0('* File name        : ', id_name, ".sol"), sep = '\n')
 cat(paste0('* Sampling date      : ', data$SAMPLING_DATE[1] ) ,sep = '\n')
-cat(paste0('* Additional info  : ', 'Create with https://github.com/jrodriguez88') ,sep = '\n')
+cat(paste0('* Additional info  : ', 'Create with agroclimR') ,sep = '\n')
 cat('*--------------------------------------------------------------------*',sep = '\n')
 
 cat('\n')

@@ -1,5 +1,4 @@
-write_exp_dssat <-
-function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
+write_exp_dssat <- function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
                             irri, fert_in, start_date, planting_date, emergence_date, treatments_number){
 
   options(encoding = "UTF-8")
@@ -22,9 +21,8 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
   CR <- crop_name_setup(id_name[[1]], crop)[["CR"]]
 
 
-  #############################
-  #*EXP.DETAILS:
-  #*############################
+
+  # EXP.DETAILS ----
 
   description <- list(details = paste("*EXP.DETAILS:", paste0(id_name[1], CR),  id_name[2]),
                       people = "Rodriguez-Espinoza, J., Mesa-Diez J., Ramirez-Villegas, J.",
@@ -53,10 +51,10 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
 
   }
 
-  ########################
-  #*TREATMENTS
-  #*######################
-  #*
+
+  # TREATMENTS ----
+
+
   # IC <- 0         # 1 if its necesarry run the experimental with initial conditions, 0 if its not necessary to run
   #                   the experimental with initial conditions
 
@@ -100,9 +98,9 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
 
   }
 
-  #####################################
-  #*CULTIVARS
-  #*###################################
+
+  # CULTIVARS ----
+
 
   # Parameters
   # CR <- 'MZ'    # Crop Code, you need to search this parameter for de manual DSSAT (its different by crop)
@@ -127,9 +125,8 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
 
   }
 
-  #################################
-  #*FIELDS
-  #*###############################
+
+  # FIELDS ----
 
   # Parameters
   # WSTA <- 'CCCR8000' # Weather Station Code, its the same code to using in WTH file
@@ -203,9 +200,8 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
   }
 
 
-  ###############################
-  #*PLANTING DETAILS
-  #*#############################
+
+  # PLANTING DETAILS ----
 
   # input_pDetails <- list()
   # input_pDetails$PDATE <- 80092 # Planting date
@@ -260,9 +256,8 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
   }
 
 
-  #########################################
-  #*IRRIGATION AND WATER MANAGEMENT
-  #*#######################################
+# IRRIGATION AND WATER MANAGEMENT ----
+
 
   #*IRRIGATION AND WATER MANAGEMENT
   #@I  EFIR  IDEP  ITHR  IEPT  IOFF  IAME  IAMT IRNAME
@@ -272,8 +267,8 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
 
 
 
-  #*FERTILIZERS (INORGANIC) --
-  #*
+  # FERTILIZERS (INORGANIC) ----
+
 
   ## Fertilizer or NOt
   if(!is.null(fert_in)){
@@ -283,27 +278,6 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
     FERT <- 'N'
   }
 
-  #make_MF <- function(input_fertilizer){
-  #
-  #  FDATE <- fert_in$FDATE
-  #  FMCD <-  fert_in$FMCD
-  #  FACD <-  fert_in$FACD
-  #  FDEP <-  fert_in$FDEP
-  #  FAMN <-  fert_in$FAMN
-  #  FAMP <-  fert_in$FAMP
-  #  FAMK <-  fert_in$FAMK
-  #  FAMC <-  fert_in$FAMC
-  #  FAMO <-  fert_in$FAMO
-  #  FOCD <-  fert_in$FOCD
-  #  FERNAME <- fert_in$FERNAME
-  #  FERTI <- fert_in$FERTI
-  #
-  #  fertilizer <- data.frame(F = 1, FDATE, FMCD, FACD, FDEP, FAMN, FAMP, FAMK,
-  #                           FAMC, FAMO, FOCD, FERNAME)
-  #
-  #  return(fertilizer)
-  #
-  #}
 
   write_fertilizer <- function(name_exp, fert_in){
 
@@ -334,9 +308,7 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
 
 
 
-  #####################################
-  #*SIMULATION CONTROLS
-  #*###################################
+  # SIMULATION CONTROLS ----
 
   ## IRRIGATION or RAINFED
   if(isTRUE(irri)){
@@ -429,9 +401,8 @@ function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
 
   }
 
-  #######################################
-  #@  AUTOMATIC MANAGEMENT
-  #######################################
+
+  # AUTOMATIC MANAGEMENT ----
 
   # PFRST <- -99
   # PLAST <- -99

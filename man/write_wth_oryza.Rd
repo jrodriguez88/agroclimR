@@ -42,18 +42,19 @@ This function returns a vector of model files created in path folder.
 Function compute weather information to ORYZA weather file.
 }
 \examples{
-# Write file
-files_created <- write_wth_oryza(
+# Write wth file
+wth_files_created <- write_wth_oryza(
   path = ".", id_name = "TEST", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
-files_created
-file.remove(files_created)
 
-files_created2 <- write_wth_oryza(
+readLines(wth_files_created[1], n = 15) |> writeLines()
+file.remove(wth_files_created)
+
+wth_files_created2 <- write_wth_oryza(
   path = ".", id_name = "TEST2", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650, multiyear = TRUE, tag = TRUE)
 
-files_created2
-file.remove(files_created2)
+readLines(wth_files_created2[1], n = 25) |> writeLines()
+file.remove(wth_files_created2)
 
 }

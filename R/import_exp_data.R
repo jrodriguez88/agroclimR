@@ -126,9 +126,10 @@ import_exp_data <- function(files, model = "oryza"){
 #'
 #' Reads data from agroclimR workbook sheets.
 #'
-#' @param agroclimR_workbook String with the workbook name (full name).
+#' @param workbook_name String with the workbook name (full name).
 #' @returns agroclimR list. A List of data frames for each sheet in the workbook.
 #' @export
+#' @rdname import_exp_data
 #' @examples
 #' #' # File names vector, extension include
 #' name_file = c("agroclimR_workbook.xlsx")
@@ -140,9 +141,9 @@ import_exp_data <- function(files, model = "oryza"){
 #' agroclimr_list = read_agroclimr_data(test_file)
 #' agroclimr_list
 #'
-read_agroclimr_data <- function(agroclimR_workbook) {
-  sheets <- readxl::excel_sheets(agroclimR_workbook)
-  data <- lapply(sheets, function(sheet) readxl::read_excel(agroclimR_workbook, sheet = sheet))
+read_agroclimr_data <- function(workbook_name) {
+  sheets <- readxl::excel_sheets(workbook_name)
+  data <- lapply(sheets, function(sheet) readxl::read_excel(workbook_name, sheet = sheet))
   names(data) <- sheets
   return(data)
 }

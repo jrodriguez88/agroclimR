@@ -39,7 +39,7 @@ path = ".",
 id_name = "soil_aquacrop",
 soil_data = soil_sample)
 
-soil_files_created
+readLines(soil_files_created[1], n = 15) |> writeLines()
 file.remove(soil_files_created)
 
 }

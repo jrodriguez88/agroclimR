@@ -47,7 +47,7 @@ soil_sample = dplyr::group_by(soil, NL) |>
 dplyr::sample_n(1) |> dplyr::ungroup()
 soil_files_created <- write_soil_dssat(id_name = "soil_dssat", soil_data = soil_sample)
 
-soil_files_created
+readLines(soil_files_created[1], n = 15) |> writeLines()
 file.remove(soil_files_created)
 
 }

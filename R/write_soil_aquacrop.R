@@ -22,7 +22,7 @@
 #' id_name = "soil_aquacrop",
 #' soil_data = soil_sample)
 #'
-#' soil_files_created
+#' readLines(soil_files_created[1], n = 15) |> writeLines()
 #' file.remove(soil_files_created)
 #'
 ## Update the details for the return value
@@ -54,7 +54,7 @@ write_soil_aquacrop <- function(path = ".", id_name, soil_data, model_version = 
     file_name <- paste0(path, "/", id_name, ".SOL")
 
     sink(file_name, F)
-    cat(paste0(id_name, " AquaCrop soil file - by https://github.com/jrodriguez88"))
+    cat(paste0(id_name, " AquaCrop soil file - by agroclimR"))
     cat('\n')
     cat(paste0("        ", model_version,"                 : AquaCrop Version (May 2018)"), sep = "\n")
     cat(paste0("       ", CN, "                   : CN (Curve Number)") , sep = "\n")

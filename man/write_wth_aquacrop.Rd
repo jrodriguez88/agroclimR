@@ -38,10 +38,11 @@ Function to compute weather information AquaCrop v6.0 weather file.
 \examples{
 # Write AquaCrop weather file
 wth_files_created <- write_wth_aquacrop(
-  path = ".", id_name = "TEST", wth_data = weather,
+  path = ".", id_name = "wth_aquacrop", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
 
-wth_files_created
+readLines(wth_files_created[1], n = 15) |> writeLines()
+readLines(wth_files_created[2], n = 15) |> writeLines()
 file.remove(wth_files_created)
 
 }

@@ -66,18 +66,19 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><code>agroclimR</code> is an R package developed from years of agricultural research and application, designed to simplify the management and transformation of agroclimatic data into crop model-ready formats. It supports major modeling systems like <a href="https://dssat.net/" class="external-link">DSSAT v 4.8</a>, <a href="https://www.irri.org/oryza" class="external-link">ORYZA v3.0</a>, and <a href="https://www.fao.org/aquacrop/" class="external-link">Aquacrop v6.0</a>. An R-toolkit for researchers and students in agricultural sciences.</p>
+<p><code>agroclimR</code> is an R package developed to facilitate the management and transformation of agroclimatic data into crop model-ready formats. It supports major modeling systems such as <a href="https://dssat.net/" class="external-link">DSSAT v 4.8</a>, <a href="https://www.irri.org/oryza" class="external-link">ORYZA v3.0</a>, and <a href="https://www.fao.org/aquacrop/" class="external-link">Aquacrop v6.0</a>. This toolkit serves as a resource for researchers and students specializing in agricultural sciences.</p>
 </div>
 <div class="section level2">
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
 </h2>
 <ul>
 <li>
-<strong>Efficient Data Management:</strong> Offers a relational database structure for easy data format conversion. See</li>
+<strong>Efficient Data Management:</strong> Provides a relational database structure that simplifies data handling and seamlessly integrates with the agroclimR framework. Learn more about the data structure in <a href="https://jrodriguez88.github.io/agroclimR/articles/Estructura_de_Datos_para_Modelacion_de_Cultivos_con_agroclimR.html">data-format</a>
+</li>
 <li>
-<strong>Tidyverse Integration:</strong> Utilizes tidyverse functions for seamless data manipulation.</li>
+<strong>Easy Data Transformation to Crop Model-Ready Formats:</strong> Utilizes R to convert various model format files efficiently.</li>
 <li>
-<strong>Visualization:</strong> Leverages ggplot2 for insightful data visualization.</li>
+<strong>Tidyverse Integration:</strong> Employs tidyverse functions for smooth data manipulation and offers insightful data visualization capabilities using ggplot2.</li>
 </ul>
 </div>
 <div class="section level2">
@@ -89,15 +90,14 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"jrodriguez88/agroclimR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="example-creating-weather-and-soil-model-format-files">Example: Creating Weather and Soil Model Format Files<a class="anchor" aria-label="anchor" href="#example-creating-weather-and-soil-model-format-files"></a>
 </h2>
-<p>This is a basic example which shows you how to create a crop model weather file with agroclimR:</p>
+<div class="section level3">
+<h3 id="weather-model-files">Weather Model Files<a class="anchor" aria-label="anchor" href="#weather-model-files"></a>
+</h3>
+<p>Here’s a basic example demonstrating how to create a crop model weather file using agroclimR:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://jrodriguez88.github.io/agroclimR/">agroclimR</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'magrittr::set_names' by 'purrr::set_names'</span></span>
-<span><span class="co">#&gt; when loading 'agroclimR'</span></span>
-<span><span class="co">#&gt; Warning: replacing previous import 'magrittr::extract' by 'tidyr::extract' when</span></span>
-<span><span class="co">#&gt; loading 'agroclimR'</span></span>
 <span></span>
 <span><span class="va">path</span> <span class="op">=</span> <span class="st">"."</span></span>
 <span><span class="va">wth_data</span> <span class="op">=</span> <span class="va">weather</span></span>
@@ -106,45 +106,170 @@
 <span><span class="va">elev</span> <span class="op">=</span> <span class="fl">650</span></span>
 <span></span>
 <span><span class="co">## basic example code to create ORYZA weather file</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/write_wth_oryza.html">write_wth_oryza</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_oryza"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
+<span><span class="va">wth_files_oryza</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/write_wth_oryza.html">write_wth_oryza</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_oryza"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span>, tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Early morning vapor pressure (VP; kPa) derived from relative humidity data</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span>
+<span><span class="co">#&gt; Oryza Weather Files created in  .  : </span></span>
+<span><span class="co">#&gt;  ./wth_oryza1.013 ,./wth_oryza1.014 ,./wth_oryza1.015 ,./wth_oryza1.016</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_oryza</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">24</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; *-----------------------------------------------------------</span></span>
+<span><span class="co">#&gt; *  Station Name: wth_oryza</span></span>
+<span><span class="co">#&gt; *  ORYZA Weather file - by agroclimR</span></span>
+<span><span class="co">#&gt; *  Longitude: -76.5 -- Latitude: 3.8 -- Elevation: 650m</span></span>
+<span><span class="co">#&gt; *-----------------------------------------------------------</span></span>
+<span><span class="co">#&gt; *  Date: 2013-01-01 : 2016-12-31</span></span>
+<span><span class="co">#&gt; *</span></span>
+<span><span class="co">#&gt; *  Column    Daily Value</span></span>
+<span><span class="co">#&gt; *     1      Station number</span></span>
+<span><span class="co">#&gt; *     2      Year</span></span>
+<span><span class="co">#&gt; *     3      Day</span></span>
+<span><span class="co">#&gt; *     4      irradiance         KJ m-2 d-1</span></span>
+<span><span class="co">#&gt; *     5      min temperature            oC</span></span>
+<span><span class="co">#&gt; *     6      max temperature            oC</span></span>
+<span><span class="co">#&gt; *     7      vapor pressure            kPa</span></span>
+<span><span class="co">#&gt; *     8      mean wind speed         m s-1</span></span>
+<span><span class="co">#&gt; *     9      precipitation          mm d-1</span></span>
+<span><span class="co">#&gt; *-----------------------------------------------------------</span></span>
+<span><span class="co">#&gt; -76.5,3.8,650,0,0</span></span>
+<span><span class="co">#&gt; 1,2013,1,20889.29,25.73,36.03,3.07,-99,0</span></span>
+<span><span class="co">#&gt; 1,2013,2,21632.15,25.08,35.68,3.31,-99,0.2</span></span>
+<span><span class="co">#&gt; 1,2013,3,23106.91,23.99,38.49,3.01,-99,0</span></span>
+<span><span class="co">#&gt; 1,2013,4,21408.98,22.91,35.71,2.98,-99,0</span></span>
+<span><span class="co">#&gt; 1,2013,5,22908.94,23.81,38.81,3.43,-99,0</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">wth_files_oryza</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE TRUE TRUE TRUE</span></span>
 <span></span>
 <span><span class="co">## basic example code to create DSSAT weather file</span></span>
-<span><span class="fu"><a href="reference/write_wth_dssat.html">write_wth_dssat</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_dssat"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
+<span><span class="va">wth_files_dssat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/write_wth_dssat.html">write_wth_dssat</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_dssat"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
+<span><span class="co">#&gt; DSSAT Weather Files created in  .  : </span></span>
+<span><span class="co">#&gt;  ./wth_dssat.WTH</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_dssat</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; *WEATHER DATA : wth_dssat DSSAT Weather file - by agroclimR</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; @ INSI      LAT     LONG  ELEV   TAV   AMP REFHT WNDHT</span></span>
+<span><span class="co">#&gt;   ACRP    3.800  -76.500   650  28.7   9.9   2.0   2.0</span></span>
+<span><span class="co">#&gt; @DATE  SRAD  TMAX  TMIN  RAIN  DEWP  WIND   PAR  EVAP  RHUM</span></span>
+<span><span class="co">#&gt; 13001  20.9  36.0  25.7   0.0          NA              66.3</span></span>
+<span><span class="co">#&gt; 13002  21.6  35.7  25.1   0.2          NA              73.3</span></span>
+<span><span class="co">#&gt; 13003  23.1  38.5  24.0   0.0          NA              61.4</span></span>
+<span><span class="co">#&gt; 13004  21.4  35.7  22.9   0.0          NA              68.9</span></span>
+<span><span class="co">#&gt; 13005  22.9  38.8  23.8   0.0          NA              69.5</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">wth_files_dssat</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span> </span>
 <span><span class="co">## basic example code to create AquaCrop weather file  </span></span>
-<span><span class="fu"><a href="reference/write_wth_aquacrop.html">write_wth_aquacrop</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_aquacrop"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
+<span><span class="va">wth_files_aquacrop</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/write_wth_aquacrop.html">write_wth_aquacrop</a></span><span class="op">(</span><span class="va">path</span>, <span class="st">"wth_aquacrop"</span>, <span class="va">wth_data</span>, <span class="va">lat</span>, <span class="va">lon</span>, <span class="va">elev</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation</span></span>
-<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+<span><span class="co">#&gt; Oryza Weather Files created in  .  : </span></span>
+<span><span class="co">#&gt;  ./wth_aquacrop.CLI ,./wth_aquacrop.Tnx ,./wth_aquacrop.PLU ,./wth_aquacrop.ETo</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_aquacrop</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; wth_aquacrop Station, lat: 3.8 long: -76.5 - by agroclimR</span></span>
+<span><span class="co">#&gt; 6.0   : AquaCrop Version (March 2017)</span></span>
+<span><span class="co">#&gt; wth_aquacrop.Tnx</span></span>
+<span><span class="co">#&gt; wth_aquacrop.ETo</span></span>
+<span><span class="co">#&gt; wth_aquacrop.PLU</span></span>
+<span><span class="co">#&gt; MaunaLoa.CO2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_aquacrop</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">13</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; wth_aquacrop : daily temperature data (01 enero 2013 - 31 diciembre 2016)</span></span>
+<span><span class="co">#&gt;      1  : Daily records (1=daily, 2=10-daily and 3=monthly data)</span></span>
+<span><span class="co">#&gt;      1  : First day of record (1, 11 or 21 for 10-day or 1 for months)</span></span>
+<span><span class="co">#&gt;      1  : First month of record</span></span>
+<span><span class="co">#&gt;   2013  : First year of record (1901 if not linked to a specific year)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;   Tmin (C)   TMax (C)</span></span>
+<span><span class="co">#&gt; =======================</span></span>
+<span><span class="co">#&gt;       25.7       36.0</span></span>
+<span><span class="co">#&gt;       25.1       35.7</span></span>
+<span><span class="co">#&gt;       24.0       38.5</span></span>
+<span><span class="co">#&gt;       22.9       35.7</span></span>
+<span><span class="co">#&gt;       23.8       38.8</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">wth_files_aquacrop</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE TRUE TRUE TRUE</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="soil-model-files">Soil Model Files<a class="anchor" aria-label="anchor" href="#soil-model-files"></a>
+</h3>
 <p>This is a basic example which shows you how to create a crop model Soil file with agroclimR:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span></span>
-<span><span class="co">#library(agroclimR)</span></span>
-<span><span class="co">#library(magrittr)</span></span>
-<span><span class="co">#library(dplyr)</span></span>
 <span></span>
 <span><span class="va">soil_sample</span> <span class="op">=</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">soil</span>, <span class="va">NL</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span></span>
-<span><span class="co">## basic example code to create ORYZA soil file</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/write_soil_oryza.html">write_soil_oryza</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, <span class="st">"soil_oryza"</span>, <span class="va">soil_sample</span>, ZRTMS <span class="op">=</span> <span class="fl">0.50</span>, WL0I <span class="op">=</span> <span class="fl">0</span>, WCLI <span class="op">=</span> <span class="st">'FC'</span> , RIWCLI <span class="op">=</span> <span class="st">'NO'</span>, SATAV <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="co"># basic example code to create ORYZA soil file</span></span>
+<span><span class="va">soil_files_oryza</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/write_soil_oryza.html">write_soil_oryza</a></span><span class="op">(</span>id_name <span class="op">=</span> <span class="st">"soil_oryza"</span>, soil_data <span class="op">=</span> <span class="va">soil_sample</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Oryza Experimental Files created in  .  : </span></span>
+<span><span class="co">#&gt;  ./soil_oryza.sol</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">soil_files_oryza</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">27</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; **********************************************************************</span></span>
+<span><span class="co">#&gt; * Template soil data file for PADDY soil water balance model.        *</span></span>
+<span><span class="co">#&gt; **********************************************************************</span></span>
+<span><span class="co">#&gt; * Soil        : soil_oryza - texture classes:c("Lo", "Lo", "SaLo")</span></span>
+<span><span class="co">#&gt; * File name        : soil_oryza.sol</span></span>
+<span><span class="co">#&gt; * Sampling date      : 2015-12-23</span></span>
+<span><span class="co">#&gt; * Additional info  : Create with agroclimR</span></span>
+<span><span class="co">#&gt; *--------------------------------------------------------------------*</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; SCODE = 'PADDY'</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; *---------------------------------------------------------------*</span></span>
+<span><span class="co">#&gt; * 1. Various soil and management parameters</span></span>
+<span><span class="co">#&gt; *---------------------------------------------------------------*</span></span>
+<span><span class="co">#&gt; WL0MX = 100.   ! Bund height (mm)</span></span>
+<span><span class="co">#&gt; NL = 3        ! Number of soil layers (maximum is 10) (-)</span></span>
+<span><span class="co">#&gt; TKL = 0.20, 0.20, 0.20   ! Thickness of each soil layer (m)</span></span>
+<span><span class="co">#&gt; ZRTMS = 0.5   ! Maximum rooting depth in the soil (m)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; *---------------------------------------------------------------*</span></span>
+<span><span class="co">#&gt; * 2. Puddling switch: 1=PUDDLED or 0=NON PUDDLED</span></span>
+<span><span class="co">#&gt; *---------------------------------------------------------------*</span></span>
+<span><span class="co">#&gt; SWITPD = 0  !Non puddled</span></span>
+<span><span class="co">#&gt; NLPUD = 1</span></span>
+<span><span class="co">#&gt; WCSTRP = 0.38, 0.38, 0.43</span></span>
+<span><span class="co">#&gt; PFCR = 6.0</span></span>
+<span><span class="co">#&gt; DPLOWPAN = 0.6</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">soil_files_oryza</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span>
 <span></span>
-<span><span class="co">## basic example code to create DSSAT soil file</span></span>
-<span></span>
-<span><span class="fu"><a href="reference/write_soil_dssat.html">write_soil_dssat</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, <span class="st">"soil_dssat"</span>, <span class="va">soil_sample</span><span class="op">)</span></span>
+<span><span class="co"># basic example code to create DSSAT soil file</span></span>
+<span><span class="va">soil_files_dssat</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/write_soil_dssat.html">write_soil_dssat</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, <span class="st">"soil_dssat"</span>, <span class="va">soil_sample</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Minimun data are available</span></span>
-<span><span class="co">#&gt; WCFC was estimated using Saxton-PTF</span></span>
-<span><span class="co">#&gt; Porosity was estimated using 2.65g/cm3 as particle density</span></span>
-<span><span class="co">#&gt; WCFC was estimated using Saxton-PTF</span></span>
-<span><span class="co">#&gt; Porosity was estimated using 2.65g/cm3 as particle density</span></span>
-<span><span class="co">#&gt; WCFC was estimated using Saxton-PTF</span></span>
-<span><span class="co">#&gt; Porosity was estimated using 2.65g/cm3 as particle density</span></span></code></pre></div>
+<span><span class="co">#&gt; DSSAT soil Files created in  .  : </span></span>
+<span><span class="co">#&gt;  .soil_dssat.SOL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">soil_files_dssat</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; *SOILS: AgroclimR DSSAT Soil Input File - by agroclimR</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; *soil_dssat000001  AgroclimRV1   LO      60  AgroClimR soil_dssat</span></span>
+<span><span class="co">#&gt; @SITE        COUNTRY          LAT     LONG SCS FAMILY</span></span>
+<span><span class="co">#&gt;  soil_dssat  AgroclimR         -99    -99 USDA Texture: Lo</span></span>
+<span><span class="co">#&gt; @ SCOM  SALB  SLU1  SLDR  SLRO  SLNF  SLPF  SMHB  SMPX  SMKE</span></span>
+<span><span class="co">#&gt;    -99  0.13     6   0.6    75  1.00  1.00 IB001 IB001 IB001</span></span>
+<span><span class="co">#&gt; @  SLB  SLMH  SLLL  SDUL  SSAT  SRGF  SSKS  SBDM  SLOC  SLCL  SLSI  SLCF  SLNI  SLHW  SLHB  SCEC  SADC</span></span>
+<span><span class="co">#&gt;     20   -99 0.318 0.365 0.379 0.810 21.86  1.56  1.32  18.3  39.1   1.5   0.6   6.3   -99   9.6   -99</span></span>
+<span><span class="co">#&gt;     40   -99 0.177 0.276 0.377 0.640 30.67  1.76  0.24  13.4  39.0   1.5   0.3   6.4   -99   6.7   -99</span></span>
+<span><span class="co">#&gt;     60   -99 0.051 0.126 0.429 0.490 77.61  1.46  0.14  14.4   7.8   1.5   0.3   6.5   -99   7.9   -99</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">soil_files_dssat</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span>
+<span></span>
+<span><span class="co"># basic example code to create Aquacrop soil file</span></span>
+<span><span class="va">soil_files_aquacrop</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/write_soil_aquacrop.html">write_soil_aquacrop</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"."</span>, <span class="st">"soil_dssat"</span>, <span class="va">soil_sample</span><span class="op">)</span></span>
+<span><span class="co">#&gt; AquaCrop soil Files created in  .  : </span></span>
+<span><span class="co">#&gt;  ./soil_dssat.SOL</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">soil_files_aquacrop</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; soil_dssat AquaCrop soil file - by agroclimR</span></span>
+<span><span class="co">#&gt;         6.1                 : AquaCrop Version (May 2018)</span></span>
+<span><span class="co">#&gt;        65                   : CN (Curve Number)</span></span>
+<span><span class="co">#&gt;        8                   : Readily evaporable water from top layer (mm)</span></span>
+<span><span class="co">#&gt;         3                   : number of soil horizons</span></span>
+<span><span class="co">#&gt;        -9                   : variable no longer applicable</span></span>
+<span><span class="co">#&gt;   Thickness  Sat   FC    WP     Ksat   Penetrability  Gravel  CRa       CRb           description</span></span>
+<span><span class="co">#&gt;   ---(m)-   ----(vol %)-----  (mm/day)      (%)        (%)    -----------------------------------------</span></span>
+<span><span class="co">#&gt;     0.20    37.9  36.5  31.8   524.7        100         0     -0.451380  0.860353               Lo</span></span>
+<span><span class="co">#&gt;     0.20    37.7  27.6  17.7   736.2        100         0     -0.432343  1.022189               Lo</span></span>
+<span><span class="co">#&gt;     0.20    42.9  12.6   5.1  1862.6        100         0     -0.329826  0.325586             SaLo</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">soil_files_aquacrop</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="connect">Connect<a class="anchor" aria-label="anchor" href="#connect"></a>

@@ -111,8 +111,37 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Oryza Experimental Files created in  .  : </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  ./soil_oryza.sol</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">soil_files_created</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "./soil_oryza.sol"</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">soil_files_created</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">30</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> **********************************************************************</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Template soil data file for PADDY soil water balance model.        *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> **********************************************************************</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Soil        : soil_oryza - texture classes:c("Lo", "Lo", "SaLo")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * File name        : soil_oryza.sol</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Sampling date      : 2015-12-23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Additional info  : Create with agroclimR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *--------------------------------------------------------------------*</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SCODE = 'PADDY'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *---------------------------------------------------------------*</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * 1. Various soil and management parameters</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *---------------------------------------------------------------*</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> WL0MX = 100.   ! Bund height (mm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NL = 3        ! Number of soil layers (maximum is 10) (-)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> TKL = 0.20, 0.20, 0.20   ! Thickness of each soil layer (m)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ZRTMS = 0.5   ! Maximum rooting depth in the soil (m)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *---------------------------------------------------------------*</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * 2. Puddling switch: 1=PUDDLED or 0=NON PUDDLED</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *---------------------------------------------------------------*</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SWITPD = 0  !Non puddled</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NLPUD = 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> WCSTRP = 0.38, 0.60, 0.46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> PFCR = 6.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DPLOWPAN = 0.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *---------------------------------------------------------------*</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * 3. Groundwater switch: 0=DEEP (i.e., not in profile), 1=DATA</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">soil_files_created</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span></span></span>

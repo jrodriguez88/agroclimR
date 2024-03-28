@@ -31,6 +31,9 @@
     <loc>https://jrodriguez88.github.io/agroclimR/reference/ETo_cal.html</loc>
   </url>
   <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/SSKS_cal.html</loc>
+  </url>
+  <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/agro.html</loc>
   </url>
   <url>
@@ -58,13 +61,13 @@
     <loc>https://jrodriguez88.github.io/agroclimR/reference/plant.html</loc>
   </url>
   <url>
-    <loc>https://jrodriguez88.github.io/agroclimR/reference/read_agroclimr_data.html</loc>
-  </url>
-  <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/run_drates_param.html</loc>
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/soil.html</loc>
+  </url>
+  <url>
+    <loc>https://jrodriguez88.github.io/agroclimR/reference/soil_water_content.html</loc>
   </url>
   <url>
     <loc>https://jrodriguez88.github.io/agroclimR/reference/weather.html</loc>

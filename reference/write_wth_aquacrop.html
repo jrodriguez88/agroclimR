@@ -102,14 +102,35 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Write AquaCrop weather file</span></span></span>
 <span class="r-in"><span><span class="va">wth_files_created</span> <span class="op">&lt;-</span> <span class="fu">write_wth_aquacrop</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  path <span class="op">=</span> <span class="st">"."</span>, id_name <span class="op">=</span> <span class="st">"TEST"</span>, wth_data <span class="op">=</span> <span class="va">weather</span>,</span></span>
+<span class="r-in"><span>  path <span class="op">=</span> <span class="st">"."</span>, id_name <span class="op">=</span> <span class="st">"wth_aquacrop"</span>, wth_data <span class="op">=</span> <span class="va">weather</span>,</span></span>
 <span class="r-in"><span>  lat <span class="op">=</span> <span class="fl">3.8</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">76.5</span>, elev <span class="op">=</span> <span class="fl">650</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Oryza Weather Files created in  .  : </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  ./TEST.CLI ,./TEST.Tnx ,./TEST.PLU ,./TEST.ETo</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  ./wth_aquacrop.CLI ,./wth_aquacrop.Tnx ,./wth_aquacrop.PLU ,./wth_aquacrop.ETo</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">wth_files_created</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "./TEST.CLI" "./TEST.Tnx" "./TEST.PLU" "./TEST.ETo"</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_created</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wth_aquacrop Station, lat: 3.8 long: -76.5 - by agroclimR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.0   : AquaCrop Version (March 2017)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wth_aquacrop.Tnx</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wth_aquacrop.ETo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wth_aquacrop.PLU</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MaunaLoa.CO2</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_created</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wth_aquacrop : daily temperature data (01 January 2013 - 31 December 2016)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1  : Daily records (1=daily, 2=10-daily and 3=monthly data)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1  : First day of record (1, 11 or 21 for 10-day or 1 for months)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      1  : First month of record</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   2013  : First year of record (1901 if not linked to a specific year)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Tmin (C)   TMax (C)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> =======================</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       25.7       36.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       25.1       35.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       24.0       38.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       22.9       35.7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       23.8       38.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       22.7       37.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       23.7       38.4</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">wth_files_created</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE TRUE TRUE TRUE</span>
 <span class="r-in"><span></span></span>

@@ -109,8 +109,18 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> AquaCrop soil Files created in  .  : </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  ./soil_aquacrop.SOL</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">soil_files_created</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "./soil_aquacrop.SOL"</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">soil_files_created</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> soil_aquacrop AquaCrop soil file - by agroclimR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         6.1                 : AquaCrop Version (May 2018)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        65                   : CN (Curve Number)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        4                   : Readily evaporable water from top layer (mm)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         3                   : number of soil horizons</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        -9                   : variable no longer applicable</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Thickness  Sat   FC    WP     Ksat   Penetrability  Gravel  CRa       CRb           description</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   ---(m)-   ----(vol %)-----  (mm/day)      (%)        (%)    -----------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     0.20    46.4  15.0   8.0  1146.0        100         0     -0.395457  1.233652               Lo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     0.20    43.9  28.4  21.5   526.5        100         0     -0.451219  0.861978               Lo</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     0.20    42.9  12.6   5.1  1862.6        100         0     -0.329826  0.325586             SaLo</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">soil_files_created</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span></span></span>

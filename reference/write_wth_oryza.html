@@ -110,28 +110,67 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Write file</span></span></span>
-<span class="r-in"><span><span class="va">files_created</span> <span class="op">&lt;-</span> <span class="fu">write_wth_oryza</span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Write wth file</span></span></span>
+<span class="r-in"><span><span class="va">wth_files_created</span> <span class="op">&lt;-</span> <span class="fu">write_wth_oryza</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  path <span class="op">=</span> <span class="st">"."</span>, id_name <span class="op">=</span> <span class="st">"TEST"</span>, wth_data <span class="op">=</span> <span class="va">weather</span>,</span></span>
 <span class="r-in"><span>  lat <span class="op">=</span> <span class="fl">3.8</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">76.5</span>, elev <span class="op">=</span> <span class="fl">650</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Early morning vapor pressure (VP; kPa) derived from relative humidity data</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Oryza Weather Files created in  .  : </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  ./TEST1.013 ,./TEST1.014 ,./TEST1.015 ,./TEST1.016</span>
-<span class="r-in"><span><span class="va">files_created</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "./TEST1.013" "./TEST1.014" "./TEST1.015" "./TEST1.016"</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">files_created</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_created</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -76.5,3.8,650,0,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,1,20889.29,25.73,36.03,3.07,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,2,21632.15,25.08,35.68,3.31,-99,0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,3,23106.91,23.99,38.49,3.01,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,4,21408.98,22.91,35.71,2.98,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,5,22908.94,23.81,38.81,3.43,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,6,24159.16,22.71,37.21,3,-99,1.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,7,22949.84,23.74,38.44,2.93,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,8,22105.74,22.48,34.68,3.06,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,9,22689.82,23.95,38.95,3.58,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,10,22777.98,24.23,38.93,3.61,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,11,21718.21,24.65,36.95,3.21,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,12,20806.88,26.84,36.24,3.27,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,13,20765.46,26.19,35.69,3.34,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,14,17485.02,25.72,34.62,3.13,-99,0</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">wth_files_created</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE TRUE TRUE TRUE</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">files_created2</span> <span class="op">&lt;-</span> <span class="fu">write_wth_oryza</span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">wth_files_created2</span> <span class="op">&lt;-</span> <span class="fu">write_wth_oryza</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  path <span class="op">=</span> <span class="st">"."</span>, id_name <span class="op">=</span> <span class="st">"TEST2"</span>, wth_data <span class="op">=</span> <span class="va">weather</span>,</span></span>
 <span class="r-in"><span>  lat <span class="op">=</span> <span class="fl">3.8</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">76.5</span>, elev <span class="op">=</span> <span class="fl">650</span>, multiyear <span class="op">=</span> <span class="cn">TRUE</span>, tag <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Early morning vapor pressure (VP; kPa) derived from relative humidity data</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Oryza Weather Files created in  .  : </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  ./TEST21.cli</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">files_created2</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "./TEST21.cli"</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">files_created2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_created2</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *-----------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *  Station Name: TEST2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *  ORYZA Weather file - by agroclimR</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *  Longitude: -76.5 -- Latitude: 3.8 -- Elevation: 650m</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *-----------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *  Date: 2013-01-01 : 2016-12-31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *  Column    Daily Value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     1      Station number</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     2      Year</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     3      Day</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     4      irradiance         KJ m-2 d-1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     5      min temperature            oC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     6      max temperature            oC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     7      vapor pressure            kPa</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     8      mean wind speed         m s-1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *     9      precipitation          mm d-1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> *-----------------------------------------------------------</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -76.5,3.8,650,0,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,1,20889.29,25.73,36.03,3.07,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,2,21632.15,25.08,35.68,3.31,-99,0.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,3,23106.91,23.99,38.49,3.01,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,4,21408.98,22.91,35.71,2.98,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,5,22908.94,23.81,38.81,3.43,-99,0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1,2013,6,24159.16,22.71,37.21,3,-99,1.2</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.remove</a></span><span class="op">(</span><span class="va">wth_files_created2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

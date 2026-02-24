@@ -165,6 +165,7 @@ SSKS_Dane_Puck <- function(C){
 # SSKS_Ferrer(S)
 #' @rdname SSKS_cal
 #' @export
+#' @usage NULL
 SSKS_Ferrer <- function(S) {
   SSKS_Fer <-  3600000* 2.556*(10^-7)*exp(0.0491*S)
 
@@ -199,6 +200,7 @@ SSKS_Puckett <- function(C){
 # SSKS_Rawls(S,C)
 #' @rdname SSKS_cal
 #' @export
+#' @usage NULL
 SSKS_Rawls <- function(S,C){
   SST_Rawls <- 0.332 - (7.251*(10^-4)*S) + 0.1276*log10(C)
   SSKS_R <- 24*exp(12.012 - (7.55*(10^-2)*S) + (-3.8950 + (0.03671*S) - (0.1103*C) + 8.7546*(10^-4)*(C^2))*(1/(SST_Rawls)))

@@ -16,7 +16,13 @@
 #' @export
 #' @examples
 #' # Compute ETo with provided weather data
-#' ETo_cal(wth_data = weather, lat = 3.8, elev = 650)
+#' ETo_cal(wth_data = weather, lat = 3.8, elev = 650) |>
+#' head(10)
+#'
+#' # Compute into dplyr::mutate
+#'
+#' weather %>% slice(1:10) %>%
+#'   mutate(ETo = ETo_cal(., lat = 3.8, elev = 650))
 #'
 #' @return This function returns a numeric vector representing ET0 values (mm).
 #'

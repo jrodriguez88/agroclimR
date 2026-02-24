@@ -1,8 +1,10 @@
 get_metrics <-
 function(data) {
-  
+
   data %>% filter(complete.cases(.)) %>%
     summarise(n = n(),
+              mean_obs = mean(obs, na.rm = T),
+              mean_sim = mean(sim, na.rm = T),
               r = cor(obs, sim, method = c("pearson")),
               tau = cor(obs, sim, method = c("kendall")),
               RMSE = sqrt(mean((sim - obs)^2, na.rm = T)),
@@ -15,5 +17,5 @@ function(data) {
               NSE = 1 - ((sum((sim - obs)^2, na.rm = T))/
                            sum((obs - mean(obs, na.rm = T))^2, na.rm = T)),
               rsq = summary(lm(sim ~ obs))$r.squared)
-  
+
 }

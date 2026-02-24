@@ -2,8 +2,8 @@
 % Please edit documentation in R/agroclimR.R
 \docType{package}
 \name{agroclimR}
-\alias{agroclimR}
 \alias{agroclimR-package}
+\alias{agroclimR}
 \title{agroclimR: Streamlining Agroclimatic Data for Crop Modeling}
 \description{
 \code{agroclimR} is an R package developed from years of agricultural research and application,

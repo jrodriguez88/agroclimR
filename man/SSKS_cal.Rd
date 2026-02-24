@@ -26,10 +26,6 @@ SSKS_cal(
   output = "bootmean"
 )
 
-SSKS_Ferrer(S)
-
-SSKS_Rawls(S, C)
-
 SSKS_Suleiman_Ritchie(S, C, SOM, SBDM, SPOR = NULL, WCFC = NULL)
 
 SSKS_Saxton(S, C, SOM, SBDM, WCFC = NULL, WCWP = NULL, WCST = NULL)

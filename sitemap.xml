@@ -1,5 +1,6 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://jrodriguez88.github.io/agroclimR/404.html</loc></url>
+<url><loc>https://jrodriguez88.github.io/agroclimR/CRAN_PLAN_TRABAJO.html</loc></url>
 <url><loc>https://jrodriguez88.github.io/agroclimR/LICENSE-text.html</loc></url>
 <url><loc>https://jrodriguez88.github.io/agroclimR/LICENSE.html</loc></url>
 <url><loc>https://jrodriguez88.github.io/agroclimR/articles/Analisis_Exploratorio_de_Datos_con_agroclimR.html</loc></url>
@@ -23,6 +24,8 @@
 <url><loc>https://jrodriguez88.github.io/agroclimR/reference/soil.html</loc></url>
 <url><loc>https://jrodriguez88.github.io/agroclimR/reference/soil_water_content.html</loc></url>
 <url><loc>https://jrodriguez88.github.io/agroclimR/reference/weather.html</loc></url>
+<url><loc>https://jrodriguez88.github.io/agroclimR/reference/write_exp_aquacrop.html</loc></url>
+<url><loc>https://jrodriguez88.github.io/agroclimR/reference/write_exp_dssat.html</loc></url>
 <url><loc>https://jrodriguez88.github.io/agroclimR/reference/write_exp_oryza.html</loc></url>
 <url><loc>https://jrodriguez88.github.io/agroclimR/reference/write_soil_aquacrop.html</loc></url>
 <url><loc>https://jrodriguez88.github.io/agroclimR/reference/write_soil_dssat.html</loc></url>

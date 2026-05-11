@@ -44,19 +44,23 @@
   -v/v (%))
 - [`weather`](https://jrodriguez88.github.io/agroclimR/reference/weather.md)
   : Observed Weather Data
+- [`write_exp_aquacrop()`](https://jrodriguez88.github.io/agroclimR/reference/write_exp_aquacrop.md)
+  : Write AquaCrop project files
+- [`write_exp_dssat()`](https://jrodriguez88.github.io/agroclimR/reference/write_exp_dssat.md)
+  : Write a DSSAT experimental file (X file)
 - [`write_exp_oryza()`](https://jrodriguez88.github.io/agroclimR/reference/write_exp_oryza.md)
-  : Write ORYZA v3 Experimental File (.EXP)
+  : Write an ORYZA v3 experimental file
 - [`write_soil_aquacrop()`](https://jrodriguez88.github.io/agroclimR/reference/write_soil_aquacrop.md)
-  : Write Aquacrop v6.1 Soil File
+  : Write an AquaCrop soil file
 - [`write_soil_dssat()`](https://jrodriguez88.github.io/agroclimR/reference/write_soil_dssat.md)
-  : Write DSSAT v4.8 Soil File
+  : Write a DSSAT v4.8 soil file
 - [`write_soil_oryza()`](https://jrodriguez88.github.io/agroclimR/reference/write_soil_oryza.md)
-  : Write ORYZA v3 Soil File
+  : Write an ORYZA v3 soil file
 - [`write_wth_aquacrop()`](https://jrodriguez88.github.io/agroclimR/reference/write_wth_aquacrop.md)
-  : Write AquaCrop Weather File
+  : Write AquaCrop weather files
 - [`write_wth_dssat()`](https://jrodriguez88.github.io/agroclimR/reference/write_wth_dssat.md)
-  : Write DSSAT v4.8 Weather File
+  : Write a DSSAT v4.8 weather file
 - [`write_wth_oryza()`](https://jrodriguez88.github.io/agroclimR/reference/write_wth_oryza.md)
-  : Write ORYZA v3 Weather File (.WTH - .CLI)
+  : Write ORYZA v3 weather files
 - [`yield`](https://jrodriguez88.github.io/agroclimR/reference/yield.md)
   : Observed Grain Yield Data

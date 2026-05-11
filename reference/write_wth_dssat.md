@@ -1,6 +1,8 @@
-# Write DSSAT v4.8 Weather File
+# Write a DSSAT v4.8 weather file
 
-Function compute weather information DSSAT v4.8 weather file.
+Formats daily weather data as a DSSAT weather (`.WTH`) file. The input
+data are standardized internally and optional wind speed and relative
+humidity columns are written when available.
 
 ## Usage
 
@@ -12,35 +14,35 @@ write_wth_dssat(path = ".", id_name, wth_data, lat, lon, elev, ref_ht = 2)
 
 - path:
 
-  A string indicating path folder or working directory
+  Character. Directory where the `.WTH` file will be written.
 
 - id_name:
 
-  A String 4 letters string of locality name. "AIHU" = Aipe, Huila
+  Character. Station or site identifier used as the output file name,
+  without extension.
 
 - wth_data:
 
-  A Data frame Weather data. minimum = date, tmax, tmin, rain
+  Data frame with daily weather data. Required columns are `date`
+  (`Date`), `tmax`, `tmin`, `rain`, and `srad`. Optional columns are
+  `wspd` (m s-1) and `rhum` (%).
 
-- lat:
+- lat, lon:
 
-  Numeric. Latitude (decimal degrees)
-
-- lon:
-
-  Numeric. Longitude (decimal degrees)
+  Numeric. Latitude and longitude in decimal degrees.
 
 - elev:
 
-  Numeric. Elevation (meters above sea level)
+  Numeric. Elevation in meters above sea level.
 
 - ref_ht:
 
-  Numeric. Reference height (meters)- weather station
+  Numeric. Measurement height, in meters, used for DSSAT `REFHT` and
+  `WNDHT`.
 
 ## Value
 
-This function returns a vector of model files created in path folder.
+Character vector with the path of the DSSAT weather file created.
 
 ## References
 
@@ -51,12 +53,12 @@ This function returns a vector of model files created in path folder.
 ## Examples
 
 ``` r
-# Write file
+# Write DSSAT weather file
 wth_files_created <- write_wth_dssat(
-  path = ".", id_name = "TEST", wth_data = weather,
+  path = tempdir(), id_name = "TEST", wth_data = weather,
   lat = 3.91, lon = -75.0, elev = 450)
-#> DSSAT Weather Files created in  .  : 
-#>  ./TEST.WTH
+#> DSSAT Weather Files created in  /tmp/RtmpJqE3M0  : 
+#>  /tmp/RtmpJqE3M0/TEST.WTH
 
 readLines(wth_files_created[1], n = 15) |> writeLines()
 #> *WEATHER DATA : TEST DSSAT Weather file - by agroclimR

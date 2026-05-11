@@ -85,16 +85,16 @@
 <dd><p>1000-Grain weight standard error - (<code>numeric</code>). Standard error of the 1000-grain weight (<code>g</code>).</p></dd>
 
 <dt>ST_M2</dt>
-<dd><p>Number of stems per square meter - (<code>numeric</code>). The density of stems, in <code>number/m²</code>.</p></dd>
+<dd><p>Number of stems per square meter - (<code>numeric</code>). The density of stems, in <code>number/m2</code>.</p></dd>
 
 <dt>ST_M2_SE</dt>
-<dd><p>Number of stems per square meter standard error - (<code>numeric</code>). Standard error of stem density (<code>number/m²</code>).</p></dd>
+<dd><p>Number of stems per square meter standard error - (<code>numeric</code>). Standard error of stem density (<code>number/m2</code>).</p></dd>
 
 <dt>PAN_M2</dt>
-<dd><p>Number of panicles per square meter - (<code>numeric</code>). The density of panicles, in <code>number/m²</code>.</p></dd>
+<dd><p>Number of panicles per square meter - (<code>numeric</code>). The density of panicles, in <code>number/m2</code>.</p></dd>
 
 <dt>PAN_M2_SE</dt>
-<dd><p>Number of panicles per square meter standard error - (<code>numeric</code>). Standard error of panicle density (<code>number/m²</code>).</p></dd>
+<dd><p>Number of panicles per square meter standard error - (<code>numeric</code>). Standard error of panicle density (<code>number/m2</code>).</p></dd>
 
 <dt>GT_PAN</dt>
 <dd><p>Number of total grains per panicle - (<code>numeric</code>). Total number of grains per panicle.</p></dd>
@@ -124,41 +124,41 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Assuming `yield` is your dataset name</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">yield</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ID               LOC_ID            CULTIVAR           YIELD_AVG   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Length:7           Length:7           Length:7           Min.   :4474  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Class :character   Class :character   Class :character   1st Qu.:4984  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mode  :character   Mode  :character   Mode  :character   Median :5114  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                           Mean   :5519  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                           3rd Qu.:5486  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                           Max.   :8103  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    YIELD_MIN      YIELD_MAX         HIAD           HIAD_SE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :3795   Min.   :5244   Min.   :0.3001   Min.   :0.0005648  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:4325   1st Qu.:5457   1st Qu.:0.3197   1st Qu.:0.0050892  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :4676   Median :5719   Median :0.3561   Median :0.0089026  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :4928   Mean   :6117   Mean   :0.3580   Mean   :0.0116369  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:5024   3rd Qu.:6004   3rd Qu.:0.3975   3rd Qu.:0.0159823  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :7331   Max.   :8931   Max.   :0.4155   Max.   :0.0298476  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     PAN_fert      PAN_fert_SE         GW1000        GW1000_SE      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :81.28   Min.   :0.3925   Min.   :20.78   Min.   :0.07145  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:87.25   1st Qu.:0.7777   1st Qu.:23.49   1st Qu.:0.20004  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :88.47   Median :1.7136   Median :23.86   Median :0.20738  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :88.78   Mean   :2.0115   Mean   :23.73   Mean   :0.24269  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:90.88   3rd Qu.:2.5408   3rd Qu.:24.55   3rd Qu.:0.26799  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :95.46   Max.   :5.3375   Max.   :25.38   Max.   :0.48396  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ST_M2          ST_M2_SE         PAN_M2        PAN_M2_SE     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :308.0   Min.   : 4.00   Min.   :192.1   Min.   : 6.009  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:356.9   1st Qu.:13.00   1st Qu.:301.8   1st Qu.:15.000  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :373.5   Median :20.82   Median :333.9   Median :20.000  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :394.8   Mean   :20.09   Mean   :346.5   Mean   :20.931  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:407.0   3rd Qu.:24.85   3rd Qu.:382.1   3rd Qu.:26.252  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :554.0   Max.   :40.10   Max.   :531.8   Max.   :38.000  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      GT_PAN         GT_PAN_SE            GF_PAN        GF_PAN_SE      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   : 67.97   Min.   : 0.05277   Min.   :60.02   Min.   : 0.6436  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.: 68.86   1st Qu.: 1.77913   1st Qu.:60.57   1st Qu.: 1.5229  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median : 69.39   Median : 2.91998   Median :62.67   Median : 3.5495  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   : 75.86   Mean   : 7.37684   Mean   :66.90   Mean   : 6.5664  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.: 72.23   3rd Qu.:12.34776   3rd Qu.:67.23   3rd Qu.: 9.4401  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :111.52   Max.   :20.41136   Max.   :90.01   Max.   :19.8455  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          ID           LOC_ID       CULTIVAR   YIELD_AVG      YIELD_MIN   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Length   : 7   Length   :7   Length   :7   Min.   :4474   Min.   :3795  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N.unique : 7   N.unique :1   N.unique :1   1st Qu.:4984   1st Qu.:4325  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N.blank  : 0   N.blank  :0   N.blank  :0   Median :5114   Median :4676  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.nchar: 9   Min.nchar:4   Min.nchar:7   Mean   :5519   Mean   :4928  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.nchar:12   Max.nchar:4   Max.nchar:7   3rd Qu.:5486   3rd Qu.:5024  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             Max.   :8103   Max.   :7331  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    YIELD_MAX         HIAD           HIAD_SE             PAN_fert    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :5244   Min.   :0.3001   Min.   :0.0005648   Min.   :81.28  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:5457   1st Qu.:0.3197   1st Qu.:0.0050892   1st Qu.:87.25  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :5719   Median :0.3561   Median :0.0089026   Median :88.47  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :6117   Mean   :0.3580   Mean   :0.0116369   Mean   :88.78  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:6004   3rd Qu.:0.3975   3rd Qu.:0.0159823   3rd Qu.:90.88  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :8931   Max.   :0.4155   Max.   :0.0298476   Max.   :95.46  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   PAN_fert_SE         GW1000        GW1000_SE           ST_M2      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :0.3925   Min.   :20.78   Min.   :0.07145   Min.   :308.0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:0.7777   1st Qu.:23.49   1st Qu.:0.20004   1st Qu.:356.9  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :1.7136   Median :23.86   Median :0.20738   Median :373.5  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :2.0115   Mean   :23.73   Mean   :0.24269   Mean   :394.8  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:2.5408   3rd Qu.:24.55   3rd Qu.:0.26799   3rd Qu.:407.0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :5.3375   Max.   :25.38   Max.   :0.48396   Max.   :554.0  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     ST_M2_SE         PAN_M2        PAN_M2_SE          GT_PAN      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   : 4.00   Min.   :192.1   Min.   : 6.009   Min.   : 67.97  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:13.00   1st Qu.:301.8   1st Qu.:15.000   1st Qu.: 68.86  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :20.82   Median :333.9   Median :20.000   Median : 69.39  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :20.09   Mean   :346.5   Mean   :20.931   Mean   : 75.86  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:24.85   3rd Qu.:382.1   3rd Qu.:26.252   3rd Qu.: 72.23  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :40.10   Max.   :531.8   Max.   :38.000   Max.   :111.52  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    GT_PAN_SE            GF_PAN        GF_PAN_SE      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   : 0.05277   Min.   :60.02   Min.   : 0.6436  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.: 1.77913   1st Qu.:60.57   1st Qu.: 1.5229  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Median : 2.91998   Median :62.67   Median : 3.5495  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   : 7.37684   Mean   :66.90   Mean   : 6.5664  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:12.34776   3rd Qu.:67.23   3rd Qu.: 9.4401  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :20.41136   Max.   :90.01   Max.   :19.8455  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

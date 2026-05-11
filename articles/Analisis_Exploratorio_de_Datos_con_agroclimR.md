@@ -1,11 +1,13 @@
 # Analisis Exploratorio de Datos con agroclimR
 
 ``` r
+
 library(agroclimR)
 #> Warning: no DISPLAY variable so Tk is not available
 ```
 
 ``` r
+
 # Código de ejemplo para crear lista de conjunto de datos Localidad-Cultivar
 # Asumiendo que agroclimR esta cargado
 obs_data  = list(
@@ -39,6 +41,7 @@ Podemos obtener el mismo resultado si exportamos los datos desde el
 libro de trabajo propuesto en este articulo.
 
 ``` r
+
 
 # File name
 file_name = c("agroclimR_workbook.xlsx")

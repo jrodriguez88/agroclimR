@@ -1,6 +1,8 @@
-# Write AquaCrop Weather File
+# Write AquaCrop weather files
 
-Function to compute weather information AquaCrop v6.0 weather file.
+Formats daily weather data as the set of AquaCrop climate input files:
+`.CLI`, `.Tnx`, `.PLU`, and `.ETo`. Reference evapotranspiration is
+computed when an `eto` column is not supplied.
 
 ## Usage
 
@@ -20,51 +22,47 @@ write_wth_aquacrop(
 
 - path:
 
-  A string indicating the path folder or working directory where the
-  weather files will be saved.
+  Character. Directory where the AquaCrop weather files will be written.
 
 - id_name:
 
-  A 4-letter string representing the locality name abbreviation. For
-  example, "AIHU" stands for Aipe, Huila.
+  Character. Site or station identifier used as the base output file
+  name, without extension.
 
 - wth_data:
 
-  A data frame containing weather data with at least the following
-  columns: date, tmax, tmin, rain.
+  Data frame with daily weather data. Required columns are `date`
+  (`Date`), `tmax`, `tmin`, and `rain`. If `eto` is absent, ETo is
+  calculated with
+  [`ETo_cal()`](https://jrodriguez88.github.io/agroclimR/reference/ETo_cal.md).
 
-- lat:
+- lat, lon:
 
-  Numeric. Latitude of the location in decimal degrees.
-
-- lon:
-
-  Numeric. Longitude of the location in decimal degrees.
+  Numeric. Latitude and longitude in decimal degrees.
 
 - elev:
 
-  Numeric. Elevation of the location in meters above sea level.
+  Numeric. Elevation in meters above sea level.
 
 - co2_file:
 
-  A string representing the CO2 file to be used. Default is
-  "MaunaLoa.CO2". CO2 files are available in the Aquacrop default
-  database.
+  Character. Name of the AquaCrop CO2 file referenced in the generated
+  `.CLI` file. Defaults to `"MaunaLoa.CO2"`.
 
 ## Value
 
-This function returns a vector of model files created in path folder.
+Character vector with the paths of the AquaCrop weather files created.
 
 ## Examples
 
 ``` r
 # Write AquaCrop weather file
 wth_files_created <- write_wth_aquacrop(
-  path = ".", id_name = "wth_aquacrop", wth_data = weather,
+  path = tempdir(), id_name = "wth_aquacrop", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
 #> Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation
-#> Oryza Weather Files created in  .  : 
-#>  ./wth_aquacrop.CLI ,./wth_aquacrop.Tnx ,./wth_aquacrop.PLU ,./wth_aquacrop.ETo
+#> AquaCrop weather files created in  /tmp/RtmpJqE3M0  : 
+#>  /tmp/RtmpJqE3M0/wth_aquacrop.CLI ,/tmp/RtmpJqE3M0/wth_aquacrop.Tnx ,/tmp/RtmpJqE3M0/wth_aquacrop.PLU ,/tmp/RtmpJqE3M0/wth_aquacrop.ETo
 
 readLines(wth_files_created[1], n = 15) |> writeLines()
 #> wth_aquacrop Station, lat: 3.8 long: -76.5 - by agroclimR

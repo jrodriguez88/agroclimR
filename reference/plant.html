@@ -61,10 +61,10 @@
 <dd><p>Sampling date - (<code>date</code>). The date when the plant sampling was conducted, in MM/DD/YYYY format.</p></dd>
 
 <dt>LAI_OBS</dt>
-<dd><p>Leaf Area Index observed - (<code>numeric</code>). Measures the area of leaves per unit area of ground, in m² leaf/m² ground.</p></dd>
+<dd><p>Leaf Area Index observed - (<code>numeric</code>). Measures the area of leaves per unit area of ground, in m2 leaf/m2 ground.</p></dd>
 
 <dt>LAI_SE</dt>
-<dd><p>Leaf Area Index standard deviation - (<code>numeric</code>). The standard deviation of the Leaf Area Index, in m² leaf/m² ground.</p></dd>
+<dd><p>Leaf Area Index standard deviation - (<code>numeric</code>). The standard deviation of the Leaf Area Index, in m2 leaf/m2 ground.</p></dd>
 
 <dt>WLVG_OBS</dt>
 <dd><p>Green leaf dry weight - (<code>numeric</code>). The dry weight of green leaves, in kg/ha.</p></dd>
@@ -97,22 +97,22 @@
 <dd><p>Total dry weight standard error - (<code>numeric</code>). The standard error of total dry weight, in kg/ha.</p></dd>
 
 <dt>NLV_OBS</dt>
-<dd><p>Number of green leaves - (<code>numeric</code>). The number of green leaves per square meter, in number/m².</p></dd>
+<dd><p>Number of green leaves - (<code>numeric</code>). The number of green leaves per square meter, in number/m2.</p></dd>
 
 <dt>NLV_SE</dt>
-<dd><p>Number of green leaves standard error - (<code>numeric</code>). The standard error of the number of green leaves, in number/m².</p></dd>
+<dd><p>Number of green leaves standard error - (<code>numeric</code>). The standard error of the number of green leaves, in number/m2.</p></dd>
 
 <dt>NST_OBS</dt>
-<dd><p>Number of stems - (<code>numeric</code>). The number of stems per square meter, in number/m².</p></dd>
+<dd><p>Number of stems - (<code>numeric</code>). The number of stems per square meter, in number/m2.</p></dd>
 
 <dt>NST_SE</dt>
-<dd><p>Number of stems standard error - (<code>numeric</code>). The standard error of the number of stems, in number/m².</p></dd>
+<dd><p>Number of stems standard error - (<code>numeric</code>). The standard error of the number of stems, in number/m2.</p></dd>
 
 <dt>NP_OBS</dt>
-<dd><p>Number of panicles - (<code>numeric</code>). The number of panicles per square meter, in number/m².</p></dd>
+<dd><p>Number of panicles - (<code>numeric</code>). The number of panicles per square meter, in number/m2.</p></dd>
 
 <dt>NP_SE</dt>
-<dd><p>Number of panicles standard error - (<code>numeric</code>). The standard error of the number of panicles, in number/m².</p></dd>
+<dd><p>Number of panicles standard error - (<code>numeric</code>). The standard error of the number of panicles, in number/m2.</p></dd>
 
 
 </dl></div>
@@ -130,14 +130,14 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Assuming `plant` is your dataset name</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">plant</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ID               LOC_ID            CULTIVAR         SAMPLING_DATE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Length:77          Length:77          Length:77          Min.   :2013-05-21  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Class :character   Class :character   Class :character   1st Qu.:2014-02-13  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mode  :character   Mode  :character   Mode  :character   Median :2014-05-29  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                           Mean   :2014-09-27  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                           3rd Qu.:2015-07-23  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                           Max.   :2016-02-26  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          ID           LOC_ID        CULTIVAR  SAMPLING_DATE       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Length   :77   Length   :77   Length   :77   Min.   :2013-05-21  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N.unique : 7   N.unique : 1   N.unique : 1   1st Qu.:2014-02-13  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N.blank  : 0   N.blank  : 0   N.blank  : 0   Median :2014-05-29  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.nchar: 9   Min.nchar: 4   Min.nchar: 7   Mean   :2014-09-27  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.nchar:12   Max.nchar: 4   Max.nchar: 7   3rd Qu.:2015-07-23  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                               Max.   :2016-02-26  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     WLVG_OBS         WLVG_SE         LAI_OBS          LAI_SE      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :  68.0   Min.   :  4.0   Min.   :0.200   Min.   :0.0000  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.: 683.6   1st Qu.: 79.2   1st Qu.:1.175   1st Qu.:0.1000  </span>
@@ -145,7 +145,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :1713.3   Mean   :152.6   Mean   :2.506   Mean   :0.2365  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:2512.0   3rd Qu.:219.0   3rd Qu.:3.500   3rd Qu.:0.3250  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :4261.5   Max.   :523.0   Max.   :6.200   Max.   :0.8000  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                   NA's   :25      NA's   :25      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                   NAs    :25      NAs    :25      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     WLVD_OBS         WLVD_SE          WST_OBS            WST_SE      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :   0.0   Min.   :  0.00   Min.   :   80.5   Min.   :   3.6  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:  71.3   1st Qu.: 16.40   1st Qu.: 1554.2   1st Qu.: 122.4  </span>
@@ -164,7 +164,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  NLV_OBS         NLV_SE        NST_OBS         NST_SE         NP_OBS       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Mode:logical   Mode:logical   Mode:logical   Mode:logical   Mode:logical  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  NA's:77        NA's:77        NA's:77        NA's:77        NA's:77       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  NAs :77        NAs :77        NAs :77        NAs :77        NAs :77       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                            </span>
@@ -172,7 +172,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                                                            </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   NP_SE        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Mode:logical  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  NA's:77       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  NAs :77       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                </span>

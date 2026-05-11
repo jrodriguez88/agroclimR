@@ -90,7 +90,7 @@ SSKS Pedotransfer Functions:
 
 - Dane and Puckett (1994) for SSKS_Dane_Puck
 
-- Ferrer Julià et al. (2004) for SSKS_Ferrer
+- Ferrer Julia et al. (2004) for SSKS_Ferrer
 
 - Jabro (1992) for SSKS_Jabro
 
@@ -104,7 +104,7 @@ SSKS Pedotransfer Functions:
 
 - Vereecken et al. (1990) for SSKS_Vereecken
 
-- Wösten et al. (1999) for SSKS_Wosten99
+- Wosten et al. (1999) for SSKS_Wosten99
 
 ## Examples
 
@@ -119,18 +119,18 @@ SBDM = 1.5
 SSKS_cal(S, C)
 #> WCFC was estimated using Saxton-PTF
 #> Porosity was estimated using 2.65g/cm3 as particle density
-#> [1] 9.474758
+#> [1] 9.451056
 SSKS_cal(S, C, SOM, SBDM)
 #> WCFC was estimated using Saxton-PTF
 #> Porosity was estimated using 2.65g/cm3 as particle density
-#> [1] 8.743532
+#> [1] 8.758996
 SSKS_cal(S, C, output = 'summary')
 #> WCFC was estimated using Saxton-PTF
 #> Porosity was estimated using 2.65g/cm3 as particle density
 #> # A tibble: 1 × 7
 #>   ssks_bootmean ssks_mean ssks_bootmedian ssks_median ssks_min ssks_max ssks_sd
 #>           <dbl>     <dbl>           <dbl>       <dbl>    <dbl>    <dbl>   <dbl>
-#> 1          9.95      9.55            10.0        8.98    0.256     31.7    8.58
+#> 1          9.96      9.55            10.0        8.98    0.256     31.7    8.58
 SSKS_cal(S = 28.3, C = 15.7, output = 'mean')
 #> WCFC was estimated using Saxton-PTF
 #> Porosity was estimated using 2.65g/cm3 as particle density

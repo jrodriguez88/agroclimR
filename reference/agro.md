@@ -65,7 +65,7 @@ A `data.frame` with 7 rows and 14 columns:
 
 - NPLDS:
 
-  Number of plants per square meter - (`numeric`). Example: `number/m²`.
+  Number of plants per square meter - (`numeric`). Example: `number/m2`.
 
 - SBDUR:
 

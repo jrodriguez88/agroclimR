@@ -28,6 +28,7 @@ You can install the development version of agroclimR from
 [GitHub](https://github.com/jrodriguez88/agroclimR) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("jrodriguez88/agroclimR")
 ```
@@ -40,6 +41,7 @@ Here’s a basic example demonstrating how to create a crop model weather
 file using agroclimR:
 
 ``` r
+
 library(agroclimR)
 
 path = "."
@@ -135,6 +137,7 @@ This is a basic example which shows you how to create a crop model Soil
 file with agroclimR:
 
 ``` r
+
 
 
 soil_sample = dplyr::group_by(soil, NL) |> 

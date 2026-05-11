@@ -1,56 +1,111 @@
-# Write ORYZA v3 Experimental File (.EXP)
+# Write an ORYZA v3 experimental file
 
-`write_exp_oryza()` performs transformation from experimental data to
-ORYZA v3 file model format.
+Creates an ORYZA v3 experimental (`.exp`) file from prepared agronomic,
+fertilization, phenology and plant observation inputs. This is the
+low-level writer used after experiment tables have been tidied into one
+row per experiment.
 
 ## Usage
 
 ``` r
-write_exp_oryza(agroclimr_list, path, ET_mod = "PRIESTLY TAYLOR")
+write_exp_oryza(
+  exp_file,
+  LOC_ID,
+  CULTIVAR,
+  PDAT,
+  ESTAB,
+  SBDUR,
+  NPLDS,
+  CROP_SYS,
+  TRDAT,
+  FERT_obs,
+  PHEN_obs,
+  PLANT_obs,
+  ET_mod = "PRIESTLY TAYLOR"
+)
 ```
 
 ## Arguments
 
-- agroclimr_list:
+- exp_file:
 
-  R list imported from excel workbook using
-  [`read_agroclimr_data()`](https://jrodriguez88.github.io/agroclimR/reference/import_exp_data.md).
+  Character. Full path to the ORYZA `.exp` file to create.
 
-- path:
+- LOC_ID:
 
-  A string indicating path folder or working directory
+  Character. Location or experiment identifier.
+
+- CULTIVAR:
+
+  Character. ORYZA cultivar name or code.
+
+- PDAT:
+
+  Date. Planting date.
+
+- ESTAB:
+
+  Character or numeric. Crop establishment method code used by ORYZA.
+
+- SBDUR:
+
+  Numeric. Seedbed duration.
+
+- NPLDS:
+
+  Numeric. Number of plants or seedlings, as expected by the ORYZA
+  template.
+
+- CROP_SYS:
+
+  Character. Crop system descriptor written in the experimental file.
+
+- TRDAT:
+
+  Date or `NA`. Transplanting date when applicable.
+
+- FERT_obs:
+
+  Data frame with fertilization observations for the experiment,
+  typically including day/date and nitrogen amount columns.
+
+- PHEN_obs:
+
+  Data frame with phenology observations for the experiment.
+
+- PLANT_obs:
+
+  Data frame with plant growth observations for the experiment.
 
 - ET_mod:
 
-  String indicating is method for evapotranspiration calculation,
-  'PENMAN' = Penman-based (Van Kraalingen& Stol,1996), 'PRIESTLY TAYLOR'
-  = Priestly-Taylor ("),
+  Character. Evapotranspiration method. Supported template labels
+  include `"PENMAN"`, `"PRIESTLY TAYLOR"`, and `"MAKKINK"`.
 
 ## Value
 
-This function returns a `vector` of model files created in path folder.
+Character vector with the path of the ORYZA experimental file created.
+
+## Details
+
+Use `tidy_exp_oryza()` to join raw agronomic, phenology, plant,
+fertilization and yield tables into the row-wise inputs consumed by this
+writer.
 
 ## Examples
 
 ``` r
-#' # File names vector, extension include
-name_file = c("agroclimR_workbook.xlsx")
+if (FALSE) { # \dontrun{
+# Experimental tidy data
+tidy_exp_data <- tidy_exp_oryza(
+  agro, phenol, plant, fertil, yield, path = tempdir())
 
-# Files directory
-test_file = system.file("extdata", name_file, package = "agroclimR")
-
-# Import data to R lists and tibble formats
-agroclimr_list = read_agroclimr_data(test_file)
-
-# Write Oryza Experimental Files
-exp_files_created <- write_exp_oryza(agroclimr_list, path = "./")
-#> No LAI in exp_file: ./SDTO_FED2000_MADRI_S1.exp
+# Write ORYZA experimental files
+exp_files_created <- tidy_exp_data %>%
+  mutate(file = pmap(., write_exp_oryza)) %>%
+  pull(exp_file)
 
 exp_files_created
-#> [1] "./SDTO_FED2000_MADRI_S1.exp"  "./SDTO_FED2000_MADRII_S1.exp"
-#> [3] "./SDTO_FED2000_MADRI_S2.exp"  "./SDTO_FED2000_MADRII_S2.exp"
-#> [5] "./SDTO_FED2000_COL_S3.exp"    "./SDTO_FED2000_MADRI_S3.exp" 
-#> [7] "./SDTO_FED2000_COL_S4.exp"   
 file.remove(exp_files_created)
-#> [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE
+} # }
 ```

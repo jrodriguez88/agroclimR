@@ -76,7 +76,7 @@
 <dd><p>Soil clay content - (<code>numeric</code>). Percentage of clay content (%).</p></dd>
 
 <dt>SBDM</dt>
-<dd><p>Soil Bulk Density - (<code>numeric</code>). Measured in grams per cubic centimeter (<code>g/cm³</code>).</p></dd>
+<dd><p>Soil Bulk Density - (<code>numeric</code>). Measured in grams per cubic centimeter (<code>g/cm3</code>).</p></dd>
 
 <dt>SOC</dt>
 <dd><p>Soil organic carbon - (<code>numeric</code>). Measured in grams per kilogram (<code>g/kg</code>).</p></dd>
@@ -127,48 +127,41 @@
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Assuming `soil` is your dataset name</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">soil</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ID               LOC_ID          SAMPLING_DATE              NL   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Length:18          Length:18          Min.   :2013-05-10   Min.   :1  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Class :character   Class :character   1st Qu.:2014-02-26   1st Qu.:1  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mode  :character   Mode  :character   Median :2014-06-01   Median :2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                        Mean   :2014-08-27   Mean   :2  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                        3rd Qu.:2015-08-10   3rd Qu.:3  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                        Max.   :2015-12-23   Max.   :3  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      DEPTH        STC                 SAND            SILT       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :20   Length:18          Min.   :28.27   Min.   : 2.931  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:20   Class :character   1st Qu.:41.63   1st Qu.: 8.775  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :20   Mode  :character   Median :47.64   Median :38.443  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :20                      Mean   :56.49   Mean   :29.258  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:20                      3rd Qu.:77.86   3rd Qu.:43.547  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :20                      Max.   :83.14   Max.   :55.999  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       CLAY             SBDM            SOC              SLON        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   : 8.959   Min.   :1.401   Min.   : 0.400   Min.   :  94.47  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:13.335   1st Qu.:1.496   1st Qu.: 1.425   1st Qu.: 299.97  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :14.448   Median :1.575   Median : 3.500   Median : 450.21  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :14.255   Mean   :1.595   Mean   : 4.365   Mean   : 596.37  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:15.522   3rd Qu.:1.696   3rd Qu.: 6.515   3rd Qu.: 650.02  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :18.258   Max.   :1.795   Max.   :13.250   Max.   :2045.03  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       SNH4             SNO3              PH             SCEC       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   : 1.981   Min.   : 0.023   Min.   :5.180   Min.   : 1.740  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.: 4.270   1st Qu.: 1.563   1st Qu.:6.143   1st Qu.: 5.367  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median : 5.307   Median : 3.293   Median :6.310   Median : 7.947  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   : 6.114   Mean   : 7.364   Mean   :6.256   Mean   : 7.947  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.: 6.114   3rd Qu.:10.281   3rd Qu.:6.508   3rd Qu.:11.273  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :19.177   Max.   :49.553   Max.   :6.870   Max.   :14.000  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       WCST            WCFC            WCWP             WCAD       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :35.52   Min.   :11.25   Min.   : 5.149   Min.   : 3.830  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:38.34   1st Qu.:15.46   1st Qu.: 7.513   1st Qu.: 6.339  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :43.84   Median :27.46   Median :16.628   Median : 6.954  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :45.90   Mean   :25.05   Mean   :15.919   Mean   : 7.046  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:46.41   3rd Qu.:34.25   3rd Qu.:21.696   3rd Qu.: 8.080  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :69.60   Max.   :40.77   Max.   :31.793   Max.   :10.317  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       SSKS      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :21.86  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:28.10  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :36.32  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :52.82  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:85.64  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :98.00  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          ID           LOC_ID   SAMPLING_DATE              NL        DEPTH   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Length   :18   Length   :18   Min.   :2013-05-10   Min.   :1   Min.   :20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N.unique : 6   N.unique : 1   1st Qu.:2014-02-26   1st Qu.:1   1st Qu.:20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N.blank  : 0   N.blank  : 0   Median :2014-06-01   Median :2   Median :20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.nchar:11   Min.nchar: 4   Mean   :2014-08-27   Mean   :2   Mean   :20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.nchar:12   Max.nchar: 4   3rd Qu.:2015-08-10   3rd Qu.:3   3rd Qu.:20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                Max.   :2015-12-23   Max.   :3   Max.   :20  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         STC          SAND            SILT             CLAY       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Length   :18   Min.   :28.27   Min.   : 2.931   Min.   : 8.959  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N.unique : 3   1st Qu.:41.63   1st Qu.: 8.775   1st Qu.:13.335  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  N.blank  : 0   Median :47.64   Median :38.443   Median :14.448  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.nchar: 2   Mean   :56.49   Mean   :29.258   Mean   :14.255  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.nchar: 4   3rd Qu.:77.86   3rd Qu.:43.547   3rd Qu.:15.522  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 Max.   :83.14   Max.   :55.999   Max.   :18.258  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       SBDM            SOC              SLON              SNH4       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :1.401   Min.   : 0.400   Min.   :  94.47   Min.   : 1.981  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:1.496   1st Qu.: 1.425   1st Qu.: 299.97   1st Qu.: 4.270  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :1.575   Median : 3.500   Median : 450.21   Median : 5.307  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :1.595   Mean   : 4.365   Mean   : 596.37   Mean   : 6.114  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:1.696   3rd Qu.: 6.515   3rd Qu.: 650.02   3rd Qu.: 6.114  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :1.795   Max.   :13.250   Max.   :2045.03   Max.   :19.177  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       SNO3              PH             SCEC             WCST      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   : 0.023   Min.   :5.180   Min.   : 1.740   Min.   :35.52  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.: 1.563   1st Qu.:6.143   1st Qu.: 5.367   1st Qu.:38.34  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Median : 3.293   Median :6.310   Median : 7.947   Median :43.84  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   : 7.364   Mean   :6.256   Mean   : 7.947   Mean   :45.90  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:10.281   3rd Qu.:6.508   3rd Qu.:11.273   3rd Qu.:46.41  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :49.553   Max.   :6.870   Max.   :14.000   Max.   :69.60  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       WCFC            WCWP             WCAD             SSKS      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Min.   :11.25   Min.   : 5.149   Min.   : 3.830   Min.   :21.86  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1st Qu.:15.46   1st Qu.: 7.513   1st Qu.: 6.339   1st Qu.:28.10  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Median :27.46   Median :16.628   Median : 6.954   Median :36.32  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Mean   :25.05   Mean   :15.919   Mean   : 7.046   Mean   :52.82  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3rd Qu.:34.25   3rd Qu.:21.696   3rd Qu.: 8.080   3rd Qu.:85.64  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Max.   :40.77   Max.   :31.793   Max.   :10.317   Max.   :98.00  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -63,22 +63,22 @@ sobre ensayos experimentales para la modelación de cultivos. Sirve como
 la tabla maestra para el libro de trabajo propuesto en el paquete
 agroclimR.
 
-| VAR_NAME | DESCRIPTION                  | TYPE      | UNITS                  | Calculation method            | Agrovoc URL                                                           |
-|----------|------------------------------|-----------|------------------------|-------------------------------|-----------------------------------------------------------------------|
-| ID       | Trial ID                     | character | XXXX                   |                               |                                                                       |
-| LOC_ID   | locality ID                  | character | name                   |                               |                                                                       |
-| PROJECT  | Project ID                   | character | name                   |                               |                                                                       |
-| CULTIVAR | Cultivar name                | character | name                   |                               |                                                                       |
-| TR_N     | Treatment number             | character | cn                     |                               |                                                                       |
-| LAT      | Latitude                     | numeric   | Decimal degrees        | GPS, G-EARTH                  | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_4222)     |
-| LONG     | Longitude                    | numeric   | Decimal degrees        | GPS, G-EARTH                  | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_52bebf31) |
-| ALT      | Elevation(m above sea level) | numeric   | meters                 | GPS, G-EARTH                  | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_316)      |
-| PDAT     | Planting date                | date      | MM/DD/YYYY             | Field Manual                  | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_16208)    |
-| CROP_SYS | Crop system                  | character | IRRIGATED-RAINFED      | Field Manual                  |                                                                       |
-| ESTAB    | Establishment                | character | TRANSPLANT-DIRECT-SEED | Field Manual                  |                                                                       |
-| NPLDS    | Number of plants/m2          | numeric   | number/m²              | Mean of samples (25\<DDE\<80) | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_5975)     |
-| SBDUR    | Seed-bed duration            | numeric   | days                   |                               |                                                                       |
-| TRDAT    | Transplanting date           | date      | MM/DD/YYYY             |                               | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_330700)   |
+| VAR_NAME | DESCRIPTION | TYPE | UNITS | Calculation method | Agrovoc URL |
+|----|----|----|----|----|----|
+| ID | Trial ID | character | XXXX |  |  |
+| LOC_ID | locality ID | character | name |  |  |
+| PROJECT | Project ID | character | name |  |  |
+| CULTIVAR | Cultivar name | character | name |  |  |
+| TR_N | Treatment number | character | cn |  |  |
+| LAT | Latitude | numeric | Decimal degrees | GPS, G-EARTH | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_4222) |
+| LONG | Longitude | numeric | Decimal degrees | GPS, G-EARTH | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_52bebf31) |
+| ALT | Elevation(m above sea level) | numeric | meters | GPS, G-EARTH | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_316) |
+| PDAT | Planting date | date | MM/DD/YYYY | Field Manual | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_16208) |
+| CROP_SYS | Crop system | character | IRRIGATED-RAINFED | Field Manual |  |
+| ESTAB | Establishment | character | TRANSPLANT-DIRECT-SEED | Field Manual |  |
+| NPLDS | Number of plants/m2 | numeric | number/m² | Mean of samples (25\<DDE\<80) | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_5975) |
+| SBDUR | Seed-bed duration | numeric | days |  |  |
+| TRDAT | Transplanting date | date | MM/DD/YYYY |  | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_330700) |
 
 `ID`, `LOC_ID`, `PROJECT`, `CULTIVAR` y `TR_N` son factores que
 identifican un experimento único y conectan las demás tablas, con
@@ -95,6 +95,7 @@ recomendaciones tales como:
 - Número de Tratamiento (`TR_N`): Ejemplo: “T1”.
 
 ``` r
+
 # Código de ejemplo para mostrar las primeras filas del conjunto de datos AGRO
 # Asumiendo que 'agro' es el conjunto de datos cargado con agroclimR
 head(agro)
@@ -133,17 +134,18 @@ Incluye información sobre la identificación del ensayo, localidad, IDs
 del proyecto y detalles específicos sobre las aplicaciones de
 fertilizantes.
 
-| VAR_NAME | DESCRIPTION          | TYPE      | UNITS  | Calculation method | Agrovoc URL                                                        |
-|----------|----------------------|-----------|--------|--------------------|--------------------------------------------------------------------|
-| ID       | Trial ID             | character | XXXX   |                    |                                                                    |
-| LOC_ID   | locality ID          | character | name   |                    |                                                                    |
-| FERT_No  | Fertilize app number | numeric   | number | Field Manual       | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_10795) |
-| DDE      | Days after Emergence | numeric   | days   |                    |                                                                    |
-| N        | Nitrogen             | numeric   | kg/ha  | % of fertilizer    | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_5192)  |
-| P        | Phosphate            | numeric   | kg/ha  | % of fertilizer    |                                                                    |
-| K        | Potassium            | numeric   | kg/ha  | % of fertilizer    |                                                                    |
+| VAR_NAME | DESCRIPTION | TYPE | UNITS | Calculation method | Agrovoc URL |
+|----|----|----|----|----|----|
+| ID | Trial ID | character | XXXX |  |  |
+| LOC_ID | locality ID | character | name |  |  |
+| FERT_No | Fertilize app number | numeric | number | Field Manual | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_10795) |
+| DDE | Days after Emergence | numeric | days |  |  |
+| N | Nitrogen | numeric | kg/ha | % of fertilizer | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_5192) |
+| P | Phosphate | numeric | kg/ha | % of fertilizer |  |
+| K | Potassium | numeric | kg/ha | % of fertilizer |  |
 
 ``` r
+
 # Código de ejemplo para mostrar las primeras filas del conjunto de datos FERT
 # Asumiendo que 'fertil' es el conjunto de datos cargado con agroclimR
 head(fertil)
@@ -173,17 +175,18 @@ cultivares de plantas utilizados en ensayos de modelación de cultivos.
 Cada registro detalla las etapas fenológicas del crecimiento de las
 plantas.
 
-| VAR_NAME | DESCRIPTION             | TYPE      | UNITS      | Calculation method    | Agrovoc URL                                                         |
-|----------|-------------------------|-----------|------------|-----------------------|---------------------------------------------------------------------|
-| ID       | Trial ID                | character | XXXX       |                       |                                                                     |
-| LOC_ID   | locality ID             | character | name       |                       |                                                                     |
-| CULTIVAR | Cultivar name           | character | name       |                       |                                                                     |
-| EDAT     | Emergence date          | date      | MM/DD/YYYY | Field observation.    | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_3247)   |
-| IDAT     | Panicle initiation date | date      | MM/DD/YYYY | Field observation.    | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_330848) |
-| FDAT     | Flowering date          | date      | MM/DD/YYYY | Field observation.    | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_3510)   |
-| MDAT     | Maturity date           | date      | MM/DD/YYYY | Harvest date - 7 days | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_13933)  |
+| VAR_NAME | DESCRIPTION | TYPE | UNITS | Calculation method | Agrovoc URL |
+|----|----|----|----|----|----|
+| ID | Trial ID | character | XXXX |  |  |
+| LOC_ID | locality ID | character | name |  |  |
+| CULTIVAR | Cultivar name | character | name |  |  |
+| EDAT | Emergence date | date | MM/DD/YYYY | Field observation. | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_3247) |
+| IDAT | Panicle initiation date | date | MM/DD/YYYY | Field observation. | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_330848) |
+| FDAT | Flowering date | date | MM/DD/YYYY | Field observation. | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_3510) |
+| MDAT | Maturity date | date | MM/DD/YYYY | Harvest date - 7 days | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_13933) |
 
 ``` r
+
 # Código de ejemplo para mostrar las primeras filas del conjunto de datos PHEN
 # Asumiendo que 'phenol' es el conjunto de datos cargado con agroclimR
 head(phenol)
@@ -215,32 +218,33 @@ area foliar. Estas mediciones son integrales para estudios de modelación
 de cultivos y fisiología, ofreciendo percepciones sobre el desarrollo y
 salud de diferentes cultivares bajo condiciones variadas.
 
-| VAR_NAME      | DESCRIPTION              | TYPE      | UNITS               | Calculation method                       | Agrovoc URL                                                         |
-|---------------|--------------------------|-----------|---------------------|------------------------------------------|---------------------------------------------------------------------|
-| ID            | Trial ID                 | character | XXXX                |                                          |                                                                     |
-| LOC_ID        | locality ID              | character | name                |                                          |                                                                     |
-| CULTIVAR      | Cultivar name            | character | name                |                                          |                                                                     |
-| SAMPLING_DATE | Sampling date            | date      | MM/DD/YYYY          |                                          |                                                                     |
-| LAI_OBS       | Leaf Area Index observed | numeric   | m² leaf / m² ground | LICOR LI-3100 Leaf Scanner               | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_35196)  |
-| LAI_SE        | LAI standard deviation   | numeric   | m² leaf / m² ground |                                          |                                                                     |
-| WLVG_OBS      | Green leaf dry weight    | numeric   | kg/ha               | Destructive sampling (MADR:1m, COL:0.5m) | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_2398)  |
-| WLVG_SE       | WLVG Standard Error      | numeric   | kg/ha               |                                          |                                                                     |
-| WLVD_OBS      | Dead leaf dry weight     | numeric   | kg/ha               | Destructive sampling (MADR:1m, COL:0.5m) | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_2398)  |
-| WLVD_SE       | WLVD Standard Error      | numeric   | kg/ha               |                                          |                                                                     |
-| WST_OBS       | Stem dry weight          | numeric   | kg/ha               | Destructive sampling (MADR:1m, COL:0.5m) |                                                                     |
-| WST_SE        | WST Standard Error       | numeric   | kg/ha               |                                          |                                                                     |
-| WSO_OBS       | Panicle dry weight       | numeric   | kg/ha               | Destructive sampling (MADR:1m, COL:0.5m) |                                                                     |
-| WSO_SE        | WSO Standard Error       | numeric   | kg/ha               |                                          |                                                                     |
-| WAGT_OBS      | Total dry weight         | numeric   | kg/ha               | Sum of the components                    |                                                                     |
-| WAGT_SE       | WAGT Standard Error      | numeric   | kg/ha               |                                          |                                                                     |
-| NLV_OBS       | Number of green leaves   | numeric   | number/m²           | Destructive sampling (MADR:1m, COL:0.5m) | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_4243)  |
-| NLV_SE        | NLV Standard Error       | numeric   | number/m²           |                                          |                                                                     |
-| NST_OBS       | Number of Stem           | numeric   | number/m²           | Destructive sampling (MADR:1m, COL:0.5m) |                                                                     |
-| NST_SE        | NST Standard Error       | numeric   | number/m²           |                                          |                                                                     |
-| NP_OBS        | Number of Panicles       | numeric   | number/m²           | Destructive sampling (MADR:1m, COL:0.5m) | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24557) |
-| NP_SE         | NP Standard Error        | numeric   | number/m²           |                                          |                                                                     |
+| VAR_NAME | DESCRIPTION | TYPE | UNITS | Calculation method | Agrovoc URL |
+|----|----|----|----|----|----|
+| ID | Trial ID | character | XXXX |  |  |
+| LOC_ID | locality ID | character | name |  |  |
+| CULTIVAR | Cultivar name | character | name |  |  |
+| SAMPLING_DATE | Sampling date | date | MM/DD/YYYY |  |  |
+| LAI_OBS | Leaf Area Index observed | numeric | m² leaf / m² ground | LICOR LI-3100 Leaf Scanner | [Link](http://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_35196) |
+| LAI_SE | LAI standard deviation | numeric | m² leaf / m² ground |  |  |
+| WLVG_OBS | Green leaf dry weight | numeric | kg/ha | Destructive sampling (MADR:1m, COL:0.5m) | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_2398) |
+| WLVG_SE | WLVG Standard Error | numeric | kg/ha |  |  |
+| WLVD_OBS | Dead leaf dry weight | numeric | kg/ha | Destructive sampling (MADR:1m, COL:0.5m) | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_2398) |
+| WLVD_SE | WLVD Standard Error | numeric | kg/ha |  |  |
+| WST_OBS | Stem dry weight | numeric | kg/ha | Destructive sampling (MADR:1m, COL:0.5m) |  |
+| WST_SE | WST Standard Error | numeric | kg/ha |  |  |
+| WSO_OBS | Panicle dry weight | numeric | kg/ha | Destructive sampling (MADR:1m, COL:0.5m) |  |
+| WSO_SE | WSO Standard Error | numeric | kg/ha |  |  |
+| WAGT_OBS | Total dry weight | numeric | kg/ha | Sum of the components |  |
+| WAGT_SE | WAGT Standard Error | numeric | kg/ha |  |  |
+| NLV_OBS | Number of green leaves | numeric | number/m² | Destructive sampling (MADR:1m, COL:0.5m) | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_4243) |
+| NLV_SE | NLV Standard Error | numeric | number/m² |  |  |
+| NST_OBS | Number of Stem | numeric | number/m² | Destructive sampling (MADR:1m, COL:0.5m) |  |
+| NST_SE | NST Standard Error | numeric | number/m² |  |  |
+| NP_OBS | Number of Panicles | numeric | number/m² | Destructive sampling (MADR:1m, COL:0.5m) | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24557) |
+| NP_SE | NP Standard Error | numeric | number/m² |  |  |
 
 ``` r
+
 # Código de ejemplo para mostrar las primeras filas del conjunto de datos PLANT
 # Asumiendo que 'plant' es el conjunto de datos cargado con agroclimR
 head(plant)
@@ -288,30 +292,31 @@ componentes del rendimiento de ensayos experimentales. Estas
 observaciones son críticas para evaluar el rendimiento del modelo a
 través de diferentes condiciones de cultivo.
 
-| VAR_NAME    | DESCRIPTION                        | TYPE      | UNITS          | Calculation method                               | Agrovoc URL                                                         |
-|-------------|------------------------------------|-----------|----------------|--------------------------------------------------|---------------------------------------------------------------------|
-| ID          | Trial ID                           | character | XXXX           |                                                  |                                                                     |
-| LOC_ID      | locality ID                        | character | name           |                                                  |                                                                     |
-| CULTIVAR    | Cultivar name                      | character | name           |                                                  |                                                                     |
-| YIELD_AVG   | Yield average                      | numeric   | kg/ha          | Average of grain yield(3 methods: 3m², 0.5m², 1m | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_10176) |
-| YIELD_MIN   | Yield minimum                      | numeric   | kg/ha          | Bootstrap minimum - CI                           |                                                                     |
-| YIELD_MAX   | Yield maximum                      | numeric   | kg/ha          | Bootstrap maximum - CI                           |                                                                     |
-| HIAM        | Harvest index at maturity          | numeric   | ratio          | WAGT_OBS/YIELD_AV                                | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24854) |
-| HIAM_SE     | HIAM Standard Error                | numeric   | ratio          |                                                  |                                                                     |
-| PAN_fert    | Panicle fertility                  | numeric   | %              | Destructive sampling                             |                                                                     |
-| PAN_fert_SE | PAN_fert Standard Error            | numeric   | %              |                                                  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
-| GW1000      | 1000-Grain weight                  | numeric   | g              | Destructive sampling                             |                                                                     |
-| GW1000_SE   | GW1000 Standard Error              | numeric   | g              |                                                  |                                                                     |
-| ST_M2       | Number of Stem                     | numeric   | number/m²      | Destructive sampling                             | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
-| ST_M2_SE    | ST_M2 Standard Error               | numeric   | number/m²      |                                                  |                                                                     |
-| PAN_M2      | Number of Panicles                 | numeric   | number/m²      | Destructive sampling                             | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
-| PAN_M2_SE   | PAN_M2 Standard Error              | numeric   | number/m²      |                                                  |                                                                     |
-| GT_PAN      | Number of total grains per panicle | numeric   | number/panicle | Destructive sampling                             | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
-| GT_PAN_SE   | GT_PAN Standard Error              | numeric   | number/panicle |                                                  |                                                                     |
-| GF_PAN      | Number of fill grains per panicle  | numeric   | number/panicle | Destructive sampling                             | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
-| GF_PAN_SE   | GF_PAN Standard Error              | numeric   | number/panicle |                                                  |                                                                     |
+| VAR_NAME | DESCRIPTION | TYPE | UNITS | Calculation method | Agrovoc URL |
+|----|----|----|----|----|----|
+| ID | Trial ID | character | XXXX |  |  |
+| LOC_ID | locality ID | character | name |  |  |
+| CULTIVAR | Cultivar name | character | name |  |  |
+| YIELD_AVG | Yield average | numeric | kg/ha | Average of grain yield(3 methods: 3m², 0.5m², 1m | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_10176) |
+| YIELD_MIN | Yield minimum | numeric | kg/ha | Bootstrap minimum - CI |  |
+| YIELD_MAX | Yield maximum | numeric | kg/ha | Bootstrap maximum - CI |  |
+| HIAM | Harvest index at maturity | numeric | ratio | WAGT_OBS/YIELD_AV | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24854) |
+| HIAM_SE | HIAM Standard Error | numeric | ratio |  |  |
+| PAN_fert | Panicle fertility | numeric | % | Destructive sampling |  |
+| PAN_fert_SE | PAN_fert Standard Error | numeric | % |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
+| GW1000 | 1000-Grain weight | numeric | g | Destructive sampling |  |
+| GW1000_SE | GW1000 Standard Error | numeric | g |  |  |
+| ST_M2 | Number of Stem | numeric | number/m² | Destructive sampling | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
+| ST_M2_SE | ST_M2 Standard Error | numeric | number/m² |  |  |
+| PAN_M2 | Number of Panicles | numeric | number/m² | Destructive sampling | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
+| PAN_M2_SE | PAN_M2 Standard Error | numeric | number/m² |  |  |
+| GT_PAN | Number of total grains per panicle | numeric | number/panicle | Destructive sampling | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
+| GT_PAN_SE | GT_PAN Standard Error | numeric | number/panicle |  |  |
+| GF_PAN | Number of fill grains per panicle | numeric | number/panicle | Destructive sampling | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24419) |
+| GF_PAN_SE | GF_PAN Standard Error | numeric | number/panicle |  |  |
 
 ``` r
+
 # Código de ejemplo para mostrar las primeras filas del conjunto de datos YIELD
 # Asumiendo que 'yield' es el conjunto de datos cargado con agroclimR
 head(yield)
@@ -357,30 +362,31 @@ químicas y físicas detalladas del suelo de ensayos experimentales. Es
 esencial para entender las condiciones ambientales que afectan el
 crecimiento y desarrollo del cultivo.
 
-| VAR_NAME | DESCRIPTION                                | TYPE      | UNITS              | Calculation method       | Agrovoc URL                                                            |
-|----------|--------------------------------------------|-----------|--------------------|--------------------------|------------------------------------------------------------------------|
-| ID       | Trial ID                                   | character | XXXX               |                          |                                                                        |
-| LOC_ID   | locality ID                                | character | name               |                          |                                                                        |
-| NL       | Number of soil layers (maximum is 10)      | numeric   | number             |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7799)     |
-| DEPTH    | Thickness of each soil layer               | numeric   | cm                 |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7726)     |
-| STC      | Soil Texture Class (12-USDA)               | character | USDA texture class |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7199)     |
-| SAND     | Soil sand content                          | numeric   | %                  |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_6779)     |
-| SILT     | Soil silt content                          | numeric   | %                  |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_331558)   |
-| CLAY     | Soil clay content                          | numeric   | %                  |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_15619)    |
-| SBDM     | Soil Bulk Density                          | numeric   | g/cm³              |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7167)     |
-| SOC      | Soil organic carbon                        | numeric   | g/kg               | From OM - Walkley-Black  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24fb4269) |
-| SLON     | Soil Organic Nitrogen                      | numeric   | mg/kg              |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_5193)     |
-| SNH4     | Ammonium, KCl, g elemental N               | numeric   | mg/kg              | (KCl 1M) Espectrom       | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_37457)    |
-| SNO3     | Nitrate, KCl, g elemental N                | numeric   | mg/kg              | (KCl 1M) Espectrom       | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_0e5d9815) |
-| PH       | pH                                         | numeric   | number             | pH Water 1:1             | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_34901)    |
-| SCEC     | Cation exchange capacity                   | numeric   | cmol/kg            | (Amonio Acetato) Volumet | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24981)    |
-| WCST     | Saturated volumetric water content         | numeric   | %                  |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7208)     |
-| WCFC     | Volumetric water content at field capacity | numeric   | %                  |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_32445)    |
-| WCWP     | Volumetric water content at wilting point  | numeric   | %                  |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_32626)    |
-| WCAD     | Volumetric water content at air dryness    | numeric   | %                  |                          |                                                                        |
-| SSKS     | Saturated hydraulic conductivity           | numeric   | cm/h               |                          | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_25579)    |
+| VAR_NAME | DESCRIPTION | TYPE | UNITS | Calculation method | Agrovoc URL |
+|----|----|----|----|----|----|
+| ID | Trial ID | character | XXXX |  |  |
+| LOC_ID | locality ID | character | name |  |  |
+| NL | Number of soil layers (maximum is 10) | numeric | number |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7799) |
+| DEPTH | Thickness of each soil layer | numeric | cm |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7726) |
+| STC | Soil Texture Class (12-USDA) | character | USDA texture class |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7199) |
+| SAND | Soil sand content | numeric | % |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_6779) |
+| SILT | Soil silt content | numeric | % |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_331558) |
+| CLAY | Soil clay content | numeric | % |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_15619) |
+| SBDM | Soil Bulk Density | numeric | g/cm³ |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7167) |
+| SOC | Soil organic carbon | numeric | g/kg | From OM - Walkley-Black | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24fb4269) |
+| SLON | Soil Organic Nitrogen | numeric | mg/kg |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_5193) |
+| SNH4 | Ammonium, KCl, g elemental N | numeric | mg/kg | (KCl 1M) Espectrom | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_37457) |
+| SNO3 | Nitrate, KCl, g elemental N | numeric | mg/kg | (KCl 1M) Espectrom | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_0e5d9815) |
+| PH | pH | numeric | number | pH Water 1:1 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_34901) |
+| SCEC | Cation exchange capacity | numeric | cmol/kg | (Amonio Acetato) Volumet | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_24981) |
+| WCST | Saturated volumetric water content | numeric | % |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_7208) |
+| WCFC | Volumetric water content at field capacity | numeric | % |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_32445) |
+| WCWP | Volumetric water content at wilting point | numeric | % |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_32626) |
+| WCAD | Volumetric water content at air dryness | numeric | % |  |  |
+| SSKS | Saturated hydraulic conductivity | numeric | cm/h |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_25579) |
 
 ``` r
+
 # Código de ejemplo para mostrar las primeras filas del conjunto de datos SOIL
 # Asumiendo que 'soil' es el conjunto de datos cargado con agroclimR
 head(soil)
@@ -429,20 +435,21 @@ simulación de cultivos reflejen con precisión el impacto de las
 condiciones meteorológicas en el crecimiento y rendimiento de los
 cultivos.
 
-| VAR_NAME | DESCRIPTION         | TYPE      | UNITS           | Calculation method | Agrovoc URL                                                         |
-|----------|---------------------|-----------|-----------------|--------------------|---------------------------------------------------------------------|
-| ID       | Trial ID            | character | XXXX            |                    |                                                                     |
-| LOC_ID   | locality ID         | character | name            |                    |                                                                     |
-| WS_ID    | Weather Station ID  | numeric   | number          |                    |                                                                     |
-| DATE     | Date                | date      | MM/DD/YYYY      |                    |                                                                     |
-| TMAX     | Maximum temperature | numeric   | celsius degrees | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_230)   |
-| TMIN     | Minimum temperature | numeric   | celsius degrees | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_230)   |
-| RAIN     | Rain                | numeric   | millimeters     | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_6161)  |
-| SRAD     | Solar Radiation     | numeric   | MJ/m²\*dia      | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_14415) |
-| RHUM     | Relative humidity   | numeric   | %               | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_6496)  |
-| WSPD     | Wind Speed          | numeric   | m/s             |                    | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_29582) |
+| VAR_NAME | DESCRIPTION | TYPE | UNITS | Calculation method | Agrovoc URL |
+|----|----|----|----|----|----|
+| ID | Trial ID | character | XXXX |  |  |
+| LOC_ID | locality ID | character | name |  |  |
+| WS_ID | Weather Station ID | numeric | number |  |  |
+| DATE | Date | date | MM/DD/YYYY |  |  |
+| TMAX | Maximum temperature | numeric | celsius degrees | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_230) |
+| TMIN | Minimum temperature | numeric | celsius degrees | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_230) |
+| RAIN | Rain | numeric | millimeters | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_6161) |
+| SRAD | Solar Radiation | numeric | MJ/m²\*dia | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_14415) |
+| RHUM | Relative humidity | numeric | % | Davis Vantage Pro2 | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_6496) |
+| WSPD | Wind Speed | numeric | m/s |  | [Link](https://agrovoc.uniroma2.it/agrovoc/agrovoc/en/page/c_29582) |
 
 ``` r
+
 # Código de ejemplo para mostrar las primeras filas del conjunto de datos WTH
 # Asumiendo que 'weather' es el conjunto de datos cargado con agroclimR
 head(weather)

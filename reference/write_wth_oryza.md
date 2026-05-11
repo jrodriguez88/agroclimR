@@ -1,6 +1,8 @@
-# Write ORYZA v3 Weather File (.WTH - .CLI)
+# Write ORYZA v3 weather files
 
-Function compute weather information to ORYZA weather file.
+Formats daily weather data as ORYZA v3 weather input files. The function
+can write one multiyear `.cli` file or one yearly file per year in the
+ORYZA numeric-extension convention.
 
 ## Usage
 
@@ -22,55 +24,56 @@ write_wth_oryza(
 
 - path:
 
-  A string indicating path folder or working directory
+  Character. Directory where weather files will be written.
 
 - id_name:
 
-  A String 4 letters string of locality name. "AIHU" = Aipe, Huila
+  Character. Station or site identifier used as the base output file
+  name.
 
 - wth_data:
 
-  A Data frame Weather data. minimum = date, tmax, tmin, rain
+  Data frame with daily weather data. Required columns are `date`
+  (`Date`), `tmax`, `tmin`, `rain`, and `srad`. Optional columns are
+  `vp` (kPa), `rhum` (%), and `wspd` (m s-1).
 
-- lat:
+- lat, lon:
 
-  Numeric. Latitude (decimal degrees)
-
-- lon:
-
-  Numeric. Longitude (decimal degrees)
+  Numeric. Latitude and longitude in decimal degrees.
 
 - elev:
 
-  Numeric. Elevation (meters above sea level)
+  Numeric. Elevation in meters above sea level.
 
 - stn:
 
-  Integer. Station number
+  Integer. ORYZA station number written in the first data column.
 
 - multiyear:
 
-  A Logical. TRUE = ".cli" multiyear format or FALSE = yearly format
-  (ie. 1998 = \*.998)
+  Logical. If `TRUE`, writes one `.cli` file containing all years. If
+  `FALSE`, writes one file per year using extensions such as `.998` for
+  1998.
 
 - tag:
 
-  A Logical. TRUE = write information for each file
+  Logical. If `TRUE`, writes a descriptive header before the ORYZA
+  weather data.
 
 ## Value
 
-This function returns a vector of model files created in path folder.
+Character vector with the paths of the ORYZA weather files created.
 
 ## Examples
 
 ``` r
 # Write wth file
 wth_files_created <- write_wth_oryza(
-  path = ".", id_name = "TEST", wth_data = weather,
+  path = tempdir(), id_name = "TEST", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
 #> Early morning vapor pressure (VP; kPa) derived from relative humidity data
-#> Oryza Weather Files created in  .  : 
-#>  ./TEST1.013 ,./TEST1.014 ,./TEST1.015 ,./TEST1.016
+#> Oryza Weather Files created in  /tmp/RtmpJqE3M0  : 
+#>  /tmp/RtmpJqE3M0/TEST1.013 ,/tmp/RtmpJqE3M0/TEST1.014 ,/tmp/RtmpJqE3M0/TEST1.015 ,/tmp/RtmpJqE3M0/TEST1.016
 
 readLines(wth_files_created[1], n = 15) |> writeLines()
 #> -76.5,3.8,650,0,0
@@ -92,11 +95,11 @@ file.remove(wth_files_created)
 #> [1] TRUE TRUE TRUE TRUE
 
 wth_files_created2 <- write_wth_oryza(
-  path = ".", id_name = "TEST2", wth_data = weather,
+  path = tempdir(), id_name = "TEST2", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650, multiyear = TRUE, tag = TRUE)
 #> Early morning vapor pressure (VP; kPa) derived from relative humidity data
-#> Oryza Weather Files created in  .  : 
-#>  ./TEST21.cli
+#> Oryza Weather Files created in  /tmp/RtmpJqE3M0  : 
+#>  /tmp/RtmpJqE3M0/TEST21.cli
 
 readLines(wth_files_created2[1], n = 25) |> writeLines()
 #> *-----------------------------------------------------------

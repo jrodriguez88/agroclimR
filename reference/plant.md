@@ -38,12 +38,12 @@ A `data.frame` with 77 rows and 22 columns:
 - LAI_OBS:
 
   Leaf Area Index observed - (`numeric`). Measures the area of leaves
-  per unit area of ground, in m² leaf/m² ground.
+  per unit area of ground, in m2 leaf/m2 ground.
 
 - LAI_SE:
 
   Leaf Area Index standard deviation - (`numeric`). The standard
-  deviation of the Leaf Area Index, in m² leaf/m² ground.
+  deviation of the Leaf Area Index, in m2 leaf/m2 ground.
 
 - WLVG_OBS:
 
@@ -97,32 +97,32 @@ A `data.frame` with 77 rows and 22 columns:
 - NLV_OBS:
 
   Number of green leaves - (`numeric`). The number of green leaves per
-  square meter, in number/m².
+  square meter, in number/m2.
 
 - NLV_SE:
 
   Number of green leaves standard error - (`numeric`). The standard
-  error of the number of green leaves, in number/m².
+  error of the number of green leaves, in number/m2.
 
 - NST_OBS:
 
   Number of stems - (`numeric`). The number of stems per square meter,
-  in number/m².
+  in number/m2.
 
 - NST_SE:
 
   Number of stems standard error - (`numeric`). The standard error of
-  the number of stems, in number/m².
+  the number of stems, in number/m2.
 
 - NP_OBS:
 
   Number of panicles - (`numeric`). The number of panicles per square
-  meter, in number/m².
+  meter, in number/m2.
 
 - NP_SE:
 
   Number of panicles standard error - (`numeric`). The standard error of
-  the number of panicles, in number/m².
+  the number of panicles, in number/m2.
 
 ## Source
 
@@ -144,14 +144,14 @@ growth.
 ``` r
 # Assuming `plant` is your dataset name
 summary(plant)
-#>       ID               LOC_ID            CULTIVAR         SAMPLING_DATE       
-#>  Length:77          Length:77          Length:77          Min.   :2013-05-21  
-#>  Class :character   Class :character   Class :character   1st Qu.:2014-02-13  
-#>  Mode  :character   Mode  :character   Mode  :character   Median :2014-05-29  
-#>                                                           Mean   :2014-09-27  
-#>                                                           3rd Qu.:2015-07-23  
-#>                                                           Max.   :2016-02-26  
-#>                                                                               
+#>          ID           LOC_ID        CULTIVAR  SAMPLING_DATE       
+#>  Length   :77   Length   :77   Length   :77   Min.   :2013-05-21  
+#>  N.unique : 7   N.unique : 1   N.unique : 1   1st Qu.:2014-02-13  
+#>  N.blank  : 0   N.blank  : 0   N.blank  : 0   Median :2014-05-29  
+#>  Min.nchar: 9   Min.nchar: 4   Min.nchar: 7   Mean   :2014-09-27  
+#>  Max.nchar:12   Max.nchar: 4   Max.nchar: 7   3rd Qu.:2015-07-23  
+#>                                               Max.   :2016-02-26  
+#>                                                                   
 #>     WLVG_OBS         WLVG_SE         LAI_OBS          LAI_SE      
 #>  Min.   :  68.0   Min.   :  4.0   Min.   :0.200   Min.   :0.0000  
 #>  1st Qu.: 683.6   1st Qu.: 79.2   1st Qu.:1.175   1st Qu.:0.1000  
@@ -159,7 +159,7 @@ summary(plant)
 #>  Mean   :1713.3   Mean   :152.6   Mean   :2.506   Mean   :0.2365  
 #>  3rd Qu.:2512.0   3rd Qu.:219.0   3rd Qu.:3.500   3rd Qu.:0.3250  
 #>  Max.   :4261.5   Max.   :523.0   Max.   :6.200   Max.   :0.8000  
-#>                                   NA's   :25      NA's   :25      
+#>                                   NAs    :25      NAs    :25      
 #>     WLVD_OBS         WLVD_SE          WST_OBS            WST_SE      
 #>  Min.   :   0.0   Min.   :  0.00   Min.   :   80.5   Min.   :   3.6  
 #>  1st Qu.:  71.3   1st Qu.: 16.40   1st Qu.: 1554.2   1st Qu.: 122.4  
@@ -178,7 +178,7 @@ summary(plant)
 #>                                                                    
 #>  NLV_OBS         NLV_SE        NST_OBS         NST_SE         NP_OBS       
 #>  Mode:logical   Mode:logical   Mode:logical   Mode:logical   Mode:logical  
-#>  NA's:77        NA's:77        NA's:77        NA's:77        NA's:77       
+#>  NAs :77        NAs :77        NAs :77        NAs :77        NAs :77       
 #>                                                                            
 #>                                                                            
 #>                                                                            
@@ -186,7 +186,7 @@ summary(plant)
 #>                                                                            
 #>   NP_SE        
 #>  Mode:logical  
-#>  NA's:77       
+#>  NAs :77       
 #>                
 #>                
 #>                

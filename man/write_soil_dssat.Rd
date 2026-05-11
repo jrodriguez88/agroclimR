@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_soil_dssat.R
 \name{write_soil_dssat}
 \alias{write_soil_dssat}
-\title{Write DSSAT v4.8 Soil File}
+\title{Write a DSSAT v4.8 soil file}
 \usage{
 write_soil_dssat(
   path = ".",
@@ -17,35 +17,43 @@ write_soil_dssat(
 )
 }
 \arguments{
-\item{path}{A string indicating path folder or working directory}
+\item{path}{Character. Directory where the \code{.SOL} file will be written.}
 
-\item{id_name}{A String. 4 letters string of locality name. (ex. "JR")}
+\item{id_name}{Character. Soil profile identifier used as the output file
+name, without extension.}
 
-\item{soil_data}{A Data frame. Soil data. See \code{?soil}}
+\item{soil_data}{Data frame with one row per soil layer. Expected columns
+include \code{LOC_ID}, \code{NL}, \code{DEPTH}, \code{SBDM}, \code{SOC}, \code{SLON}, \code{SNH4}, \code{SNO3},
+\code{WCFC}, \code{WCST}, \code{WCWP}, \code{CLAY}, \code{SILT}, \code{PH}, \code{SCEC}, \code{SSKS}, and \code{STC};
+see the example data set \link{soil}.}
 
-\item{salb}{Numeric. Albedo, fraction}
+\item{salb}{Numeric. Soil albedo (\code{SALB}) as a fraction.}
 
-\item{evapL}{Numeric. Evaporation limit, (mm)}
+\item{evapL}{Numeric. Stage-one soil evaporation limit (\code{SLU1}) in mm.}
 
-\item{slnf}{Numeric. Mineralization factor, 0 to 1 scale.}
+\item{sldr}{Numeric. Drainage rate (\code{SLDR}) as a fraction per day.}
 
-\item{slpf}{Numeric. Photosynthesis factor, 0 to 1 scale}
+\item{slnf}{Numeric. Mineralization factor (\code{SLNF}) on a 0 to 1 scale.}
 
-\item{multi}{Logical. All soil profiles in the same file}
+\item{slpf}{Numeric. Photosynthesis factor (\code{SLPF}) on a 0 to 1 scale.}
 
-\item{max_depth}{description}
+\item{multi}{Logical. If \code{TRUE}, appends a profile to an existing DSSAT soil
+file. If \code{FALSE}, overwrites the file for \code{id_name}.}
 }
 \value{
-This function returns a \code{logical} if files created in path folder.
+Character vector with the path of the DSSAT soil file created.
 }
 \description{
-Function compute Soil information to DSSAT v4.8 soil file.
+Formats a soil profile as a DSSAT \code{.SOL} file. The writer converts the soil
+variables used by agroclimR to DSSAT layer variables and can append multiple
+profiles to the same file when \code{multi = TRUE}.
 }
 \examples{
 # Write DSSAT v4.8 Soil file
 soil_sample = dplyr::group_by(soil, NL) |>
 dplyr::sample_n(1) |> dplyr::ungroup()
-soil_files_created <- write_soil_dssat(id_name = "soil_dssat", soil_data = soil_sample)
+soil_files_created <- write_soil_dssat(
+  path = tempdir(), id_name = "soil_dssat", soil_data = soil_sample)
 
 readLines(soil_files_created[1], n = 15) |> writeLines()
 file.remove(soil_files_created)

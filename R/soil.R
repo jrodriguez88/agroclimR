@@ -17,7 +17,7 @@
 #'   \item{SAND}{Soil sand content - (\code{numeric}). Percentage of sand content (%).}
 #'   \item{SILT}{Soil silt content - (\code{numeric}). Percentage of silt content (%).}
 #'   \item{CLAY}{Soil clay content - (\code{numeric}). Percentage of clay content (%).}
-#'   \item{SBDM}{Soil Bulk Density - (\code{numeric}). Measured in grams per cubic centimeter (\code{g/cm³}).}
+#'   \item{SBDM}{Soil Bulk Density - (\code{numeric}). Measured in grams per cubic centimeter (\code{g/cm3}).}
 #'   \item{SOC}{Soil organic carbon - (\code{numeric}). Measured in grams per kilogram (\code{g/kg}).}
 #'   \item{SLON}{Soil Organic Nitrogen - (\code{numeric}). Measured in milligrams per kilogram (\code{mg/kg}).}
 #'   \item{SNH4}{Ammonium (KCl, elemental N) - (\code{numeric}). Measured in milligrams per kilogram (\code{mg/kg}).}

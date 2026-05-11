@@ -1,16 +1,17 @@
-#' Write Aquacrop v6.1 Soil File
+#' Write an AquaCrop soil file
 #'
-#' Function compute Soil information to Aquacrop v6.1 soil file.
+#' Formats a soil profile as an AquaCrop `.SOL` file. The writer derives Curve
+#' Number and readily evaporable water from the supplied hydraulic properties and
+#' writes one soil profile per file.
 #'
-#' @param path A string indicating path folder or working directory
-#' @param id_name A String. 4 letters string of locality name. (ex. "JR")
-#' @param soil_data A Data frame. Soil data. see `soil`
-#' @param salb Numeric. Albedo, fraction
-#' @param evapL Numeric. Evaporation limit, (mm)
-#' @param slnf Numeric. Mineralization factor, 0 to 1 scale.
-#' @param slpf Numeric. Photosynthesis factor, 0 to 1 scale
-#' @param multi Logical. Soil annual average temperature of the first layers
-#' @param max_depth description
+#' @param path Character. Directory where the `.SOL` file will be written.
+#' @param id_name Character. Soil profile identifier used as the output file
+#'   name, without extension.
+#' @param soil_data Data frame with one row per soil layer. Expected columns
+#'   include `LOC_ID`, `DEPTH`, `SBDM`, `SOC`, `SSKS`, `WCST`, `WCFC`, `WCWP`,
+#'   and `STC`; see the example data set [soil].
+#' @param model_version Numeric or character. AquaCrop version label written in
+#'   the file header.
 #' @import dplyr
 #' @import stringr
 #' @export
@@ -18,15 +19,14 @@
 #' # Write Aquacrop v6 Soil file
 #' soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
 #' soil_files_created <- write_soil_aquacrop(
-#' path = ".",
+#' path = tempdir(),
 #' id_name = "soil_aquacrop",
 #' soil_data = soil_sample)
 #'
 #' readLines(soil_files_created[1], n = 15) |> writeLines()
 #' file.remove(soil_files_created)
 #'
-## Update the details for the return value
-#' @returns This function returns a vector of model files created in path folder.
+#' @returns Character vector with the path of the AquaCrop soil file created.
 #'
 # @seealso \link[sirad]{se}
 
@@ -114,7 +114,6 @@ tidy_soil_aquacrop <- function(soil_data, max_depth = 200){
 
 
 }
-
 
 
 

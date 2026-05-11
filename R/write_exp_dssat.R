@@ -1,5 +1,88 @@
+#' Write a DSSAT experimental file (X file)
+#'
+#' Creates a DSSAT experiment file from already prepared experiment metadata,
+#' planting information, soil/weather links, irrigation flags and fertilization
+#' inputs. This is the low-level writer used after experiment data have been
+#' tidied into one row per DSSAT treatment setup.
+#'
+#' @param path Character. Directory where the DSSAT experiment file will be
+#'   written.
+#' @param id_name Character vector used to build the DSSAT experiment name and
+#'   output file name. The first element is the site or experiment identifier.
+#' @param crop Character. DSSAT crop name, for example `"rice"`, `"maize"`,
+#'   `"barley"`, `"sorghum"`, `"wheat"`, `"bean"`, `"fababean"`, or `"teff"`.
+#' @param cultivar Character vector of DSSAT cultivar codes, one per treatment
+#'   when multiple treatments are written.
+#' @param soil Character vector of DSSAT soil profile identifiers.
+#' @param wth_station Character vector of DSSAT weather station identifiers.
+#' @param planting_details List or data frame with DSSAT planting details such as
+#'   `PPOP`, `PPOE`, `PLME`, `PLDS`, `PLRS`, `PLRD`, and `PLDP`.
+#' @param irri Logical. `TRUE` for irrigated experiments and `FALSE` for rainfed
+#'   experiments.
+#' @param fert_in Data frame or `NULL`. Fertilization schedule with DSSAT fields
+#'   such as `FDATE`, `FMCD`, `FACD`, `FDEP`, `FAMN`, `FAMP`, `FAMK`, `FAMC`,
+#'   `FAMO`, `FOCD`, and `FERNAME`.
+#' @param start_date Date. Simulation start date.
+#' @param planting_date Date vector. Planting date for each treatment.
+#' @param emergence_date Date vector or `NULL`. Emergence date for each
+#'   treatment.
+#' @param treatments_number Integer. Number of DSSAT treatments to write.
+#' @details Use `tidy_exp_dssat()` to prepare the row-wise inputs consumed by
+#'   this writer.
+#' @import dplyr
+#' @import stringr
+#' @import purrr
+#' @import tibble
+#' @import tidyr
+#' @export
+#' @examples
+#' \dontrun{
+#' # Experimental tidy data
+#' tidy_exp_data <- tidy_exp_dssat(agro, phenol, fertil, path = tempdir())
+#'
+#' # Write DSSAT experimental files
+#' exp_files_created <- tidy_exp_data %>%
+#'   mutate(file = pmap_chr(., write_exp_dssat)) %>%
+#'   pull(file)
+#'
+#' exp_files_created
+#' file.remove(exp_files_created)
+#' }
+#'
+#' @returns Character vector with the path of the DSSAT experiment file created.
+
 write_exp_dssat <- function(path, id_name, crop, cultivar, soil, wth_station, planting_details,
                             irri, fert_in, start_date, planting_date, emergence_date, treatments_number){
+
+  #crop <- "maize"
+  #path <- "inputs/setups/test_wheat/"
+  #id_name <- "CIAT0001"
+  #cultivar <- c("AW0071","Yecora_Rojo")    #same name as  DSSAT .CUL file @VAR#  VAR-NAME  = c("AW0071","Yecora_Rojo")
+  #soil <- "IB00000004"
+  #wth_station <- "CIAT0001"
+  #irri = F
+  #fert_in = NULL
+  #start_date <- input_dates$DATE[[1]]
+  #planting_date <- input_dates$DATE[[1]]
+  #emergence_date = NULL
+  #treatments_number <- length(wth_station)
+  #xfile <- crop_name_setup(id_name, crop)[[3]]
+
+
+  #tidy_exp_data
+  # path <- tidy_exp_data$path[[1]]
+  # treatments_number <- tidy_exp_data$treatments_number[[1]]
+  # fert_in <- tidy_exp_data$fert_in[[1]]
+  # id_name <- tidy_exp_data$id_name[[1]]
+  # crop <- tidy_exp_data$crop[[1]]
+  # cultivar <- tidy_exp_data$cultivar[[1]]
+  # soil <- tidy_exp_data$soil[[1]]
+  # wth_station <- tidy_exp_data$site[[1]]
+  # planting_details <- tidy_exp_data$planting_details[[1]]
+  # start_date <- tidy_exp_data$start_date[[1]]
+  # irri <- tidy_exp_data$irri[[1]]
+  # planting_date <- tidy_exp_data$PDAT[[1]]
+  # emergence_date <- tidy_exp_data$EDAT[[1]]
 
   options(encoding = "UTF-8")
 
@@ -25,8 +108,8 @@ write_exp_dssat <- function(path, id_name, crop, cultivar, soil, wth_station, pl
   # EXP.DETAILS ----
 
   description <- list(details = paste("*EXP.DETAILS:", paste0(id_name[1], CR),  id_name[2]),
-                      people = "Rodriguez-Espinoza, J., Mesa-Diez J., Ramirez-Villegas, J.",
-                      address = "CIAT-Colombia, Climate Action",
+                      people = "Rodriguez-Espinoza, J., Mesa-Diez J.",
+                      address = "Cali - Colombia",
                       site = "https://github.com/jrodriguez88/agroclimR")
 
 
@@ -460,7 +543,7 @@ write_exp_dssat <- function(path, id_name, crop, cultivar, soil, wth_station, pl
 
   }
 
-  name_exp <- paste0(path, "/", crop_name_setup(id_name[[1]], crop)[["ext"]])
+  name_exp <- file.path(path, crop_name_setup(id_name[[1]], crop)[["ext"]])
 
   xfile <- file(name_exp, open = "w")
 
@@ -474,7 +557,130 @@ write_exp_dssat <- function(path, id_name, crop, cultivar, soil, wth_station, pl
   write_sim_setup(xfile, simulation_options)
   close(xfile)
 
+  name_exp
 
+
+}
+
+
+
+# helpers -----------------------------------------------------------------
+# Function to tidy the data and write the .EXP file for DSSAT
+tidy_exp_dssat <- function(agro, phenol, fertil, path = "./", crop = "rice", exp_filter = NULL){
+
+  # Crop Phenology
+  phen <- phenol
+  #plot_phen_obs(phen) #%>% ggplotly()
+
+
+
+  #Agronomic data - Plant populations #Fertilization data
+  agro_data <- agro %>%
+    mutate_at(.vars = vars(LOC_ID, CULTIVAR, PROJECT, TR_N), .funs = remove_unders) %>%
+    mutate(id_name = paste0(str_sub(LOC_ID,1,2),
+                            str_sub(PROJECT, 1,2),
+                            str_sub(year(PDAT), 3,4), 0,
+                            str_extract(TR_N, "[0-9]"))) %>%
+    mutate(PDAT = as.Date(PDAT), exp_file  = paste(LOC_ID, CULTIVAR, PROJECT, TR_N, sep = "_")) %>%
+    left_join(fertil %>%
+                nest(fert_tb  = -c(ID:LOC_ID)), by = join_by(ID, LOC_ID)) %>%
+    mutate(fert_in = map(fert_tb, transform_fert_table)) %>%
+    dplyr::select(ID, site = LOC_ID, exp_file, id_name, PDAT:NPLDS, fert_in) #%>% set_names(~tolower(.x))
+
+
+
+  # Join data to parameter estimation
+  phen %>% #dplyr::select(exp_file, data) %>%
+    # dplyr::distinct() %>% unnest(data) %>% pivot_wider(names_from = var) %>%
+    #    mutate(MDAT = map(data, ~.x %>% dplyr::filter(var == "MDAT") %>% pull(value)))  %>%
+    #  dplyr::filter(exp_file %in% exp_filter) %>%
+    #mutate(site = word(exp_file, 1, sep = "_")) %>%
+    dplyr::select(-PDAT) %>%
+    left_join(agro_data, by = join_by(ID)) %>%
+    mutate(PLME = ifelse(ESTAB == "DIRECT-SEED", "S", "T"),
+           irri = ifelse(CROP_SYS == "IRRIGATED", T, F),
+           PLDS = "R", PLRS = 20, PLRD = 90,  PLDP = 4, path = path, crop = crop,
+           cultivar = list(c("CROP00", CULTIVAR[1])))  %>%
+
+
+
+    #  PPOP   -- Plant population at seeding, m-2
+    #  PPOE   -- Plant population at emergence, m-2
+    #  PLME   -- Planting method, code: S Dry seed, P Pregerminated seed, T Transplants
+    #  PLDS   -- Planting distribution, row R, broadcast B, hill H
+    #  PLRS   -- Row spacing, cm
+    #  PLRD   -- Row direction, degrees from N
+    #  PLDP   -- Planting depth, cm
+
+
+    mutate(planting_details = pmap(list(PPOP = NPLDS, PPOE = NPLDS,
+                                        PLME = PLME, PLDS = PLDS, PLRS = PLRS, PLRD = PLRD, PLDP = PLDP), list),
+           soil = paste0(site, "000001"), start_date = PDAT, treatments_number = 1,
+           id_name = map2(id_name, exp_file, ~c(.x, .y ))) %>%
+    dplyr::select(path, id_name, crop, cultivar, soil, wth_station = site, planting_details, irri, fert_in, start_date, planting_date = PDAT, emergence_date =  EDAT, treatments_number)
+
+}
+
+# #
+# tidy_exp_dssat(agro, phenol,fertil, path = "./") %>%
+#   mutate(file = pmap(., write_exp_dssat)) %>% pull(exp) %>% map_chr(~.x)
+
+# Function to write Crop names/model/extension into DSSAT format
+crop_name_setup <- function(id_name, crop){
+
+  base_tb <- tibble(
+    crop_name = c("rice", "maize", "barley", "sorghum", "wheat", "bean", "fababean", "teff"),
+    CR = c("RI", "MZ", "BA", "SG", "WH", "BN", "FB",  "TF"),
+    model = c(paste0(c("RI", "MZ", "BA", "SG", "WH"), "CER"), rep("CRGRO", 2), "TFAPS"))
+
+  cul <- base_tb %>%
+    dplyr::filter(crop_name %in% all_of(crop)) %>%
+    mutate(crop_name =  toupper(crop_name),
+           ext = paste0(id_name, ".", CR, "X"))
+
+  return(cul)
+
+
+}
+
+
+# Function to transform the fertilizer table into the format of DSSAT
+# fert_tb same as FERT_obs = fertil
+transform_fert_table <- function(fert_tb){
+
+
+  # AP001    Broadcast, not incorporated
+  # AP002    Broadcast, incorporated
+
+  # FE005    Urea
+  # FE006    Diammonium phosphate (DAP)
+  # FE028    NPK - urea
+
+
+  base_fert <- fert_tb %>%
+    mutate(FMCD = "FE028",
+           FACD = case_when(FERT_No == 1 ~ "AP002",
+                            TRUE ~ "AP001"),
+           FDEP = case_when(FERT_No == 1 ~ 5,
+                            TRUE ~ 1),
+           N = case_when(N == 0 ~ -99,
+                         TRUE ~ N),
+           P = case_when(P == 0 ~ -99,
+                         TRUE ~ P),
+           K = case_when(K == 0 ~ -99,
+                         TRUE ~ K),
+           FAMC = -99, FAMO = -99, FOCD = -99, FERNAME = "AgroClimR", F = 1) %>%
+    rename(FDATE = DDE, FAMN = N, FAMP = P, FAMK = K) %>%
+    dplyr::select(F, FDATE, FMCD, FACD, FDEP, FAMN, FAMP, FAMK, FAMC, FAMO, FOCD, FERNAME)
+
+
+  #*FERTILIZERS (INORGANIC)
+  #@F FDATE  FMCD  FACD  FDEP  FAMN  FAMP  FAMK  FAMC  FAMO  FOCD FERNAME
+  # 1     1 FE006 AP002     5    10    20   -99   -99   -99   -99 fertApp
+  # 1     1 FE005 AP002     5    30   -99   -99   -99   -99   -99 fertApp
+  # 1    40 FE005 AP001     1    10    30    10   -99   -99   -99 fertApp
+
+  return(base_fert)
 
 
 }

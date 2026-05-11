@@ -85,13 +85,13 @@ SSKS Pedotransfer Functions:
 \item Campbell and Shiozawa (1994) for SSKS_Campbell
 \item Cosby et al. (1984) for SSKS_Cosby
 \item Dane and Puckett (1994) for SSKS_Dane_Puck
-\item Ferrer Julià et al. (2004) for SSKS_Ferrer
+\item Ferrer Julia et al. (2004) for SSKS_Ferrer
 \item Jabro (1992) for SSKS_Jabro
 \item Puckett et al. (1985) for SSKS_Puckett
 \item RAWLS (1986) for SSKS_Rawls
 \item Saxton, K. E., & Rawls, W. J. (2006). for SSKS_Saxton.
 \item Suleiman, A. A., & Ritchie, J. T. (2001). for SSKS_Suleiman_Ritchie
 \item Vereecken et al. (1990) for SSKS_Vereecken
-\item Wösten et al. (1999) for SSKS_Wosten99
+\item Wosten et al. (1999) for SSKS_Wosten99
 }
 }

@@ -19,7 +19,7 @@
 #'   \item{PDAT}{Planting date in MM/DD/YYYY format - (\code{date}).}
 #'   \item{CROP_SYS}{Crop system - (\code{character}). Example: \code{"IRRIGATED-RAINFED"}.}
 #'   \item{ESTAB}{Establishment method - (\code{character}). Example: \code{"TRANSPLANT-DIRECT-SEED"}.}
-#'   \item{NPLDS}{Number of plants per square meter - (\code{numeric}). Example: \code{number/m²}.}
+#'   \item{NPLDS}{Number of plants per square meter - (\code{numeric}). Example: \code{number/m2}.}
 #'   \item{SBDUR}{Seed-bed duration in days - (\code{numeric}).}
 #'   \item{TRDAT}{Transplanting date in MM/DD/YYYY format - (\code{date}).}
 #' }

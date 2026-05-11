@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_soil_oryza.R
 \name{write_soil_oryza}
 \alias{write_soil_oryza}
-\title{Write ORYZA v3 Soil File}
+\title{Write an ORYZA v3 soil file}
 \usage{
 write_soil_oryza(
   path = ".",
@@ -16,32 +16,43 @@ write_soil_oryza(
 )
 }
 \arguments{
-\item{path}{A string indicating path folder or working directory}
+\item{path}{Character. Directory where the \code{.sol} file will be written.}
 
-\item{id_name}{A String 4 letters string of locality name. "AIHU" = Aipe, Huila}
+\item{id_name}{Character. Soil profile identifier used as the output file
+name, without extension.}
 
-\item{soil_data}{A Data frame. Soil data. see \code{soil}}
+\item{soil_data}{Data frame with one row per soil layer. Expected columns
+include \code{DEPTH}, \code{SBDM}, \code{SOC}, \code{SLON}, \code{SNH4}, \code{SNO3}, \code{WCST}, \code{WCFC},
+\code{WCWP}, \code{WCAD}, \code{CLAY}, \code{SAND}, \code{SSKS}, \code{STC}, and \code{SAMPLING_DATE}; see
+the example data set \link{soil}.}
 
-\item{ZRTMS}{Numeric. Maximum rooting depth in the soil (m)}
+\item{ZRTMS}{Numeric. Maximum rooting depth in the soil, in meters.}
 
-\item{WL0I}{Numeric. Initial pounded water depth at start of simulation (mm)}
+\item{WL0I}{Numeric. Initial ponded water depth at the start of simulation,
+in mm.}
 
-\item{WCLI}{Numeric/String. WCLI can take 3 values: Field Capacity ('FC'), 50\% of Soil Saturation ('ST50'), Fraction of water content ('0.0'- '1.0')}
+\item{WCLI}{Character or numeric. Initial volumetric water content. Use
+\code{"FC"} for field capacity, \code{"ST50"} for 50 percent of saturation, or a
+numeric fraction to repeat across layers.}
 
-\item{RIWCLI}{A String. Re-initialize switch RIWCLI is ('YES') or ('NO')}
+\item{RIWCLI}{Character. Re-initialization switch, usually \code{"YES"} or \code{"NO"}.}
 
-\item{SATAV}{Numeric. Soil annual average temperature of the first layers}
+\item{SATAV}{Numeric. Annual average soil temperature of the upper layers, in
+degrees Celsius.}
 }
 \value{
-This function returns a vector of model files created in path folder.
+Character vector with the path of the ORYZA soil file created.
 }
 \description{
-Function compute Soil information to ORYZA soil file.
+Formats a soil profile as an ORYZA v3 \code{.sol} file for the PADDY soil water
+balance module. The writer fills hydrological, nitrogen and initialization
+sections from the supplied layer data.
 }
 \examples{
 # Write ORYZA Soil file
 soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
-soil_files_created <- write_soil_oryza(id_name = "soil_oryza", soil_data = soil_sample)
+soil_files_created <- write_soil_oryza(
+  path = tempdir(), id_name = "soil_oryza", soil_data = soil_sample)
 
 readLines(soil_files_created[1], n = 30) |> writeLines()
 file.remove(soil_files_created)

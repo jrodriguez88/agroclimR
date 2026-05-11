@@ -38,14 +38,14 @@
 #' - Campbell and Shiozawa (1994) for SSKS_Campbell
 #' - Cosby et al. (1984) for SSKS_Cosby
 #' - Dane and Puckett (1994) for SSKS_Dane_Puck
-#' - Ferrer Julià et al. (2004) for SSKS_Ferrer
+#' - Ferrer Julia et al. (2004) for SSKS_Ferrer
 #' - Jabro (1992) for SSKS_Jabro
 #' - Puckett et al. (1985) for SSKS_Puckett
 #' - RAWLS (1986) for SSKS_Rawls
 #' - Saxton, K. E., & Rawls, W. J. (2006). for SSKS_Saxton.
 #' - Suleiman, A. A., & Ritchie, J. T. (2001). for SSKS_Suleiman_Ritchie
 #' - Vereecken et al. (1990) for SSKS_Vereecken
-#' - Wösten et al. (1999) for SSKS_Wosten99
+#' - Wosten et al. (1999) for SSKS_Wosten99
 #'
 #' @export
 SSKS_cal <- function(S, C, SOM=1.5, SBDM=1.5, kmin=0.1, kmax=250, output = 'bootmean') {
@@ -305,7 +305,6 @@ SSKS_Saxton <- function(S, C, SOM, SBDM, WCFC=NULL, WCWP=NULL, WCST=NULL){
 #SSKS_Saxton(S,C,SOM, SBDM, WCFC, WCWP)
 #SSKS_Saxton(S,C,SOM, SBDM, WCFC)
 #SSKS_Saxton(WCFC = 22, WCWP = 10, WCST = 55)
-
 
 
 

@@ -2,40 +2,36 @@
 % Please edit documentation in R/write_soil_aquacrop.R
 \name{write_soil_aquacrop}
 \alias{write_soil_aquacrop}
-\title{Write Aquacrop v6.1 Soil File}
+\title{Write an AquaCrop soil file}
 \usage{
 write_soil_aquacrop(path = ".", id_name, soil_data, model_version = 6.1)
 }
 \arguments{
-\item{path}{A string indicating path folder or working directory}
+\item{path}{Character. Directory where the \code{.SOL} file will be written.}
 
-\item{id_name}{A String. 4 letters string of locality name. (ex. "JR")}
+\item{id_name}{Character. Soil profile identifier used as the output file
+name, without extension.}
 
-\item{soil_data}{A Data frame. Soil data. see \code{soil}}
+\item{soil_data}{Data frame with one row per soil layer. Expected columns
+include \code{LOC_ID}, \code{DEPTH}, \code{SBDM}, \code{SOC}, \code{SSKS}, \code{WCST}, \code{WCFC}, \code{WCWP},
+and \code{STC}; see the example data set \link{soil}.}
 
-\item{salb}{Numeric. Albedo, fraction}
-
-\item{evapL}{Numeric. Evaporation limit, (mm)}
-
-\item{slnf}{Numeric. Mineralization factor, 0 to 1 scale.}
-
-\item{slpf}{Numeric. Photosynthesis factor, 0 to 1 scale}
-
-\item{multi}{Logical. Soil annual average temperature of the first layers}
-
-\item{max_depth}{description}
+\item{model_version}{Numeric or character. AquaCrop version label written in
+the file header.}
 }
 \value{
-This function returns a vector of model files created in path folder.
+Character vector with the path of the AquaCrop soil file created.
 }
 \description{
-Function compute Soil information to Aquacrop v6.1 soil file.
+Formats a soil profile as an AquaCrop \code{.SOL} file. The writer derives Curve
+Number and readily evaporable water from the supplied hydraulic properties and
+writes one soil profile per file.
 }
 \examples{
 # Write Aquacrop v6 Soil file
 soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
 soil_files_created <- write_soil_aquacrop(
-path = ".",
+path = tempdir(),
 id_name = "soil_aquacrop",
 soil_data = soil_sample)
 

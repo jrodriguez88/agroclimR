@@ -1,14 +1,20 @@
-#' Write AquaCrop Weather File
+#' Write AquaCrop weather files
 #'
-#' Function to compute weather information AquaCrop v6.0 weather file.
+#' Formats daily weather data as the set of AquaCrop climate input files:
+#' `.CLI`, `.Tnx`, `.PLU`, and `.ETo`. Reference evapotranspiration is computed
+#' when an `eto` column is not supplied.
 #'
-#' @param path A string indicating the path folder or working directory where the weather files will be saved.
-#' @param id_name A 4-letter string representing the locality name abbreviation. For example, "AIHU" stands for Aipe, Huila.
-#' @param wth_data A data frame containing weather data with at least the following columns: date, tmax, tmin, rain.
-#' @param lat Numeric. Latitude of the location in decimal degrees.
-#' @param lon Numeric. Longitude of the location in decimal degrees.
-#' @param elev Numeric. Elevation of the location in meters above sea level.
-#' @param co2_file A string representing the CO2 file to be used. Default is "MaunaLoa.CO2". CO2 files are available in the Aquacrop default database.
+#' @param path Character. Directory where the AquaCrop weather files will be
+#'   written.
+#' @param id_name Character. Site or station identifier used as the base output
+#'   file name, without extension.
+#' @param wth_data Data frame with daily weather data. Required columns are
+#'   `date` (`Date`), `tmax`, `tmin`, and `rain`. If `eto` is absent, ETo is
+#'   calculated with [ETo_cal()].
+#' @param lat,lon Numeric. Latitude and longitude in decimal degrees.
+#' @param elev Numeric. Elevation in meters above sea level.
+#' @param co2_file Character. Name of the AquaCrop CO2 file referenced in the
+#'   generated `.CLI` file. Defaults to `"MaunaLoa.CO2"`.
 #' @import dplyr
 #' @import purrr
 #' @import lubridate
@@ -17,14 +23,14 @@
 #' @examples
 #' # Write AquaCrop weather file
 #' wth_files_created <- write_wth_aquacrop(
-#'   path = ".", id_name = "wth_aquacrop", wth_data = weather,
+#'   path = tempdir(), id_name = "wth_aquacrop", wth_data = weather,
 #'   lat = 3.8, lon = -76.5, elev = 650)
 #'
 #' readLines(wth_files_created[1], n = 15) |> writeLines()
 #' readLines(wth_files_created[2], n = 15) |> writeLines()
 #' file.remove(wth_files_created)
 #'
-#' @returns This function returns a vector of model files created in path folder.
+#' @returns Character vector with the paths of the AquaCrop weather files created.
 #'
 # @seealso \link[]{}
 write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co2_file = "MaunaLoa.CO2") {
@@ -33,10 +39,10 @@ write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co
     data <- tidy_wth_aquacrop(wth_data, lat, elev)
 
     ## Split data and write .ETo / .PLU / Tnx / .CLI files.
-    cli_file <- paste0(path,"/", id_name, ".CLI")
-    temp_file <- paste0(path,"/", id_name, ".Tnx")
-    rain_file <- paste0(path,"/", id_name, ".PLU")
-    eto_file <-  paste0(path,"/", id_name, ".ETo")
+    cli_file <- file.path(path, paste0(id_name, ".CLI"))
+    temp_file <- file.path(path, paste0(id_name, ".Tnx"))
+    rain_file <- file.path(path, paste0(id_name, ".PLU"))
+    eto_file <- file.path(path, paste0(id_name, ".ETo"))
 
     # Climate file .CLI
     write_CLI <- function(id_name){
@@ -110,7 +116,7 @@ write_wth_aquacrop <- function(path = ".", id_name, wth_data, lat, lon, elev, co
 
     files_created <- c(cli_file, temp_file, rain_file, eto_file)
 
-    message(paste("Oryza Weather Files created in ", path, " : \n",
+    message(paste("AquaCrop weather files created in ", path, " : \n",
                   paste(files_created, collapse = " ,")))
 
     files_created
@@ -147,6 +153,4 @@ tidy_wth_aquacrop <- function(wth_data, lat, elev, cal_ETo = TRUE){
   return(wth_data)
 
 }
-
-
 

@@ -1,16 +1,23 @@
-#' Write ORYZA v3 Weather File (.WTH - .CLI)
+#' Write ORYZA v3 weather files
 #'
-#' Function compute weather information to ORYZA weather file.
+#' Formats daily weather data as ORYZA v3 weather input files. The function can
+#' write one multiyear `.cli` file or one yearly file per year in the ORYZA
+#' numeric-extension convention.
 #'
-#' @param path A string indicating path folder or working directory
-#' @param id_name A String 4 letters string of locality name. "AIHU" = Aipe, Huila
-#' @param wth_data A Data frame Weather data. minimum = date, tmax, tmin, rain
-#' @param lat Numeric. Latitude (decimal degrees)
-#' @param lon Numeric. Longitude (decimal degrees)
-#' @param elev Numeric. Elevation (meters above sea level)
-#' @param stn Integer. Station number
-#' @param multiyear A Logical. TRUE = ".cli" multiyear format or FALSE = yearly format (ie. 1998 = *.998)
-#' @param tag A Logical. TRUE = write information for each file
+#' @param path Character. Directory where weather files will be written.
+#' @param id_name Character. Station or site identifier used as the base output
+#'   file name.
+#' @param wth_data Data frame with daily weather data. Required columns are
+#'   `date` (`Date`), `tmax`, `tmin`, `rain`, and `srad`. Optional columns are
+#'   `vp` (kPa), `rhum` (%), and `wspd` (m s-1).
+#' @param lat,lon Numeric. Latitude and longitude in decimal degrees.
+#' @param elev Numeric. Elevation in meters above sea level.
+#' @param stn Integer. ORYZA station number written in the first data column.
+#' @param multiyear Logical. If `TRUE`, writes one `.cli` file containing all
+#'   years. If `FALSE`, writes one file per year using extensions such as `.998`
+#'   for 1998.
+#' @param tag Logical. If `TRUE`, writes a descriptive header before the ORYZA
+#'   weather data.
 #' @import dplyr
 #' @import purrr
 #' @import stringr
@@ -21,21 +28,20 @@
 #' @examples
 #' # Write wth file
 #' wth_files_created <- write_wth_oryza(
-#'   path = ".", id_name = "TEST", wth_data = weather,
+#'   path = tempdir(), id_name = "TEST", wth_data = weather,
 #'   lat = 3.8, lon = -76.5, elev = 650)
 #'
 #' readLines(wth_files_created[1], n = 15) |> writeLines()
 #' file.remove(wth_files_created)
 #'
 #' wth_files_created2 <- write_wth_oryza(
-#'   path = ".", id_name = "TEST2", wth_data = weather,
+#'   path = tempdir(), id_name = "TEST2", wth_data = weather,
 #'   lat = 3.8, lon = -76.5, elev = 650, multiyear = TRUE, tag = TRUE)
 #'
 #' readLines(wth_files_created2[1], n = 25) |> writeLines()
 #' file.remove(wth_files_created2)
 #'
-## Update the details for the return value
-#' @returns This function returns a vector of model files created in path folder.
+#' @returns Character vector with the paths of the ORYZA weather files created.
 #'
 # @seealso \link[sirad]{se}
 write_wth_oryza <- function(path = ".", id_name, wth_data, lat, lon, elev, stn=1, multiyear = F, tag = F) {
@@ -88,7 +94,7 @@ cat("*  Column    Daily Value
 
     if(isTRUE(multiyear)){
     #DATA=read.table(file, head=T)
-        file_name <- paste0(path, "/" , id_name, stn, ".cli")
+        file_name <- file.path(path, paste0(id_name, stn, ".cli"))
         sink(file = file_name, append = F)
         if(isTRUE(tag)) print_tag()
         cat(set_head)
@@ -97,7 +103,7 @@ cat("*  Column    Daily Value
         sink()
     } else {
         data_list <- split(data_to, data_to$year)
-        file_name <- paste(path,"/", id_name, stn,".", str_sub(names(data_list), 2), sep = "")
+        file_name <- file.path(path, paste0(id_name, stn, ".", str_sub(names(data_list), 2)))
         walk2(data_list, file_name, function(x,y) {
 
             sink(file=y)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_wth_oryza.R
 \name{write_wth_oryza}
 \alias{write_wth_oryza}
-\title{Write ORYZA v3 Weather File (.WTH - .CLI)}
+\title{Write ORYZA v3 weather files}
 \usage{
 write_wth_oryza(
   path = ".",
@@ -17,41 +17,47 @@ write_wth_oryza(
 )
 }
 \arguments{
-\item{path}{A string indicating path folder or working directory}
+\item{path}{Character. Directory where weather files will be written.}
 
-\item{id_name}{A String 4 letters string of locality name. "AIHU" = Aipe, Huila}
+\item{id_name}{Character. Station or site identifier used as the base output
+file name.}
 
-\item{wth_data}{A Data frame Weather data. minimum = date, tmax, tmin, rain}
+\item{wth_data}{Data frame with daily weather data. Required columns are
+\code{date} (\code{Date}), \code{tmax}, \code{tmin}, \code{rain}, and \code{srad}. Optional columns are
+\code{vp} (kPa), \code{rhum} (\%), and \code{wspd} (m s-1).}
 
-\item{lat}{Numeric. Latitude (decimal degrees)}
+\item{lat, lon}{Numeric. Latitude and longitude in decimal degrees.}
 
-\item{lon}{Numeric. Longitude (decimal degrees)}
+\item{elev}{Numeric. Elevation in meters above sea level.}
 
-\item{elev}{Numeric. Elevation (meters above sea level)}
+\item{stn}{Integer. ORYZA station number written in the first data column.}
 
-\item{stn}{Integer. Station number}
+\item{multiyear}{Logical. If \code{TRUE}, writes one \code{.cli} file containing all
+years. If \code{FALSE}, writes one file per year using extensions such as \code{.998}
+for 1998.}
 
-\item{multiyear}{A Logical. TRUE = ".cli" multiyear format or FALSE = yearly format (ie. 1998 = *.998)}
-
-\item{tag}{A Logical. TRUE = write information for each file}
+\item{tag}{Logical. If \code{TRUE}, writes a descriptive header before the ORYZA
+weather data.}
 }
 \value{
-This function returns a vector of model files created in path folder.
+Character vector with the paths of the ORYZA weather files created.
 }
 \description{
-Function compute weather information to ORYZA weather file.
+Formats daily weather data as ORYZA v3 weather input files. The function can
+write one multiyear \code{.cli} file or one yearly file per year in the ORYZA
+numeric-extension convention.
 }
 \examples{
 # Write wth file
 wth_files_created <- write_wth_oryza(
-  path = ".", id_name = "TEST", wth_data = weather,
+  path = tempdir(), id_name = "TEST", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
 
 readLines(wth_files_created[1], n = 15) |> writeLines()
 file.remove(wth_files_created)
 
 wth_files_created2 <- write_wth_oryza(
-  path = ".", id_name = "TEST2", wth_data = weather,
+  path = tempdir(), id_name = "TEST2", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650, multiyear = TRUE, tag = TRUE)
 
 readLines(wth_files_created2[1], n = 25) |> writeLines()

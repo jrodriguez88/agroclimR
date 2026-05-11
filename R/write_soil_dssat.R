@@ -1,16 +1,23 @@
-#' Write DSSAT v4.8 Soil File
+#' Write a DSSAT v4.8 soil file
 #'
-#' Function compute Soil information to DSSAT v4.8 soil file.
+#' Formats a soil profile as a DSSAT `.SOL` file. The writer converts the soil
+#' variables used by agroclimR to DSSAT layer variables and can append multiple
+#' profiles to the same file when `multi = TRUE`.
 #'
-#' @param path A string indicating path folder or working directory
-#' @param id_name A String. 4 letters string of locality name. (ex. "JR")
-#' @param soil_data A Data frame. Soil data. See `?soil`
-#' @param salb Numeric. Albedo, fraction
-#' @param evapL Numeric. Evaporation limit, (mm)
-#' @param slnf Numeric. Mineralization factor, 0 to 1 scale.
-#' @param slpf Numeric. Photosynthesis factor, 0 to 1 scale
-#' @param multi Logical. All soil profiles in the same file
-#' @param max_depth description
+#' @param path Character. Directory where the `.SOL` file will be written.
+#' @param id_name Character. Soil profile identifier used as the output file
+#'   name, without extension.
+#' @param soil_data Data frame with one row per soil layer. Expected columns
+#'   include `LOC_ID`, `NL`, `DEPTH`, `SBDM`, `SOC`, `SLON`, `SNH4`, `SNO3`,
+#'   `WCFC`, `WCST`, `WCWP`, `CLAY`, `SILT`, `PH`, `SCEC`, `SSKS`, and `STC`;
+#'   see the example data set [soil].
+#' @param salb Numeric. Soil albedo (`SALB`) as a fraction.
+#' @param evapL Numeric. Stage-one soil evaporation limit (`SLU1`) in mm.
+#' @param sldr Numeric. Drainage rate (`SLDR`) as a fraction per day.
+#' @param slnf Numeric. Mineralization factor (`SLNF`) on a 0 to 1 scale.
+#' @param slpf Numeric. Photosynthesis factor (`SLPF`) on a 0 to 1 scale.
+#' @param multi Logical. If `TRUE`, appends a profile to an existing DSSAT soil
+#'   file. If `FALSE`, overwrites the file for `id_name`.
 #' @import dplyr
 #' @import stringr
 #' @export
@@ -18,13 +25,13 @@
 #' # Write DSSAT v4.8 Soil file
 #' soil_sample = dplyr::group_by(soil, NL) |>
 #' dplyr::sample_n(1) |> dplyr::ungroup()
-#' soil_files_created <- write_soil_dssat(id_name = "soil_dssat", soil_data = soil_sample)
+#' soil_files_created <- write_soil_dssat(
+#'   path = tempdir(), id_name = "soil_dssat", soil_data = soil_sample)
 #'
 #' readLines(soil_files_created[1], n = 15) |> writeLines()
 #' file.remove(soil_files_created)
 #'
-## Update the details for the return value
-#' @returns This function returns a \code{logical} if files created in path folder.
+#' @returns Character vector with the path of the DSSAT soil file created.
 #'
 # @seealso \link[sirad]{se}
 write_soil_dssat <- function(path = ".", id_name, soil_data, salb = 0.13, evapL = 6, sldr = 0.6, slnf = 1, slpf = 1, multi = FALSE) {
@@ -85,7 +92,7 @@ soil_tb <- map2(soil_data_col, format_data_col,
                   ~format_var(soil_data = data[[1]], par = .x, pat = .y)) %>%
   set_names(soil_data_col) %>% bind_cols()
 
-file_name <- paste0(path, id_name, '.SOL')
+file_name <- file.path(path, paste0(id_name, ".SOL"))
 
 #create id for multisoil profile
 if (isFALSE(multi)){
@@ -93,7 +100,7 @@ if (isFALSE(multi)){
   idsoilAR <<- idsoilAR
   suppressWarnings(file.remove(file_name))
 } else if (all(!exists("idsoilAR"), isTRUE(multi))){
-  file.remove(paste0(path, "/", id_name, '.SOL'))
+  file.remove(file.path(path, paste0(id_name, ".SOL")))
   idsoilAR <- 1
   idsoilAR <<- idsoilAR
   } else if (all(exists("idsoilAR"), isTRUE(multi), idsoilAR==1)){

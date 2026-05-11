@@ -1,30 +1,34 @@
-#' Write DSSAT v4.8 Weather File
+#' Write a DSSAT v4.8 weather file
 #'
-#' Function compute weather information DSSAT v4.8 weather file.
+#' Formats daily weather data as a DSSAT weather (`.WTH`) file. The input data
+#' are standardized internally and optional wind speed and relative humidity
+#' columns are written when available.
 #'
-#' @param path A string indicating path folder or working directory
-#' @param id_name A String 4 letters string of locality name. "AIHU" = Aipe, Huila
-#' @param wth_data A Data frame Weather data. minimum = date, tmax, tmin, rain
-#' @param lat Numeric. Latitude (decimal degrees)
-#' @param lon Numeric. Longitude (decimal degrees)
-#' @param elev Numeric. Elevation (meters above sea level)
-#' @param ref_ht Numeric. Reference height (meters)- weather station
+#' @param path Character. Directory where the `.WTH` file will be written.
+#' @param id_name Character. Station or site identifier used as the output file
+#'   name, without extension.
+#' @param wth_data Data frame with daily weather data. Required columns are
+#'   `date` (`Date`), `tmax`, `tmin`, `rain`, and `srad`. Optional columns are
+#'   `wspd` (m s-1) and `rhum` (%).
+#' @param lat,lon Numeric. Latitude and longitude in decimal degrees.
+#' @param elev Numeric. Elevation in meters above sea level.
+#' @param ref_ht Numeric. Measurement height, in meters, used for DSSAT `REFHT`
+#'   and `WNDHT`.
 #' @import dplyr
 #' @import purrr
 #' @import lubridate
 #' @import stringr
 #' @export
 #' @examples
-#' # Write file
+#' # Write DSSAT weather file
 #' wth_files_created <- write_wth_dssat(
-#'   path = ".", id_name = "TEST", wth_data = weather,
+#'   path = tempdir(), id_name = "TEST", wth_data = weather,
 #'   lat = 3.91, lon = -75.0, elev = 450)
 #'
 #' readLines(wth_files_created[1], n = 15) |> writeLines()
 #' file.remove(wth_files_created)
 #'
-## Update the details for the return value
-#' @returns This function returns a vector of model files created in path folder.
+#' @returns Character vector with the path of the DSSAT weather file created.
 #'
 #' @references
 #' - DSSAT Weather module: <https://dssat.net/weather-module/>
@@ -60,7 +64,7 @@ write_wth_dssat <- function(path = ".", id_name, wth_data, lat, lon, elev, ref_h
 
 
     #File name
-    file_name = paste0(path, "/", id_name, '.WTH')
+    file_name <- file.path(path, paste0(id_name, ".WTH"))
 
     sink(file_name, append = F)
 

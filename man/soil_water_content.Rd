@@ -70,7 +70,7 @@ WCWP_Minasny(C, SOM)
 \itemize{
 \item Saxton, K. E., & Rawls, W. J. (2006). Soil Water Characteristic Estimates by Texture and
 Organic Matter for Hydrologic Solutions. Soil Science Society of America Journal,
-70(5), 1569–1578. https://doi.org/10.2136/sssaj2005.0117
+70(5), 1569-1578. https://doi.org/10.2136/sssaj2005.0117
 \item Minasny, B., & Hartemink, A. E. (2011). Predicting soil properties in the tropics.
 Earth-Science Reviews, 106(1-2), 52-62. https://doi.org/10.1016/j.earscirev.2011.01.005
 \item Tomasella, J., & Hodnett, M. (2004). Pedotransfer functions for tropical soils.
@@ -79,8 +79,8 @@ Developments in Soil Science, 30, 415-429. https://doi.org/10.1016/S0166-2481(04
 (Vol. 30). Elsevier. https://www.elsevier.com/books/development-of-pedotransfer-functions-in-soil-hydrology/pachepsky/978-0-444-51705-0
 \item Ghanbarian, B., Taslimitehrani, V., & Pachepsky, Y. A. (2017). Accuracy of sample dimension-dependent pedotransfer functions in
 estimation of soil saturated hydraulic conductivity. Catena, 149, 374-380. https://doi.org/10.1016/j.catena.2016.10.015
-\item Ferrer Julià, M., T.E. Monreal, A.S. del Corral Jiménez, and E. García Meléndez. 2004. Constructing a saturated hydraulic conductivity
-map of Spain using pedotransfer functions and spatial prediction. Geoderma 123:257–277. doi:10.1016/j.geoderma.2004.02.011
+\item Ferrer Julia, M., T.E. Monreal, A.S. del Corral Jimenez, and E. Garcia Melendez. 2004. Constructing a saturated hydraulic conductivity
+map of Spain using pedotransfer functions and spatial prediction. Geoderma 123:257-277. doi:10.1016/j.geoderma.2004.02.011
 \item Suleiman, A. A., & Ritchie, J. T. (2001). Estimating saturated hydraulic conductivity from soil porosity.
 Transactions of the ASAE, 44(2), 235. https://doi.org/10.13031/2013.4683
 }

@@ -1,5 +1,65 @@
+#' Write AquaCrop project files
+#'
+#' Creates AquaCrop project (`.PRM`) files that link climate, CO2, crop,
+#' irrigation, management, soil and initial-condition files for one or more
+#' simulation cycles. The function expects the referenced AquaCrop input files to
+#' exist in the project directory.
+#'
+#' @param path_proj Character. AquaCrop project directory where the `LIST`
+#'   subdirectory and project file will be written.
+#' @param id_name Character. Project identifier used as the `.PRM` file name.
+#' @param clim_name Character. Base name of the AquaCrop climate file set,
+#'   without extension.
+#' @param soil_name Character. Base name of the AquaCrop soil `.SOL` file,
+#'   without extension.
+#' @param cultivar Character. Base name of the AquaCrop crop `.CRO` file,
+#'   without extension.
+#' @param sowing_date Date vector. Sowing date or dates used to build simulation
+#'   runs.
+#' @param harvest_date Date vector. Harvest date or dates used to build
+#'   simulation runs.
+#' @param co2_name Character. Base name of the AquaCrop CO2 file, without
+#'   extension. Defaults to `"MaunaLoa"`.
+#' @param irri_name Character. Irrigation file base name, or `"rainfed"` when no
+#'   irrigation file should be linked.
+#' @param man_agro Character. Management file base name, or `"none"` when no
+#'   management file should be linked.
+#' @param ini_cond Character. Initial-condition file base name, or `"none"` when
+#'   no initial-condition file should be linked.
+#' @param version Character. AquaCrop version label used by the caller; defaults
+#'   to `"6.x"`.
+#' @import dplyr
+#' @import stringr
+#' @import purrr
+#' @import tibble
+#' @import tidyr
+#' @export
+#' @examples
+#' \dontrun{
+#' prm_file <- write_exp_aquacrop(
+#'   path_proj = tempdir(),
+#'   id_name = "AIHU_FED2000_MADRI_S1",
+#'   clim_name = "AIHU",
+#'   soil_name = "AIHU",
+#'   cultivar = "F2000",
+#'   sowing_date = as.Date("2020-04-01"),
+#'   harvest_date = as.Date("2020-08-15")
+#' )
+#' prm_file
+#' }
+#'
+#' @returns Character vector with the path of the AquaCrop project file created.
+
 write_exp_aquacrop <-
-function(path_proj, id_name, clim_name, soil_name, cultivar, sowing_date, harvest_date, co2_name = "MaunaLoa", irri_name = "rainfed", man_agro = "none", ini_cond = "none"){
+function(path_proj, id_name, clim_name, soil_name, cultivar, sowing_date, harvest_date, co2_name = "MaunaLoa", irri_name = "rainfed", man_agro = "none", ini_cond = "none", version = "6.x") {
+
+  #path_proj <- "D:/00_DEVELOPER/aquacrop_2023/F2000/"
+  #id_name <- "AIHU_FED2000_MADRI_S1"
+  #clim_name <- "AIHU" -> soil_name
+  #cultivar <- "F2000"
+  #sowing_date <- test_data2$PDAT[[1]]
+  #harvest_date <- test_data2$PDAT[[1]] + 130
+
 
   ## Create sowing dates vector, use when requiere 1 date
   #    sowing_dates  <- c(sowing_date - (5:1), sowing_date + (0:4))
@@ -80,6 +140,8 @@ function(path_proj, id_name, clim_name, soil_name, cultivar, sowing_date, harves
 
     # path files
     path_files <- path_proj %>% str_replace_all(pattern = "/", replacement = "\\\\")
+    dir.create(paste0(path_proj, "/SOIL"))
+    dir.create(paste0(path_proj, "/WTH"))
     path_wth <- paste0(path_proj,  "WTH/") %>% str_replace_all(pattern = "/", replacement = "\\\\")
     path_soil <- paste0(path_proj,  "SOIL/") %>% str_replace_all(pattern = "/", replacement = "\\\\")
 
@@ -191,12 +253,12 @@ function(path_proj, id_name, clim_name, soil_name, cultivar, sowing_date, harves
 
     prm_name <- paste0(id_name, ".PRM")
 
-    suppressWarnings(dir.create(paste0(path, "/", "LIST")))
+    suppressWarnings(dir.create(file.path(path, "LIST")))
 
-    sink(file = paste(path, "LIST", prm_name, sep = "/"), append = F)
+    sink(file = file.path(path, "LIST", prm_name), append = F)
     cat(paste("by https://github.com/jrodriguez88"))
     cat('\n')
-    cat("6.0       : AquaCrop Version (March 2017)")
+    cat("6.x       : AquaCrop Version (March 2017)")
     cat('\n')
     writeLines(sim_cycles$runs[[1]][1:4])
     writeLines(def_params)
@@ -212,6 +274,74 @@ function(path_proj, id_name, clim_name, soil_name, cultivar, sowing_date, harves
                       sim_cycles$soil_file)),
       ~write_projects(.x, path_proj, def_params, soil_name))
 
+  file.path(path_proj, "LIST", paste0(id_name, ".PRM"))
+
   #    toc()
   #25.57 sec elapsed by 1 crop,
 }
+
+
+# helpers -----------------------------------------------------------------
+# Function to tidy the data and write the IRR irrigation file
+write_irri_aquacrop <- function(path_proj, irri_name = "irrigated", depletion = 10) {
+
+  #Net irrigation requirement (allowable depletion 10 % RAW)
+  #   6.1   : AquaCrop Version (May 2018)
+  #   1     : Sprinkler irrigation
+  # 100     : Percentage of soil surface wetted by irrigation
+  #   3     : Determination of Net Irrigation requirement
+  #  20     : Allowable depletion of RAW (%)
+
+
+  sink(file = file.path(path_proj, paste0(irri_name, ".IRR")), append = F)
+  cat(paste0("Net irrigation requirement (allowable depletion ", depletion, " % RAW)"))
+  cat('\n')
+  cat("   6.1   : AquaCrop Version (May 2018)", sep = '\n')
+  cat("   1     : Sprinkler irrigation", sep = '\n')
+  cat(" 100     : Percentage of soil surface wetted by irrigation", sep = '\n')
+  cat("   3     : Determination of Net Irrigation requirement", sep = '\n')
+  cat(paste0("  ", depletion, "     : Allowable depletion of RAW (%)"), sep = '\n')
+  sink()
+
+
+
+}
+
+#write_irri_aquacrop(path_proj, "TESTPAULA", 30)
+
+# Function to tidy the data and write the MAN management file
+write_man_aquacrop <- function(path_proj, man_agro = "rice", bund_height = 25, mulches = 0,  fert_stress = 7, weeds = 3){
+
+  #Soil bunds, 0.25 m height
+  #     6.1       : AquaCrop Version (May 2018)
+  #     0         : percentage (%) of ground surface covered by mulches IN growing period
+  #    50         : effect (%) of mulches on reduction of soil evaporation
+  #     7         : Degree of soil fertility stress (%) - Effect is crop specific
+  #     0.25      : height (m) of soil bunds
+  #     1         : surface runoff affected or completely prevented by field surface practices
+  #     0         : N/A (surface runoff is not affected or completely prevented)
+  #     3         : relative cover of weeds at canopy closure (%)
+  #     0         : increase of relative cover of weeds in mid-season (+%)
+  #    -4.00      : shape factor of the CC expansion function in a weed infested field
+
+
+  sink(file = file.path(path_proj, paste0(man_agro, ".MAN")), append = F)
+  cat(paste0("Soil bunds, 0.", bund_height, " m height"))
+  cat('\n')
+  cat("     6.1       : AquaCrop Version (May 2018)", sep = '\n')
+  cat(paste0(sprintf("%6.0f", mulches), "         : percentage (%) of ground surface covered by mulches IN growing period"), sep = '\n')
+  cat("    50         : effect (%) of mulches on reduction of soil evaporation", sep = '\n')
+  cat(paste0(sprintf("%6.0f", fert_stress), "         : Degree of soil fertility stress (%) - Effect is crop specific"), sep = '\n')
+  cat(paste0("     0.", bund_height, "      : height (m) of soil bunds"), sep = '\n')
+  cat("     1         : surface runoff affected or completely prevented by field surface practices", sep = '\n')
+  cat("     0         : N/A (surface runoff is not affected or completely prevented)", sep = '\n')
+  cat(paste0(sprintf("%6.0f", weeds), "         : relative cover of weeds at canopy closure (%)"), sep = '\n')
+  cat("     0         : increase of relative cover of weeds in mid-season (+%)", sep = '\n')
+  cat("    -4.00      : shape factor of the CC expansion function in a weed infested field", sep = '\n')
+  sink()
+
+}
+
+#write_man_aquacrop(path_proj, "TEST_PAULA")
+
+#write_exp_aquacrop(path_proj, id_name, clim_name, clim_name, cultivar, sowing_date, harvest_date)

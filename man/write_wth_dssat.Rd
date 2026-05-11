@@ -2,35 +2,39 @@
 % Please edit documentation in R/write_wth_dssat.R
 \name{write_wth_dssat}
 \alias{write_wth_dssat}
-\title{Write DSSAT v4.8 Weather File}
+\title{Write a DSSAT v4.8 weather file}
 \usage{
 write_wth_dssat(path = ".", id_name, wth_data, lat, lon, elev, ref_ht = 2)
 }
 \arguments{
-\item{path}{A string indicating path folder or working directory}
+\item{path}{Character. Directory where the \code{.WTH} file will be written.}
 
-\item{id_name}{A String 4 letters string of locality name. "AIHU" = Aipe, Huila}
+\item{id_name}{Character. Station or site identifier used as the output file
+name, without extension.}
 
-\item{wth_data}{A Data frame Weather data. minimum = date, tmax, tmin, rain}
+\item{wth_data}{Data frame with daily weather data. Required columns are
+\code{date} (\code{Date}), \code{tmax}, \code{tmin}, \code{rain}, and \code{srad}. Optional columns are
+\code{wspd} (m s-1) and \code{rhum} (\%).}
 
-\item{lat}{Numeric. Latitude (decimal degrees)}
+\item{lat, lon}{Numeric. Latitude and longitude in decimal degrees.}
 
-\item{lon}{Numeric. Longitude (decimal degrees)}
+\item{elev}{Numeric. Elevation in meters above sea level.}
 
-\item{elev}{Numeric. Elevation (meters above sea level)}
-
-\item{ref_ht}{Numeric. Reference height (meters)- weather station}
+\item{ref_ht}{Numeric. Measurement height, in meters, used for DSSAT \code{REFHT}
+and \code{WNDHT}.}
 }
 \value{
-This function returns a vector of model files created in path folder.
+Character vector with the path of the DSSAT weather file created.
 }
 \description{
-Function compute weather information DSSAT v4.8 weather file.
+Formats daily weather data as a DSSAT weather (\code{.WTH}) file. The input data
+are standardized internally and optional wind speed and relative humidity
+columns are written when available.
 }
 \examples{
-# Write file
+# Write DSSAT weather file
 wth_files_created <- write_wth_dssat(
-  path = ".", id_name = "TEST", wth_data = weather,
+  path = tempdir(), id_name = "TEST", wth_data = weather,
   lat = 3.91, lon = -75.0, elev = 450)
 
 readLines(wth_files_created[1], n = 15) |> writeLines()

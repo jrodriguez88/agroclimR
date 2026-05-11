@@ -1,12 +1,31 @@
-#'  Write ORYZA v3 Experimental File (.EXP)
+#' Write an ORYZA v3 experimental file
 #'
-#' `write_exp_oryza()` performs transformation from experimental data to ORYZA v3 file model format.
+#' Creates an ORYZA v3 experimental (`.exp`) file from prepared agronomic,
+#' fertilization, phenology and plant observation inputs. This is the low-level
+#' writer used after experiment tables have been tidied into one row per
+#' experiment.
 #'
-#' @param agroclimr_list R list imported from excel workbook using `read_agroclimr_data()`.
-#' @param path A string indicating path folder or working directory
-#' @param ET_mod String indicating is method for evapotranspiration calculation,
-#' 'PENMAN' = Penman-based (Van Kraalingen& Stol,1996), 'PRIESTLY TAYLOR' = Priestly-Taylor ("),
-#  'MAKKINK' = Makkink (Van Kraalingen&Stol, 1996)
+#' @param exp_file Character. Full path to the ORYZA `.exp` file to create.
+#' @param LOC_ID Character. Location or experiment identifier.
+#' @param CULTIVAR Character. ORYZA cultivar name or code.
+#' @param PDAT Date. Planting date.
+#' @param ESTAB Character or numeric. Crop establishment method code used by
+#'   ORYZA.
+#' @param SBDUR Numeric. Seedbed duration.
+#' @param NPLDS Numeric. Number of plants or seedlings, as expected by the ORYZA
+#'   template.
+#' @param CROP_SYS Character. Crop system descriptor written in the experimental
+#'   file.
+#' @param TRDAT Date or `NA`. Transplanting date when applicable.
+#' @param FERT_obs Data frame with fertilization observations for the experiment,
+#'   typically including day/date and nitrogen amount columns.
+#' @param PHEN_obs Data frame with phenology observations for the experiment.
+#' @param PLANT_obs Data frame with plant growth observations for the experiment.
+#' @param ET_mod Character. Evapotranspiration method. Supported template labels
+#'   include `"PENMAN"`, `"PRIESTLY TAYLOR"`, and `"MAKKINK"`.
+#' @details Use `tidy_exp_oryza()` to join raw agronomic, phenology, plant,
+#'   fertilization and yield tables into the row-wise inputs consumed by this
+#'   writer.
 #' @import dplyr
 #' @import stringr
 #' @import purrr
@@ -14,61 +33,57 @@
 #' @import tidyr
 #' @export
 #' @examples
-#' #' # File names vector, extension include
-#' name_file = c("agroclimR_workbook.xlsx")
+#' \dontrun{
+#' # Experimental tidy data
+#' tidy_exp_data <- tidy_exp_oryza(
+#'   agro, phenol, plant, fertil, yield, path = tempdir())
 #'
-#' # Files directory
-#' test_file = system.file("extdata", name_file, package = "agroclimR")
-#'
-#' # Import data to R lists and tibble formats
-#' agroclimr_list = read_agroclimr_data(test_file)
-#'
-#' # Write Oryza Experimental Files
-#' exp_files_created <- write_exp_oryza(agroclimr_list, path = "./")
+#' # Write ORYZA experimental files
+#' exp_files_created <- tidy_exp_data %>%
+#'   mutate(file = pmap(., write_exp_oryza)) %>%
+#'   pull(exp_file)
 #'
 #' exp_files_created
 #' file.remove(exp_files_created)
+#' }
 #'
-#' @returns This function returns a \code{vector} of model files created in path folder.
+#' @returns Character vector with the path of the ORYZA experimental file created.
 
-write_exp_oryza <- function(agroclimr_list, path, ET_mod = "PRIESTLY TAYLOR") {
+write_exp_oryza <- function(exp_file, LOC_ID, CULTIVAR, PDAT, ESTAB, SBDUR, NPLDS, CROP_SYS, TRDAT, FERT_obs, PHEN_obs, PLANT_obs, ET_mod = "PRIESTLY TAYLOR") {
 
-    #funcion para remover separadores "_" de las variables a analizar
-    remove_unders <- function(var){str_replace_all(var, "_", "")}
-
-
-    #tabla de experimentos crea nombre de archivos experimentales == ID
-    exp_data <- agroclimr_list$AGRO_man %>%
-        mutate_at(.vars = vars(LOC_ID, CULTIVAR, PROJECT, TR_N), .funs = remove_unders) %>%
-        mutate(PDAT = as.Date(PDAT), exp_file  = paste(LOC_ID, CULTIVAR, PROJECT, TR_N, sep = "_") %>%
-                   paste0(path, .,".exp"))
-
-
-
-    # Extrae datos por componente del archivo experiental
-
-    # Datos  de fertilizacion
-    FERT <- nest(agroclimr_list$FERT_obs, FERT_obs = - ID)
-
-    # Datos de Fenologia
-    PHEN <- nest(agroclimr_list$PHEN_obs, PHEN_obs = - ID)
-
-    # Datos de crecimiento y desarrollo
-    PLANT <- nest(agroclimr_list$PLANT_obs, PLANT_obs = - ID)
-
-    # Datos de Rendimiento
-    YIELD <-  nest(agroclimr_list$YIELD_obs, YIELD_obs = - ID)
-
-    if(any(colnames(exp_data) == "SBDUR")){} else {
-        exp_data <- mutate(exp_data, SBDUR  = NA)
-    }
-
-    if(any(colnames(exp_data) == "TRDAT")){} else {
-        exp_data <- mutate(exp_data, TRDAT  = NA)
-    }
-
-
-    to_write_exp <- purrr::reduce(list(exp_data, FERT, PHEN, PLANT, YIELD), left_join, by = "ID")
+    # #tabla de experimentos crea nombre de archivos experimentales == ID
+    # exp_data <- agro %>%
+    #     mutate_at(.vars = vars(LOC_ID, CULTIVAR, PROJECT, TR_N), .funs = ~str_replace_all(., "_", "")) %>%
+    #     mutate(PDAT = as.Date(PDAT),
+    #            exp_file  = paste(LOC_ID, CULTIVAR, PROJECT, TR_N, sep = "_") %>%
+    #              paste0(path, .,".exp"))
+    #
+    #
+    #
+    # # Extrae datos por componente del archivo experiental
+    #
+    # # Datos  de fertilizacion
+    # FERT <- nest(fertil, FERT_obs = - ID)
+    #
+    # # Datos de Fenologia
+    # PHEN <- nest(phenol, PHEN_obs = - ID)
+    #
+    # # Datos de crecimiento y desarrollo
+    # PLANT <- nest(plant, PLANT_obs = - ID)
+    #
+    # # Datos de Rendimiento
+    # YIELD <-  nest(yield, YIELD_obs = - ID)
+    #
+    # if(any(colnames(exp_data) == "SBDUR")){} else {
+    #     exp_data <- mutate(exp_data, SBDUR  = NA)
+    # }
+    #
+    # if(any(colnames(exp_data) == "TRDAT")){} else {
+    #     exp_data <- mutate(exp_data, TRDAT  = NA)
+    # }
+    #
+    #
+    # to_write_exp <- purrr::reduce(list(exp_data, FERT, PHEN, PLANT, YIELD), left_join, by = "ID")
 
 
 
@@ -94,7 +109,7 @@ write_exp_oryza <- function(agroclimr_list, path, ET_mod = "PRIESTLY TAYLOR") {
     ########################################
     ### 1. Selection of modes of running ###
     ########################################
-    runmodes_oryza <- function(exp_file){
+    runmodes_oryza <- function(exp_file, ET_mod){
         sink(file = exp_file, append = T)
         cat('*--------------------------------------------------------------------*',sep = '\n')
         cat('* 1. Selection of modes of running                                   *',sep = '\n')
@@ -514,10 +529,10 @@ write_exp_oryza <- function(agroclimr_list, path, ET_mod = "PRIESTLY TAYLOR") {
 
     ###### Write EXP file
 
-    write_exp <- function(exp_file, LOC_ID, CULTIVAR, PDAT, ESTAB, SBDUR, NPLDS, CROP_SYS, TRDAT, FERT_obs, PHEN_obs, PLANT_obs){
+    write_exp <- function(exp_file, LOC_ID, CULTIVAR, PDAT, ESTAB, SBDUR, NPLDS, CROP_SYS, TRDAT, FERT_obs, PHEN_obs, PLANT_obs, ET_mod){
 
         head_exp_oryza(exp_file, CULTIVAR, PDAT)
-        runmodes_oryza(exp_file)
+        runmodes_oryza(exp_file, ET_mod)
         timer_oryza(exp_file, PHEN_obs)
         wtrdir_oryza(exp_file, LOC_ID )
         estab_oryza(exp_file, ESTAB, SBDUR, PHEN_obs )
@@ -535,7 +550,50 @@ write_exp_oryza <- function(agroclimr_list, path, ET_mod = "PRIESTLY TAYLOR") {
 
     }
 
-    dplyr::select(to_write_exp, exp_file, LOC_ID, CULTIVAR, PDAT, ESTAB, SBDUR, NPLDS, CROP_SYS, TRDAT, FERT_obs, PHEN_obs, PLANT_obs)  %>%
-        mutate(file = pmap(., write_exp)) %>% pull(exp_file)
+    write_exp(exp_file, LOC_ID, CULTIVAR, PDAT, ESTAB, SBDUR, NPLDS, CROP_SYS, TRDAT, FERT_obs, PHEN_obs, PLANT_obs, ET_mod)
 
+    # dplyr::select(to_write_exp, exp_file, LOC_ID, CULTIVAR, PDAT, ESTAB, SBDUR, NPLDS, CROP_SYS, TRDAT, FERT_obs, PHEN_obs, PLANT_obs)  %>%
+    #     mutate(file = pmap(., write_exp
+    exp_file
+
+}
+
+#
+# tidy_exp_oryza(agro, phenol, plant, fertil, yield, path = "./")  %>%
+#   mutate(file = pmap(., write_exp_oryza)) %>% pull(exp_file)
+
+
+  # helpers -----------------------------------------------------------------
+# Function to tidy experimental data to create Oryza experimental files
+tidy_exp_oryza <- function(agro, phenol, plant, fertil, yield, path = "./"){
+
+  exp_data <- agro %>%
+    mutate_at(.vars = vars(LOC_ID, CULTIVAR, PROJECT, TR_N), .funs = ~str_replace_all(., "_", "")) %>%
+    mutate(PDAT = as.Date(PDAT),
+           exp_file  = file.path(path, paste0(paste(LOC_ID, CULTIVAR, PROJECT, TR_N, sep = "_"), ".exp")))
+
+  if(any(colnames(exp_data) == "SBDUR")){} else {
+      exp_data <- mutate(exp_data, SBDUR  = NA)
+  }
+
+  if(any(colnames(exp_data) == "TRDAT")){} else {
+      exp_data <- mutate(exp_data, TRDAT  = NA)
+  }
+
+  # Extrae datos por componente del archivo experiental
+
+  # Datos  de fertilizacion
+  FERT <- nest(fertil, FERT_obs = - ID)
+
+  # Datos de Fenologia
+  PHEN <- nest(phenol, PHEN_obs = - ID)
+
+  # Datos de crecimiento y desarrollo
+  PLANT <- nest(plant, PLANT_obs = - ID)
+
+  # Datos de Rendimiento
+  YIELD <-  nest(yield, YIELD_obs = - ID)
+
+  purrr::reduce(list(exp_data, FERT, PHEN, PLANT, YIELD), left_join, by = "ID") %>%
+    dplyr::select(exp_file, LOC_ID, CULTIVAR, PDAT, ESTAB, SBDUR, NPLDS, CROP_SYS, TRDAT, FERT_obs, PHEN_obs, PLANT_obs)
 }

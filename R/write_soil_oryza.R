@@ -1,28 +1,38 @@
-#' Write ORYZA v3 Soil File
+#' Write an ORYZA v3 soil file
 #'
-#' Function compute Soil information to ORYZA soil file.
+#' Formats a soil profile as an ORYZA v3 `.sol` file for the PADDY soil water
+#' balance module. The writer fills hydrological, nitrogen and initialization
+#' sections from the supplied layer data.
 #'
-#' @param path A string indicating path folder or working directory
-#' @param id_name A String 4 letters string of locality name. "AIHU" = Aipe, Huila
-#' @param soil_data A Data frame. Soil data. see `soil`
-#' @param ZRTMS Numeric. Maximum rooting depth in the soil (m)
-#' @param WL0I Numeric. Initial pounded water depth at start of simulation (mm)
-#' @param WCLI Numeric/String. WCLI can take 3 values: Field Capacity ('FC'), 50% of Soil Saturation ('ST50'), Fraction of water content ('0.0'- '1.0')
-#' @param RIWCLI A String. Re-initialize switch RIWCLI is ('YES') or ('NO')
-#' @param SATAV Numeric. Soil annual average temperature of the first layers
+#' @param path Character. Directory where the `.sol` file will be written.
+#' @param id_name Character. Soil profile identifier used as the output file
+#'   name, without extension.
+#' @param soil_data Data frame with one row per soil layer. Expected columns
+#'   include `DEPTH`, `SBDM`, `SOC`, `SLON`, `SNH4`, `SNO3`, `WCST`, `WCFC`,
+#'   `WCWP`, `WCAD`, `CLAY`, `SAND`, `SSKS`, `STC`, and `SAMPLING_DATE`; see
+#'   the example data set [soil].
+#' @param ZRTMS Numeric. Maximum rooting depth in the soil, in meters.
+#' @param WL0I Numeric. Initial ponded water depth at the start of simulation,
+#'   in mm.
+#' @param WCLI Character or numeric. Initial volumetric water content. Use
+#'   `"FC"` for field capacity, `"ST50"` for 50 percent of saturation, or a
+#'   numeric fraction to repeat across layers.
+#' @param RIWCLI Character. Re-initialization switch, usually `"YES"` or `"NO"`.
+#' @param SATAV Numeric. Annual average soil temperature of the upper layers, in
+#'   degrees Celsius.
 #' @import dplyr
 #' @import stringr
 #' @export
 #' @examples
 #' # Write ORYZA Soil file
 #' soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
-#' soil_files_created <- write_soil_oryza(id_name = "soil_oryza", soil_data = soil_sample)
+#' soil_files_created <- write_soil_oryza(
+#'   path = tempdir(), id_name = "soil_oryza", soil_data = soil_sample)
 #'
 #' readLines(soil_files_created[1], n = 30) |> writeLines()
 #' file.remove(soil_files_created)
 #'
-## Update the details for the return value
-#' @returns This function returns a vector of model files created in path folder.
+#' @returns Character vector with the path of the ORYZA soil file created.
 #'
 # @seealso \link[sirad]{se}
 write_soil_oryza <- function(path = ".", id_name, soil_data, ZRTMS = 0.50, WL0I = 0, WCLI = 'FC' , RIWCLI = 'NO', SATAV = 20){
@@ -37,7 +47,7 @@ write_soil_oryza <- function(path = ".", id_name, soil_data, ZRTMS = 0.50, WL0I 
                SNH4X = DEPTH*SBDM*SNH4/10,
                SNO3X = DEPTH*SBDM*SNO3/10)
 
-    file_name = paste0(path,'/', paste0(id_name, ".sol"))
+    file_name <- file.path(path, paste0(id_name, ".sol"))
 
     sink(file = file_name , append = F)
 
@@ -250,7 +260,7 @@ sink()
 
 
 
-message(paste("Oryza Experimental Files created in ", path, " : \n",
+message(paste("Oryza soil files created in ", path, " : \n",
               paste(file_name, collapse = " ,")))
 file_name
 
@@ -309,7 +319,6 @@ tidy_soil_oryza <- function(soil_data){
 
 
 }
-
 
 
 

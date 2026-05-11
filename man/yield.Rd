@@ -19,10 +19,10 @@ A \code{\link[data.frame]{data.frame}} with 7 rows and 20 columns:
 \item{PAN_fert_SE}{Panicle fertility standard error - (\code{numeric}). Standard error of the panicle fertility percentage (\%).}
 \item{GW1000}{1000-Grain weight - (\code{numeric}). Weight of 1000 grains, measured in grams (\code{g}).}
 \item{GW1000_SE}{1000-Grain weight standard error - (\code{numeric}). Standard error of the 1000-grain weight (\code{g}).}
-\item{ST_M2}{Number of stems per square meter - (\code{numeric}). The density of stems, in \code{number/m²}.}
-\item{ST_M2_SE}{Number of stems per square meter standard error - (\code{numeric}). Standard error of stem density (\code{number/m²}).}
-\item{PAN_M2}{Number of panicles per square meter - (\code{numeric}). The density of panicles, in \code{number/m²}.}
-\item{PAN_M2_SE}{Number of panicles per square meter standard error - (\code{numeric}). Standard error of panicle density (\code{number/m²}).}
+\item{ST_M2}{Number of stems per square meter - (\code{numeric}). The density of stems, in \code{number/m2}.}
+\item{ST_M2_SE}{Number of stems per square meter standard error - (\code{numeric}). Standard error of stem density (\code{number/m2}).}
+\item{PAN_M2}{Number of panicles per square meter - (\code{numeric}). The density of panicles, in \code{number/m2}.}
+\item{PAN_M2_SE}{Number of panicles per square meter standard error - (\code{numeric}). Standard error of panicle density (\code{number/m2}).}
 \item{GT_PAN}{Number of total grains per panicle - (\code{numeric}). Total number of grains per panicle.}
 \item{GT_PAN_SE}{Number of total grains per panicle standard error - (\code{numeric}). Standard error of the total grains per panicle.}
 \item{GF_PAN}{Number of filled grains per panicle - (\code{numeric}). Number of filled grains per panicle.}

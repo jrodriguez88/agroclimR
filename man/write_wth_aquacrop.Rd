@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_wth_aquacrop.R
 \name{write_wth_aquacrop}
 \alias{write_wth_aquacrop}
-\title{Write AquaCrop Weather File}
+\title{Write AquaCrop weather files}
 \usage{
 write_wth_aquacrop(
   path = ".",
@@ -15,30 +15,35 @@ write_wth_aquacrop(
 )
 }
 \arguments{
-\item{path}{A string indicating the path folder or working directory where the weather files will be saved.}
+\item{path}{Character. Directory where the AquaCrop weather files will be
+written.}
 
-\item{id_name}{A 4-letter string representing the locality name abbreviation. For example, "AIHU" stands for Aipe, Huila.}
+\item{id_name}{Character. Site or station identifier used as the base output
+file name, without extension.}
 
-\item{wth_data}{A data frame containing weather data with at least the following columns: date, tmax, tmin, rain.}
+\item{wth_data}{Data frame with daily weather data. Required columns are
+\code{date} (\code{Date}), \code{tmax}, \code{tmin}, and \code{rain}. If \code{eto} is absent, ETo is
+calculated with \code{\link[=ETo_cal]{ETo_cal()}}.}
 
-\item{lat}{Numeric. Latitude of the location in decimal degrees.}
+\item{lat, lon}{Numeric. Latitude and longitude in decimal degrees.}
 
-\item{lon}{Numeric. Longitude of the location in decimal degrees.}
+\item{elev}{Numeric. Elevation in meters above sea level.}
 
-\item{elev}{Numeric. Elevation of the location in meters above sea level.}
-
-\item{co2_file}{A string representing the CO2 file to be used. Default is "MaunaLoa.CO2". CO2 files are available in the Aquacrop default database.}
+\item{co2_file}{Character. Name of the AquaCrop CO2 file referenced in the
+generated \code{.CLI} file. Defaults to \code{"MaunaLoa.CO2"}.}
 }
 \value{
-This function returns a vector of model files created in path folder.
+Character vector with the paths of the AquaCrop weather files created.
 }
 \description{
-Function to compute weather information AquaCrop v6.0 weather file.
+Formats daily weather data as the set of AquaCrop climate input files:
+\code{.CLI}, \code{.Tnx}, \code{.PLU}, and \code{.ETo}. Reference evapotranspiration is computed
+when an \code{eto} column is not supplied.
 }
 \examples{
 # Write AquaCrop weather file
 wth_files_created <- write_wth_aquacrop(
-  path = ".", id_name = "wth_aquacrop", wth_data = weather,
+  path = tempdir(), id_name = "wth_aquacrop", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
 
 readLines(wth_files_created[1], n = 15) |> writeLines()

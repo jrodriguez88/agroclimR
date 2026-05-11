@@ -1,6 +1,6 @@
 Package: agroclimR
 Title: Streamlining Agroclimatic Data for Crop Modeling
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
     person("Jeferson", "Rodriguez-Espinoza", , "jrodriguezespinoza@outlook.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-5914-6571")),
@@ -13,11 +13,12 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Depends: 
-    R (>= 2.10)
+    R (>= 4.1.0)
 LazyData: true
 Suggests: 
     knitr,
     rmarkdown,
+    soiltexture,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Imports: 
@@ -35,7 +36,6 @@ Imports:
     readxl,
     scales,
     sirad,
-    soiltexture,
     stringr,
     tidyr,
     tibble,

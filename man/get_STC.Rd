@@ -12,7 +12,8 @@ get_STC(S, C, sysclass = "USDA")
 \item{C}{Numeric vector indicating the percentage of clay in the soil.}
 
 \item{sysclass}{Character string specifying the soil classification system to use.
-Default is "USDA", but can be changed if other systems are supported by the \code{soiltexture} package.}
+Default is "USDA". Other systems require the optional \code{soiltexture}
+package.}
 }
 \value{
 String with the calculated soil texture class name, based on the input percentages of sand, clay, and silt.
@@ -22,8 +23,9 @@ This function calculates the soil texture class based on the percentages of sand
 using the specified soil classification system (default is USDA).
 }
 \note{
-This function requires the \code{soiltexture} package to calculate the soil texture class.
-Ensure that the \code{soiltexture} package is installed and loaded into your R session.
+The USDA classifier is implemented internally to avoid loading GUI
+dependencies during package checks. The optional \code{soiltexture} package
+is used only when \code{sysclass} is not \code{"USDA"}.
 }
 \examples{
 # Calculate the soil texture class for a soil with 30\% sand and 20\% clay using USDA system

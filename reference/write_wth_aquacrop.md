@@ -61,8 +61,8 @@ wth_files_created <- write_wth_aquacrop(
   path = tempdir(), id_name = "wth_aquacrop", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
 #> Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation
-#> AquaCrop weather files created in  /tmp/RtmpJqE3M0  : 
-#>  /tmp/RtmpJqE3M0/wth_aquacrop.CLI ,/tmp/RtmpJqE3M0/wth_aquacrop.Tnx ,/tmp/RtmpJqE3M0/wth_aquacrop.PLU ,/tmp/RtmpJqE3M0/wth_aquacrop.ETo
+#> AquaCrop weather files created in  /tmp/RtmpEvHEAr  : 
+#>  /tmp/RtmpEvHEAr/wth_aquacrop.CLI ,/tmp/RtmpEvHEAr/wth_aquacrop.Tnx ,/tmp/RtmpEvHEAr/wth_aquacrop.PLU ,/tmp/RtmpEvHEAr/wth_aquacrop.ETo
 
 readLines(wth_files_created[1], n = 15) |> writeLines()
 #> wth_aquacrop Station, lat: 3.8 long: -76.5 - by agroclimR

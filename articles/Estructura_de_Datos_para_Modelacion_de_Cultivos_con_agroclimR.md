@@ -1,7 +1,5 @@
 # Estructura de Datos para Modelación de Cultivos con agroclimR
 
-    ## Warning: no DISPLAY variable so Tk is not available
-
 ## Introducción
 
 La estructura adecuada y organización de datos son fundamentales para la

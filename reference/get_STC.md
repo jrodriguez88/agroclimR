@@ -23,8 +23,8 @@ get_STC(S, C, sysclass = "USDA")
 - sysclass:
 
   Character string specifying the soil classification system to use.
-  Default is "USDA", but can be changed if other systems are supported
-  by the `soiltexture` package.
+  Default is "USDA". Other systems require the optional `soiltexture`
+  package.
 
 ## Value
 
@@ -33,9 +33,9 @@ percentages of sand, clay, and silt.
 
 ## Note
 
-This function requires the `soiltexture` package to calculate the soil
-texture class. Ensure that the `soiltexture` package is installed and
-loaded into your R session.
+The USDA classifier is implemented internally to avoid loading GUI
+dependencies during package checks. The optional `soiltexture` package
+is used only when `sysclass` is not `"USDA"`.
 
 ## References
 
@@ -46,5 +46,5 @@ Soil Texture, The Soil Texture Wizard:
 ``` r
 # Calculate the soil texture class for a soil with 30% sand and 20% clay using USDA system
 get_STC(30, 20)
-#> [1] "Lo, SiLo"
+#> [1] "SiLo"
 ```

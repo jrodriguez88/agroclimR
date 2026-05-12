@@ -72,8 +72,8 @@ Character vector with the path of the ORYZA soil file created.
 soil_sample = dplyr::group_by(soil, NL) |> dplyr::sample_n(1)
 soil_files_created <- write_soil_oryza(
   path = tempdir(), id_name = "soil_oryza", soil_data = soil_sample)
-#> Oryza soil files created in  /tmp/RtmpJqE3M0  : 
-#>  /tmp/RtmpJqE3M0/soil_oryza.sol
+#> Oryza soil files created in  /tmp/RtmpEvHEAr  : 
+#>  /tmp/RtmpEvHEAr/soil_oryza.sol
 
 readLines(soil_files_created[1], n = 30) |> writeLines()
 #> **********************************************************************

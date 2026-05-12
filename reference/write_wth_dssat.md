@@ -57,8 +57,8 @@ Character vector with the path of the DSSAT weather file created.
 wth_files_created <- write_wth_dssat(
   path = tempdir(), id_name = "TEST", wth_data = weather,
   lat = 3.91, lon = -75.0, elev = 450)
-#> DSSAT Weather Files created in  /tmp/RtmpJqE3M0  : 
-#>  /tmp/RtmpJqE3M0/TEST.WTH
+#> DSSAT Weather Files created in  /tmp/RtmpEvHEAr  : 
+#>  /tmp/RtmpEvHEAr/TEST.WTH
 
 readLines(wth_files_created[1], n = 15) |> writeLines()
 #> *WEATHER DATA : TEST DSSAT Weather file - by agroclimR

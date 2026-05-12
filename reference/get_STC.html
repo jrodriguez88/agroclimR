@@ -9,7 +9,7 @@ using the specified soil classification system (default is USDA)."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">agroclimR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,8 @@ using the specified soil classification system (default is USDA).</p>
 
 <dt id="arg-sysclass">sysclass<a class="anchor" aria-label="anchor" href="#arg-sysclass"></a></dt>
 <dd><p>Character string specifying the soil classification system to use.
-Default is "USDA", but can be changed if other systems are supported by the <code>soiltexture</code> package.</p></dd>
+Default is "USDA". Other systems require the optional <code>soiltexture</code>
+package.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -72,8 +73,9 @@ Default is "USDA", but can be changed if other systems are supported by the <cod
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
-    <p>This function requires the <code>soiltexture</code> package to calculate the soil texture class.
-Ensure that the <code>soiltexture</code> package is installed and loaded into your R session.</p>
+    <p>The USDA classifier is implemented internally to avoid loading GUI
+dependencies during package checks. The optional <code>soiltexture</code> package
+is used only when <code>sysclass</code> is not <code>"USDA"</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -84,7 +86,7 @@ Ensure that the <code>soiltexture</code> package is installed and loaded into yo
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Calculate the soil texture class for a soil with 30% sand and 20% clay using USDA system</span></span></span>
 <span class="r-in"><span><span class="fu">get_STC</span><span class="op">(</span><span class="fl">30</span>, <span class="fl">20</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Lo, SiLo"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SiLo"</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

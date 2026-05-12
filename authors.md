@@ -13,12 +13,12 @@
 
 Rodriguez-Espinoza J, Mesa-Diez J, Esquivel A (2026). *agroclimR:
 Streamlining Agroclimatic Data for Crop Modeling*. R package version
-0.0.0.9000, <https://jrodriguez88.github.io/agroclimR/>.
+0.1.0, <https://jrodriguez88.github.io/agroclimR/>.
 
     @Manual{,
       title = {agroclimR: Streamlining Agroclimatic Data for Crop Modeling},
       author = {Jeferson Rodriguez-Espinoza and Jeison Mesa-Diez and Alejandra Esquivel},
       year = {2026},
-      note = {R package version 0.0.0.9000},
+      note = {R package version 0.1.0},
       url = {https://jrodriguez88.github.io/agroclimR/},
     }

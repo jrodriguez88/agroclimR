@@ -72,8 +72,8 @@ wth_files_created <- write_wth_oryza(
   path = tempdir(), id_name = "TEST", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650)
 #> Early morning vapor pressure (VP; kPa) derived from relative humidity data
-#> Oryza Weather Files created in  /tmp/RtmpJqE3M0  : 
-#>  /tmp/RtmpJqE3M0/TEST1.013 ,/tmp/RtmpJqE3M0/TEST1.014 ,/tmp/RtmpJqE3M0/TEST1.015 ,/tmp/RtmpJqE3M0/TEST1.016
+#> Oryza Weather Files created in  /tmp/RtmpEvHEAr  : 
+#>  /tmp/RtmpEvHEAr/TEST1.013 ,/tmp/RtmpEvHEAr/TEST1.014 ,/tmp/RtmpEvHEAr/TEST1.015 ,/tmp/RtmpEvHEAr/TEST1.016
 
 readLines(wth_files_created[1], n = 15) |> writeLines()
 #> -76.5,3.8,650,0,0
@@ -98,8 +98,8 @@ wth_files_created2 <- write_wth_oryza(
   path = tempdir(), id_name = "TEST2", wth_data = weather,
   lat = 3.8, lon = -76.5, elev = 650, multiyear = TRUE, tag = TRUE)
 #> Early morning vapor pressure (VP; kPa) derived from relative humidity data
-#> Oryza Weather Files created in  /tmp/RtmpJqE3M0  : 
-#>  /tmp/RtmpJqE3M0/TEST21.cli
+#> Oryza Weather Files created in  /tmp/RtmpEvHEAr  : 
+#>  /tmp/RtmpEvHEAr/TEST21.cli
 
 readLines(wth_files_created2[1], n = 25) |> writeLines()
 #> *-----------------------------------------------------------

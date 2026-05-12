@@ -77,8 +77,8 @@ dplyr::sample_n(1) |> dplyr::ungroup()
 soil_files_created <- write_soil_dssat(
   path = tempdir(), id_name = "soil_dssat", soil_data = soil_sample)
 #> Minimun data are available
-#> DSSAT soil Files created in  /tmp/RtmpJqE3M0  : 
-#>  /tmp/RtmpJqE3M0/soil_dssat.SOL
+#> DSSAT soil Files created in  /tmp/RtmpEvHEAr  : 
+#>  /tmp/RtmpEvHEAr/soil_dssat.SOL
 
 readLines(soil_files_created[1], n = 15) |> writeLines()
 #> *SOILS: AgroclimR DSSAT Soil Input File - by agroclimR

@@ -11,7 +11,7 @@ when an eto column is not supplied."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">agroclimR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -105,8 +105,8 @@ generated <code>.CLI</code> file. Defaults to <code>"MaunaLoa.CO2"</code>.</p></
 <span class="r-in"><span>  path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, id_name <span class="op">=</span> <span class="st">"wth_aquacrop"</span>, wth_data <span class="op">=</span> <span class="va">weather</span>,</span></span>
 <span class="r-in"><span>  lat <span class="op">=</span> <span class="fl">3.8</span>, lon <span class="op">=</span> <span class="op">-</span><span class="fl">76.5</span>, elev <span class="op">=</span> <span class="fl">650</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Reference evapotranspiration (ETo) Method: FAO Penman-Monteith equation</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> AquaCrop weather files created in  /tmp/RtmpJqE3M0  : </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  /tmp/RtmpJqE3M0/wth_aquacrop.CLI ,/tmp/RtmpJqE3M0/wth_aquacrop.Tnx ,/tmp/RtmpJqE3M0/wth_aquacrop.PLU ,/tmp/RtmpJqE3M0/wth_aquacrop.ETo</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> AquaCrop weather files created in  /tmp/RtmpEvHEAr  : </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>  /tmp/RtmpEvHEAr/wth_aquacrop.CLI ,/tmp/RtmpEvHEAr/wth_aquacrop.Tnx ,/tmp/RtmpEvHEAr/wth_aquacrop.PLU ,/tmp/RtmpEvHEAr/wth_aquacrop.ETo</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/readLines.html" class="external-link">readLines</a></span><span class="op">(</span><span class="va">wth_files_created</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, n <span class="op">=</span> <span class="fl">15</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/writeLines.html" class="external-link">writeLines</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> wth_aquacrop Station, lat: 3.8 long: -76.5 - by agroclimR</span>
